@@ -1,0 +1,22 @@
+<%= simple_form_for(@game_registration) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="user"><%= f.label :user %></label>
+      <%= f.association :user, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="fustal_game"><%= f.label :fustal_game %></label>
+      <%= f.association :fustal_game, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="team"><%= f.label :team %></label>
+      <%= f.association :team, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

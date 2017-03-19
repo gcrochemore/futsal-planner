@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @futsal_game.date %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @futsal_game.duration %>
+</p>
+
+<p>
+  <strong>Team home:</strong>
+  <%= @futsal_game.team_home_id %>
+</p>
+
+<p>
+  <strong>Team outside:</strong>
+  <%= @futsal_game.team_outside_id %>
+</p>
+
+<p>
+  <strong>Score home:</strong>
+  <%= @futsal_game.score_home %>
+</p>
+
+<p>
+  <strong>Score outside:</strong>
+  <%= @futsal_game.score_outside %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_game_path(@futsal_game) %> |
+<%= link_to 'Back', futsal_games_path %>

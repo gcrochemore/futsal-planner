@@ -1,0 +1,34 @@
+<%= simple_form_for(@futsal_game) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="date"><%= f.label :date %></label>
+      <%= f.input :date, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="duration"><%= f.label :duration %></label>
+      <%= f.input :duration, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="team_home_id"><%= f.label :team_home_id %></label>
+      <%= f.input :team_home_id, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="team_outside_id"><%= f.label :team_outside_id %></label>
+      <%= f.input :team_outside_id, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="score_home"><%= f.label :score_home %></label>
+      <%= f.input :score_home, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="score_outside"><%= f.label :score_outside %></label>
+      <%= f.input :score_outside, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

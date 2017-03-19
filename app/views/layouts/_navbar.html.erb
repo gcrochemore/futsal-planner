@@ -1,0 +1,45 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= link_to 'Accueil', '/', class: 'navbar-brand' %>
+
+  <% if user_signed_in?  %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav ">        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Futsal</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown">
+             <%= link_to('Liste des entreprises', companies_path)  %> 
+            </li>
+            <li class="dropdown">
+             <%= link_to('Liste des equipes', teams_path)  %> 
+            </li> 
+            <li class="dropdown">
+             <%= link_to('Liste des Terrain de futsal', futsal_fields_path)  %> 
+            </li> 
+            <li class="dropdown">
+             <%= link_to('Liste des match de futsal', futsal_games_path)  %> 
+            </li> 
+            <li class="dropdown">
+             <%= link_to('Liste des inscriptions', game_registrations_path)  %> 
+            </li> 
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= current_user.email if user_signed_in? %><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </li>    
+      </ul>
+    </div>
+  <% end %>
+</nav>

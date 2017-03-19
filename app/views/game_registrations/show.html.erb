@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @game_registration.user %>
+</p>
+
+<p>
+  <strong>Fustal game:</strong>
+  <%= @game_registration.fustal_game %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @game_registration.team %>
+</p>
+
+<%= link_to 'Edit', edit_game_registration_path(@game_registration) %> |
+<%= link_to 'Back', game_registrations_path %>

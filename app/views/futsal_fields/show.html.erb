@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @futsal_field.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @futsal_field.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @futsal_field.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_field_path(@futsal_field) %> |
+<%= link_to 'Back', futsal_fields_path %>

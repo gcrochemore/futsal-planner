@@ -1,0 +1,2 @@
+class FutsalField < ApplicationRecord
+end
