@@ -1,0 +1,50 @@
+fr:
+  activerecord:
+    attributes:
+      company:
+        email_mask: Masque d'email
+        name: Nom de l'entreprise
+      futsal_field:
+        name: Nom du terrain
+        latitude: Latitude
+        longitude: Longitude 
+      futsal_game:
+        date: Date
+        duration: Durée
+        team_home: Equipe 1 
+        team_outside: Equipe 2
+        score_home: score 1
+        score_outside: Score 2
+      game_registration:
+        team: Equipe
+        user: Joueur
+      team:
+        company: Entreprise
+        name: Nom de l'équipe 
+
+  companies:
+    index:
+      new_button: Nouvelle entreprise
+      title: Entreprises 
+      
+  futsal_fields:
+    index:
+      new_button: Nouveau terrain
+      title: Terrains  
+      
+  futsal_games:
+    index:
+      new_button: Nouveau match
+      title: Matchs   
+      
+  game_registrations:
+    index:
+      new_button: Nouvelle inscription
+      title: Inscriptions  
+
+  search_title: Rechercher  
+      
+  teams:
+    index:
+      new_button: Nouvelle équipe
+      title: Equipes  

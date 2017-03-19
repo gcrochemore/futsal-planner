@@ -12,11 +12,11 @@
     </div>
     <div class="form-group">
       <label for="team_home_id"><%= f.label :team_home_id %></label>
-      <%= f.input :team_home_id, label: false, input_html: { class: "form-control" } %>
+      <%= f.association :team_home, label: false, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
       <label for="team_outside_id"><%= f.label :team_outside_id %></label>
-      <%= f.input :team_outside_id, label: false, input_html: { class: "form-control" } %>
+      <%= f.association :team_outside, label: false, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
       <label for="score_home"><%= f.label :score_home %></label>

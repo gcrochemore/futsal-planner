@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,21 +11,31 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Futsal</a>
           <ul class="dropdown-menu">
-            <li class="dropdown">
-             <%= link_to('Liste des entreprises', companies_path)  %> 
-            </li>
-            <li class="dropdown">
-             <%= link_to('Liste des equipes', teams_path)  %> 
-            </li> 
-            <li class="dropdown">
-             <%= link_to('Liste des Terrain de futsal', futsal_fields_path)  %> 
-            </li> 
-            <li class="dropdown">
+            <% if can? :read, Company %>
+              <li class="dropdown">
+               <%= link_to('Liste des entreprises', companies_path)  %> 
+              </li>
+            <% end %>
+            <% if can? :read, Team %>
+              <li class="dropdown">
+               <%= link_to('Liste des equipes', teams_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalField %>
+              <li class="dropdown">
+               <%= link_to('Liste des Terrain de futsal', futsal_fields_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalGame %>
+              <li class="dropdown">
              <%= link_to('Liste des match de futsal', futsal_games_path)  %> 
             </li> 
-            <li class="dropdown">
-             <%= link_to('Liste des inscriptions', game_registrations_path)  %> 
-            </li> 
+            <% end %>
+            <% if can? :read, GameRegistration %>
+              <li class="dropdown">
+               <%= link_to('Liste des inscriptions', game_registrations_path)  %> 
+              </li> 
+            <% end %>
           </ul>
         </li>
       </ul>

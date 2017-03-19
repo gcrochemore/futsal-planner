@@ -1,5 +1,3 @@
-
-
 class GameRegistrationsController < ApplicationController
   authorize_resource
   before_action :set_game_registration, only: [:show, :edit, :update, :destroy]

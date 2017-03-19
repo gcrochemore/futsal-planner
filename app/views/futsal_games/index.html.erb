@@ -1,7 +1,7 @@
 <h1><%= t('.title') %><span class="badge"><%= @futsal_games.count %></span></h1>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-4">
     <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
@@ -10,9 +10,9 @@
 
         <%= f.search_field :duration_cont, {placeholder: t('activerecord.attributes.futsal_game.duration')} %>
 
-        <%= f.search_field :team_home_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_home_id')} %>
+        <%= f.search_field :team_home_name_cont, {placeholder: t('activerecord.attributes.futsal_game.team_home')} %>
 
-        <%= f.search_field :team_outside_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_outside_id')} %>
+        <%= f.search_field :team_outside_name_cont, {placeholder: t('activerecord.attributes.futsal_game.team_outside')} %>
 
         <%= f.search_field :score_home_cont, {placeholder: t('activerecord.attributes.futsal_game.score_home')} %>
 
@@ -24,7 +24,7 @@
       <% end %>
     </fieldset>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-8">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, FutsalGame %>
         <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
@@ -38,13 +38,13 @@
     
           <th><%= sort_link(@q, :duration, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :team_home_id, default_order: :asc) %></th>
-    
-          <th><%= sort_link(@q, :team_outside_id, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :team_home, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :score_home, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :score_outside, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :team_outside, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -60,11 +60,11 @@
     
             <td><%= futsal_game.team_home_id %></td>
     
-            <td><%= futsal_game.team_outside_id %></td>
-    
             <td><%= futsal_game.score_home %></td>
     
             <td><%= futsal_game.score_outside %></td>
+    
+            <td><%= futsal_game.team_outside_id %></td>
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, futsal_game %>

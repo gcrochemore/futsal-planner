@@ -1,14 +1,14 @@
 <h1><%= t('.title') %><span class="badge"><%= @teams.count %></span></h1>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-4">
     <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.team.name')} %>
 
-        <%= f.search_field :company_cont, {placeholder: t('activerecord.attributes.team.company')} %>
+        <%= f.search_field :company_name_cont, {placeholder: t('activerecord.attributes.team.company')} %>
 
         <br>
         <br>
@@ -16,7 +16,7 @@
       <% end %>
     </fieldset>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-8">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, Team %>
         <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
@@ -40,7 +40,7 @@
     
             <td><%= team.name %></td>
     
-            <td><%= team.company %></td>
+            <td><%= team.company.andand.name %></td>
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, team %>

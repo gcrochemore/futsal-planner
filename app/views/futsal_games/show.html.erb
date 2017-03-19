@@ -12,12 +12,12 @@
 
 <p>
   <strong>Team home:</strong>
-  <%= @futsal_game.team_home_id %>
+  <%= @futsal_game.team_home.andand.name %>
 </p>
 
 <p>
   <strong>Team outside:</strong>
-  <%= @futsal_game.team_outside_id %>
+  <%= @futsal_game.team_outside.andand.name %>
 </p>
 
 <p>
