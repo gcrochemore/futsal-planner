@@ -1,0 +1,76 @@
+<h1><%= t('.title') %><span class="badge"><%= @goals.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :team_name_cont, {placeholder: t('activerecord.attributes.goal.team')} %>
+
+        <%= f.search_field :goal_first_name_cont, {placeholder: t('activerecord.attributes.goal.goal')} %>
+
+        <%= f.search_field :assist_first_name_cont, {placeholder: t('activerecord.attributes.goal.assist')} %>
+
+        <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.goal.time')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-8">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Goal %>
+        <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :FutsalGame, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :team, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :goal, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :time, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @goals.each do |goal| %>
+          <tr>
+    
+            <td><%= goal.FutsalGame %></td>
+    
+            <td><%= goal.team %></td>
+    
+            <td><%= goal.goal %></td>
+    
+            <td><%= goal.assist %></td>
+    
+            <td><%= goal.time %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, goal %>
+              <% if can? :edit, Goal %>
+                <%= link_to icon('pencil').html_safe, edit_goal_path(goal) %>
+              <% end %>
+              <% if can? :destroy, Goal %>
+                <%= link_to icon('times').html_safe, goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @goals %>
+  </div>
+</div>

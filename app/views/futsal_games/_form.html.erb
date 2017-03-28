@@ -11,12 +11,16 @@
       <%= f.input :duration, label: false, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
+      <label for="FutsalField"><%= f.label :FutsalField %></label>
+      <%= f.association :FutsalField, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
       <label for="team_home_id"><%= f.label :team_home_id %></label>
-      <%= f.association :team_home, label: false, input_html: { class: "form-control" } %>
+      <%= f.input :team_home_id, label: false, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
       <label for="team_outside_id"><%= f.label :team_outside_id %></label>
-      <%= f.association :team_outside, label: false, input_html: { class: "form-control" } %>
+      <%= f.input :team_outside_id, label: false, input_html: { class: "form-control" } %>
     </div>
     <div class="form-group">
       <label for="score_home"><%= f.label :score_home %></label>
@@ -25,6 +29,14 @@
     <div class="form-group">
       <label for="score_outside"><%= f.label :score_outside %></label>
       <%= f.input :score_outside, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="video_link"><%= f.label :video_link %></label>
+      <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="match_resume_link"><%= f.label :match_resume_link %></label>
+      <%= f.input :match_resume_link, label: false, input_html: { class: "form-control" } %>
     </div>
   </div>
 

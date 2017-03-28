@@ -1,0 +1,121 @@
+Je vais parser le match !
+
+
+
+<%
+
+
+doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
+
+@futsal_game.video_link = doc.css('p.video_illustration').first.css('a').first['href']
+
+@score = doc.css('p#score').first.content
+
+@scores = @score.split('-')
+@score_domicile = @scores[0];
+@score_exterieur = @scores[1];
+
+@futsal_game.score_home = @score_domicile
+
+@futsal_game.score_outside = @score_exterieur
+
+@futsal_game.save
+
+@tableau_buts = doc.css('div#resume').first.css('div.table').first
+
+@goals = Array.new
+
+@tableau_buts.css('div.row').each do |but|
+
+  @time = but.css('div.time').first.content
+  @description = but.css('div.description').first.content
+  @video = but.css('div.video').first.css('a').first['href']
+
+  @goal = Goal.new;
+
+  @goal.futsal_game = @futsal_game
+
+  @m = @time.split(':')
+  @min = @m[0];
+  @sec = @m[1];
+
+  @goal.time = @min * 60 + @sec
+
+  if @description.at("Equipe 2").nil?
+    @goal.team = @futsal_game.team_home
+  else
+    @goal.team = @futsal_game.team_outside
+  end
+
+  @goals.push @goal
+  
+end
+
+%>
+
+<br>
+
+score : <%= @score %>
+
+<br>
+
+equipe1 : <%= @equipe1 %>
+
+<br>
+
+equipe2 : <%= @equipe2 %>  
+
+<br>
+
+time : <%= @time %>  
+description : <%= @description %>  
+video : <%= @video %>  
+
+
+
+
+<table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th>Match</th>
+    
+          <th>Equipe</th>
+    
+          <th>Buteur</th>
+    
+          <th>Passeur</th>
+    
+          <th>Minute</th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @goals.each do |goal| %>
+          <tr>
+    
+            <td><%= goal.futsal_game.andand.date %></td>
+    
+            <td><%= goal.team.name %></td>
+    
+            <td><%= goal.goal.andand.first_name %></td>
+    
+            <td><%= goal.assist.andand.first_name %></td>
+    
+            <td><%= goal.time %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, goal %>
+              <% if can? :edit, Goal %>
+                <%= link_to icon('pencil').html_safe, edit_goal_path(1) %>
+              <% end %>
+              <% if can? :destroy, Goal %>
+                <%= link_to icon('times').html_safe, goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

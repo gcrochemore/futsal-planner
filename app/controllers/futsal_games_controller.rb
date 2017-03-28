@@ -1,8 +1,6 @@
-
-
 class FutsalGamesController < ApplicationController
   authorize_resource
-  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume]
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
@@ -20,6 +18,9 @@ class FutsalGamesController < ApplicationController
   # GET /futsal_games/1/edit
   def edit
   end
+
+  def parse_match_resume
+  end  
 
   # POST /futsal_games
   def create
@@ -53,7 +54,7 @@ class FutsalGamesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def futsal_game_params
 
-      params.require(:futsal_game).permit(:date, :duration, :team_home_id, :team_outside_id, :score_home, :score_outside)
+      params.require(:futsal_game).permit(:date, :duration, :FutsalField_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link)
 
     end
 end

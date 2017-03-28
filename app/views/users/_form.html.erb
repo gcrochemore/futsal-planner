@@ -1,0 +1,42 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="first_name"><%= f.label :first_name %></label>
+      <%= f.input :first_name, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="last_name"><%= f.label :last_name %></label>
+      <%= f.input :last_name, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="company"><%= f.label :company %></label>
+      <%= f.association :company, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="email"><%= f.label :email %></label>
+      <%= f.email_field :email, autofocus: true, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="password"><%= f.label :password %></label>
+      <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off", input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="password_confirmation"><%= f.label :password_confirmation %></label>
+      <%= f.password_field :password_confirmation, autocomplete: "off", input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

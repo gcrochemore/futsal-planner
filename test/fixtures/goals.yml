@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  FutsalGame: one
+  team: one
+  goal: 1
+  assist: 1
+  time: 1
+
+two:
+  FutsalGame: two
+  team: two
+  goal: 1
+  assist: 1
+  time: 1

@@ -11,13 +11,18 @@
 </p>
 
 <p>
+  <strong>Futsalfield:</strong>
+  <%= @futsal_game.futsal_field.andand.name %>
+</p>
+
+<p>
   <strong>Team home:</strong>
-  <%= @futsal_game.team_home.andand.name %>
+  <%= @futsal_game.team_home_id %>
 </p>
 
 <p>
   <strong>Team outside:</strong>
-  <%= @futsal_game.team_outside.andand.name %>
+  <%= @futsal_game.team_outside_id %>
 </p>
 
 <p>
@@ -30,5 +35,20 @@
   <%= @futsal_game.score_outside %>
 </p>
 
+<p>
+  <strong>Video link:</strong>
+  <%= @futsal_game.video_link %>
+</p>
+
+<p>
+  <strong>Match resume link:</strong>
+  <%= @futsal_game.match_resume_link %>
+</p>
+
+
+<iframe frameborder="0" width="480" height="270" src="<%= @video %>" allowfullscreen></iframe>
+
+
+<%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
 <%= link_to 'Edit', edit_futsal_game_path(@futsal_game) %> |
 <%= link_to 'Back', futsal_games_path %>

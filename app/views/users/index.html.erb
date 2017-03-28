@@ -1,0 +1,66 @@
+<h1><%= t('.title') %><span class="badge badge-pill badge-default"><%= @users.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :first_name_cont, {placeholder: t('activerecord.attributes.user.first_name')} %>
+
+        <%= f.search_field :last_name_cont, {placeholder: t('activerecord.attributes.user.last_name')} %>
+
+        <%= f.search_field :company_name_cont, {placeholder: t('activerecord.attributes.user.company')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-8">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, User %>
+        <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :first_name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :last_name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :company_name, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+    
+            <td><%= user.first_name %></td>
+    
+            <td><%= user.last_name %></td>
+    
+            <td><%= user.company.andand.name %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, user %>
+              <% if can? :edit, User %>
+                <%= link_to icon('pencil').html_safe, edit_user_path(user) %>
+              <% end %>
+              <% if can? :destroy, User %>
+                <%= link_to icon('times').html_safe, user, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @users %>
+  </div>
+</div>

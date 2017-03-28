@@ -17,7 +17,7 @@ class FutsalGamesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create futsal_game" do
     assert_difference('FutsalGame.count') do
-      post futsal_games_url, params: { futsal_game: { date: @futsal_game.date, duration: @futsal_game.duration, score_home: @futsal_game.score_home, score_outside: @futsal_game.score_outside, team_home_id: @futsal_game.team_home_id, team_outside_id: @futsal_game.team_outside_id } }
+      post futsal_games_url, params: { futsal_game: { FutsalField_id: @futsal_game.FutsalField_id, date: @futsal_game.date, duration: @futsal_game.duration, match_resume_link: @futsal_game.match_resume_link, score_home: @futsal_game.score_home, score_outside: @futsal_game.score_outside, team_home_id: @futsal_game.team_home_id, team_outside_id: @futsal_game.team_outside_id, video_link: @futsal_game.video_link } }
     end
 
     assert_redirected_to futsal_game_url(FutsalGame.last)
@@ -34,7 +34,7 @@ class FutsalGamesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update futsal_game" do
-    patch futsal_game_url(@futsal_game), params: { futsal_game: { date: @futsal_game.date, duration: @futsal_game.duration, score_home: @futsal_game.score_home, score_outside: @futsal_game.score_outside, team_home_id: @futsal_game.team_home_id, team_outside_id: @futsal_game.team_outside_id } }
+    patch futsal_game_url(@futsal_game), params: { futsal_game: { FutsalField_id: @futsal_game.FutsalField_id, date: @futsal_game.date, duration: @futsal_game.duration, match_resume_link: @futsal_game.match_resume_link, score_home: @futsal_game.score_home, score_outside: @futsal_game.score_outside, team_home_id: @futsal_game.team_home_id, team_outside_id: @futsal_game.team_outside_id, video_link: @futsal_game.video_link } }
     assert_redirected_to futsal_game_url(@futsal_game)
   end
 

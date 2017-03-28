@@ -10,13 +10,17 @@
 
         <%= f.search_field :duration_cont, {placeholder: t('activerecord.attributes.futsal_game.duration')} %>
 
-        <%= f.search_field :team_home_name_cont, {placeholder: t('activerecord.attributes.futsal_game.team_home')} %>
+        <%= f.search_field :team_home_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_home_id')} %>
 
-        <%= f.search_field :team_outside_name_cont, {placeholder: t('activerecord.attributes.futsal_game.team_outside')} %>
+        <%= f.search_field :team_outside_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_outside_id')} %>
 
         <%= f.search_field :score_home_cont, {placeholder: t('activerecord.attributes.futsal_game.score_home')} %>
 
         <%= f.search_field :score_outside_cont, {placeholder: t('activerecord.attributes.futsal_game.score_outside')} %>
+
+        <%= f.search_field :video_link_cont, {placeholder: t('activerecord.attributes.futsal_game.video_link')} %>
+
+        <%= f.search_field :match_resume_link_cont, {placeholder: t('activerecord.attributes.futsal_game.match_resume_link')} %>
 
         <br>
         <br>
@@ -27,10 +31,10 @@
   <div class="col-md-8">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, FutsalGame %>
-        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+        <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
       <% end %>
     </div>
-    <table class="table table-hover table-condensed table-bordered">
+    <table class="table table-hover table-sm table-bordered">
       <thead>
         <tr>
     
@@ -38,13 +42,19 @@
     
           <th><%= sort_link(@q, :duration, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :team_home, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :FutsalField, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :team_home_id, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :team_outside_id, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :score_home, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :score_outside, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :team_outside, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :video_link, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :match_resume_link, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -58,21 +68,27 @@
     
             <td><%= futsal_game.duration %></td>
     
+            <td><%= futsal_game.futsal_field.andand.name %></td>
+    
             <td><%= futsal_game.team_home_id %></td>
+    
+            <td><%= futsal_game.team_outside_id %></td>
     
             <td><%= futsal_game.score_home %></td>
     
             <td><%= futsal_game.score_outside %></td>
     
-            <td><%= futsal_game.team_outside_id %></td>
+            <td><%= futsal_game.video_link %></td>
+    
+            <td><%= futsal_game.match_resume_link %></td>
     
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, futsal_game %>
+              <%= link_to icon('eye').html_safe, futsal_game %>
               <% if can? :edit, FutsalGame %>
-                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_futsal_game_path(futsal_game) %>
+                <%= link_to icon('pencil').html_safe, edit_futsal_game_path(futsal_game) %>
               <% end %>
               <% if can? :destroy, FutsalGame %>
-                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, futsal_game, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to icon('times').html_safe, futsal_game, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
           </tr>

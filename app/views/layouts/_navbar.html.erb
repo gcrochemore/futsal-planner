@@ -36,6 +36,16 @@
                <%= link_to('Liste des inscriptions', game_registrations_path)  %> 
               </li> 
             <% end %>
+            <% if can? :read, User %>
+              <li class="dropdown">
+               <%= link_to('Liste des users', users_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, Goal %>
+              <li class="dropdown">
+               <%= link_to('Liste des buts', goals_path)  %> 
+              </li> 
+            <% end %>
           </ul>
         </li>
       </ul>
