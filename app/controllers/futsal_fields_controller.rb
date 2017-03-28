@@ -1,5 +1,3 @@
-
-
 class FutsalFieldsController < ApplicationController
   authorize_resource
   before_action :set_futsal_field, only: [:show, :edit, :update, :destroy]

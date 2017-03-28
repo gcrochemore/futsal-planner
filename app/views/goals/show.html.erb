@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Futsalgame:</strong>
-  <%= @goal.FutsalGame %>
+  <strong>Futsal game:</strong>
+  <%= @goal.futsal_game %>
 </p>
 
 <p>
@@ -23,6 +23,11 @@
 <p>
   <strong>Time:</strong>
   <%= @goal.time %>
+</p>
+
+<p>
+  <strong>Video link:</strong>
+  <%= @goal.video_link %>
 </p>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |

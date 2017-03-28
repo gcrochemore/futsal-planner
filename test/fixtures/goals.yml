@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  FutsalGame: one
+  futsal_game: one
   team: one
   goal: 1
   assist: 1
   time: 1
+  video_link: MyString
 
 two:
-  FutsalGame: two
+  futsal_game: two
   team: two
   goal: 1
   assist: 1
   time: 1
+  video_link: MyString

@@ -1,7 +1,7 @@
 <h1><%= t('.title') %><span class="badge"><%= @goals.count %></span></h1>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-2">
     <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
@@ -9,10 +9,12 @@
         <%= f.search_field :team_name_cont, {placeholder: t('activerecord.attributes.goal.team')} %>
 
         <%= f.search_field :goal_first_name_cont, {placeholder: t('activerecord.attributes.goal.goal')} %>
-
+_first_name
         <%= f.search_field :assist_first_name_cont, {placeholder: t('activerecord.attributes.goal.assist')} %>
 
         <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.goal.time')} %>
+
+        <%= f.search_field :video_link_cont, {placeholder: t('activerecord.attributes.goal.video_link')} %>
 
         <br>
         <br>
@@ -30,15 +32,17 @@
       <thead>
         <tr>
     
-          <th><%= sort_link(@q, :FutsalGame, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :futsal_game, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :team, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :team_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :goal, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :goal_first_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :time, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :video_link, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -48,7 +52,7 @@
         <% @goals.each do |goal| %>
           <tr>
     
-            <td><%= goal.FutsalGame %></td>
+            <td><%= goal.futsal_game %></td>
     
             <td><%= goal.team %></td>
     
@@ -57,6 +61,8 @@
             <td><%= goal.assist %></td>
     
             <td><%= goal.time %></td>
+    
+            <td><%= goal.video_link %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, goal %>

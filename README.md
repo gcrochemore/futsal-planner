@@ -32,7 +32,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold GameRegistration user:references fustal_game:references team:references
 
-	rails generate scaffold Goal FutsalGame:references team:references goal:integer assist:integer time:integer
+	rails generate scaffold Goal futsal_game:references team:references goal_id:integer assist_id:integer time:integer video_link:string
+
 
 	###### Entity a créer
 	

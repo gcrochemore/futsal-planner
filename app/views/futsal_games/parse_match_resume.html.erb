@@ -39,7 +39,7 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
   @min = @m[0];
   @sec = @m[1];
 
-  @goal.time = @min * 60 + @sec
+  @goal.time = @min.to_f * 60 + @sec.to_f
 
   if @description.at("Equipe 2").nil?
     @goal.team = @futsal_game.team_home
@@ -47,32 +47,15 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
     @goal.team = @futsal_game.team_outside
   end
 
+  @goal.video_link = @video
+
+  #@goal.save
+
   @goals.push @goal
   
 end
 
 %>
-
-<br>
-
-score : <%= @score %>
-
-<br>
-
-equipe1 : <%= @equipe1 %>
-
-<br>
-
-equipe2 : <%= @equipe2 %>  
-
-<br>
-
-time : <%= @time %>  
-description : <%= @description %>  
-video : <%= @video %>  
-
-
-
 
 <table class="table table-hover table-sm table-bordered">
       <thead>
@@ -87,6 +70,8 @@ video : <%= @video %>
           <th>Passeur</th>
     
           <th>Minute</th>
+    
+          <th>Lien video</th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -105,6 +90,8 @@ video : <%= @video %>
             <td><%= goal.assist.andand.first_name %></td>
     
             <td><%= goal.time %></td>
+    
+            <td><%= goal.video_link %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, goal %>

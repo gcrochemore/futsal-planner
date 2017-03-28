@@ -1,5 +1,3 @@
-
-
 class TeamsController < ApplicationController
   authorize_resource
   before_action :set_team, only: [:show, :edit, :update, :destroy]

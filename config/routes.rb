@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   root 'welcome#index'
 
   resources :paper_trail_versions, controller: 'versions'
