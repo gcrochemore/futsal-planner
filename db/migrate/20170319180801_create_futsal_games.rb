@@ -3,7 +3,7 @@ class CreateFutsalGames < ActiveRecord::Migration[5.0]
     create_table :futsal_games do |t|
       t.datetime :date
       t.integer :duration
-      t.references :FutsalField, foreign_key: true
+      t.references :futsal_field, foreign_key: true
       t.integer :team_home_id
       t.integer :team_outside_id
       t.integer :score_home

@@ -13,8 +13,12 @@ User.create!([
 Company.create!([
   {id: 1, name: "TRSB", email_mask: "[a-z]@trsb.net$", created_at: "2017-03-19 20:23:10", updated_at: "2017-03-19 20:23:10"}
 ])
+Team.create!([
+  {id: 1, name: "Trsb#1", company_id: 1, created_at: "2017-03-19 20:49:58", updated_at: "2017-03-19 20:49:58"},
+  {id: 2, name: "TRSB#2", company_id: 1, created_at: "2017-03-19 20:50:19", updated_at: "2017-03-19 20:50:19"}
+])
 FutsalGame.create!([
-  {id: 1, date: "2017-03-27 19:00:00", duration: 60, FutsalField_id: nil, team_home_id: 1, team_outside_id: 2, score_home: 24, score_outside: 19, video_link: "http://www.dailymotion.com/embed/video/x5ggqql?autoPlay=1", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1617698&matchs_id=105768", created_at: "2017-03-19 21:18:46", updated_at: "2017-03-28 22:26:00"}
+  {id: 1, date: "2017-03-27 19:00:00", duration: 60, futsal_field_id: nil, team_home_id: 1, team_outside_id: 2, score_home: 24, score_outside: 19, video_link: "http://www.dailymotion.com/embed/video/x5ggqql?autoPlay=1", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1617698&matchs_id=105768", created_at: "2017-03-19 21:18:46", updated_at: "2017-03-28 22:26:00"}
 ])
 Goal.create!([
   {id: 1, futsal_game_id: 1, team_id: 1, goal_id: 2, assist_id: nil, time: 107, video_link: "http://www.dailymotion.com/embed/video/x5gh7vk?autoPlay=1", created_at: "2017-03-28 22:26:00", updated_at: "2017-03-28 22:28:00"},
@@ -60,8 +64,4 @@ Goal.create!([
   {id: 41, futsal_game_id: 1, team_id: 2, goal_id: 1, assist_id: 7, time: 3511, video_link: "http://www.dailymotion.com/embed/video/x5ghchf?autoPlay=1", created_at: "2017-03-28 22:26:01", updated_at: "2017-03-28 22:59:35"},
   {id: 42, futsal_game_id: 1, team_id: 1, goal_id: 2, assist_id: nil, time: 3539, video_link: "http://www.dailymotion.com/embed/video/x5ghckp?autoPlay=1", created_at: "2017-03-28 22:26:01", updated_at: "2017-03-28 23:00:01"},
   {id: 43, futsal_game_id: 1, team_id: 1, goal_id: 6, assist_id: nil, time: 3582, video_link: "http://www.dailymotion.com/embed/video/x5ghcop?autoPlay=1", created_at: "2017-03-28 22:26:01", updated_at: "2017-03-28 23:00:50"}
-])
-Team.create!([
-  {id: 1, name: "Trsb#1", company_id: 1, created_at: "2017-03-19 20:49:58", updated_at: "2017-03-19 20:49:58"},
-  {id: 2, name: "TRSB#2", company_id: 1, created_at: "2017-03-19 20:50:19", updated_at: "2017-03-19 20:50:19"}
 ])
