@@ -1,0 +1,65 @@
+.match_header {
+	background: url(en_tete_match.png);
+}
+
+.team_name {
+	text-align: center;
+    vertical-align: middle;
+	font-size: 200%;
+	color: white;
+	font-weight: bold;
+}
+
+.score {
+	font-size: 200%;
+	text-align: center;
+	background: white;
+    vertical-align: middle;
+	font-weight: bold;
+}
+
+.match_link {
+	text-align:center;
+	padding: 10px;
+}
+
+.date, .duration, .futsal_field {
+	color: white;
+	padding: 5px;
+}
+
+.date {
+	margin-left: 1àpx;
+}
+
+.duration {
+	text-align: center;
+}
+
+.team {
+	background: url(terrain.png);
+	height: 400px;
+	padding-top: 5px;
+	.player{
+		margin: 10px;
+		padding: 5px;
+		font-weight: bold;
+		border: 1px dotted black;
+		background-color: white;
+	}
+}
+
+.goal_tab{
+	font-size: 80%;
+	.home_goal {
+		text-align: right;
+	}
+	.time {
+		text-align: center;
+	}
+
+	.outside_goal {
+
+	}
+}
+

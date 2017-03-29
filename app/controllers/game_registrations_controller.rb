@@ -51,7 +51,7 @@ class GameRegistrationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def game_registration_params
 
-      params.require(:game_registration).permit(:user_id, :fustal_game_id, :team_id)
+      params.require(:game_registration).permit(:user_id, :futsal_game_id, :team_id)
 
     end
 end

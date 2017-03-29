@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170328214110) do
   create_table "futsal_games", force: :cascade do |t|
     t.datetime "date"
     t.integer  "duration"
-    t.integer  "FutsalField_id"
+    t.integer  "futsal_field_id"
     t.integer  "team_home_id"
     t.integer  "team_outside_id"
     t.integer  "score_home"
@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(version: 20170328214110) do
     t.string   "match_resume_link"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["FutsalField_id"], name: "index_futsal_games_on_FutsalField_id"
+    t.index ["futsal_field_id"], name: "index_futsal_games_on_futsal_field_id"
   end
 
   create_table "game_registrations", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "fustal_game_id"
+    t.integer  "futsal_game_id"
     t.integer  "team_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["fustal_game_id"], name: "index_game_registrations_on_fustal_game_id"
+    t.index ["futsal_game_id"], name: "index_game_registrations_on_futsal_game_id"
     t.index ["team_id"], name: "index_game_registrations_on_team_id"
     t.index ["user_id"], name: "index_game_registrations_on_user_id"
   end

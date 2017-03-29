@@ -9,7 +9,7 @@
         <%= f.search_field :team_name_cont, {placeholder: t('activerecord.attributes.goal.team')} %>
 
         <%= f.search_field :goal_first_name_cont, {placeholder: t('activerecord.attributes.goal.goal')} %>
-_first_name
+
         <%= f.search_field :assist_first_name_cont, {placeholder: t('activerecord.attributes.goal.assist')} %>
 
         <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.goal.time')} %>
@@ -22,7 +22,7 @@ _first_name
       <% end %>
     </fieldset>
   </div>
-  <div class="col-md-8">
+  <div class="col">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, Goal %>
         <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
@@ -56,13 +56,14 @@ _first_name
     
             <td><%= goal.team %></td>
     
-            <td><%= goal.goal %></td>
-    
+            <td><%= link_to (icon('futbol-o') + " " + goal.goal.andand.first_name+ " " + goal.goal.andand.last_name.slice(0,1).capitalize).html_safe, goal, target: "_blank" %></td>
+
+              
             <td><%= goal.assist %></td>
     
-            <td><%= goal.time %></td>
+            <td><%= Time.at(goal.time).utc.strftime("%M:%S") %></td>
     
-            <td><%= goal.video_link %></td>
+            <td><%= link_to icon('television') + " Voir la video du but", goal.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, goal %>

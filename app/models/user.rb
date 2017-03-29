@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_many :goals, :class_name => :Goal,:foreign_key => "goal_id"
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
 
+  default_scope { order(:first_name, :last_name) }
+
   def to_s
-  	first_name + last_name
+  	first_name + " " + last_name
   end
 end
