@@ -168,10 +168,10 @@ Goal.create!([
   {id: 87, futsal_game_id: 2, team_id: 4, goal_id: nil, assist_id: nil, time: 3542, video_link: "http://www.dailymotion.com/embed/video/x5gdv1p?autoPlay=1", created_at: "2017-03-30 11:18:31", updated_at: "2017-03-30 11:18:31"},
   {id: 88, futsal_game_id: 2, team_id: 4, goal_id: nil, assist_id: nil, time: 3581, video_link: "http://www.dailymotion.com/embed/video/x5gdv55?autoPlay=1", created_at: "2017-03-30 11:18:31", updated_at: "2017-03-30 11:18:31"}
 ])
+HighlightType.create!([
+  {id: 1, name: "Blessure", icon: "ambulance", created_at: "2017-03-30 21:58:42", updated_at: "2017-03-30 21:58:55"}
+])
 Highlight.create!([
   {id: 1, name: "", highlight_type_id: 1, author_id: nil, victim_id: 6, time: 2197, futsal_game_id: 1, team_id: 1, created_at: "2017-03-30 22:14:02", updated_at: "2017-03-30 22:26:12"},
   {id: 2, name: "", highlight_type_id: 1, author_id: nil, victim_id: 8, time: 2182, futsal_game_id: 1, team_id: 2, created_at: "2017-03-30 22:15:36", updated_at: "2017-03-30 22:15:36"}
-])
-HighlightType.create!([
-  {id: 1, name: "Blessure", icon: "ambulance", created_at: "2017-03-30 21:58:42", updated_at: "2017-03-30 21:58:55"}
 ])
