@@ -1,0 +1,2 @@
+class HighlightType < ApplicationRecord
+end

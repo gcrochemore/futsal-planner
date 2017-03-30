@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  highlight_type: one
+  author_id: 1
+  victim_id: 1
+  time: 1
+  futsal_game: one
+  team: one
+
+two:
+  name: MyString
+  highlight_type: two
+  author_id: 1
+  victim_id: 1
+  time: 1
+  futsal_game: two
+  team: two

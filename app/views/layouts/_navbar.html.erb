@@ -46,6 +46,16 @@
                <%= link_to('Liste des buts', goals_path)  %> 
               </li> 
             <% end %>
+            <% if can? :read, HighlightType %>
+              <li class="dropdown">
+               <%= link_to('Liste des type de highlights', highlight_types_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, Highlight %>
+              <li class="dropdown">
+               <%= link_to('Liste des highlights', highlights_path)  %> 
+              </li> 
+            <% end %>
           </ul>
         </li>
       </ul>

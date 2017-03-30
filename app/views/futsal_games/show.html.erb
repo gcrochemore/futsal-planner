@@ -34,12 +34,16 @@
   </div>
 </div>
   <div class="row match_link">
-    <div class="col">
-      <%= link_to icon('television') + " Voir la video du match", @futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-    </div>
-    <div class="col">
-      <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", @futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-    </div>
+    <% if !@futsal_game.video_link.nil?  && @futsal_game.video_link != ""%>
+      <div class="col">
+        <%= link_to icon('television') + " Voir la video du match", @futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
+    <% if !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
+      <div class="col">
+        <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", @futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
   </div>
 
 <div class="row goal_tab">
@@ -53,11 +57,15 @@
     </div>
   </div>
   <div class="col-5">
-    <% @futsal_game.goals.each do |goal| %>
+    <% @futsal_game.highlights_and_goals.each do |goal| %>
       <div class="row">
         <div class="col home_goal">
           <% if goal.team == @futsal_game.team_home %>
-            <%= link_to (goal.goal.andand.first_name + " " + goal.goal.andand.last_name.slice(0,1).capitalize + " " + icon('futbol-o')).html_safe, goal, target: "_blank" %>
+            <% if goal.instance_of? Highlight %>
+              <%= link_to (goal.andand.victim.to_s + " " + icon(goal.highlight_type.icon)).html_safe, goal, target: "_blank" %>
+            <% else %>
+              <%= link_to (goal.andand.goal.to_s + " " + icon('futbol-o')).html_safe, goal, target: "_blank" %>
+            <% end %>
           <% end %>
         </div>
         <div class="col-2 time">
@@ -65,10 +73,16 @@
         </div>
         <div class="col outside_goal">
           <% if goal.team == @futsal_game.team_outside %>
-            <%= link_to (icon('futbol-o') + " " + goal.goal.andand.first_name+ " " + goal.goal.andand.last_name.slice(0,1).capitalize).html_safe, goal, target: "_blank" %>
+            <% if goal.instance_of? Highlight %>
+              <%= link_to (icon(goal.highlight_type.icon) + " " + goal.andand.victim.to_s).html_safe, goal, target: "_blank" %>
+            <% else %>
+              <%= link_to (icon('futbol-o') + " " + goal.andand.goal.to_s).html_safe, goal, target: "_blank" %>
+            <% end %>
           <% end %>
         </div>
       </div>  
+
+
     <% end %>
   </div>
   <div class="col">
@@ -81,7 +95,8 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
+<% if !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
+  <%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
+<% end %>
 <%= link_to 'Edit', edit_futsal_game_path(@futsal_game) %> |
 <%= link_to 'Back', futsal_games_path %>

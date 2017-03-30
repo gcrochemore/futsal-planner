@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :goals
   root 'welcome#index'
 
   resources :paper_trail_versions, controller: 'versions'
-  resources :companies,:futsal_fields, :game_registrations, :teams, :goals
+  resources :companies,:futsal_fields, :game_registrations, :teams, :highlights, :highlight_types, :goals
 
   devise_for :users
   scope '/admin' do
@@ -15,7 +14,4 @@ Rails.application.routes.draw do
       get :parse_match_resume
     end
   end
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

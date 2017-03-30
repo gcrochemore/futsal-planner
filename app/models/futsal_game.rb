@@ -4,6 +4,7 @@ class FutsalGame < ApplicationRecord
   belongs_to :team_outside, :class_name => :Team,:foreign_key => "team_outside_id"
   has_many :goals
   has_many :game_registrations
+  has_many :highlights
 
   default_scope { order('date desc') }
 
@@ -18,4 +19,8 @@ class FutsalGame < ApplicationRecord
   def to_s
     date.strftime("%d/%m/%Y %H:%M") + " : " + team_home.andand.name + " vs " + team_outside.andand.name
   end   
+
+  def highlights_and_goals
+    (highlights + goals).sort! { |a,b| a.time <=> b.time }
+  end
 end

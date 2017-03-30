@@ -1,0 +1,38 @@
+<%= simple_form_for(@highlight) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="name"><%= f.label :name %></label>
+      <%= f.input :name, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="highlight_type"><%= f.label :highlight_type %></label>
+      <%= f.association :highlight_type, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="author_id"><%= f.label :author_id %></label>
+      <%= f.association :author, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="victim_id"><%= f.label :victim_id %></label>
+      <%= f.association :victim, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="time"><%= f.label :time %></label>
+      <%= f.input :time, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="futsal_game"><%= f.label :futsal_game %></label>
+      <%= f.association :futsal_game, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="team"><%= f.label :team %></label>
+      <%= f.association :team, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

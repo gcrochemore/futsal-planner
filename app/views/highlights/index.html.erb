@@ -1,0 +1,90 @@
+<h1><%= t('.title') %><span class="badge"><%= @highlights.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.highlight.name')} %>
+
+        <%= f.search_field :highlight_type_name_cont, {placeholder: t('activerecord.attributes.highlight.highlight_type')} %>
+
+        <%= f.search_field :author_first_name_cont, {placeholder: t('activerecord.attributes.highlight.author_id')} %>
+
+        <%= f.search_field :victim_first_name_cont, {placeholder: t('activerecord.attributes.highlight.victim_id')} %>
+
+        <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.highlight.time')} %>
+
+        <%= f.search_field :futsal_game_date_cont, {placeholder: t('activerecord.attributes.highlight.futsal_game')} %>
+
+        <%= f.search_field :team_name_cont, {placeholder: t('activerecord.attributes.highlight.team')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Highlight %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :highlight_type, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :author_id, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :victim_id, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :time, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :futsal_game, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :team, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @highlights.each do |highlight| %>
+          <tr>
+    
+            <td><%= highlight.name %></td>
+    
+            <td><%= highlight.highlight_type %></td>
+    
+            <td><%= highlight.author_id %></td>
+    
+            <td><%= highlight.victim_id %></td>
+    
+            <td><%= highlight.time %></td>
+    
+            <td><%= highlight.futsal_game %></td>
+    
+            <td><%= highlight.team %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, highlight %>
+              <% if can? :edit, Highlight %>
+                <%= link_to icon('pencil').html_safe, edit_highlight_path(highlight) %>
+              <% end %>
+              <% if can? :destroy, Highlight %>
+                <%= link_to icon('times').html_safe, highlight, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @highlights %>
+  </div>
+</div>

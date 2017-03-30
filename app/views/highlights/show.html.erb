@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>Name:</strong>
+      <%= @highlight.name %>
+    </p>
+
+    <p>
+      <strong>Highlight type:</strong>
+      <%= @highlight.highlight_type %>
+    </p>
+
+    <p>
+      <strong>Author:</strong>
+      <%= @highlight.author_id %>
+    </p>
+
+    <p>
+      <strong>Victim:</strong>
+      <%= @highlight.victim_id %>
+    </p>
+
+    <p>
+      <strong>Time:</strong>
+      <%= @highlight.time %>
+    </p>
+
+    <p>
+      <strong>Futsal game:</strong>
+      <%= @highlight.futsal_game %>
+    </p>
+
+    <p>
+      <strong>Team:</strong>
+      <%= @highlight.team %>
+    </p>
+  </div>
+  <div class="col">
+    <% if !@highlight.futsal_game.andand.video_link.nil? %>
+      <iframe src="<%= @highlight.futsal_game.video_link %>?start=<%= @highlight.time - 15 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>
+    <% else %>
+      Pas de vidéo
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_highlight_path(@highlight) %> |
+<%= link_to 'Back', highlights_path %>
