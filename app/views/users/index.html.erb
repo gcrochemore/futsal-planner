@@ -34,9 +34,11 @@
     
           <th><%= sort_link(@q, :company_name, default_order: :asc) %></th>
 
-          <th>Buts</th>
+          <th>Goal</th>
 
           <th>Assists</th>
+
+          <th>Match</th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -55,6 +57,8 @@
             <td><%= user.goals.length %></td>
     
             <td><%= user.assists.length %></td>
+    
+            <td><%= user.game_registrations.length %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, user %>

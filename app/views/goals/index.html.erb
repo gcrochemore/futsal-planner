@@ -56,7 +56,7 @@
     
             <td><%= goal.team %></td>
     
-            <td><%= link_to (icon('futbol-o') + " " + goal.goal.andand.first_name+ " " + goal.goal.andand.last_name.slice(0,1).capitalize).html_safe, goal, target: "_blank" %></td>
+            <td><%= link_to (icon('futbol-o') + " " + goal.andand.goal).html_safe, goal, target: "_blank" %></td>
 
               
             <td><%= goal.assist %></td>

@@ -1,4 +1,6 @@
 class Goal < ApplicationRecord
+  resourcify
+  
   belongs_to :futsal_game
   belongs_to :team
   belongs_to :goal, :class_name => :User,:foreign_key => "goal_id"

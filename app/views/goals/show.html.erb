@@ -1,37 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row goal_header">
+  <div class="col time">
+    <%= Time.at(@goal.time).utc.strftime("%H:%M:%S") %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
-    <p>
-      <strong>Futsal game:</strong>
-      <%= @goal.futsal_game %>
-    </p>
-
-    <p>
-      <strong>Team:</strong>
-      <%= @goal.team %>
-    </p>
-
-    <p>
-      <strong>Goal:</strong>
-      <%= @goal.goal %>
-    </p>
-
-    <p>
-      <strong>Assist:</strong>
-      <%= @goal.assist %>
-    </p>
-
-    <p>
-      <strong>Time:</strong>
-      <%= @goal.time %>
-    </p>
-
-    <p>
-      <strong>Video link:</strong>
-      <%= link_to icon('television') + " Voir la video du but", @goal.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-    </p>
+    <%= @goal.futsal_game %>
   </div>
+  <div class="col">
+    <%= @goal.team %>
+  </div>
+  <div class="col">
+    <%= icon('futbol-o') %> <%= @goal.goal %>
+  </div>
+  <div class="col">
+    <%= icon('arrow-circle-right') %> <%= @goal.assist %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= link_to icon('television') + " Voir la video du but", @goal.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+  </div>
+</div>
+<div class="row">
   <div class="col">
     <% if !@goal.futsal_game.andand.video_link.nil? %>
       <iframe src="<%= @goal.futsal_game.video_link %>?start=<%= @goal.time - 15 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>

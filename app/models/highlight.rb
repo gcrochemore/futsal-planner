@@ -1,4 +1,6 @@
 class Highlight < ApplicationRecord
+  resourcify
+  
   belongs_to :highlight_type
   belongs_to :futsal_game
   belongs_to :team

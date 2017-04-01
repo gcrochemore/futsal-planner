@@ -31,7 +31,7 @@
   <div class="col-8">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, FutsalGame %>
-        <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-block btn-outline-primary" %>
       <% end %>
     </div>
     <table class="table table-hover table-sm table-bordered">
@@ -73,9 +73,12 @@
             <td><%= futsal_game.team_outside %></td>  
 
             <td>
-              <%= link_to icon('television') + " Voir la video du match", futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-   
-              <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+              <% if futsal_game.video_link != "" %>
+                <%= link_to icon('television') + " Voir la video du match", futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+              <% end %>
+              <% if futsal_game.match_resume_link != "" %>
+                <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+              <% end %>
             </td>
     
             <td>

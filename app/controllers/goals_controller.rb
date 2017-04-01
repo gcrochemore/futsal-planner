@@ -1,9 +1,9 @@
 class GoalsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
   # GET /goals
   def index
-    @q = Goal.ransack(params[:q])
+    @q = Goal.accessible_by(current_ability).ransack(params[:q])
     @goals = @q.result.page(params[:page])
   end
   # GET /goals/1
