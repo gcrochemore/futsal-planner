@@ -1,13 +1,3 @@
-Role.create!([
-  {id: 1, name: "admin", resource_type: nil, resource_id: nil, created_at: "2017-04-01 20:02:38", updated_at: "2017-04-01 20:02:38"},
-  {id: 2, name: "player", resource_type: nil, resource_id: nil, created_at: "2017-04-01 20:02:50", updated_at: "2017-04-01 20:02:50"}
-])
-User::HABTM_Roles.create!([
-  {user_id: 1, role_id: 1}
-])
-Role::HABTM_Users.create!([
-  {user_id: 1, role_id: 1}
-])
 User.create!([
   {id: 14, email: "alex@alex.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$w7vVajfbU9Jk3NflfyPN9ORpQcjskohYRRfZ2qt.p/DZOHYPQU5vu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "rNS5Xd-ueZToZuxabiys", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:40", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alex", last_name: "L", company_id: nil, created_at: "2017-03-30 11:38:40", updated_at: "2017-03-30 11:38:40"},
   {id: 29, email: "antoinel@antoinel.foot", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$WCQjMrJ12aVxXzbdXlkDle7b2eaaNqIJXA1UzVEVGR527HG5RRMCm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "2nXLmnuDKzinzthG51q6", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Antoine", last_name: "L", company_id: nil, created_at: "2017-03-30 21:37:23", updated_at: "2017-03-30 21:37:23"},
