@@ -50,6 +50,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	heroku login
 	heroku apps -> liste des apps
 	heroku run rake db:migrate --app futsal-planner-dev
+	heroku run rake db:seed --app futsal-planner-dev
 	heroku logs --tail --app futsal-planner-dev
 
 	heroku run rake db:reset --app futsal-planner-dev
