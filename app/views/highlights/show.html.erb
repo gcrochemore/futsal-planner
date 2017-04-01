@@ -1,42 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row goal_header">
+  <div class="col time">
+    <%= Time.at(@highlight.time).utc.strftime("%H:%M:%S") %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
-    <p>
-      <strong>Name:</strong>
-      <%= @highlight.name %>
-    </p>
-
-    <p>
-      <strong>Highlight type:</strong>
-      <%= @highlight.highlight_type %>
-    </p>
-
-    <p>
-      <strong>Author:</strong>
-      <%= @highlight.author_id %>
-    </p>
-
-    <p>
-      <strong>Victim:</strong>
-      <%= @highlight.victim_id %>
-    </p>
-
-    <p>
-      <strong>Time:</strong>
-      <%= @highlight.time %>
-    </p>
-
-    <p>
-      <strong>Futsal game:</strong>
-      <%= @highlight.futsal_game %>
-    </p>
-
-    <p>
-      <strong>Team:</strong>
-      <%= @highlight.team %>
-    </p>
+    <%= @highlight.futsal_game %>
   </div>
+  <div class="col">
+    <%= @highlight.team %>
+  </div>
+  <div class="col">
+    <%= icon(@highlight.highlight_type.icon) %> <%= @highlight.victim %>
+  </div>
+  <div class="col">
+    <%= @highlight.author_id %>
+  </div>
+</div>
+<div class="row">
   <div class="col">
     <% if !@highlight.futsal_game.andand.video_link.nil? %>
       <iframe src="<%= @highlight.futsal_game.video_link %>?start=<%= @highlight.time - 15 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>

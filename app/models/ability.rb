@@ -13,7 +13,6 @@ class Ability
     end
 
     if user.has_role? :player
-      can :read, User
       can :read, FutsalGame
       can :read, Goal
       can :read, Highlight
