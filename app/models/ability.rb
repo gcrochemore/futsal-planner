@@ -8,7 +8,7 @@ class Ability
 
     user.add_role :player
 
-    if user.has_role? :toto
+    if user.has_role? :admin
       can :manage, :all
     end
 

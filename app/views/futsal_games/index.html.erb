@@ -28,7 +28,7 @@
       <% end %>
     </fieldset>
   </div>
-  <div class="col-8">
+  <div class="col">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, FutsalGame %>
         <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-block btn-outline-primary" %>
@@ -60,27 +60,8 @@
         <% @futsal_games.each do |futsal_game| %>
           <tr>
     
-            <td><%= futsal_game.date.strftime("%d/%m/%Y %H:%M") %></td>
-    
-            <td><%= Time.at(futsal_game.duration * 60).utc.strftime("%H:%M:%S") %></td>
-    
-            <td><%= futsal_game.futsal_field.andand.name %></td>
-    
-            <td><%= futsal_game.team_home %></td>        
+            <td colspan="7"> <%= render 'resume', futsal_game: futsal_game %> </td>
 
-            <td><%= futsal_game.score_home %> - <%= futsal_game.score_outside %></td>  
-        
-            <td><%= futsal_game.team_outside %></td>  
-
-            <td>
-              <% if futsal_game.video_link != "" %>
-                <%= link_to icon('television') + " Voir la video du match", futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-              <% end %>
-              <% if futsal_game.match_resume_link != "" %>
-                <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
-              <% end %>
-            </td>
-    
             <td>
               <%= link_to icon('eye').html_safe, futsal_game %>
               <% if can? :edit, FutsalGame %>

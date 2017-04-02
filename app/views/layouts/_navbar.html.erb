@@ -1,67 +1,60 @@
-<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <%= link_to 'Accueil', '/', class: 'navbar-brand' %>
-
-  <% if user_signed_in?  %>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav ">        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Futsal</a>
-          <ul class="dropdown-menu">
-            <% if can? :read, Company %>
-              <li class="dropdown">
-               <%= link_to('Liste des entreprises', companies_path)  %> 
-              </li>
-            <% end %>
-            <% if can? :read, Team %>
-              <li class="dropdown">
-               <%= link_to('Liste des equipes', teams_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, FutsalField %>
-              <li class="dropdown">
-               <%= link_to('Liste des Terrain de futsal', futsal_fields_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, FutsalGame %>
-              <li class="dropdown">
-             <%= link_to('Liste des match de futsal', futsal_games_path)  %> 
-            </li> 
-            <% end %>
-            <% if can? :read, GameRegistration %>
-              <li class="dropdown">
-               <%= link_to('Liste des inscriptions', game_registrations_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, User %>
-              <li class="dropdown">
-               <%= link_to('Liste des users', users_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, Goal %>
-              <li class="dropdown">
-               <%= link_to('Liste des buts', goals_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, HighlightType %>
-              <li class="dropdown">
-               <%= link_to('Liste des type de highlights', highlight_types_path)  %> 
-              </li> 
-            <% end %>
-            <% if can? :read, Highlight %>
-              <li class="dropdown">
-               <%= link_to('Liste des highlights', highlights_path)  %> 
-              </li> 
-            <% end %>
-          </ul>
-        </li>
+<% if user_signed_in?  %>
+  <nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'Accueil', '/', class: 'navbar-brand' %>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if can? :read, Company %>
+          <li class="nav-item btn">
+           <%= link_to('Entreprises', companies_path)  %> 
+          </li>
+        <% end %>
+        <% if can? :read, Team %>
+          <li class="nav-item btn">
+           <%= link_to('Equipes', teams_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, FutsalField %>
+          <li class="nav-item btn">
+           <%= link_to('Terrains de futsal', futsal_fields_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, FutsalGame %>
+          <li class="nav-item btn">
+         <%= link_to('Matchs de futsal', futsal_games_path)  %> 
+        </li> 
+        <% end %>
+        <% if can? :read, GameRegistration %>
+          <li class="nav-item btn">
+           <%= link_to('Inscriptions', game_registrations_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, User %>
+          <li class="nav-item btn">
+           <%= link_to('Users', users_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, Goal %>
+          <li class="nav-item btn">
+           <%= link_to('Buts', goals_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, HighlightType %>
+          <li class="nav-item btn">
+           <%= link_to('Types de highlights', highlight_types_path)  %> 
+          </li> 
+        <% end %>
+        <% if can? :read, Highlight %>
+          <li class="nav-item btn">
+           <%= link_to('Highlights', highlights_path)  %> 
+          </li> 
+        <% end %>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav ml-auto">
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= current_user.email if user_signed_in? %><b class="caret"></b></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
             <li>
@@ -71,5 +64,5 @@
         </li>    
       </ul>
     </div>
-  <% end %>
-</nav>
+  </nav>
+<% end %>  

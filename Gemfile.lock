@@ -216,7 +216,7 @@ PLATFORMS
 DEPENDENCIES
   andand
   autoprefixer-rails
-  bootstrap (~> 4.0.0.alpha3)
+  bootstrap (~> 4.0.0.alpha6)
   bootstrap-datepicker-rails
   byebug
   cancancan

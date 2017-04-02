@@ -1,0 +1,48 @@
+<div class="match_resume">
+  <div class="row">
+    <div class="col date">
+      <%= futsal_game.date.strftime("%d/%m/%Y %H:%M") %>
+    </div>
+    <div class="col duration">
+      <%= Time.at(futsal_game.duration * 60).utc.strftime("%H:%M:%S") %>
+    </div>
+    <div class="col futsal_field">
+      <%= futsal_game.futsal_field.andand.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col team_name">
+      <%= futsal_game.team_home.andand.name %>
+    </div>
+    <div class="col">
+      <div class="row score">
+        <div class="col score_but">
+          <%= futsal_game.score_home %>
+        </div>
+        <div class="col-1">
+          -
+        </div>
+        <div class="col score_but">
+          <%= futsal_game.score_outside %>
+        </div>
+      </div>  
+    </div>
+    <div class="col team_name">
+      <%= futsal_game.team_outside.andand.name %>
+    </div>
+  </div>
+</div>
+<% if (!futsal_game.video_link.nil?  && futsal_game.video_link != "") || (!futsal_game.match_resume_link.nil? && futsal_game.match_resume_link != "") %>
+  <div class="row match_link">
+    <% if !futsal_game.video_link.nil?  && futsal_game.video_link != ""%>
+      <div class="col">
+        <%= link_to icon('television') + " Voir la video du match", futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
+    <% if !futsal_game.match_resume_link.nil? && futsal_game.match_resume_link != "" %>
+      <div class="col">
+        <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

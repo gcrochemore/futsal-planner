@@ -14,17 +14,17 @@
 
         <br>
         <br>
-        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
       <% end %>
     </fieldset>
   </div>
   <div class="col">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, FutsalField %>
-        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
       <% end %>
     </div>
-    <table class="table table-hover table-condensed table-bordered">
+    <table class="table table-hover table-sm table-bordered">
       <thead>
         <tr>
     
@@ -49,12 +49,12 @@
             <td><%= futsal_field.longitude %></td>
     
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, futsal_field %>
+              <%= link_to icon('eye').html_safe, futsal_field %>
               <% if can? :edit, FutsalField %>
-                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_futsal_field_path(futsal_field) %>
+                <%= link_to icon('pencil').html_safe, edit_futsal_field_path(futsal_field) %>
               <% end %>
               <% if can? :destroy, FutsalField %>
-                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, futsal_field, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to icon('times').html_safe, futsal_field, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
           </tr>

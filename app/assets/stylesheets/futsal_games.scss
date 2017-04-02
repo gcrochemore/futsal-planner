@@ -1,12 +1,17 @@
 .match_header {
 	background: url(en_tete_match.png);
+	color: white;
+}
+
+.match_resume {
+	background: #D8D8D8;
+	color: black;
 }
 
 .team_name {
 	text-align: center;
     vertical-align: middle;
 	font-size: 200%;
-	color: white;
 	font-weight: bold;
 }
 
@@ -16,6 +21,7 @@
 	background: white;
     vertical-align: middle;
 	font-weight: bold;
+	color: black;
 }
 
 .match_link {

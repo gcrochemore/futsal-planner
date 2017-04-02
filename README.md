@@ -24,9 +24,9 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	rails generate scaffold_controller Users first_name:string last_name:string company:references
 
 	###### Entity
-	rails generate scaffold Team name:string company:references
+	rails generate scaffold team name:string company:references
 
-	rails generate scaffold FutsalField name:string latitude:float longitude:float
+	rails generate scaffold futsal_field name:string latitude:float longitude:float
 
 	rails generate scaffold FutsalGame date:datetime duration:integer FutsalField:references team_home_id:integer team_outside_id:integer score_home:integer score_outside:integer video_link:string match_resume_link:string
 
