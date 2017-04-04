@@ -1,5 +1,3 @@
-
-
 class GoalMarksController < ApplicationController
   authorize_resource
   before_action :set_goal_mark, only: [:show, :edit, :update, :destroy]
