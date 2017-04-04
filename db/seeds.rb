@@ -1,6 +1,11 @@
 Role.create!([
   {id: 1, name: "admin", resource_type: nil, resource_id: nil, created_at: "2017-04-01 20:02:38", updated_at: "2017-04-01 20:02:38"}
 ])
+Company.create!([
+  {id: 1, name: "TRSB", email_mask: "[a-z]@trsb.net$", created_at: "2017-03-19 20:23:10", updated_at: "2017-03-19 20:23:10"},
+  {id: 2, name: "Sopra", email_mask: "", created_at: "2017-03-30 11:29:25", updated_at: "2017-03-30 11:29:25"},
+  {id: 3, name: "Veolia", email_mask: "", created_at: "2017-03-30 11:39:31", updated_at: "2017-03-30 11:39:31"}
+])
 Team.create!([
   {id: 1, name: "Trsb#1", company_id: 1, created_at: "2017-03-19 20:49:58", updated_at: "2017-03-19 20:49:58"},
   {id: 2, name: "TRSB#2", company_id: 1, created_at: "2017-03-19 20:50:19", updated_at: "2017-03-19 20:50:19"},
@@ -8,11 +13,6 @@ Team.create!([
   {id: 4, name: "Team#2", company_id: nil, created_at: "2017-03-30 11:12:43", updated_at: "2017-03-30 11:12:43"},
   {id: 5, name: "Orange", company_id: nil, created_at: "2017-03-30 21:27:29", updated_at: "2017-03-30 21:27:42"},
   {id: 6, name: "Jaune", company_id: nil, created_at: "2017-03-30 21:28:02", updated_at: "2017-03-30 21:28:02"}
-])
-Company.create!([
-  {id: 1, name: "TRSB", email_mask: "[a-z]@trsb.net$", created_at: "2017-03-19 20:23:10", updated_at: "2017-03-19 20:23:10"},
-  {id: 2, name: "Sopra", email_mask: "", created_at: "2017-03-30 11:29:25", updated_at: "2017-03-30 11:29:25"},
-  {id: 3, name: "Veolia", email_mask: "", created_at: "2017-03-30 11:39:31", updated_at: "2017-03-30 11:39:31"}
 ])
 User.create!([
   {id: 14, email: "alex@alex.fr", encrypted_password: "$2a$11$w7vVajfbU9Jk3NflfyPN9ORpQcjskohYRRfZ2qt.p/DZOHYPQU5vu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "rNS5Xd-ueZToZuxabiys", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:40", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alex", last_name: "L", company_id: nil, created_at: "2017-03-30 11:38:40", updated_at: "2017-03-30 11:38:40"},
