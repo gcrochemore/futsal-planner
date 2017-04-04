@@ -34,11 +34,11 @@
 </div>
 
 <div class="rating">
-  <%= link_to '☆', mark_goal_goal_path(mark: 5), title: "Donner 5 étoiles", class: @my_mark.first.andand.mark >= 5 ? "selected" : "" %>
-  <%= link_to '☆', mark_goal_goal_path(mark: 4), title: "Donner 4 étoiles", class: @my_mark.first.andand.mark >= 4 ? "selected" : "" %>
-  <%= link_to '☆', mark_goal_goal_path(mark: 3), title: "Donner 3 étoiles", class: @my_mark.first.andand.mark >= 3 ? "selected" : "" %>
-  <%= link_to '☆', mark_goal_goal_path(mark: 2), title: "Donner 2 étoiles", class: @my_mark.first.andand.mark >= 2 ? "selected" : "" %>
-  <%= link_to '☆', mark_goal_goal_path(mark: 1), title: "Donner 1 étoile", class: @my_mark.first.andand.mark >= 1 ? "selected" : "" %>
+  <%= link_to '☆', mark_goal_goal_path(mark: 5), title: "Donner 5 étoiles", class: (@my_mark.first.andand.mark || 0) >= 5 ? "selected" : "" %>
+  <%= link_to '☆', mark_goal_goal_path(mark: 4), title: "Donner 4 étoiles", class: (@my_mark.first.andand.mark || 0) >= 4 ? "selected" : "" %>
+  <%= link_to '☆', mark_goal_goal_path(mark: 3), title: "Donner 3 étoiles", class: (@my_mark.first.andand.mark || 0) >= 3 ? "selected" : "" %>
+  <%= link_to '☆', mark_goal_goal_path(mark: 2), title: "Donner 2 étoiles", class: (@my_mark.first.andand.mark || 0) >= 2 ? "selected" : "" %>
+  <%= link_to '☆', mark_goal_goal_path(mark: 1), title: "Donner 1 étoile", class: (@my_mark.first.andand.mark || 0) >= 1 ? "selected" : "" %>
 </div>
 
 <% if can? :edit, Goal %>
