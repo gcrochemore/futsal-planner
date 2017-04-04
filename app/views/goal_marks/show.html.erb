@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @goal_mark.goal %>
+</p>
+
+<p>
+  <strong>Mark:</strong>
+  <%= @goal_mark.mark %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @goal_mark.user %>
+</p>
+
+<p>
+  <strong>Mac address:</strong>
+  <%= @goal_mark.mac_address %>
+</p>
+
+<%= link_to 'Edit', edit_goal_mark_path(@goal_mark) %> |
+<%= link_to 'Back', goal_marks_path %>

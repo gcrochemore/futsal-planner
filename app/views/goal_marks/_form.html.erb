@@ -1,0 +1,26 @@
+<%= simple_form_for(@goal_mark) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="goal"><%= f.label :goal %></label>
+      <%= f.association :goal, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="mark"><%= f.label :mark %></label>
+      <%= f.input :mark, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="user"><%= f.label :user %></label>
+      <%= f.association :user, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="mac_address"><%= f.label :mac_address %></label>
+      <%= f.input :mac_address, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

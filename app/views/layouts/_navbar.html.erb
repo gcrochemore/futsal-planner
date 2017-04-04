@@ -51,6 +51,11 @@
            <%= link_to('Highlights', highlights_path)  %> 
           </li> 
         <% end %>
+        <% if current_user.has_role? :admin %>
+          <li class="nav-item btn">
+           <%= link_to('Notes', goal_marks_path)  %> 
+          </li> 
+        <% end %>
       </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="dropdown">

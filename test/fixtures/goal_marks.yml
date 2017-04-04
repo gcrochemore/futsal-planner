@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal: one
+  mark: 1
+  user: one
+  mac_address: MyString
+
+two:
+  goal: two
+  mark: 1
+  user: two
+  mac_address: MyString

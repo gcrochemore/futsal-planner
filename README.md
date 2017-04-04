@@ -38,6 +38,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold highlight name:string highlight_type:references author_id:integer victim_id:integer time:integer futsal_game:references team:references
 
+	rails generate scaffold goal_mark goal:references mark:integer user:references mac_address:string
+
 	###### Entity a créer
 	
 	

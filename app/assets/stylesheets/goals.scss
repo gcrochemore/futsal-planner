@@ -7,3 +7,31 @@
 		font-weight: bold;
 	}
 }
+
+.rating {
+   direction: rtl;
+   text-align: center;
+}
+
+.rating a {
+   color: #aaa;
+   text-decoration: none;
+   font-size: 3em;
+   transition: color .4s;
+}
+
+.rating{
+   .selected {
+      color: orange;
+      cursor: pointer;
+   }
+}   
+
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+   color: orange;
+   cursor: pointer;
+}
+

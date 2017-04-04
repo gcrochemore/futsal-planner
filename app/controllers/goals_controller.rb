@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :mark_goal]
   # GET /goals
   def index
     @q = Goal.accessible_by(current_ability).ransack(params[:q])
@@ -8,6 +8,17 @@ class GoalsController < ApplicationController
   end
   # GET /goals/1
   def show
+    @my_mark = GoalMark.where(mac_address: request.ip, user: current_user)
+  end
+
+  def mark_goal
+    @mark_goal = GoalMark.where(mac_address: request.ip, user: current_user).first || GoalMark.new
+    @mark_goal.goal = @goal
+    @mark_goal.mac_address = request.ip
+    @mark_goal.user = current_user
+    @mark_goal.mark = params[:mark]
+    @mark_goal.save
+    redirect_to @goal
   end
 
   # GET /goals/new
