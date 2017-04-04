@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :futsal_games do
     member do
       get :parse_match_resume
+      get :affect_player_to_team
     end
   end
 end

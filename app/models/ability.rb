@@ -6,17 +6,15 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
-    user.add_role :player
-
     if user.has_role? :admin
       can :manage, :all
     end
 
-    if user.has_role? :player
-      can :read, FutsalGame
-      can :read, Goal
-      can :read, Highlight
-    end 
+    can :read, FutsalGame
+    can :read, Goal
+    can :read, Highlight
+
+    
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

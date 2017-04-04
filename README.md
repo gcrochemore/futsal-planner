@@ -30,7 +30,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold FutsalGame date:datetime duration:integer FutsalField:references team_home_id:integer team_outside_id:integer score_home:integer score_outside:integer video_link:string match_resume_link:string
 
-	rails generate scaffold GameRegistration user:references futsal_game:references team:references
+	rails generate scaffold game_registration user:references futsal_game:references team:references
 
 	rails generate scaffold Goal futsal_game:references team:references goal_id:integer assist_id:integer time:integer video_link:string
 

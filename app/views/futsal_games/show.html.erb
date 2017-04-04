@@ -58,9 +58,14 @@
   </div>
   <div class="col-5">
     
-    <% @futsal_game.team_less_players.each do |player| %>
+    <% @futsal_game.andand.team_less_players.each do |player| %>
         <div class="player">
           <%= icon('user-circle-o') %> <%= player.user %>
+          <% if can? :affect_player_to_team, FutsalGame %>
+            Affecter :
+            <%= link_to 'Equipe 1', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_home) %> - 
+            <%= link_to 'Equipe 2', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_outside) %>
+          <% end %>
         </div>
     <% end %>
     <% @futsal_game.highlights_and_goals.each do |goal| %>
@@ -101,8 +106,10 @@
     </div>
   </div>
 </div>
-<% if !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
+<% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
   <%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
 <% end %>
-<%= link_to 'Edit', edit_futsal_game_path(@futsal_game) %> |
+<% if can? :edit, FutsalGame %>
+  <%= link_to 'Edit', edit_futsal_game_path(@futsal_game) %> |
+<% end %>
 <%= link_to 'Back', futsal_games_path %>

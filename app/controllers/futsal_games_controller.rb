@@ -22,6 +22,14 @@ class FutsalGamesController < ApplicationController
   def parse_match_resume
   end  
 
+  def affect_player_to_team
+    @game_registration = GameRegistration.find(params[:game_registration])
+    @team = Team.find(params[:team])
+    @game_registration.team = @team
+    @game_registration.save
+    redirect_to @game_registration.futsal_game, notice: 'Futsal game was successfully created.'
+  end
+
   # POST /futsal_games
   def create
     @futsal_game = FutsalGame.new(futsal_game_params)
