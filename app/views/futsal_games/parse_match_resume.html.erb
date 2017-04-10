@@ -36,7 +36,8 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
   @min = @m[0];
   @sec = @m[1];
 
-  @goal.time = (@min.to_f+37+15) * 60 + (@sec.to_f+6+28)
+  #@goal.time = (@min.to_f+37+15) * 60 + (@sec.to_f+6+28)
+  @goal.time = @min.to_f * 60 + @sec.to_f
 
   if @description.at("Equipe 2").nil?
     @goal.team = @futsal_game.team_home
