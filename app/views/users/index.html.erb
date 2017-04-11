@@ -1,4 +1,4 @@
-<h1><%= t('.title') %><span class="badge badge-pill badge-default"><%= @users.count %></span></h1>
+<h1><%= t('.title') %><span class="badge"><%= @users.count %></span></h1>
 
 <div class="row">
   <div class="col-2">
@@ -12,16 +12,20 @@
 
         <%= f.search_field :company_name_cont, {placeholder: t('activerecord.attributes.user.company')} %>
 
+        <%= f.search_field :goal_cont, {placeholder: t('activerecord.attributes.user.goal')} %>
+
+        <%= f.search_field :assist_cont, {placeholder: t('activerecord.attributes.user.assist')} %>
+
         <br>
         <br>
-        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
       <% end %>
     </fieldset>
   </div>
   <div class="col">
     <div class="col-md-3 btn-new-top">
       <% if can? :create, User %>
-        <%= link_to (icon('plus')+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
       <% end %>
     </div>
     <table class="table table-hover table-sm table-bordered">
@@ -33,12 +37,12 @@
           <th><%= sort_link(@q, :last_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :company_name, default_order: :asc) %></th>
-
-          <th>Goal</th>
-
-          <th>Assists</th>
-
-          <th>Match</th>
+    
+          <th><%= sort_link(@q, :goal, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
+    
+          <th>Matchs</th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -52,11 +56,11 @@
     
             <td><%= user.last_name %></td>
     
-            <td><%= user.company.andand.name %></td>
+            <td><%= user.company %></td>
     
-            <td><%= user.goals.length %></td>
+            <td><%= user.goal %></td>
     
-            <td><%= user.assists.length %></td>
+            <td><%= user.assist %></td>
     
             <td><%= user.game_registrations.length %></td>
     
