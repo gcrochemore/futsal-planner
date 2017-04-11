@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, :highlight_types, :goal_marks
 
   devise_for :users
-  scope '/admin' do
-    resources :users
-  end
+  resources :users
 
   resources :futsal_games do
     member do

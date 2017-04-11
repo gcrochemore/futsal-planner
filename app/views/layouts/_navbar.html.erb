@@ -51,7 +51,7 @@
            <%= link_to('Highlights', highlights_path)  %> 
           </li> 
         <% end %>
-        <% if current_user.has_role? :admin %>
+        <% if can? :read, GoalMark %>
           <li class="nav-item btn">
            <%= link_to('Notes', goal_marks_path)  %> 
           </li> 

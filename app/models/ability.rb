@@ -10,6 +10,8 @@ class Ability
       can :manage, :all
     end
 
+    can :read, User
+
     can :read, GoalMark
 
     can :read, FutsalGame

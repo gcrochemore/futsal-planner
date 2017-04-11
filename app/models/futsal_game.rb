@@ -11,12 +11,35 @@ class FutsalGame < ApplicationRecord
 
   default_scope { order('date desc') }
 
+  after_save :update_stats
+
+  def update_stats
+    game_registrations.each do |game_registration|
+      game_registration.update_stats
+      game_registration.save
+    end
+  end
+
+  def match_result(team)
+    result = ""
+    if !(team_home.nil? || team_outside.nil? || score_home.nil? || score_outside.nil?)
+      if score_home == score_outside
+        result = "N"
+      elsif (score_home > score_outside && team_home == team) || (score_outside > score_home && team_outside == team)
+        result = "V"
+      else
+        result = "D"
+      end
+    end
+    return result
+  end
+
   def team_home_players
-    game_registrations.where(team: team_home)
+    game_registrations.where(team: team_home).order('goal desc')
   end 
 
   def team_outside_players
-    game_registrations.where(team: team_outside)
+    game_registrations.where(team: team_outside).order('goal desc')
   end  
 
   def team_less_players
