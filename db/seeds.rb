@@ -169,14 +169,6 @@ user = User.new({id: 38, email: "manue@manue", password:"password", password_con
 user.skip_confirmation!
 user.save!
 
-User::HABTM_Roles.create!([
-  {user_id: 1, role_id: 1}
-])
-
-Role::HABTM_Users.create!([
-  {user_id: 1, role_id: 1}
-])
-
 FutsalField.create!([
   {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
   {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
