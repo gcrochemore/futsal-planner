@@ -17,7 +17,7 @@ class GameRegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create game_registration" do
     assert_difference('GameRegistration.count') do
-      post game_registrations_url, params: { game_registration: { fustal_game_id: @game_registration.fustal_game_id, team_id: @game_registration.team_id, user_id: @game_registration.user_id } }
+      post game_registrations_url, params: { game_registration: { assist: @game_registration.assist, futsal_game_id: @game_registration.futsal_game_id, goal: @game_registration.goal, team_id: @game_registration.team_id, user_id: @game_registration.user_id } }
     end
 
     assert_redirected_to game_registration_url(GameRegistration.last)
@@ -34,7 +34,7 @@ class GameRegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update game_registration" do
-    patch game_registration_url(@game_registration), params: { game_registration: { fustal_game_id: @game_registration.fustal_game_id, team_id: @game_registration.team_id, user_id: @game_registration.user_id } }
+    patch game_registration_url(@game_registration), params: { game_registration: { assist: @game_registration.assist, futsal_game_id: @game_registration.futsal_game_id, goal: @game_registration.goal, team_id: @game_registration.team_id, user_id: @game_registration.user_id } }
     assert_redirected_to game_registration_url(@game_registration)
   end
 

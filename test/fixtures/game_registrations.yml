@@ -2,10 +2,14 @@
 
 one:
   user: one
-  fustal_game: one
+  futsal_game: one
   team: one
+  goal: 1
+  assist: 1
 
 two:
   user: two
-  fustal_game: two
+  futsal_game: two
   team: two
+  goal: 1
+  assist: 1
