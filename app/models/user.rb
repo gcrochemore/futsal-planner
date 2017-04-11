@@ -13,7 +13,15 @@ class User < ApplicationRecord
 
   default_scope { order(:first_name, :last_name) }
 
+  before_save :update_stats
+
+  def update_stats
+    self.goal = self.goals.length
+    self.assist = self.assists.length
+  end
+
   def to_s
   	first_name + " " + last_name
   end
+   
 end
