@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   end
   # GET /goals/1
   def show
-    @my_mark = GoalMark.where(mac_address: request.ip, user: current_user)
+    @my_mark = GoalMark.where(goal: self, mac_address: request.ip, user: current_user)
   end
 
   def mark_goal
