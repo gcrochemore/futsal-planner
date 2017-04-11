@@ -8,7 +8,13 @@
 
         <%= f.search_field :user_first_name_cont, {placeholder: t('activerecord.attributes.game_registration.user')} %>
 
+        <%= f.search_field :futsal_game_date_cont, {placeholder: t('activerecord.attributes.game_registration.futsal_game')} %>
+
         <%= f.search_field :team_name_cont, {placeholder: t('activerecord.attributes.game_registration.team')} %>
+
+        <%= f.search_field :goal_cont, {placeholder: t('activerecord.attributes.game_registration.goal')} %>
+
+        <%= f.search_field :assist_cont, {placeholder: t('activerecord.attributes.game_registration.assist')} %>
 
         <br>
         <br>
@@ -26,11 +32,15 @@
       <thead>
         <tr>
     
-          <th><%= sort_link(@q, :user, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :user_first_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :futsal_game_id, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :futsal_game_date, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :team_name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :goal, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -45,6 +55,10 @@
             <td><%= game_registration.futsal_game %></td>
     
             <td><%= game_registration.team %></td>
+    
+            <td><%= game_registration.goal %></td>
+    
+            <td><%= game_registration.assist %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, game_registration %>
