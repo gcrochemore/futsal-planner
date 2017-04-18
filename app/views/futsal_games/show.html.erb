@@ -93,7 +93,7 @@
     <div class="team">
       <% @futsal_game.team_home_players.order_by_stats.each do |player| %>
         <div class="player">
-          <%= link_to icon('user-circle-o') + " " +  player.user, player.user, target: "_blank" %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
+          <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
         </div>
       <% end %>
     </div>
@@ -142,7 +142,7 @@
     <div class="team">
       <% @futsal_game.team_outside_players.order_by_stats.each do |player| %>
         <div class="player">
-          <%= link_to icon('user-circle-o') + " " +  player.user, player.user, target: "_blank" %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
+          <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
         </div>
       <% end %>
     </div>

@@ -20,7 +20,7 @@
 //= require bootstrap/modal
 //= require bootstrap/scrollspy
 //= require bootstrap/tab
-//# require bootstrap/tooltip   # not required
+//# require bootstrap/tooltip  # not required
 //# require bootstrap/popover  # not required
 //= require jquery_ujs
 //= require turbolinks
