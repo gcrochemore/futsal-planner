@@ -8,6 +8,8 @@ class FutsalGame < ApplicationRecord
   has_many :goals
   has_many :game_registrations
   has_many :highlights
+  
+  accepts_nested_attributes_for :game_registrations
 
   default_scope { order('date desc') }
 

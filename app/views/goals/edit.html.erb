@@ -1,5 +1,7 @@
 <h1>Editing Goal</h1>
 
+<%= link_to "Suivant >>", edit_goal_path(@goal.id + 1) %>
+
 <%= render 'form', goal: @goal %>
 
 <%= link_to 'Show', @goal %> |

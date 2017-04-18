@@ -54,11 +54,11 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 10, email: "luis@luis.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$h4S28RAUYuWtl.kc5I45YeZ1Y/UiiL8iAKYGJv.yN31BqlrV/8aKS", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "TisRoFc3ueoSoFsVFJsC", confirmed_at: nil, confirmation_sent_at: "2017-03-28 19:58:32", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Luis", last_name: "D", company_id: 1, created_at: "2017-03-28 19:58:32", updated_at: "2017-03-28 19:58:32"})
+    user = User.new({id: 10, email: "luis@luis.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$h4S28RAUYuWtl.kc5I45YeZ1Y/UiiL8iAKYGJv.yN31BqlrV/8aKS", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "TisRoFc3ueoSoFsVFJsC", confirmed_at: nil, confirmation_sent_at: "2017-03-28 19:58:32", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Luis", last_name: "P", company_id: 1, created_at: "2017-03-28 19:58:32", updated_at: "2017-03-28 19:58:32"})
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 11, email: "arthur@larthurl.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d20peo0BHeXoEp0H1uz1z.Yp7s28AqODJLacmtiXOziaswX7T40B2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xSRmptycyfwph7iRfNRz", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "D", company_id: 2, created_at: "2017-03-30 11:37:23", updated_at: "2017-03-30 11:37:23"})
+    user = User.new({id: 11, email: "arthurl@larthurl.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d20peo0BHeXoEp0H1uz1z.Yp7s28AqODJLacmtiXOziaswX7T40B2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xSRmptycyfwph7iRfNRz", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "L", company_id: 2, created_at: "2017-03-30 11:37:23", updated_at: "2017-03-30 11:37:23"})
     user.skip_confirmation!
     user.save!
 
@@ -66,11 +66,11 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 13, email: "jf@jf.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d0jfmpI6LnThdTZZkGdqNOyC6/GaHJinN.UwatzRCDkUlZ.j0Rv0e", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "UwLLgEaaQJfexG5Gv87z", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:16", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "JF", last_name: "", company_id: nil, created_at: "2017-03-30 11:38:16", updated_at: "2017-03-30 11:38:16"})
+    user = User.new({id: 13, email: "jf@jf.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d0jfmpI6LnThdTZZkGdqNOyC6/GaHJinN.UwatzRCDkUlZ.j0Rv0e", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "UwLLgEaaQJfexG5Gv87z", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:16", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Jean-Francois", last_name: "D", company_id: nil, created_at: "2017-03-30 11:38:16", updated_at: "2017-03-30 11:38:16"})
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 14, email: "alex@alex.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$w7vVajfbU9Jk3NflfyPN9ORpQcjskohYRRfZ2qt.p/DZOHYPQU5vu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "rNS5Xd-ueZToZuxabiys", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:40", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alex", last_name: "L", company_id: nil, created_at: "2017-03-30 11:38:40", updated_at: "2017-03-30 11:38:40"})
+    user = User.new({id: 14, email: "alex@alex.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$w7vVajfbU9Jk3NflfyPN9ORpQcjskohYRRfZ2qt.p/DZOHYPQU5vu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "rNS5Xd-ueZToZuxabiys", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:38:40", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alexandre", last_name: "L", company_id: nil, created_at: "2017-03-30 11:38:40", updated_at: "2017-03-30 11:38:40"})
     user.skip_confirmation!
     user.save!
 
@@ -86,7 +86,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 18, email: "thomas@thomas.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$njsqgpSsic71IwtDjgzSOOd4/lo3hZ3q1.TiJCpmoADEIVyWWPVQW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "ZL4x5GXyw_ANvxy8nfbL", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:43:11", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thomas", last_name: "", company_id: nil, created_at: "2017-03-30 11:43:11", updated_at: "2017-03-30 11:43:11"})
+    user = User.new({id: 18, email: "thomas@thomas.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$njsqgpSsic71IwtDjgzSOOd4/lo3hZ3q1.TiJCpmoADEIVyWWPVQW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "ZL4x5GXyw_ANvxy8nfbL", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:43:11", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thomas", last_name: "G", company_id: nil, created_at: "2017-03-30 11:43:11", updated_at: "2017-03-30 11:43:11"})
     user.skip_confirmation!
     user.save!
 
@@ -122,7 +122,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 27, email: "vincentl@vincentl.foot", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$9uxhcAwAuz7PoXKPSJEpceyeOW2nmUYMc1eZg9g.tF9cCAlKHZO1W", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "vUmSz-pWtwS9F6heZdN7", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:34:48", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Vincent", last_name: "L", company_id: nil, created_at: "2017-03-30 21:34:48", updated_at: "2017-03-30 21:34:48"})
+    user = User.new({id: 27, email: "vincentli@vincentli.foot", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$9uxhcAwAuz7PoXKPSJEpceyeOW2nmUYMc1eZg9g.tF9cCAlKHZO1W", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "vUmSz-pWtwS9F6heZdN7", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:34:48", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Vincent", last_name: "Li", company_id: nil, created_at: "2017-03-30 21:34:48", updated_at: "2017-03-30 21:34:48"})
     user.skip_confirmation!
     user.save!
 
@@ -142,11 +142,11 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 32, email: "guillaumeb@guillaumeb.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$GRdVVS.6Bs9cZQr6.bL0a.0r/EW7mZdwgnI4pRca1k7GL984kpBwm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "_U_155xkiu56-RDAtzod", confirmed_at: nil, confirmation_sent_at: "2017-04-01 20:52:32", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "B", company_id: nil, created_at: "2017-04-01 20:52:32", updated_at: "2017-04-01 20:52:32"})
+    user = User.new({id: 32, email: "guillaumebe@guillaumebe.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$GRdVVS.6Bs9cZQr6.bL0a.0r/EW7mZdwgnI4pRca1k7GL984kpBwm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "_U_155xkiu56-RDAtzod", confirmed_at: nil, confirmation_sent_at: "2017-04-01 20:52:32", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Be", company_id: nil, created_at: "2017-04-01 20:52:32", updated_at: "2017-04-01 20:52:32"})
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 33, email: "arthurt@arthurt.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$4LWPu7ZXmFkpopkfGHrJ2.TQIsthvRxWAyzPFep422SWRGxbTBrrm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "KYQoGCkuUNYmxe9Sfnn_", confirmed_at: nil, confirmation_sent_at: "2017-04-01 21:35:47", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "T", company_id: nil, created_at: "2017-04-01 21:35:47", updated_at: "2017-04-01 21:35:47"})
+    user = User.new({id: 33, email: "arthurd@arthurd.fr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$4LWPu7ZXmFkpopkfGHrJ2.TQIsthvRxWAyzPFep422SWRGxbTBrrm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "KYQoGCkuUNYmxe9Sfnn_", confirmed_at: nil, confirmation_sent_at: "2017-04-01 21:35:47", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "D", company_id: nil, created_at: "2017-04-01 21:35:47", updated_at: "2017-04-01 21:35:47"})
     user.skip_confirmation!
     user.save!
 
@@ -170,6 +170,26 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
+    user = User.new({id: 39, email: "maximeb@maximeb", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$Kh0J3iv2cyDod8t4OKWeg.OpFkxfXtknSYGiGHUvj.qHAlbZYoXk.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "hcFNne-qUzcBdLTp9NrE", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:01:58", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Maxime", last_name: "B", company_id: nil, created_at: "2017-04-10 19:01:58", updated_at: "2017-04-10 19:01:58"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 40, email: "geoffrayg@geoffrayg", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UDH73mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Geoffray", last_name: "G", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 41, email: "aureliens@aureliens", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jgxdDH73mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Aurelien", last_name: "S", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 42, email: "alainh@alainh", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreD3mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alain", last_name: "A", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 43, email: "julienr@julienr", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4U73azmxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Julien", last_name: "R", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
@@ -181,8 +201,10 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 4, date: "2017-04-02 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 16, score_outside: 19, video_link: "https://www.youtube.com/embed/BoznYM0PPDA", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1644328&matchs_id=107541", created_at: "2017-04-01 20:33:12", updated_at: "2017-04-04 15:25:10"},
       {id: 5, date: "2017-04-03 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 18, score_outside: 20, video_link: "", match_resume_link: "", created_at: "2017-04-01 20:34:22", updated_at: "2017-04-03 19:30:52"},
       {id: 6, date: "2017-04-09 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 21, score_outside: 19, video_link: "https://www.youtube.com/embed/2rJQdS5CANI", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1672038&matchs_id=109150", created_at: "2017-04-10 10:50:51", updated_at: "2017-04-10 19:58:56"},
-      {id: 7, date: "2017-04-10 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 21, score_outside: 21, video_link: "https://www.youtube.com/embed/yu7_ldHLb1I", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1673238&matchs_id=109259", created_at: "2017-04-10 19:00:24", updated_at: "2017-04-11 07:29:47"}
-     ])
+      {id: 7, date: "2017-04-10 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 21, score_outside: 21, video_link: "https://www.youtube.com/embed/yu7_ldHLb1I", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1673238&matchs_id=109259", created_at: "2017-04-10 19:00:24", updated_at: "2017-04-11 07:29:47"},
+      {id: 8, date: "2017-04-17 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 25, score_outside: 14, video_link: "https://www.youtube.com/embed/Pp6cAXjJkJ4", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1700260&matchs_id=110880", created_at: "2017-04-17 20:07:47", updated_at: "2017-04-18 09:59:35"},
+      {id: 9, date: "2017-04-18 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: nil, score_outside: nil, video_link: "", match_resume_link: "", created_at: "2017-04-18 08:22:20", updated_at: "2017-04-18 08:22:20"}
+    ])
     GameRegistration.create!([
       {id: 1, user_id: 1, futsal_game_id: 1, team_id: 2, created_at: "2017-03-29 21:52:50", updated_at: "2017-03-29 21:55:18"},
       {id: 2, user_id: 2, futsal_game_id: 1, team_id: 1, created_at: "2017-03-29 21:57:24", updated_at: "2017-03-29 21:57:24"},
@@ -254,7 +276,17 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 68, user_id: 37, futsal_game_id: 5, team_id: 2, created_at: "2017-04-10 19:04:57", updated_at: "2017-04-10 19:06:46"},
       {id: 69, user_id: 36, futsal_game_id: 5, team_id: 2, created_at: "2017-04-10 19:05:19", updated_at: "2017-04-10 19:06:48"},
       {id: 70, user_id: 8, futsal_game_id: 7, team_id: 1, created_at: "2017-04-10 19:05:50", updated_at: "2017-04-10 19:06:27"},
-      {id: 71, user_id: 4, futsal_game_id: 7, team_id: 1, created_at: "2017-04-10 19:06:01", updated_at: "2017-04-10 19:06:09"}
+      {id: 71, user_id: 4, futsal_game_id: 7, team_id: 1, created_at: "2017-04-10 19:06:01", updated_at: "2017-04-10 19:06:09"},
+      {id: 72, user_id: 1, futsal_game_id: 8, team_id: 3, goal: 0, assist: 0, created_at: "2017-04-18 09:37:04", updated_at: "2017-04-18 09:38:25"},
+      {id: 73, user_id: 4, futsal_game_id: 8, team_id: 3, goal: 0, assist: 0, created_at: "2017-04-18 09:38:15", updated_at: "2017-04-18 09:38:31"},
+      {id: 74, user_id: 32, futsal_game_id: 8, team_id: 3, goal: 0, assist: 0, created_at: "2017-04-18 09:38:15", updated_at: "2017-04-18 09:38:35"},
+      {id: 75, user_id: 31, futsal_game_id: 8, team_id: 4, goal: 0, assist: 0, created_at: "2017-04-18 09:38:15", updated_at: "2017-04-18 09:39:41"},
+      {id: 76, user_id: 11, futsal_game_id: 8, team_id: 3, goal: 0, assist: 0, created_at: "2017-04-18 09:38:15", updated_at: "2017-04-18 09:38:41"},
+      {id: 77, user_id: 39, futsal_game_id: 8, team_id: 3, goal: 0, assist: 0, created_at: "2017-04-18 09:38:15", updated_at: "2017-04-18 09:38:46"},
+      {id: 78, user_id: 17, futsal_game_id: 8, team_id: 4, goal: 0, assist: 0, created_at: "2017-04-18 09:38:16", updated_at: "2017-04-18 09:39:47"},
+      {id: 79, user_id: 40, futsal_game_id: 8, team_id: 4, goal: 0, assist: 0, created_at: "2017-04-18 09:39:11", updated_at: "2017-04-18 09:39:52"},
+      {id: 80, user_id: 15, futsal_game_id: 8, team_id: 4, goal: 0, assist: 0, created_at: "2017-04-18 09:39:11", updated_at: "2017-04-18 09:40:28"},
+      {id: 81, user_id: 19, futsal_game_id: 8, team_id: 4, goal: 0, assist: 0, created_at: "2017-04-18 09:39:36", updated_at: "2017-04-18 09:40:20"}
     ])
     Goal.create!([
       {id: 1, futsal_game_id: 1, team_id: 1, goal_id: 2, assist_id: nil, time: 95, video_link: "http://www.dailymotion.com/embed/video/x5gh7vk?autoPlay=1", created_at: "2017-03-28 22:26:00", updated_at: "2017-03-29 22:07:36"},
@@ -462,6 +494,44 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 203, futsal_game_id: 7, team_id: 1, goal_id: 2, assist_id: nil, time: 3503, video_link: "http://www.dailymotion.com/embed/video/x5hst1u?autoPlay=1", created_at: "2017-04-11 07:27:41", updated_at: "2017-04-11 11:13:34"},
       {id: 204, futsal_game_id: 7, team_id: 1, goal_id: 4, assist_id: 2, time: 3532, video_link: "http://www.dailymotion.com/embed/video/x5hst8w?autoPlay=1", created_at: "2017-04-11 07:27:41", updated_at: "2017-04-11 11:14:08"},
       {id: 205, futsal_game_id: 7, team_id: 1, goal_id: 2, assist_id: nil, time: 3557, video_link: "http://www.dailymotion.com/embed/video/x5hstgl?autoPlay=1", created_at: "2017-04-11 07:27:41", updated_at: "2017-04-11 11:14:39"}
+      {id: 206, futsal_game_id: 8, team_id: 4, goal_id: 15, assist_id: nil, time: 148, video_link: "http://www.dailymotion.com/embed/video/x5inggu?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 10:04:16"},
+      {id: 207, futsal_game_id: 8, team_id: 4, goal_id: 40, assist_id: 31, time: 248, video_link: "http://www.dailymotion.com/embed/video/x5ingsh?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 10:16:21"},
+      {id: 208, futsal_game_id: 8, team_id: 3, goal_id: 11, assist_id: nil, time: 676, video_link: "http://www.dailymotion.com/embed/video/x5inh2f?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 10:48:00"},
+      {id: 209, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: nil, time: 722, video_link: "http://www.dailymotion.com/embed/video/x5inhbf?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 10:59:31"},
+      {id: 210, futsal_game_id: 8, team_id: 3, goal_id: 4, assist_id: nil, time: 867, video_link: "http://www.dailymotion.com/embed/video/x5inhmv?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:00:41"},
+      {id: 211, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: nil, time: 967, video_link: "http://www.dailymotion.com/embed/video/x5inhyt?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:01:22"},
+      {id: 212, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 39, time: 999, video_link: "http://www.dailymotion.com/embed/video/x5ini8n?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:02:18"},
+      {id: 213, futsal_game_id: 8, team_id: 3, goal_id: 1, assist_id: 32, time: 1013, video_link: "http://www.dailymotion.com/embed/video/x5inihv?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:03:12"},
+      {id: 214, futsal_game_id: 8, team_id: 3, goal_id: 1, assist_id: nil, time: 1054, video_link: "http://www.dailymotion.com/embed/video/x5inir5?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:04:41"},
+      {id: 215, futsal_game_id: 8, team_id: 4, goal_id: 15, assist_id: 40, time: 1099, video_link: "http://www.dailymotion.com/embed/video/x5iniyi?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:07:49"},
+      {id: 216, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 1166, video_link: "http://www.dailymotion.com/embed/video/x5inj5u?autoPlay=1", created_at: "2017-04-18 06:42:15", updated_at: "2017-04-18 11:10:02"},
+      {id: 217, futsal_game_id: 8, team_id: 4, goal_id: 31, assist_id: nil, time: 1285, video_link: "http://www.dailymotion.com/embed/video/x5injei?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:14:36"},
+      {id: 218, futsal_game_id: 8, team_id: 3, goal_id: 39, assist_id: 4, time: 1483, video_link: "http://www.dailymotion.com/embed/video/x5injm3?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:16:01"},
+      {id: 219, futsal_game_id: 8, team_id: 4, goal_id: 17, assist_id: nil, time: 1515, video_link: "http://www.dailymotion.com/embed/video/x5injvs?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:17:27"},
+      {id: 220, futsal_game_id: 8, team_id: 3, goal_id: 39, assist_id: nil, time: 1563, video_link: "http://www.dailymotion.com/embed/video/x5ink3v?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:25:57"},
+      {id: 221, futsal_game_id: 8, team_id: 3, goal_id: 1, assist_id: nil, time: 1617, video_link: "http://www.dailymotion.com/embed/video/x5inkbh?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:26:45"},
+      {id: 222, futsal_game_id: 8, team_id: 4, goal_id: 17, assist_id: 40, time: 1880, video_link: "http://www.dailymotion.com/embed/video/x5inkiy?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:27:45"},
+      {id: 223, futsal_game_id: 8, team_id: 4, goal_id: 40, assist_id: 17, time: 2020, video_link: "http://www.dailymotion.com/embed/video/x5inkri?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:29:47"},
+      {id: 224, futsal_game_id: 8, team_id: 4, goal_id: 19, assist_id: 31, time: 2323, video_link: "http://www.dailymotion.com/embed/video/x5inkyp?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:31:18"},
+      {id: 225, futsal_game_id: 8, team_id: 3, goal_id: 4, assist_id: nil, time: 2369, video_link: "http://www.dailymotion.com/embed/video/x5inl6u?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:31:42"},
+      {id: 226, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 11, time: 2409, video_link: "http://www.dailymotion.com/embed/video/x5inle2?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:32:32"},
+      {id: 227, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 2526, video_link: "http://www.dailymotion.com/embed/video/x5inlkz?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:33:17"},
+      {id: 228, futsal_game_id: 8, team_id: 4, goal_id: 19, assist_id: nil, time: 2558, video_link: "http://www.dailymotion.com/embed/video/x5inlst?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:35:03"},
+      {id: 229, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 2679, video_link: "http://www.dailymotion.com/embed/video/x5inm0k?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:35:51"},
+      {id: 230, futsal_game_id: 8, team_id: 3, goal_id: 4, assist_id: 1, time: 2729, video_link: "http://www.dailymotion.com/embed/video/x5inm7p?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:37:10"},
+      {id: 231, futsal_game_id: 8, team_id: 4, goal_id: 15, assist_id: 40, time: 2807, video_link: "http://www.dailymotion.com/embed/video/x5inmf8?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:39:30"},
+      {id: 232, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 3033, video_link: "http://www.dailymotion.com/embed/video/x5inmlg?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:40:32"},
+      {id: 233, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 3117, video_link: "http://www.dailymotion.com/embed/video/x5inmsm?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:41:14"},
+      {id: 234, futsal_game_id: 8, team_id: 4, goal_id: 40, assist_id: nil, time: 3172, video_link: "http://www.dailymotion.com/embed/video/x5inn78?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:48:40"},
+      {id: 235, futsal_game_id: 8, team_id: 4, goal_id: 15, assist_id: 40, time: 3201, video_link: "http://www.dailymotion.com/embed/video/x5innfa?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 11:49:38"},
+      {id: 236, futsal_game_id: 8, team_id: 3, goal_id: 32, assist_id: 1, time: 3295, video_link: "http://www.dailymotion.com/embed/video/x5innnm?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:50:09"},
+      {id: 237, futsal_game_id: 8, team_id: 3, goal_id: 39, assist_id: nil, time: 3315, video_link: "http://www.dailymotion.com/embed/video/x5innwb?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:49:20"},
+      {id: 238, futsal_game_id: 8, team_id: 3, goal_id: 4, assist_id: 39, time: 3372, video_link: "http://www.dailymotion.com/embed/video/x5ino4s?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:34:00"},
+      {id: 239, futsal_game_id: 8, team_id: 3, goal_id: 1, assist_id: 4, time: 3400, video_link: "http://www.dailymotion.com/embed/video/x5inod5?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:52:04"},
+      {id: 240, futsal_game_id: 8, team_id: 4, goal_id: 40, assist_id: nil, time: 3440, video_link: "http://www.dailymotion.com/embed/video/x5inokh?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:38:41"},
+      {id: 241, futsal_game_id: 8, team_id: 3, goal_id: 39, assist_id: nil, time: 3478, video_link: "http://www.dailymotion.com/embed/video/x5inot6?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:39:55"},
+      {id: 242, futsal_game_id: 8, team_id: 3, goal_id: 1, assist_id: 4, time: 3501, video_link: "http://www.dailymotion.com/embed/video/x5inp2l?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:41:31"},
+      {id: 243, futsal_game_id: 8, team_id: 4, goal_id: 40, assist_id: nil, time: 3536, video_link: "http://www.dailymotion.com/embed/video/x5inpau?autoPlay=1", created_at: "2017-04-18 06:42:16", updated_at: "2017-04-18 12:42:46"}
     ])
     GoalMark.create!([
       {id: 1, goal_id: 1, mark: 2, user_id: 1, mac_address: "::1", created_at: "2017-04-04 21:25:46", updated_at: "2017-04-04 22:36:55"},
