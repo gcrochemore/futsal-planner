@@ -11,6 +11,7 @@ class Goal < ApplicationRecord
   
 
   after_save do
+    self.futsal_game.update_stats
     if !self.goal.nil?
       self.goal.update_stats
       self.goal.save

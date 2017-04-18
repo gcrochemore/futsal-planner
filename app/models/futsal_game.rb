@@ -8,7 +8,7 @@ class FutsalGame < ApplicationRecord
   has_many :goals
   has_many :game_registrations
   has_many :highlights
-  
+
   accepts_nested_attributes_for :game_registrations
 
   default_scope { order('date desc') }
@@ -16,7 +16,7 @@ class FutsalGame < ApplicationRecord
   after_save :update_stats
 
   def update_stats
-    game_registrations.each do |game_registration|
+    self.game_registrations.each do |game_registration|
       game_registration.update_stats
       game_registration.save
     end
