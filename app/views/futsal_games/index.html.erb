@@ -51,6 +51,8 @@
           <th><%= sort_link(@q, :team_outside_id, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :video_link, default_order: :asc) %> - <%= sort_link(@q, :match_resume_link, default_order: :asc) %></th>
+
+          <th>Erreur ?</th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -61,7 +63,13 @@
           <tr>
     
             <td colspan="7"> <%= render 'resume', futsal_game: futsal_game %> </td>
-
+            <td>
+              <% nb_buts = futsal_game.score_home + futsal_game.score_outside %>
+              <% nb_buts_stats = futsal_game.goals.length %>
+              <% if nb_buts_stats != nb_buts %>
+                <%= icon('exclamation-triangle') %><%= nb_buts %> Buts (<%= nb_buts_stats %> dans stats)
+              <% end %>
+            </td>
             <td>
               <%= link_to icon('eye').html_safe, futsal_game %>
               <% if can? :edit, FutsalGame %>
