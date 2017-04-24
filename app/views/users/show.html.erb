@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col">
-
-  </div>
   <div class="col-5 row">
     <div class="col-4">
       <%= image_tag("blank-profile-picture.png", width: '100%') %>
@@ -13,20 +10,10 @@
         <%= @user.first_name %> <%= @user.last_name %> <%= !@user.company.nil? ? "("+ @user.company.name + ")" : "" %>
       </p>
       <p>
-        <%= icon('futbol-o') %> <%= @user.goal %>
-      </p>
-      <p>
-        <%= icon('arrow-circle-right') %> <%= @user.assist %>
+        <%= @user.display_stats.html_safe %>
       </p>
     </div>
   </div>
-  <div class="col">
-
-  </div>
-</div>
-
-
-<div class="row">
   <div class="col">
     <h3>Matchs</h3>
     <table class="table table-sm">
@@ -54,12 +41,17 @@
       </tbody>
     </table>
   </div>
+</div>
+
+
+<div class="row">
   <div class="col">
     <h3>Buts</h3>
     <table class="table table-sm">
       <thead>
         <tr>
           <th>Match</th>
+          <th>Passeur</th>
           <th>Time</th>
         </tr>
       </thead>
@@ -67,6 +59,7 @@
         <% @user.goals.order_by_futsal_game_and_time.each do |goal| %>
           <tr>
             <td><%= goal.futsal_game %></td>
+            <td><%= goal.assist %></td>
             <td><%= formatted_match_time(goal.time) %></td>
             <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
           </tr>

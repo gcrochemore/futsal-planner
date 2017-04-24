@@ -39,8 +39,14 @@ class User < ApplicationRecord
     victoire = 0
     nul = 0
     defaite = 0
+    but_pour = 0
+    but_contre = 0
     number_total_of_matchs = self.game_registrations.length
     self.game_registrations.order_by_futsal_game.each do |game_registration|
+      score_pour = (game_registration.futsal_game.team_home == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+      score_contre = (game_registration.futsal_game.team_outside == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+      but_pour = but_pour + (score_pour ? score_pour : 0)
+      but_contre = but_contre + (score_contre ? score_contre : 0)
       match_result = game_registration.futsal_game.match_result(game_registration.team)
       (match_result == 'V') ? victoire = victoire + 1 : (match_result == 'D') ? defaite = defaite + 1 : nul = nul + 1
       resultats = resultats + match_result
@@ -48,7 +54,14 @@ class User < ApplicationRecord
 
     victoire_percent = victoire.to_f / number_total_of_matchs.to_f
 
-    '<strong>Moyenne par match</strong><br>' + number_total_of_matchs.to_s + ' match(s)<br>' + resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + (victoire_percent.round(2) * 100).to_s + '% victoires <br><i class="fa fa-futbol-o" aria-hidden="true"></i> ' + moyenne_goals.round(2).to_s + ' <br><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + moyenne_assists.round(2).to_s
+    '<strong>Moyenne par match</strong><br>' + 
+      but_pour.to_s + 'BP ' + but_contre.to_s + 'BC : ' + (but_pour - but_contre).to_s + '<br>' + 
+      number_total_of_matchs.to_s + ' match(s)<br>' + 
+      number_of_matchs.to_s + ' avec stats<br>' + 
+      resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + 
+      (victoire_percent.round(2) * 100).to_s + '% victoires <br>
+      <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + moyenne_goals.round(2).to_s + ') <br>
+      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + moyenne_assists.round(2).to_s + ')'
   end
 
   def game_registrations_with_stats
