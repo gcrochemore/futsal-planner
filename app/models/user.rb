@@ -35,7 +35,20 @@ class User < ApplicationRecord
     number_of_matchs = self.game_registrations_with_stats
     moyenne_goals = self.goal.to_f / number_of_matchs.to_f
     moyenne_assists =  self.assist.to_f / number_of_matchs.to_f
-    'Moyenne par match : <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + moyenne_goals.round(2).to_s + '  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + moyenne_assists.round(2).to_s
+    resultats = ""
+    victoire = 0
+    nul = 0
+    defaite = 0
+    number_total_of_matchs = self.game_registrations.length
+    self.game_registrations.order_by_futsal_game.each do |game_registration|
+      match_result = game_registration.futsal_game.match_result(game_registration.team)
+      (match_result == 'V') ? victoire = victoire + 1 : (match_result == 'D') ? defaite = defaite + 1 : nul = nul + 1
+      resultats = resultats + match_result
+    end
+
+    victoire_percent = victoire.to_f / number_total_of_matchs.to_f
+
+    '<strong>Moyenne par match</strong><br>' + number_total_of_matchs.to_s + ' match(s)<br>' + resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + (victoire_percent.round(2) * 100).to_s + '% victoires <br><i class="fa fa-futbol-o" aria-hidden="true"></i> ' + moyenne_goals.round(2).to_s + ' <br><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + moyenne_assists.round(2).to_s
   end
 
   def game_registrations_with_stats
