@@ -56,12 +56,11 @@ class User < ApplicationRecord
 
     '<strong>Moyenne par match</strong><br>' + 
       but_pour.to_s + 'BP ' + but_contre.to_s + 'BC : ' + (but_pour - but_contre).to_s + '<br>' + 
-      number_total_of_matchs.to_s + ' match(s)<br>' + 
-      number_of_matchs.to_s + ' avec stats<br>' + 
+      number_total_of_matchs.to_s + ' match(s) - ' + number_of_matchs.to_s + ' avec stats<br>' + 
       resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + 
       (victoire_percent.round(2) * 100).to_s + '% victoires <br>
-      <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + moyenne_goals.round(2).to_s + ') <br>
-      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + moyenne_assists.round(2).to_s + ')'
+      <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + moyenne_goals.round(2).to_s + '/match) <br>
+      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + moyenne_assists.round(2).to_s + '/match)'
   end
 
   def game_registrations_with_stats

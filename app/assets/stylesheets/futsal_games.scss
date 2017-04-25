@@ -44,8 +44,10 @@
 
 .team {
 	background: url(terrain.png);
-	height: 400px;
+	background-color: #096A09;
+	min-height: 200px;
 	padding-top: 5px;
+	padding-bottom: 5px;
 }
 .player{
 	margin: 10px;

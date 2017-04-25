@@ -89,7 +89,7 @@
   </div>
 
 <div class="row goal_tab">
-  <div class="col">
+  <div class="col-sm-12 col-md-3">
     <div class="team">
       <% @futsal_game.team_home_players.order_by_stats.each do |player| %>
         <div class="player">
@@ -98,7 +98,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-5">
+  <div class="col-sm-12 col-md-6">
     
     <% @futsal_game.andand.team_less_players.each do |player| %>
         <div class="player">
@@ -138,7 +138,7 @@
 
     <% end %>
   </div>
-  <div class="col">
+  <div class="col-sm-12 col-md-3">
     <div class="team">
       <% @futsal_game.team_outside_players.order_by_stats.each do |player| %>
         <div class="player">
