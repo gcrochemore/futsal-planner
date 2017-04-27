@@ -182,7 +182,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 42, email: "alainh@alainh", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreD3mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alain", last_name: "A", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 42, email: "alainh@alainh", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreD3mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Alain", last_name: "H", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
 
@@ -218,6 +218,18 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
+    user = User.new({id: 51, email: "romains@romains", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4RE3UImxUAJH4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Romain", last_name: "S", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 52, email: "greg@greg", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jgERE3azmxUAJH4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Greg", last_name: "G", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 53, email: "jean-clements@jean-clements", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4RE3azmxUAMO4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Jean-Clément", last_name: "S", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
@@ -234,7 +246,8 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 9, date: "2017-04-18 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 14, score_outside: 13, video_link: "", match_resume_link: "", created_at: "2017-04-18 08:22:20", updated_at: "2017-04-18 08:22:20"},
       {id: 10, date: "2017-04-20 20:00:00", duration: 60, futsal_field_id: 2, team_home_id: 5, team_outside_id: 6, score_home: 2, score_outside: 0, video_link: "", match_resume_link: "", created_at: "2017-04-22 12:48:53", updated_at: "2017-04-22 12:48:53"},
       {id: 11, date: "2017-04-23 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 22, score_outside: 20, video_link: "https://www.youtube.com/embed/tHVOKW9ICZs", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1722943&matchs_id=112346", created_at: "2017-04-23 19:36:53", updated_at: "2017-04-24 13:16:50"},
-      {id: 12, date: "2017-04-24 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 14, score_outside: 19, video_link: "https://www.youtube.com/embed/yZ00tgJpnB4", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1723646&matchs_id=112413", created_at: "2017-04-24 20:04:35", updated_at: "2017-04-25 07:01:03"}
+      {id: 12, date: "2017-04-24 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 14, score_outside: 19, video_link: "https://www.youtube.com/embed/yZ00tgJpnB4", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1723646&matchs_id=112413", created_at: "2017-04-24 20:04:35", updated_at: "2017-04-25 07:01:03"},
+      {id: 13, date: "2017-04-26 20:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 13, score_outside: 20, video_link: "http://www.dailymotion.com/embed/video/x5jujnp", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1732133&matchs_id=112873", created_at: "2017-04-27 06:54:27", updated_at: "2017-04-27 11:20:49"}
     ])
     GameRegistration.create!([
       {id: 1, user_id: 1, futsal_game_id: 1, team_id: 2, created_at: "2017-03-29 21:52:50", updated_at: "2017-03-29 21:55:18"},
@@ -358,7 +371,17 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 119, user_id: 49, futsal_game_id: 12, team_id: 2, goal: 0, assist: 3, created_at: "2017-04-24 20:05:47", updated_at: "2017-04-25 11:27:21"},
       {id: 120, user_id: 50, futsal_game_id: 12, team_id: 2, goal: 1, assist: 3, created_at: "2017-04-24 20:05:47", updated_at: "2017-04-25 11:11:30"},
       {id: 121, user_id: 40, futsal_game_id: 12, team_id: 2, goal: 11, assist: 0, created_at: "2017-04-24 20:05:47", updated_at: "2017-04-25 14:41:28"},
-      {id: 122, user_id: 36, futsal_game_id: 12, team_id: 1, goal: 6, assist: 4, created_at: "2017-04-24 20:05:47", updated_at: "2017-04-25 11:37:37"}
+      {id: 122, user_id: 36, futsal_game_id: 12, team_id: 1, goal: 6, assist: 4, created_at: "2017-04-24 20:05:47", updated_at: "2017-04-25 11:37:37"},
+      {id: 123, user_id: 1, futsal_game_id: 13, team_id: 4, goal: 4, assist: 2, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:27:49"},
+      {id: 124, user_id: 32, futsal_game_id: 13, team_id: 3, goal: 3, assist: 3, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:26:36"},
+      {id: 125, user_id: 4, futsal_game_id: 13, team_id: 4, goal: 5, assist: 2, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:27:21"},
+      {id: 126, user_id: 21, futsal_game_id: 13, team_id: 4, goal: 1, assist: 6, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:28:43"},
+      {id: 127, user_id: 42, futsal_game_id: 13, team_id: 3, goal: 1, assist: 1, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:29:21"},
+      {id: 128, user_id: 35, futsal_game_id: 13, team_id: 3, goal: 7, assist: 1, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:25:53"},
+      {id: 129, user_id: 43, futsal_game_id: 13, team_id: 4, goal: 2, assist: 0, created_at: "2017-04-27 06:56:11", updated_at: "2017-04-27 11:28:43"},
+      {id: 130, user_id: 51, futsal_game_id: 13, team_id: 4, goal: 7, assist: 2, created_at: "2017-04-27 10:45:03", updated_at: "2017-04-27 11:23:15"},
+      {id: 131, user_id: 52, futsal_game_id: 13, team_id: 3, goal: 1, assist: 0, created_at: "2017-04-27 10:45:03", updated_at: "2017-04-27 10:57:46"},
+      {id: 132, user_id: 53, futsal_game_id: 13, team_id: 3, goal: 0, assist: 1, created_at: "2017-04-27 10:45:03", updated_at: "2017-04-27 11:16:03"}
     ])
     Goal.create!([
       {id: 1, futsal_game_id: 1, team_id: 1, goal_id: 2, assist_id: nil, time: 95, video_link: "http://www.dailymotion.com/embed/video/x5gh7vk?autoPlay=1", created_at: "2017-03-28 22:26:00", updated_at: "2017-03-29 22:07:36"},
@@ -678,7 +701,40 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 315, futsal_game_id: 12, team_id: 1, goal_id: 12, assist_id: 9, time: 3171, video_link: "http://www.dailymotion.com/embed/video/x5jjzu1?autoPlay=1", created_at: "2017-04-25 06:50:42", updated_at: "2017-04-25 14:56:47"},
       {id: 316, futsal_game_id: 12, team_id: 2, goal_id: 40, assist_id: 50, time: 3315, video_link: "http://www.dailymotion.com/embed/video/x5jk013?autoPlay=1", created_at: "2017-04-25 06:50:42", updated_at: "2017-04-25 07:01:42"},
       {id: 317, futsal_game_id: 12, team_id: 2, goal_id: 40, assist_id: 49, time: 3377, video_link: "http://www.dailymotion.com/embed/video/x5jk089?autoPlay=1", created_at: "2017-04-25 06:50:42", updated_at: "2017-04-25 07:02:29"},
-      {id: 318, futsal_game_id: 12, team_id: 2, goal_id: 1, assist_id: 49, time: 3440, video_link: "http://www.dailymotion.com/embed/video/x5jk0eo?autoPlay=1", created_at: "2017-04-25 06:50:42", updated_at: "2017-04-25 07:03:02"}
+      {id: 318, futsal_game_id: 12, team_id: 2, goal_id: 1, assist_id: 49, time: 3440, video_link: "http://www.dailymotion.com/embed/video/x5jk0eo?autoPlay=1", created_at: "2017-04-25 06:50:42", updated_at: "2017-04-25 07:03:02"},
+      {id: 319, futsal_game_id: 13, team_id: 4, goal_id: 4, assist_id: 51, time: 236, video_link: "http://www.dailymotion.com/embed/video/x5juxoy?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:47:08"},
+      {id: 320, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: 32, time: 278, video_link: "http://www.dailymotion.com/embed/video/x5juxwt?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:48:11"},
+      {id: 321, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: nil, time: 626, video_link: "http://www.dailymotion.com/embed/video/x5juy5g?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:48:41"},
+      {id: 322, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: nil, time: 786, video_link: "http://www.dailymotion.com/embed/video/x5juye1?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:49:29"},
+      {id: 323, futsal_game_id: 13, team_id: 4, goal_id: 4, assist_id: 21, time: 901, video_link: "http://www.dailymotion.com/embed/video/x5juylt?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:21:53"},
+      {id: 324, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: nil, time: 947, video_link: "http://www.dailymotion.com/embed/video/x5juytc?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:23:15"},
+      {id: 325, futsal_game_id: 13, team_id: 4, goal_id: nil, assist_id: nil, time: 1062, video_link: "http://www.dailymotion.com/embed/video/x5juz2c?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 06:54:52"},
+      {id: 326, futsal_game_id: 13, team_id: 3, goal_id: nil, assist_id: nil, time: 1104, video_link: "http://www.dailymotion.com/embed/video/x5juz9n?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 06:54:52"},
+      {id: 327, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: 32, time: 1173, video_link: "http://www.dailymotion.com/embed/video/x5juzf7?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:25:52"},
+      {id: 328, futsal_game_id: 13, team_id: 3, goal_id: 32, assist_id: nil, time: 1239, video_link: "http://www.dailymotion.com/embed/video/x5juzmd?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:26:36"},
+      {id: 329, futsal_game_id: 13, team_id: 4, goal_id: 4, assist_id: nil, time: 1424, video_link: "http://www.dailymotion.com/embed/video/x5juzs5?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:27:21"},
+      {id: 330, futsal_game_id: 13, team_id: 4, goal_id: 43, assist_id: 1, time: 1471, video_link: "http://www.dailymotion.com/embed/video/x5juzyb?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:27:49"},
+      {id: 331, futsal_game_id: 13, team_id: 4, goal_id: 43, assist_id: 21, time: 1517, video_link: "http://www.dailymotion.com/embed/video/x5jv038?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:28:43"},
+      {id: 332, futsal_game_id: 13, team_id: 3, goal_id: 42, assist_id: nil, time: 1615, video_link: "http://www.dailymotion.com/embed/video/x5jv08n?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:29:20"},
+      {id: 333, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: 21, time: 1718, video_link: "http://www.dailymotion.com/embed/video/x5jv0ds?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:50:11"},
+      {id: 334, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: 42, time: 1796, video_link: "http://www.dailymotion.com/embed/video/x5jv0k0?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:51:04"},
+      {id: 335, futsal_game_id: 13, team_id: 4, goal_id: 1, assist_id: 4, time: 1882, video_link: "http://www.dailymotion.com/embed/video/x5jv0ra?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:51:32"},
+      {id: 336, futsal_game_id: 13, team_id: 4, goal_id: 1, assist_id: 4, time: 2101, video_link: "http://www.dailymotion.com/embed/video/x5jv0z5?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:53:59"},
+      {id: 337, futsal_game_id: 13, team_id: 4, goal_id: 1, assist_id: 21, time: 2164, video_link: "http://www.dailymotion.com/embed/video/x5jv15q?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:07:08"},
+      {id: 338, futsal_game_id: 13, team_id: 3, goal_id: 32, assist_id: nil, time: 2199, video_link: "http://www.dailymotion.com/embed/video/x5jv1bp?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:56:50"},
+      {id: 339, futsal_game_id: 13, team_id: 3, goal_id: 52, assist_id: nil, time: 2324, video_link: "http://www.dailymotion.com/embed/video/x5jv1ig?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:57:45"},
+      {id: 340, futsal_game_id: 13, team_id: 4, goal_id: 4, assist_id: 21, time: 2554, video_link: "http://www.dailymotion.com/embed/video/x5jv1o3?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:58:31"},
+      {id: 341, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: nil, time: 2597, video_link: "http://www.dailymotion.com/embed/video/x5jv1t6?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:58:59"},
+      {id: 342, futsal_game_id: 13, team_id: 4, goal_id: 4, assist_id: 21, time: 2808, video_link: "http://www.dailymotion.com/embed/video/x5jv20l?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 10:59:40"},
+      {id: 343, futsal_game_id: 13, team_id: 3, goal_id: 32, assist_id: 35, time: 2851, video_link: "http://www.dailymotion.com/embed/video/x5jv27s?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:00:47"},
+      {id: 344, futsal_game_id: 13, team_id: 4, goal_id: 1, assist_id: 51, time: 2950, video_link: "http://www.dailymotion.com/embed/video/x5jv2fm?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:02:03"},
+      {id: 345, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: nil, time: 3049, video_link: "http://www.dailymotion.com/embed/video/x5jv2lt?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:02:58"},
+      {id: 346, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: 32, time: 3080, video_link: "http://www.dailymotion.com/embed/video/x5jv2qw?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:04:21"},
+      {id: 347, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: nil, time: 3255, video_link: "http://www.dailymotion.com/embed/video/x5jv2w8?autoPlay=1", created_at: "2017-04-27 06:54:52", updated_at: "2017-04-27 11:04:46"},
+      {id: 348, futsal_game_id: 13, team_id: 4, goal_id: 51, assist_id: 1, time: 3279, video_link: "http://www.dailymotion.com/embed/video/x5jv32o?autoPlay=1", created_at: "2017-04-27 06:54:53", updated_at: "2017-04-27 11:05:46"},
+      {id: 349, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: nil, time: 3311, video_link: "http://www.dailymotion.com/embed/video/x5jv38r?autoPlay=1", created_at: "2017-04-27 06:54:53", updated_at: "2017-04-27 11:07:45"},
+      {id: 350, futsal_game_id: 13, team_id: 3, goal_id: 35, assist_id: 53, time: 3562, video_link: "", created_at: "2017-04-27 11:15:07", updated_at: "2017-04-27 11:16:03"},
+      {id: 351, futsal_game_id: 13, team_id: 4, goal_id: 21, assist_id: nil, time: 3590, video_link: "", created_at: "2017-04-27 11:18:34", updated_at: "2017-04-27 11:18:34"}
     ])
     GoalMark.create!([
       {id: 1, goal_id: 1, mark: 2, user_id: 1, mac_address: "::1", created_at: "2017-04-04 21:25:46", updated_at: "2017-04-04 22:36:55"},
