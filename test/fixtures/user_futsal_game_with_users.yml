@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  other_user_id: 1
+  futsal_game: 1
+  user_goal: 1
+  user_assist: 1
+  other_user_goal: 
+  other_user_assist: 1
+  match_with: 1
+  victory_with: 1
+  draw_with: 1
+  lose_with: 1
+  match_against: 1
+  victory_against: 1
+  draw_against: 1
+  lose_against: 1
+
+two:
+  user: two
+  other_user_id: 1
+  futsal_game: 1
+  user_goal: 1
+  user_assist: 1
+  other_user_goal: 
+  other_user_assist: 1
+  match_with: 1
+  victory_with: 1
+  draw_with: 1
+  lose_with: 1
+  match_against: 1
+  victory_against: 1
+  draw_against: 1
+  lose_against: 1

@@ -40,8 +40,27 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.references :company
+
+      ## Statistiques
       t.integer :goal
+      t.integer :goal_with_assist
+      t.integer :goal_without_assist
       t.integer :assist
+      t.integer :match
+      t.integer :match_with_stats
+      t.float :goal_average_by_match
+      t.float :goal_percent_by_match
+      t.float :assist_average_by_match
+      t.float :assist_percent_by_match
+      t.integer :victory
+      t.integer :draw
+      t.integer :lose
+      t.float :victory_percentage
+      t.string :last_result
+      t.float :goal_mark
+      t.float :assist_mark
+      t.float :victory_mark
+      t.float :mark
 
       t.timestamps null: false
     end
@@ -101,7 +120,11 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :futsal_game, foreign_key: true
       t.references :team, foreign_key: true
+
+      ## Statistiques
       t.integer :goal
+      t.integer :goal_with_assist
+      t.integer :goal_without_assist
       t.integer :assist
 
       t.timestamps
@@ -146,6 +169,24 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    create_table :user_futsal_game_with_users do |t|
+      t.references :user, foreign_key: true
+      t.integer :other_user_id
+      t.integer :futsal_game
+      t.integer :user_goal
+      t.integer :user_assist
+      t.integer :other_user_goal
+      t.integer :other_user_assist
+      t.integer :match_with
+      t.integer :victory_with
+      t.integer :draw_with
+      t.integer :lose_with
+      t.integer :match_against
+      t.integer :victory_against
+      t.integer :draw_against
+      t.integer :lose_against
 
+      t.timestamps
+    end
   end
 end

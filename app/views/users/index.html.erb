@@ -40,9 +40,13 @@
     
           <th><%= sort_link(@q, :goal, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :goal_average_by_match, default_order: :asc) %></th>
+    
           <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
     
-          <th>Matchs</th>
+          <th><%= sort_link(@q, :assist_average_by_match, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :match, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -58,11 +62,15 @@
     
             <td><%= user.company %></td>
     
-            <td><%= user.goal %> (<%= user.goal_average %>/match)</td>
+            <td><%= user.goal %></td>
+
+            <td><%= user.goal_average_by_match %></td>            
     
-            <td><%= user.assist %> (<%= user.assist_average %>/match)</td>
+            <td><%= user.assist %></td>
+
+            <td><%= user.assist_average_by_match %></td>        
     
-            <td><%= user.game_registrations.length %></td>
+            <td><%= user.match %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, user %>

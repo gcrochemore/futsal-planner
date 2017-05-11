@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "futsal_game_id"
     t.integer  "team_id"
     t.integer  "goal"
+    t.integer  "goal_with_assist"
+    t.integer  "goal_without_assist"
     t.integer  "assist"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["futsal_game_id"], name: "index_game_registrations_on_futsal_game_id"
     t.index ["team_id"], name: "index_game_registrations_on_team_id"
     t.index ["user_id"], name: "index_game_registrations_on_user_id"
@@ -120,13 +122,34 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.index ["company_id"], name: "index_teams_on_company_id"
   end
 
+  create_table "user_futsal_game_with_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "other_user_id"
+    t.integer  "futsal_game"
+    t.integer  "user_goal"
+    t.integer  "user_assist"
+    t.integer  "other_user_goal"
+    t.integer  "other_user_assist"
+    t.integer  "match_with"
+    t.integer  "victory_with"
+    t.integer  "draw_with"
+    t.integer  "lose_with"
+    t.integer  "match_against"
+    t.integer  "victory_against"
+    t.integer  "draw_against"
+    t.integer  "lose_against"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["user_id"], name: "index_user_futsal_game_with_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -135,16 +158,33 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",         default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "company_id"
     t.integer  "goal"
+    t.integer  "goal_with_assist"
+    t.integer  "goal_without_assist"
     t.integer  "assist"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "match"
+    t.integer  "match_with_stats"
+    t.float    "goal_average_by_match"
+    t.float    "goal_percent_by_match"
+    t.float    "assist_average_by_match"
+    t.float    "assist_percent_by_match"
+    t.integer  "victory"
+    t.integer  "draw"
+    t.integer  "lose"
+    t.float    "victory_percentage"
+    t.string   "last_result"
+    t.float    "goal_mark"
+    t.float    "assist_mark"
+    t.float    "victory_mark"
+    t.float    "mark"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

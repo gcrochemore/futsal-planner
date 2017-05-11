@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :paper_trail_versions, controller: 'versions'
-  resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, :highlight_types, :goal_marks
+  resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, 
+            :highlight_types, :goal_marks, :user_futsal_game_with_users
 
   devise_for :users
   resources :users

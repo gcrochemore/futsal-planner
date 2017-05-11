@@ -1,0 +1,70 @@
+<%= simple_form_for(@user_futsal_game_with_user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="user"><%= f.label :user %></label>
+      <%= f.association :user, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="other_user_id"><%= f.label :other_user_id %></label>
+      <%= f.input :other_user_id, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="futsal_game"><%= f.label :futsal_game %></label>
+      <%= f.input :futsal_game, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="user_goal"><%= f.label :user_goal %></label>
+      <%= f.input :user_goal, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="user_assist"><%= f.label :user_assist %></label>
+      <%= f.input :user_assist, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="other_user_goal"><%= f.label :other_user_goal %></label>
+      <%= f.input :other_user_goal, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="other_user_assist"><%= f.label :other_user_assist %></label>
+      <%= f.input :other_user_assist, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="match_with"><%= f.label :match_with %></label>
+      <%= f.input :match_with, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="victory_with"><%= f.label :victory_with %></label>
+      <%= f.input :victory_with, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="draw_with"><%= f.label :draw_with %></label>
+      <%= f.input :draw_with, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="lose_with"><%= f.label :lose_with %></label>
+      <%= f.input :lose_with, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="match_against"><%= f.label :match_against %></label>
+      <%= f.input :match_against, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="victory_against"><%= f.label :victory_against %></label>
+      <%= f.input :victory_against, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="draw_against"><%= f.label :draw_against %></label>
+      <%= f.input :draw_against, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="lose_against"><%= f.label :lose_against %></label>
+      <%= f.input :lose_against, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

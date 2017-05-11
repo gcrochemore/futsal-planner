@@ -1,0 +1,138 @@
+<h1><%= t('.title') %><span class="badge"><%= @user_futsal_game_with_users.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :user_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.user')} %>
+
+        <%= f.search_field :other_user_id_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.other_user_id')} %>
+
+        <%= f.search_field :futsal_game_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.futsal_game')} %>
+
+        <%= f.search_field :user_goal_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.user_goal')} %>
+
+        <%= f.search_field :user_assist_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.user_assist')} %>
+
+        <%= f.search_field :other_user_goal_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.other_user_goal')} %>
+
+        <%= f.search_field :other_user_assist_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.other_user_assist')} %>
+
+        <%= f.search_field :match_with_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.match_with')} %>
+
+        <%= f.search_field :victory_with_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.victory_with')} %>
+
+        <%= f.search_field :draw_with_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.draw_with')} %>
+
+        <%= f.search_field :lose_with_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.lose_with')} %>
+
+        <%= f.search_field :match_against_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.match_against')} %>
+
+        <%= f.search_field :victory_against_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.victory_against')} %>
+
+        <%= f.search_field :draw_against_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.draw_against')} %>
+
+        <%= f.search_field :lose_against_cont, {placeholder: t('activerecord.attributes.user_futsal_game_with_user.lose_against')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, UserFutsalGameWithUser %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :user, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :other_user_id, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :futsal_game, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :user_goal, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :user_assist, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :other_user_goal, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :other_user_assist, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :match_with, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :victory_with, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :draw_with, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :lose_with, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :match_against, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :victory_against, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :draw_against, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :lose_against, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user_futsal_game_with_users.each do |user_futsal_game_with_user| %>
+          <tr>
+    
+            <td><%= user_futsal_game_with_user.user %></td>
+    
+            <td><%= user_futsal_game_with_user.other_user_id %></td>
+    
+            <td><%= user_futsal_game_with_user.futsal_game %></td>
+    
+            <td><%= user_futsal_game_with_user.user_goal %></td>
+    
+            <td><%= user_futsal_game_with_user.user_assist %></td>
+    
+            <td><%= user_futsal_game_with_user.other_user_goal %></td>
+    
+            <td><%= user_futsal_game_with_user.other_user_assist %></td>
+    
+            <td><%= user_futsal_game_with_user.match_with %></td>
+    
+            <td><%= user_futsal_game_with_user.victory_with %></td>
+    
+            <td><%= user_futsal_game_with_user.draw_with %></td>
+    
+            <td><%= user_futsal_game_with_user.lose_with %></td>
+    
+            <td><%= user_futsal_game_with_user.match_against %></td>
+    
+            <td><%= user_futsal_game_with_user.victory_against %></td>
+    
+            <td><%= user_futsal_game_with_user.draw_against %></td>
+    
+            <td><%= user_futsal_game_with_user.lose_against %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, user_futsal_game_with_user %>
+              <% if can? :edit, UserFutsalGameWithUser %>
+                <%= link_to icon('pencil').html_safe, edit_user_futsal_game_with_user_path(user_futsal_game_with_user) %>
+              <% end %>
+              <% if can? :destroy, UserFutsalGameWithUser %>
+                <%= link_to icon('times').html_safe, user_futsal_game_with_user, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @user_futsal_game_with_users %>
+  </div>
+</div>
