@@ -242,6 +242,18 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
+    user = User.new({id: 57, email: "charlesp@charlesp", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4RE3azmxUAPHZPM", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Charles", last_name: "P", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 58, email: "mickaelm@mickaelm", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4RTRazmxUAPHZPM", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Mickael", last_name: "M", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 59, email: "johang@johang", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jPORE3azmxUAPHZPM", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Johan", last_name: "G", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.skip_confirmation!
+    user.save!
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
@@ -263,8 +275,8 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 14, date: "2017-05-01 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 19, score_outside: 15, video_link: "https://www.youtube.com/embed/fszTUtofw34", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1749598&matchs_id=114124", created_at: "2017-05-02 06:50:42", updated_at: "2017-05-02 10:32:28"},
       {id: 15, date: "2017-05-02 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 14, score_outside: 18, video_link: "", match_resume_link: "", created_at: "2017-05-04 06:42:15", updated_at: "2017-05-04 06:42:15"},
       {id: 16, date: "2017-05-03 20:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 11, score_outside: 20, video_link: "https://www.youtube.com/embed/cO8AgamKSbc", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1756761&matchs_id=114455", created_at: "2017-05-04 06:44:34", updated_at: "2017-05-04 10:41:55"},
-      {id: 17, date: "2017-05-08 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 18, score_outside: 19, video_link: "http://www.dailymotion.com/embed/video/x5ljffx", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1775641&matchs_id=115804", created_at: "2017-05-09 06:47:34", updated_at: "2017-05-09 22:03:18"},
-      {id: 18, date: "2017-05-09 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 11, score_outside: 21, video_link: "http://www.dailymotion.com/embed/video/x5lnw65", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1778329&matchs_id=115903", created_at: "2017-05-10 06:32:16", updated_at: "2017-05-10 06:39:59"}
+      {id: 17, date: "2017-05-08 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 18, score_outside: 19, video_link: "https://www.youtube.com/embed/GshOoyYthnU", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1775641&matchs_id=115804", created_at: "2017-05-09 06:47:34", updated_at: "2017-05-09 22:03:18"},
+      {id: 18, date: "2017-05-09 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 11, score_outside: 21, video_link: "https://www.youtube.com/embed/afvMdY3sKMk", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1778329&matchs_id=115903", created_at: "2017-05-10 06:32:16", updated_at: "2017-05-10 06:39:59"}
     ])
     GameRegistration.create!([
       {id: 1, user_id: 1, futsal_game_id: 1, team_id: 2, created_at: "2017-03-29 21:52:50", updated_at: "2017-03-29 21:55:18"},
