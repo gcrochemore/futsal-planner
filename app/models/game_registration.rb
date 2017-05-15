@@ -5,8 +5,6 @@ class GameRegistration < ApplicationRecord
   belongs_to :futsal_game
   belongs_to :team
 
-  before_save :update_stats
-
   scope :order_by_stats, -> { order('goal desc, assist desc') }
 
   scope :order_by_futsal_game, -> { includes(:futsal_game).order('futsal_games.date desc') }
