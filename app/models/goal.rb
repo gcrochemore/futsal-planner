@@ -9,7 +9,6 @@ class Goal < ApplicationRecord
 
   scope :order_by_futsal_game_and_time, -> { includes(:futsal_game).order('futsal_games.date desc, time desc') }
   
-
   after_save do
     self.futsal_game.update_stats
     if !self.goal.nil?
