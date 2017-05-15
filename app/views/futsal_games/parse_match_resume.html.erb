@@ -26,7 +26,7 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
 
   @time = but.css('div.time').first.content
   @description = but.css('div.description').first.content
-  @video = but.css('div.video').first.css('a').first['href']
+  @video = but.css('div.video').first.css('a').first ? but.css('div.video').first.css('a').first['href'] : ""
 
   @goal = Goal.new;
 
@@ -36,7 +36,7 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
   @min = @m[0];
   @sec = @m[1];
 
-  #@goal.time = (@min.to_f+37+15) * 60 + (@sec.to_f+6+28)
+  #@goal.time = (@min.to_f+38) * 60 + (@sec.to_f+55)
   @goal.time = @min.to_f * 60 + @sec.to_f
 
   if @description.at("Equipe 2").nil?
