@@ -90,13 +90,16 @@
 
 <div class="row goal_tab">
   <div class="col-sm-12 col-md-3">
+    <% sum_goal_average_by_match = 0 %>
     <div class="team">
       <% @futsal_game.team_home_players.order_by_stats.each do |player| %>
+        <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
         <div class="player">
           <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
         </div>
-      <% end %>
+      <% end %> 
     </div>
+    Moyenne de l'équipe : <%= sum_goal_average_by_match.round(2).to_s %>
   </div>
   <div class="col-sm-12 col-md-6">
     
@@ -140,12 +143,15 @@
   </div>
   <div class="col-sm-12 col-md-3">
     <div class="team">
+      <% sum_goal_average_by_match = 0 %>
       <% @futsal_game.team_outside_players.order_by_stats.each do |player| %>
+        <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
         <div class="player">
           <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= @futsal_game.goal_by_user(player.user).all.length %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
         </div>
       <% end %>
     </div>
+    Moyenne de l'équipe : <%= sum_goal_average_by_match.round(2).to_s %>
   </div>
 </div>
 <% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
