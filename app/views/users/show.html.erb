@@ -20,6 +20,7 @@
       <thead>
         <tr>
           <td></td>
+          <td></td>
           <th>Match</th>
           <td></td>
           <th><%= icon('futbol-o') %></th>
@@ -31,6 +32,7 @@
         <% @user.game_registrations.order_by_futsal_game.each do |game_registration| %>
           <tr>
             <td><%= formatted_match_result(game_registration.match_result).html_safe %></td>
+            <td><%= show_game_level(game_registration.goal.to_f, @user.goal_average_by_match, game_registration.assist.to_f, @user.assist_average_by_match) %></td>
             <td><%= game_registration.futsal_game %></td>
             <td class="text-center"><%= game_registration.futsal_game.score_home %> - <%= game_registration.futsal_game.score_outside %></td>
             <td><%= game_registration.goal %></td>

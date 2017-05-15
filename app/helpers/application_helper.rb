@@ -21,13 +21,33 @@ module ApplicationHelper
     tooltip.html_safe
   end 
 
-  def show_game_level(match_goal, average)
-    if match_goal + 1 > average && match_goal - 1 < average
-      return icon('arrow-right')
-    elsif match_goal < average
-      return icon('arrow-down', class: 'red')
+  def show_game_level(match_goal, average_goal, match_assist, average_assist)
+
+    if match_goal + 1 > average_goal && match_goal - 1 < average_goal
+      result = 0
+    elsif match_goal < average_goal - (average_goal / 2)
+      result = -2
+    elsif match_goal < average_goal
+      result = -1
     else
-      return icon('arrow-up', class: 'green')
+      result = 1
+    end
+
+    if match_assist + 1 > average_assist && match_assist - 1 < average_assist
+      result = result
+    elsif match_assist < average_assist
+      result = result - 1
+    else
+      result = result + 1
+    end
+
+
+    if result == 0
+      return icon('arrow-right', class: 'yellow')
+    elsif result < 0
+      return icon('arrow-down', class: result == -1 ? 'orange' : 'red')
+    else
+      return icon('arrow-up', class: result == 1 ? 'yellow_green' : 'green')
     end
   end
 end

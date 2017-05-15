@@ -96,7 +96,8 @@
         <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
         <div class="player">
           <% player_goal = @futsal_game.goal_by_user(player.user).all.length %>
-          <%= show_game_level(player_goal, player.user.goal_average_by_match) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
+          <% player_assist = @futsal_game.assist_by_user(player.user).all.length %>
+          <%= show_game_level(player_goal, player.user.goal_average_by_match.to_f, player_assist, player.user.assist_average_by_match.to_f) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= player_assist %> 
         </div>
       <% end %> 
     </div>
@@ -149,7 +150,8 @@
         <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
         <div class="player">
           <% player_goal = @futsal_game.goal_by_user(player.user).all.length %>
-          <%= show_game_level(player_goal, player.user.goal_average_by_match) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= @futsal_game.assist_by_user(player.user).all.length %> 
+          <% player_assist = @futsal_game.assist_by_user(player.user).all.length %>
+          <%= show_game_level(player_goal, player.user.goal_average_by_match.to_f, player_assist, player.user.assist_average_by_match.to_f) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= player_assist %> 
         </div>
       <% end %>
     </div>
