@@ -16,7 +16,38 @@ class User < ApplicationRecord
 
   def update_stats
     self.goal = self.goals.length
+
+    self.goal_with_assist = 0
+    self.goal_without_assist = 0
+
     self.assist = self.assists.length
+
+
+    self.match = self.game_registrations.length
+    self.match_with_stats = self.game_registrations_with_stats
+
+    self.goal_average_by_match = self.goal.to_f / self.match_with_stats.to_f
+
+    self.goal_percent_by_match = 0
+
+    self.assist_average_by_match = self.assist.to_f / self.match_with_stats.to_f
+
+    self.assist_percent_by_match = 0
+    
+    self.victory = 0
+    self.draw = 0
+    self.lose = 0
+    self.victory_percentage = 0
+    self.last_result = 0
+    self.goal_mark = 0
+    self.assist_mark = 0
+    self.victory_mark = 0
+    self.mark = 0
+  end
+
+  def update_all_stats
+    self.goal = self.goals.length
+    self.assist = self.assists.length    
   end
 
   def goal_average
