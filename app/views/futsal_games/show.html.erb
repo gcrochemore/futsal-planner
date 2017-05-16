@@ -90,18 +90,7 @@
 
 <div class="row goal_tab">
   <div class="col-sm-12 col-md-3">
-    <% sum_goal_average_by_match = 0 %>
-    <div class="team">
-      <% @futsal_game.team_home_players.order_by_stats.each do |player| %>
-        <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
-        <div class="player">
-          <% player_goal = @futsal_game.goal_by_user(player.user).all.length %>
-          <% player_assist = @futsal_game.assist_by_user(player.user).all.length %>
-          <%= show_game_level(player_goal, player.user.goal_average_by_match.to_f, player_assist, player.user.assist_average_by_match.to_f) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= player_assist %> 
-        </div>
-      <% end %> 
-    </div>
-    Moyenne de l'équipe : <%= sum_goal_average_by_match.round(2).to_s %>
+    <%= render 'show_team', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
   </div>
   <div class="col-sm-12 col-md-6">
     
@@ -144,18 +133,7 @@
     <% end %>
   </div>
   <div class="col-sm-12 col-md-3">
-    <div class="team">
-      <% sum_goal_average_by_match = 0 %>
-      <% @futsal_game.team_outside_players.order_by_stats.each do |player| %>
-        <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
-        <div class="player">
-          <% player_goal = @futsal_game.goal_by_user(player.user).all.length %>
-          <% player_assist = @futsal_game.assist_by_user(player.user).all.length %>
-          <%= show_game_level(player_goal, player.user.goal_average_by_match.to_f, player_assist, player.user.assist_average_by_match.to_f) %> <%= show_player(player.user) %> <%= icon('futbol-o') %> <%= player_goal %> <%= icon('arrow-circle-right') %> <%= player_assist %> 
-        </div>
-      <% end %>
-    </div>
-    Moyenne de l'équipe : <%= sum_goal_average_by_match.round(2).to_s %>
+    <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>    
   </div>
 </div>
 <% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
