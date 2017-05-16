@@ -1,3 +1,4 @@
+<%= link_to "<< Précédent", futsal_game_path(@futsal_game.id - 1) %> | <%= link_to "Suivant >>", futsal_game_path(@futsal_game.id + 1) %>
 <% if can? :affect_player_to_team, FutsalGame %>
   <%= simple_form_for(@futsal_game) do |f| %>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

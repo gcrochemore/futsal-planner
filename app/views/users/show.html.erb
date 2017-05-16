@@ -71,6 +71,31 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col">
+    <h3>Passes</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Buteur</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.assists.order_by_futsal_game_and_time.each do |goal| %>
+          <tr>
+            <td><%= goal.futsal_game %></td>
+            <td><%= goal.goal %></td>
+            <td><%= formatted_match_time(goal.time) %></td>
+            <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 
 

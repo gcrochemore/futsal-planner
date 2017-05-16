@@ -50,4 +50,8 @@ module ApplicationHelper
       return icon('arrow-up', class: result == 1 ? 'yellow_green' : 'green')
     end
   end
+
+  def calculate_score(sum_goal_average_by_match, sum_assist_average_by_match)
+    (sum_goal_average_by_match < sum_assist_average_by_match/0.4991 ? sum_goal_average_by_match : sum_assist_average_by_match/0.4991).round(0).to_s
+  end
 end
