@@ -63,4 +63,8 @@ class FutsalGame < ApplicationRecord
   def highlights_and_goals
     (highlights + goals).sort! { |a,b| a.time <=> b.time }
   end
+
+  def has_stat
+    !(self.video_link.nil? || self.video_link == "")
+  end
 end
