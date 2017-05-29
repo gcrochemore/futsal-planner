@@ -5,8 +5,8 @@ ENV RAILS_ENV=development
 ENV RACK_ENV=development
 
 RUN mkdir -p /var/app
-COPY Gemfile /var/app/Gemfile
-COPY Gemfile.lock /var/app/Gemfile.lock
+COPY /Gemfile /var/app/Gemfile
+COPY /Gemfile.lock /var/app/Gemfile.lock
 WORKDIR /var/app
 
 RUN bundle install
