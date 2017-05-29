@@ -1309,7 +1309,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 218, user_id: 40, futsal_game_id: 22, team_id: 3, goal: 7, goal_with_assist: nil, goal_without_assist: nil, assist: 2, created_at: "2017-05-16 19:53:04", updated_at: "2017-05-17 20:10:40"},
       {id: 219, user_id: 66, futsal_game_id: 22, team_id: 3, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 1, created_at: "2017-05-17 10:51:33", updated_at: "2017-05-17 20:13:50"},
       {id: 220, user_id: 67, futsal_game_id: 22, team_id: 3, goal: 5, goal_with_assist: nil, goal_without_assist: nil, assist: 1, created_at: "2017-05-17 10:51:33", updated_at: "2017-05-17 20:05:08"},
-      {id: 221, user_id: 68, futsal_game_id: 22, team_id: 3, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 1, created_at: "2017-05-17 10:51:33", updated_at: "2017-05-17 20:15:34"}
+      {id: 221, user_id: 68, futsal_game_id: 22, team_id: 3, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 1, created_at: "2017-05-17 10:51:33", updated_at: "2017-05-17 20:15:34"},
       {id: 222, user_id: 1, futsal_game_id: 23, team_id: 4, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 5, created_at: "2017-05-17 21:09:57", updated_at: "2017-05-18 18:14:51"},
       {id: 223, user_id: 40, futsal_game_id: 23, team_id: 4, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-05-17 21:09:57", updated_at: "2017-05-18 18:05:12"},
       {id: 224, user_id: 43, futsal_game_id: 23, team_id: 4, goal: 3, goal_with_assist: nil, goal_without_assist: nil, assist: 1, created_at: "2017-05-17 21:09:57", updated_at: "2017-05-18 18:09:03"},
