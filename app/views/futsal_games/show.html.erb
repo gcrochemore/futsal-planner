@@ -75,7 +75,7 @@
         <%= link_to icon('television') + " Voir la video du match", @futsal_game.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
       </div>
     <% end %>
-    <% if can? :affect_player_to_team, FutsalGame %>
+    <% if can? :affect_player_to_team, @futsal_game %>
       <div class="col">
         <button type="button" class="btn btn-sm btn-block btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
             <%= (icon('user-plus') + ' Inscrire un joueur').html_safe %>
@@ -97,8 +97,8 @@
     
     <% @futsal_game.andand.team_less_players.each do |player| %>
         <div class="player">
-          <%= icon('user-circle-o') %> <%= player.user %>
-          <% if can? :affect_player_to_team, FutsalGame %>
+          <%= show_player(player.user) %> 
+          <% if can? :affect_player_to_team, @futsal_game %>
             Affecter :
             <%= link_to 'Equipe 1', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_home) %> - 
             <%= link_to 'Equipe 2', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_outside) %>

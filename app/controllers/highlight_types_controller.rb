@@ -1,5 +1,3 @@
-
-
 class HighlightTypesController < ApplicationController
   authorize_resource
   before_action :set_highlight_type, only: [:show, :edit, :update, :destroy]
