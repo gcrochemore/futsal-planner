@@ -18,6 +18,9 @@ fr:
       game_registration:
         team: Equipe
         user: Joueur
+      goal:
+        goal: Buteur
+        assist: Passeur
       team:
         company: Entreprise
         name: Nom de l'équipe 
