@@ -96,7 +96,7 @@
   <div class="col-sm-12 col-md-6">
     <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart %>
     
-    <% @futsal_game.andand.team_less_players.each do |player| %>
+    <% @futsal_game.andand.team_less_players.order_by_users_stats.each do |player| %>
         <div class="player">
           <%= show_player(player.user) %> 
           <% if can? :affect_player_to_team, @futsal_game %>

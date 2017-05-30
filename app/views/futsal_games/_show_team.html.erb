@@ -1,9 +1,11 @@
 <div class="team">
   <% sum_goal_average_by_match = 0 %>
   <% sum_assist_average_by_match = 0 %>
+  <% sum_match = 0 %>
   <% team.order_by_stats.each do |player| %>
     <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.assist_average_by_match.to_f %>
+    <% sum_match = sum_match + player.user.match_with_stats %>
     <div class="player">
       <% player_goal = futsal_game.goal_by_user(player.user).all.length %>
       <% player_assist = futsal_game.assist_by_user(player.user).all.length %>
@@ -16,6 +18,6 @@
     </div>
   <% end %>
 </div>
-<%= "<strong>Moyenne de l'équipe : </strong>" + sum_goal_average_by_match.round(2).to_s + ' ' + icon('futbol-o') + ' ' + sum_assist_average_by_match.round(2).to_s).html_safe + ' ' + icon('arrow-circle-right' %>
+<%= "<strong>Moyenne de l'équipe : </strong>" + sum_goal_average_by_match.round(2).to_s + ' ' + icon('futbol-o') + ' ' + sum_assist_average_by_match.round(2).to_s).html_safe + ' ' + icon('arrow-circle-right' %> <%= sum_match / team.length %> matchs
 <br>
 <strong>Score théorique : </strong> <%= calculate_score(sum_goal_average_by_match, sum_assist_average_by_match) %>

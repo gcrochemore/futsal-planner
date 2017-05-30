@@ -11,11 +11,42 @@ var myChart = new Chart(ctx, {
             <% end %>
         ],
       datasets: [{
-        label: '',
+        label: 'Ecart',
         data: 
           ['',
               <% @ecart.each do |ecart| %>
                 <%= ecart %>,
+              <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1,
+        hidden: true
+      },{
+        label: 'Score 1',
+        data: 
+          ['',
+              <% @score_1.each do |score| %>
+                <%= score %>,
+              <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 12, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,200,132,1)'
+        ],
+        borderWidth: 1
+      },{
+        label: 'Score 2',
+        data: 
+          ['',
+              <% @score_2.each do |score| %>
+                <%= score %>,
               <% end %>
           ],
         backgroundColor: [

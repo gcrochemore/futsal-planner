@@ -11,11 +11,15 @@ class FutsalGamesController < ApplicationController
     @minutes_buts = []
     @ecart = []
     goal_1 = 0
+    @score_1 = []
+    @score_2 = []
     goal_2 = 0
     @futsal_game.goals.order_by_time.each do |goal|
       goal.team == @futsal_game.team_home ? goal_1 = goal_1 + 1 : goal_2 = goal_2 + 1      
       @minutes_buts.push(goal.time)
       @ecart.push((goal_1-goal_2).to_s)
+      @score_1.push(goal_1)
+      @score_2.push(goal_2)
     end
     
   end
