@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col">
+    <h3>Matchs</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <td></td>
+          <th>Match</th>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @futsal_games.each do |futsal_game| %>
+          <tr>
+            <td><%= futsal_game %></td>
+            <td class="text-center"><%= futsal_game.score_home %> - <%= futsal_game.score_outside %></td>
+            <td><%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col row">
+    <div class="row">
+      <div class="col">
+        <legend class="filter-title"><%= t :search_title %></legend>
+        <fieldset class="filter-panel">
+          <%= search_form_for @q do |f| %>
+
+            <%= f.search_field :goal_first_name_cont, {placeholder: t('activerecord.attributes.goal.goal')} %>
+
+            <%= f.search_field :assist_first_name_cont, {placeholder: t('activerecord.attributes.goal.assist')} %>
+
+            <%= f.submit class: 'btn btn-default btn-search-filter' %>
+          <% end %>
+        </fieldset>
+      </div>
+    </div>  
+    <div class="col row">
+      <h3>Buts</h3>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th><%= sort_link(@q, :futsal_game, default_order: :asc) %></th>
+            <th><%= sort_link(@q, :goal_first_name, default_order: :asc) %></th>
+            <th><%= sort_link(@q, :assist, default_order: :asc) %></th>
+            <th><%= sort_link(@q, :time, default_order: :asc) %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @goals.order_by_futsal_game_and_time.each do |goal| %>
+            <tr>
+              <td><%= goal.futsal_game %></td>
+              <td><%= goal.goal %></td>
+              <td><%= goal.assist %></td>
+              <td><%= formatted_match_time(goal.time) %></td>
+              <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
