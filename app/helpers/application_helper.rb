@@ -56,7 +56,7 @@ module ApplicationHelper
   end
 
   def calculate_score(sum_goal_average_by_match, sum_assist_average_by_match)
-    if sum_goal_average_by_match && sum_assist_average_by_match
+    if !sum_goal_average_by_match.nil? && !sum_assist_average_by_match.nil?
       return (sum_goal_average_by_match.to_f < sum_assist_average_by_match.to_f/0.4991 ? sum_goal_average_by_match.to_f : sum_assist_average_by_match.to_f/0.4991).round(0).to_s
     else
       return ''
