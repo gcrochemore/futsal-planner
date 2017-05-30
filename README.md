@@ -62,3 +62,11 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 ##### Database
 	
 	rake db:seed:dump EXCLUDE=[]
+
+##### Docker
+	
+	Se placer dans le repertoire .docker
+
+	docker-compose up -d
+	docker-compose run futsal-planner rake db:create
+	docker-compose run futsal-planner rake db:migrate
