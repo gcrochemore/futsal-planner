@@ -56,8 +56,11 @@ module ApplicationHelper
   end
 
   def calculate_score(sum_goal_average_by_match, sum_assist_average_by_match)
-    sum_goal_average_by_match ? '' : sum_goal_average_by_match = 0
-    sum_assist_average_by_match ? '' : sum_assist_average_by_match = 0
-    return (sum_goal_average_by_match.to_f < sum_assist_average_by_match.to_f/0.4991 ? sum_goal_average_by_match.to_f : sum_assist_average_by_match.to_f/0.4991).round(0).to_s
+    if sum_goal_average_by_match && sum_assist_average_by_match
+      return (sum_goal_average_by_match.to_f < sum_assist_average_by_match.to_f/0.4991 ? sum_goal_average_by_match.to_f : sum_assist_average_by_match.to_f/0.4991).round(0).to_s
+    else
+      return ''
+    end
+    
   end
 end
