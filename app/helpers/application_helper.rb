@@ -25,12 +25,16 @@ module ApplicationHelper
 
     if match_goal + 1 > average_goal && match_goal - 1 < average_goal
       result = 0
-    elsif match_goal < average_goal - (average_goal / 2)
+    elsif match_goal < (average_goal * (-1.5))
       result = -2
     elsif match_goal < average_goal
       result = -1
-    else
+    elsif match_goal < (average_goal * 1.5)
       result = 1
+    elsif match_goal < (average_goal * 2.5)
+      result = 2
+    else
+      result = 3
     end
 
     if match_assist + 1 > average_assist && match_assist - 1 < average_assist
