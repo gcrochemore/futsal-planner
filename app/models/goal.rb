@@ -8,6 +8,7 @@ class Goal < ApplicationRecord
   has_many :marks
 
   scope :order_by_futsal_game_and_time, -> { includes(:futsal_game).order('futsal_games.date desc, time desc') }
+  scope :order_by_time, -> { order('time') }
   
   after_save do
     self.futsal_game.update_stats
