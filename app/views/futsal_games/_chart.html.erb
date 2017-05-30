@@ -1,0 +1,40 @@
+<canvas id="myChart" width="100%" height="30px"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: 
+        ['',
+            <% @minutes_buts.each do |minute_buts| %>
+                '<%= minute_buts/60 %>',
+            <% end %>
+        ],
+      datasets: [{
+        label: '',
+        data: 
+          ['',
+              <% @ecart.each do |ecart| %>
+                <%= ecart %>,
+              <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>

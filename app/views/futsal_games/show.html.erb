@@ -94,6 +94,7 @@
     <%= render 'show_team', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
   </div>
   <div class="col-sm-12 col-md-6">
+    <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart %>
     
     <% @futsal_game.andand.team_less_players.each do |player| %>
         <div class="player">
@@ -105,6 +106,7 @@
           <% end %>
         </div>
     <% end %>
+
     <% @futsal_game.highlights_and_goals.each do |goal| %>
       <div class="row">
         <div class="col home_goal">
