@@ -51,8 +51,8 @@
           <% @goals.order_by_futsal_game_and_time.each do |goal| %>
             <tr>
               <td><%= goal.futsal_game %></td>
-              <td><%= show_player(goal.goal) %></td>
-              <td><%= show_player(goal.assist) %></td>
+              <td><%= goal.goal %></td>
+              <td><%= goal.assist %></td>
               <td><%= formatted_match_time(goal.time) %></td>
               <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
             </tr>

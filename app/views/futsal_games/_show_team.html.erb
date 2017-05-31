@@ -5,7 +5,7 @@
   <% team.order_by_stats.each do |player| %>
     <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.goal_average_by_match.to_f %>
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.assist_average_by_match.to_f %>
-    <% sum_match = sum_match + player.user.match_with_stats %>
+    <% sum_match = sum_match + player.user.match_with_stats.to_f %>
     <div class="player">
       <% player_goal = futsal_game.goal_by_user(player.user).all.length %>
       <% player_assist = futsal_game.assist_by_user(player.user).all.length %>
