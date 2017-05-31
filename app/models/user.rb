@@ -51,37 +51,38 @@ class User < ApplicationRecord
   end
 
   def goal_average
-    number_of_matchs = self.game_registrations_with_stats
+    number_of_matchs = self.match_with_stats
     moyenne_goals = self.goal.to_f / number_of_matchs.to_f
     moyenne_goals.round(2).to_s
   end 
 
   def assist_average
-    number_of_matchs = self.game_registrations_with_stats
+    number_of_matchs = self.match_with_stats
     moyenne_assists =  self.assist.to_f / number_of_matchs.to_f
     moyenne_assists.round(2).to_s
   end 
 
   def display_stats
-    number_of_matchs = self.game_registrations_with_stats
-    moyenne_goals = self.goal.to_f / number_of_matchs.to_f
-    moyenne_assists =  self.assist.to_f / number_of_matchs.to_f
+    number_of_matchs = self.match_with_stats.to_i
+    moyenne_goals = self.goal_average_by_match.to_f
+    moyenne_assists =  self.assist_average_by_match.to_f
     resultats = ""
     victoire = 0
     nul = 0
     defaite = 0
     but_pour = 0
     but_contre = 0
-    number_total_of_matchs = self.game_registrations.length
-    self.game_registrations.order_by_futsal_game.each do |game_registration|
-      score_pour = (game_registration.futsal_game.team_home == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
-      score_contre = (game_registration.futsal_game.team_outside == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
-      but_pour = but_pour + (score_pour ? score_pour : 0)
-      but_contre = but_contre + (score_contre ? score_contre : 0)
-      match_result = game_registration.futsal_game.match_result(game_registration.team)
-      (match_result == 'V') ? victoire = victoire + 1 : (match_result == 'D') ? defaite = defaite + 1 : nul = nul + 1
-      resultats = resultats + match_result
-    end
+    number_total_of_matchs = self.match.to_i
+    # TODO : store in db for improve show rapidity
+    #self.game_registrations.order_by_futsal_game.each do |game_registration|
+    #  score_pour = (game_registration.futsal_game.team_home == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+    #  score_contre = (game_registration.futsal_game.team_outside == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+    #  but_pour = but_pour + (score_pour ? score_pour : 0)
+    #  but_contre = but_contre + (score_contre ? score_contre : 0)
+    #  match_result = game_registration.futsal_game.match_result(game_registration.team)
+    #  (match_result == 'V') ? victoire = victoire + 1 : (match_result == 'D') ? defaite = defaite + 1 : nul = nul + 1
+    #  resultats = resultats + match_result
+    #end
 
     victoire_percent = victoire.to_f / number_total_of_matchs.to_f
 
