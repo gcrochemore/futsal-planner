@@ -66,7 +66,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 ##### Docker
 	
 	Se placer dans le repertoire .docker
-
+	
+	docker-compose run futsal-planner bundle install
 	docker-compose up -d
 	docker-compose run futsal-planner rake db:create
 	docker-compose run futsal-planner rake db:migrate
