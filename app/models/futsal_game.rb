@@ -61,7 +61,7 @@ class FutsalGame < ApplicationRecord
   end   
 
   def highlights_and_goals
-    (highlights.includes(:victim) + goals.includes(:goal)).sort! { |a,b| a.time <=> b.time }
+    (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
   end
 
   def has_stat
