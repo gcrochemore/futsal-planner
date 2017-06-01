@@ -1,6 +1,16 @@
 <div class="row">
   <div class="col">
     <h3>Matchs</h3>
+    
+    <%= month_calendar(attribute: :date, events: @futsal_games) do |date, futsal_games| %> 
+      <% futsal_games.each do |futsal_game| %>
+        <div class="calendar_event_match">
+          <%= futsal_game %>
+          <%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>
+        </div>
+      <% end %>
+    <% end %>
+
     <table class="table table-sm">
       <thead>
         <tr>
