@@ -27,7 +27,7 @@ var myChart = new Chart(ctx, {
         borderWidth: 1,
         hidden: true
       },{
-        label: <%= @fustal_game.andand.team_home %>,
+        label: '<%= @fustal_game.andand.team_home %> - Equipe 1',
         data: 
           ['',
               <% @score_1.each do |score| %>
@@ -42,7 +42,7 @@ var myChart = new Chart(ctx, {
         ],
         borderWidth: 1
       },{
-        label: <%= @fustal_game.andand.team_outside %>,
+        label: '<%= @fustal_game.andand.team_outside %> - Equipe 2',
         data: 
           ['',
               <% @score_2.each do |score| %>
