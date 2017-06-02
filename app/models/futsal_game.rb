@@ -58,7 +58,15 @@ class FutsalGame < ApplicationRecord
 
   def to_s
     date.strftime("%d/%m/%Y %H:%M") + " : " + team_home.andand.name + " vs " + team_outside.andand.name
-  end   
+  end      
+
+  def to_s_with_only_hour
+    date.strftime("%H:%M") + " : " + team_home.andand.name + " vs " + team_outside.andand.name
+  end      
+
+  def to_s_team_and_score
+    team_home.andand.name + " " + score_home.to_s + " - " + score_home.to_s + " " + team_outside.andand.name
+  end  
 
   def highlights_and_goals
     (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
