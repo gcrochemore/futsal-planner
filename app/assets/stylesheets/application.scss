@@ -79,7 +79,19 @@
 }
 
 .simple-calendar {
-  .day { width:14%; }
+  .calendar-heading{
+    width: 100%;
+    text-align: center;
+  }
+  .day { 
+    width:14%;    
+  }
+
+  .day-container {
+    min-height: 50px;
+  }
+
+  .day_of_date{ }
 
   .wday-0 {}
   .wday-1 {}
@@ -89,14 +101,14 @@
   .wday-5 {}
   .wday-6 {}
 
-  .today {}
+  .today { background-color: #CECECE;}
   .past {}
   .future {}
 
   .start-date {}
 
-  .prev-month {}
-  .next-month { }
+  .prev-month { filter:alpha(opacity=50); opacity:0.5; }
+  .next-month { filter:alpha(opacity=50); opacity:0.5; }
   .current-month {}
 
   .has-events {}

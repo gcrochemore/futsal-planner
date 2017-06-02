@@ -1,16 +1,19 @@
 <div class="row">
   <div class="col">
-    <h3>Matchs</h3>
+    <!--<h3>Matchs</h3>-->
     
     <%= month_calendar(attribute: :date, events: @futsal_games) do |date, futsal_games| %> 
       <% futsal_games.each do |futsal_game| %>
         <div class="calendar_event_match">
-          <%= futsal_game %>
+          <%= futsal_game.to_s_with_only_hour %>
+          <strong><%= futsal_game.score_home %> - <%= futsal_game.score_outside %></strong>
           <%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>
+
+          
         </div>
       <% end %>
     <% end %>
-
+<!--
     <table class="table table-sm">
       <thead>
         <tr>
@@ -28,8 +31,11 @@
           </tr>
         <% end %>
       </tbody>
-    </table>
+    </table> -->
   </div>
+</div>
+<!--
+<div class="row">
   <div class="col">
     <div class="row">
       <div class="col">
@@ -72,3 +78,4 @@
     </div>
   </div>
 </div>
+-->
