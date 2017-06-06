@@ -21,7 +21,16 @@ class FutsalGamesController < ApplicationController
       @score_1.push(goal_1)
       @score_2.push(goal_2)
     end
-    
+
+    @dispo = User.unscoped.where('id NOT IN (?)', 
+              GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL', 
+                FutsalGame.where("date > ? AND date < ? ", @futsal_game.date.beginning_of_day(), @futsal_game.date.end_of_day()).pluck(:id)
+              ).pluck(:user_id)
+            ).where('id IN (?)', 
+              GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL', 
+                FutsalGame.where("futsal_field_id = ? AND (team_home_id = ? OR team_outside_id = ? OR team_home_id = ? OR team_outside_id = ?)", @futsal_game.futsal_field_id, @futsal_game.team_home, @futsal_game.team_home, @futsal_game.team_outside, @futsal_game.team_outside).pluck(:id)
+              ).pluck(:user_id)
+            ).order("match DESC").order(:first_name, :last_name)
   end
 
   # GET /futsal_games/new
