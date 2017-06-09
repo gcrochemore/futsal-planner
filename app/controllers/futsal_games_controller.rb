@@ -4,7 +4,7 @@ class FutsalGamesController < ApplicationController
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
-    @futsal_games = @q.result.page(params[:page])
+    @futsal_games = @q.result.joins(:team_home, :team_outside).page(params[:page])
   end
   # GET /futsal_games/1
   def show
