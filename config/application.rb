@@ -26,5 +26,12 @@ module FutsalPlanner
  
 	config.i18n.default_locale = :fr
 
+  config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', :headers => :any, :methods => [:get, :post, :options]
+    end
+  end
+	
   end
 end
