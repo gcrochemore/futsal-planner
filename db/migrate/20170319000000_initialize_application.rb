@@ -3,6 +3,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
     create_table :companies do |t|
       t.string :name
       t.string :email_mask
+      ##Photo
+      t.string :picture
 
       t.timestamps
     end
@@ -40,6 +42,9 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.references :company
+
+      ##Photo
+      t.string :picture
 
       ## Statistiques
       t.integer :goal
@@ -137,6 +142,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :assist_id
       t.integer :time
       t.string :video_link
+      t.integer :views_number
+      t.float :average_mark
 
       t.timestamps
     end
