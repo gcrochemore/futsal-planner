@@ -42,6 +42,10 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'sqlite3'
   gem 'simplecov'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -62,8 +66,6 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 
 gem 'andand'
-
-gem 'factory_girl_rails', require:false      # framework and DSL for defining and using factories
 
 gem 'paper_trail'
 
@@ -94,3 +96,5 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem 'nokogiri'
 
 gem 'chart-js-rails'
+
+gem 'rack-cors', :require => 'rack/cors'
