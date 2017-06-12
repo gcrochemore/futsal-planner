@@ -98,9 +98,9 @@ class User < ApplicationRecord
   def game_registrations_with_stats
     compteur = 0
     self.game_registrations.each do |game_registration|
-      game_registration.futsal_game.has_stat ? compteur = compteur + 1 : ""
+      game_registration.futsal_game.has_stat ? compteur = compteur + game_registration.futsal_game.duration : ""
     end
-    compteur
+    (compteur / 60.0).round 
   end
 
   def to_s

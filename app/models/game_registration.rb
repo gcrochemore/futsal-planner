@@ -20,8 +20,10 @@ class GameRegistration < ApplicationRecord
   end
 
   def update_user_stat
-    self.user.update_stats
-    self.user.save
+    if self.user
+      self.user.update_stats
+      self.user.save
+    end
   end
 
   def match_result

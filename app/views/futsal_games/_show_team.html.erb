@@ -10,7 +10,7 @@
       <% player_goal = futsal_game.goal_by_user(player.user).all.length %>
       <% player_assist = futsal_game.assist_by_user(player.user).all.length %>
 
-      <%= futsal_game.has_stat ? show_game_level(player_goal, player.user.andand.goal_average_by_match.to_f, player_assist, player.user.andand.assist_average_by_match.to_f) : "" %> 
+      <%= futsal_game.has_stat ? show_game_level(player_goal, player.user.andand.goal_average_by_match.to_f, player_assist, player.user.andand.assist_average_by_match.to_f, futsal_game.duration) : "" %>
 
       <%= show_player(player.user) %> 
 
