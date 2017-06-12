@@ -18,6 +18,8 @@ class Ability
     can :affect_player_to_team, FutsalGame, FutsalGame.all do |futsalGame|
       futsalGame.date >= DateTime.now
     end
+    can :read, FutsalTournament
+
 
     can :read, Goal
     can :mark_goal, Goal
