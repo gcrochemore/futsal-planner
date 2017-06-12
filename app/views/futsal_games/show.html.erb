@@ -115,33 +115,8 @@
         </div>
     <% end %>
 
-    <% @futsal_game.highlights_and_goals.each do |goal| %>
-      <div class="row">
-        <div class="col home_goal">
-          <% if goal.team_id == @futsal_game.team_home_id %>
-            <% if goal.instance_of? Highlight %>
-              <%= link_to (goal.andand.victim.to_s + " " + icon(goal.highlight_type.icon)).html_safe, goal, target: "_blank" %>
-            <% else %>
-              <%= link_to ((goal.andand.assist.nil? ? " " : goal.andand.assist.to_s + " " + icon('arrow-circle-right') + " ") + goal.andand.goal.to_s + " " + icon('futbol-o')).html_safe, goal, target: "_blank" %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="col-2 time">
-          <%= Time.at(goal.time).utc.strftime("%M:%S") %>
-        </div>
-        <div class="col outside_goal">
-          <% if goal.team_id == @futsal_game.team_outside_id %>
-            <% if goal.instance_of? Highlight %>
-              <%= link_to (icon(goal.highlight_type.icon) + " " + goal.andand.victim.to_s).html_safe, goal, target: "_blank" %>
-            <% else %>
-              <%= link_to (icon('futbol-o') + " " + goal.andand.goal.to_s + " " + (goal.andand.assist.nil? ? " " : icon('arrow-circle-right').html_safe + " " + goal.andand.assist.to_s)).html_safe, goal, target: "_blank" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>  
+    <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %> 
 
-
-    <% end %>
   </div>
   <div class="col-sm-12 col-md-3">
     <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>    

@@ -15,7 +15,9 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 3, name: "Team#1", company_id: nil, created_at: "2017-03-30 11:12:31", updated_at: "2017-03-30 11:12:31"},
       {id: 4, name: "Team#2", company_id: nil, created_at: "2017-03-30 11:12:43", updated_at: "2017-03-30 11:12:43"},
       {id: 5, name: "Orange", company_id: nil, created_at: "2017-03-30 21:27:29", updated_at: "2017-03-30 21:27:42"},
-      {id: 6, name: "Jaune", company_id: nil, created_at: "2017-03-30 21:28:02", updated_at: "2017-03-30 21:28:02"}
+      {id: 6, name: "Jaune", company_id: nil, created_at: "2017-03-30 21:28:02", updated_at: "2017-03-30 21:28:02"},
+      {id: 7, name: "Team#3", company_id: nil, created_at: "2017-06-12 06:50:14", updated_at: "2017-06-12 06:50:14"},
+      {id: 8, name: "Team#4", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"}
     ])
 
     user = User.new({id: 1, email: "guillaume.crochemore@gmail.com", picture: "forlan.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$.RB/xnqEJnS1GE2GAhKDj.HbSzMJ7hJlZNGInyXDvzgtwkGON.Stq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2017-03-28 18:26:46", last_sign_in_at: "2017-03-28 18:18:11", current_sign_in_ip: "::1", last_sign_in_ip: "::1", confirmation_token: "yj6UY5Eax25RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "C", company_id: 1, created_at: "2017-03-19 18:30:13", updated_at: "2017-03-28 18:26:46"})
@@ -342,7 +344,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 82, email: "remic@remic", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOUYDMpmFPMFZNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Remi", last_name: "C", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 82, email: "remic@remic", picture: 'david_luiz.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOUYDMpmFPMFZNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Remi", last_name: "C", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
 
@@ -353,6 +355,9 @@ class InitializeData < ActiveRecord::Migration[5.0]
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
+    ])
+    FutsalTournament.create!([
+      {id: 1, date: "2017-06-11 19:00:00", duration: 60, futsal_field_id: 1, created_at: "2017-06-12 22:28:00", updated_at: "2017-06-12 22:28:00"}
     ])
     FutsalGame.create!([
       {id: 1, date: "2017-03-27 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 23, score_outside: 20, video_link: "https://www.youtube.com/embed/KEUrilaoguw", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1617698&matchs_id=105768", created_at: "2017-03-19 21:18:46", updated_at: "2017-03-30 11:43:58"},
@@ -386,12 +391,12 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 29, date: "2017-06-05 19:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 23, score_outside: 14, video_link: "http://www.dailymotion.com/embed/video/x5p82l0", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1873814&matchs_id=121979", created_at: "2017-06-06 10:58:08", updated_at: "2017-06-06 10:58:51"},
       {id: 30, date: "2017-06-06 18:30:00", duration: 60, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 14, score_outside: 24, video_link: "http://www.dailymotion.com/embed/video/x5pdtgt", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1876903&matchs_id=122180", created_at: "2017-06-06 20:33:09", updated_at: "2017-06-07 06:55:45"},
       {id: 31, date: "2017-06-07 20:00:00", duration: 60, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 16, score_outside: 14, video_link: "http://www.dailymotion.com/embed/video/x5pkceo", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1880880&matchs_id=122395", created_at: "2017-06-08 06:38:47", updated_at: "2017-06-08 06:40:19"},
-      {id: 32, date: "2017-06-11 19:00:00", duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 8, score_home: 3, score_outside: 3, video_link: "http://www.dailymotion.com/embed/video/x5q2pz8", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895544&matchs_id=123561", created_at: "2017-06-12 06:57:20", updated_at: "2017-06-12 06:58:21"},
-      {id: 33, date: "2017-06-11 19:00:00", duration: 19, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 6, score_outside: 5, video_link: "http://www.dailymotion.com/embed/video/x5q3e46", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895545&matchs_id=123562", created_at: "2017-06-12 10:35:26", updated_at: "2017-06-12 10:36:07"},
-      {id: 34, date: "2017-06-11 19:20:00", duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 3, score_home: 3, score_outside: 7, video_link: "http://www.dailymotion.com/embed/video/x5q2r9f", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895652&matchs_id=123573", created_at: "2017-06-12 11:08:18", updated_at: "2017-06-12 11:53:17"},
-      {id: 35, date: "2017-06-11 19:20:00", duration: 19, futsal_field_id: 1, team_home_id: 8, team_outside_id: 4, score_home: 8, score_outside: 4, video_link: "http://www.dailymotion.com/embed/video/x5q3fka", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895653&matchs_id=123574", created_at: "2017-06-12 20:15:10", updated_at: "2017-06-12 20:15:51"},
-      {id: 36, date: "2017-06-11 19:40:00", duration: 19, futsal_field_id: 1, team_home_id: 8, team_outside_id: 3, score_home: 6, score_outside: 6, video_link: "http://www.dailymotion.com/embed/video/x5q2sm8", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895820&matchs_id=123584", created_at: "2017-06-12 20:30:06", updated_at: "2017-06-12 20:30:52"},
-      {id: 37, date: "2017-06-11 19:40:00", duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 4, score_home: 5, score_outside: 10, video_link: "http://www.dailymotion.com/embed/video/x5q3ham", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895818&matchs_id=123583", created_at: "2017-06-12 21:12:13", updated_at: "2017-06-12 21:21:40"}
+      {id: 32, date: "2017-06-11 19:00:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 8, score_home: 3, score_outside: 3, video_link: "http://www.dailymotion.com/embed/video/x5q2pz8", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895544&matchs_id=123561", created_at: "2017-06-12 06:57:20", updated_at: "2017-06-12 06:58:21"},
+      {id: 33, date: "2017-06-11 19:00:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 3, team_outside_id: 4, score_home: 6, score_outside: 5, video_link: "http://www.dailymotion.com/embed/video/x5q3e46", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895545&matchs_id=123562", created_at: "2017-06-12 10:35:26", updated_at: "2017-06-12 10:36:07"},
+      {id: 34, date: "2017-06-11 19:20:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 3, score_home: 3, score_outside: 7, video_link: "http://www.dailymotion.com/embed/video/x5q2r9f", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895652&matchs_id=123573", created_at: "2017-06-12 11:08:18", updated_at: "2017-06-12 11:53:17"},
+      {id: 35, date: "2017-06-11 19:20:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 8, team_outside_id: 4, score_home: 8, score_outside: 4, video_link: "http://www.dailymotion.com/embed/video/x5q3fka", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895653&matchs_id=123574", created_at: "2017-06-12 20:15:10", updated_at: "2017-06-12 20:15:51"},
+      {id: 36, date: "2017-06-11 19:40:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 8, team_outside_id: 3, score_home: 6, score_outside: 6, video_link: "http://www.dailymotion.com/embed/video/x5q2sm8", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895820&matchs_id=123584", created_at: "2017-06-12 20:30:06", updated_at: "2017-06-12 20:30:52"},
+      {id: 37, date: "2017-06-11 19:40:00", futsal_tournament_id: 1, duration: 19, futsal_field_id: 1, team_home_id: 7, team_outside_id: 4, score_home: 5, score_outside: 10, video_link: "http://www.dailymotion.com/embed/video/x5q3ham", match_resume_link: "http://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=1895818&matchs_id=123583", created_at: "2017-06-12 21:12:13", updated_at: "2017-06-12 21:21:40"}
     ])    
     Goal.create!([
       {id: 1, futsal_game_id: 1, team_id: 1, goal_id: 2, assist_id: nil, time: 95, video_link: "http://www.dailymotion.com/embed/video/x5gh7vk?autoPlay=1", created_at: "2017-03-28 22:26:00", updated_at: "2017-03-29 22:07:36"},
@@ -1779,6 +1784,34 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 4, name: "", highlight_type_id: 1, author_id: 1, victim_id: 12, time: 2190, futsal_game_id: 4, team_id: 4, created_at: "2017-04-04 16:06:05", updated_at: "2017-04-04 16:06:05"},
       {id: 5, name: "", highlight_type_id: 1, author_id: nil, victim_id: 8, time: 2140, futsal_game_id: 12, team_id: 1, created_at: "2017-04-27 11:37:19", updated_at: "2017-04-27 11:40:46"},
       {id: 6, name: "", highlight_type_id: 1, author_id: nil, victim_id: 51, time: 2208, futsal_game_id: 16, team_id: 3, created_at: "2017-05-04 11:11:21", updated_at: "2017-05-04 11:12:51"}
+    ])
+    FutsalTournamentPlayerRegistration.create!([
+      {id: 1, futsal_tournament_id: 1, team_id: 3, user_id: 83, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:41:03", updated_at: "2017-06-12 22:41:03"},
+      {id: 2, futsal_tournament_id: 1, team_id: 3, user_id: 71, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:45:45", updated_at: "2017-06-12 22:45:45"},
+      {id: 3, futsal_tournament_id: 1, team_id: 3, user_id: 73, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:45:53", updated_at: "2017-06-12 22:45:53"},
+      {id: 4, futsal_tournament_id: 1, team_id: 3, user_id: 62, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:46:03", updated_at: "2017-06-12 22:46:03"},
+      {id: 5, futsal_tournament_id: 1, team_id: 3, user_id: 31, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:46:10", updated_at: "2017-06-12 22:46:30"},
+      {id: 6, futsal_tournament_id: 1, team_id: 4, user_id: 15, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:49:48", updated_at: "2017-06-12 22:49:48"},
+      {id: 7, futsal_tournament_id: 1, team_id: 4, user_id: 39, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:49:59", updated_at: "2017-06-12 22:49:59"},
+      {id: 8, futsal_tournament_id: 1, team_id: 4, user_id: 13, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:50:05", updated_at: "2017-06-12 22:50:05"},
+      {id: 9, futsal_tournament_id: 1, team_id: 4, user_id: 80, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:50:20", updated_at: "2017-06-12 22:50:20"},
+      {id: 10, futsal_tournament_id: 1, team_id: 4, user_id: 81, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:50:26", updated_at: "2017-06-12 22:50:26"},
+      {id: 11, futsal_tournament_id: 1, team_id: 7, user_id: 43, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:50:55", updated_at: "2017-06-12 22:50:55"},
+      {id: 12, futsal_tournament_id: 1, team_id: 7, user_id: 16, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:00", updated_at: "2017-06-12 22:51:00"},
+      {id: 13, futsal_tournament_id: 1, team_id: 7, user_id: 17, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:09", updated_at: "2017-06-12 22:51:09"},
+      {id: 14, futsal_tournament_id: 1, team_id: 7, user_id: 18, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:14", updated_at: "2017-06-12 22:51:14"},
+      {id: 15, futsal_tournament_id: 1, team_id: 7, user_id: 58, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:27", updated_at: "2017-06-12 22:51:27"},
+      {id: 16, futsal_tournament_id: 1, team_id: 8, user_id: 1, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:35", updated_at: "2017-06-12 22:51:35"},
+      {id: 17, futsal_tournament_id: 1, team_id: 8, user_id: 4, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:40", updated_at: "2017-06-12 22:51:40"},
+      {id: 18, futsal_tournament_id: 1, team_id: 8, user_id: 82, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:45", updated_at: "2017-06-12 22:51:45"},
+      {id: 19, futsal_tournament_id: 1, team_id: 8, user_id: 51, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:51:55", updated_at: "2017-06-12 22:51:55"},
+      {id: 20, futsal_tournament_id: 1, team_id: 8, user_id: 11, goal: 0, goal_with_assist: nil, goal_without_assist: nil, assist: 0, created_at: "2017-06-12 22:52:12", updated_at: "2017-06-12 22:52:12"}
+    ])
+    FutsalTournamentTeamRegistration.create!([
+      {id: 1, futsal_tournament_id: 1, team_id: 3, ranking: nil, created_at: "2017-06-12 22:38:04", updated_at: "2017-06-12 22:38:04"},
+      {id: 2, futsal_tournament_id: 1, team_id: 4, ranking: nil, created_at: "2017-06-12 22:38:15", updated_at: "2017-06-12 22:38:15"},
+      {id: 3, futsal_tournament_id: 1, team_id: 7, ranking: nil, created_at: "2017-06-12 22:38:25", updated_at: "2017-06-12 22:38:25"},
+      {id: 4, futsal_tournament_id: 1, team_id: 8, ranking: nil, created_at: "2017-06-12 22:39:14", updated_at: "2017-06-12 22:39:14"}
     ])
   end
 end

@@ -1,0 +1,22 @@
+<%= simple_form_for(@futsal_tournament) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="date"><%= f.label :date %></label>
+      <%= f.input :date, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="duration"><%= f.label :duration %></label>
+      <%= f.input :duration, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="futsal_field"><%= f.label :futsal_field %></label>
+      <%= f.association :futsal_field, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

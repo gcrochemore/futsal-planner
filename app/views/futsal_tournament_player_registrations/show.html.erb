@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Futsal tournament:</strong>
+  <%= @futsal_tournament_player_registration.futsal_tournament %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @futsal_tournament_player_registration.team %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @futsal_tournament_player_registration.user %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_tournament_player_registration_path(@futsal_tournament_player_registration) %> |
+<%= link_to 'Back', futsal_tournament_player_registrations_path %>

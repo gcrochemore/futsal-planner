@@ -1,0 +1,1 @@
+json.partial! "futsal_tournament_player_registrations/futsal_tournament_player_registration", futsal_tournament_player_registration: @futsal_tournament_player_registration

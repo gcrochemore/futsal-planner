@@ -1,0 +1,1 @@
+json.array! @futsal_tournament_player_registrations, partial: 'futsal_tournament_player_registrations/futsal_tournament_player_registration', as: :futsal_tournament_player_registration

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Futsal tournament:</strong>
+  <%= @futsal_tournament_team_registration.futsal_tournament %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @futsal_tournament_team_registration.team %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_tournament_team_registration_path(@futsal_tournament_team_registration) %> |
+<%= link_to 'Back', futsal_tournament_team_registrations_path %>

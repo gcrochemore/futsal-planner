@@ -44,6 +44,10 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	###### Entity a créer
 
+	rails generate scaffold futsal_tournament date:datetime duration:integer futsal_field:references
+	rails generate scaffold futsal_tournament_team_registration futsal_tournament:references team:references
+	rails generate scaffold futsal_tournament_player_registration futsal_tournament:references team:references user:references
+
 	###### Entity a modifier
 	
 

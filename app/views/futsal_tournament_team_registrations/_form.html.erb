@@ -1,0 +1,18 @@
+<%= simple_form_for(@futsal_tournament_team_registration) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="futsal_tournament"><%= f.label :futsal_tournament %></label>
+      <%= f.association :futsal_tournament, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="team"><%= f.label :team %></label>
+      <%= f.association :team, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

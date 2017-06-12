@@ -107,9 +107,42 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    create_table :futsal_tournaments do |t|
+      t.datetime :date
+      t.integer :duration
+      t.references :futsal_field, foreign_key: true
+
+      t.timestamps
+    end
+
+    create_table :futsal_tournament_team_registrations do |t|
+      t.references :futsal_tournament, foreign_key: true, index: {:name => "futsal_tournament_on_team_registrations"}
+      t.references :team, foreign_key: true
+
+      ## Statistiques
+      t.integer :ranking
+
+      t.timestamps
+    end
+
+    create_table :futsal_tournament_player_registrations do |t|
+      t.references :futsal_tournament, foreign_key: true, index: {:name => "futsal_tournament_on_player_registrations"}
+      t.references :team, foreign_key: true
+      t.references :user, foreign_key: true
+
+      ## Statistiques
+      t.integer :goal
+      t.integer :goal_with_assist
+      t.integer :goal_without_assist
+      t.integer :assist
+
+      t.timestamps
+    end
+
     create_table :futsal_games do |t|
       t.datetime :date
       t.integer :duration
+      t.references :futsal_tournament, foreign_key: true
       t.references :futsal_field, foreign_key: true
       t.integer :team_home_id
       t.integer :team_outside_id

@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to "<< Précédent", futsal_tournament_path(@futsal_tournament.id - 1) %> | <%= link_to "Suivant >>", futsal_tournament_path(@futsal_tournament.id + 1) %>
+
+<p id="notice"><%= notice %></p>
+<div class="match_header">
+  <div class="row">
+    <div class="col date">
+      <%= @futsal_tournament.date.strftime("%d/%m/%Y %H:%M") %>
+    </div>
+    <div class="col duration">
+      <%= Time.at(@futsal_tournament.duration * 60).utc.strftime("%H:%M:%S") %>
+    </div>
+    <div class="col futsal_field">
+      <%= @futsal_tournament.futsal_field.andand.name %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row goal_tab">
+  <div class="col-sm-12 col-md-3">
+    Team 1
+    <%= render 'futsal_games/show_team', team: @futsal_tournament.team_player(3), futsal_game: @futsal_tournament %>
+    <hr>Team 2
+    <%= render 'futsal_games/show_team', team: @futsal_tournament.team_player(4), futsal_game: @futsal_tournament %>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <% @futsal_tournament.futsal_games.each do |futsal_game| %>
+      <div class="match_header date">
+        <%= futsal_game %><%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>
+      </div>
+      <%= render 'futsal_games/show_highlights_and_goals', futsal_game: futsal_game %> 
+    <% end %>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    Team 3
+    <%= render 'futsal_games/show_team', team: @futsal_tournament.team_player(7), futsal_game: @futsal_tournament %>
+    <hr>Team 4
+    <%= render 'futsal_games/show_team', team: @futsal_tournament.team_player(8), futsal_game: @futsal_tournament %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_futsal_tournament_path(@futsal_tournament) %> |
+<%= link_to 'Back', futsal_tournaments_path %>
