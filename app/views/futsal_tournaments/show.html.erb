@@ -30,7 +30,7 @@
   <div class="col-sm-12 col-md-6">
     <% @futsal_tournament.futsal_games.each do |futsal_game| %>
       <div class="tournament_match_header">
-        <%= futsal_game %><%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>
+        <%= futsal_game %> : <%= futsal_game.score_home %> - <%= futsal_game.score_outside %> <%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>
       </div>
       <%= render 'futsal_games/show_highlights_and_goals', futsal_game: futsal_game %> 
     <% end %>
