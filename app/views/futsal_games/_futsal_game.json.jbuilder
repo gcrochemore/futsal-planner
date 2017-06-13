@@ -8,3 +8,7 @@ end
 json.team_outside_players(futsal_game.team_outside_players) do |player|
   json.partial! 'users/user', user: player.user
 end
+
+json.goals(futsal_game.goals) do |goal|
+  json.partial! 'goals/goal', goal: goal
+end
