@@ -48,6 +48,10 @@
     
           <th><%= sort_link(@q, :match, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :rating, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :futsal_position, default_order: :asc) %></th>
+    
           <th class="col-xs-1"></th>
         </tr>
       </thead>
@@ -71,6 +75,10 @@
             <td><%= user.assist_average_by_match %></td>        
     
             <td><%= user.match %> (avec stats : <%= user.match_with_stats %>)</td>
+
+            <td><%= user.rating %></td>
+
+            <td><%= user.futsal_position %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, user %>

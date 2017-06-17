@@ -1,5 +1,3 @@
-
-
 class HighlightsController < ApplicationController
   authorize_resource
   before_action :set_highlight, only: [:show, :edit, :update, :destroy]

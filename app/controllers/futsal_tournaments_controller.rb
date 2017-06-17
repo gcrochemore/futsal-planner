@@ -1,5 +1,3 @@
-
-
 class FutsalTournamentsController < ApplicationController
   authorize_resource
   before_action :set_futsal_tournament, only: [:show, :edit, :update, :destroy]

@@ -9,6 +9,13 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    create_table :futsal_positions do |t|
+      t.string :name
+      t.string :abbreviation
+
+      t.timestamps
+    end
+
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -42,6 +49,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.references :company
+      t.references :futsal_position
 
       ##Photo
       t.string :picture
@@ -65,7 +73,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.float :goal_mark
       t.float :assist_mark
       t.float :victory_mark
-      t.float :mark
+      t.float :rating, default: 65
 
       t.timestamps null: false
     end

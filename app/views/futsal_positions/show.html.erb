@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @futsal_position.name %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @futsal_position.abbreviation %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_position_path(@futsal_position) %> |
+<%= link_to 'Back', futsal_positions_path %>

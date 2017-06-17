@@ -1,0 +1,60 @@
+<h1><%= t('.title') %><span class="badge"><%= @futsal_positions.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.futsal_position.name')} %>
+
+        <%= f.search_field :abbreviation_cont, {placeholder: t('activerecord.attributes.futsal_position.abbreviation')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, FutsalPosition %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :abbreviation, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @futsal_positions.each do |futsal_position| %>
+          <tr>
+    
+            <td><%= futsal_position.name %></td>
+    
+            <td><%= futsal_position.abbreviation %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, futsal_position %>
+              <% if can? :edit, FutsalPosition %>
+                <%= link_to icon('pencil').html_safe, edit_futsal_position_path(futsal_position) %>
+              <% end %>
+              <% if can? :destroy, FutsalPosition %>
+                <%= link_to icon('times').html_safe, futsal_position, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @futsal_positions %>
+  </div>
+</div>
