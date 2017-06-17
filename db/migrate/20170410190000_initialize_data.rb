@@ -1492,7 +1492,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     GoalMark.create!([
       {id: 1, goal_id: 1, mark: 2, user_id: 1, mac_address: "::1", created_at: "2017-04-04 21:25:46", updated_at: "2017-04-04 22:36:55"},
       {id: 2, goal_id: 90, mark: 3, user_id: 1, mac_address: "::1", created_at: "2017-04-04 22:39:02", updated_at: "2017-04-04 22:42:31"},
-      {id: 2, goal_id: 1060, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-04-04 22:39:02", updated_at: "2017-04-04 22:42:31"}
+      {id: 3, goal_id: 1060, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-04-04 22:39:02", updated_at: "2017-04-04 22:42:31"}
     ])
     GameRegistration.create!([
       {id: 1, user_id: 1, futsal_game_id: 1, team_id: 2, created_at: "2017-03-29 21:52:50", updated_at: "2017-03-29 21:55:18"},
