@@ -1,5 +1,5 @@
 # FUTSAL-PLANNER
-[ ![Codeship Status for gcrochemore/futsal-planner](https://app.codeship.com/projects/e40dbf70-eed9-0134-a8e8-2ea516a13c91/status?branch=master)](https://app.codeship.com/projects/208738)
+[ ![Codeship Status for gcrochemore/futsal-planner](https://app.codeship.com/projects/e40dbf70-eed9-0134-a8e8-2ea516a13c91/status?branch=develop)](https://app.codeship.com/projects/208738)
 
 ##### Lancer les tests
 	

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "email_mask"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   create_table "futsal_games", force: :cascade do |t|
     t.datetime "date"
     t.integer  "duration"
+    t.integer  "futsal_tournament_id"
     t.integer  "futsal_field_id"
     t.integer  "team_home_id"
     t.integer  "team_outside_id"
@@ -37,9 +39,51 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "score_outside"
     t.string   "video_link"
     t.string   "match_resume_link"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["futsal_field_id"], name: "index_futsal_games_on_futsal_field_id"
+    t.index ["futsal_tournament_id"], name: "index_futsal_games_on_futsal_tournament_id"
+  end
+
+  create_table "futsal_positions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "futsal_tournament_player_registrations", force: :cascade do |t|
+    t.integer  "futsal_tournament_id"
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.integer  "goal"
+    t.integer  "goal_with_assist"
+    t.integer  "goal_without_assist"
+    t.integer  "assist"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["futsal_tournament_id"], name: "futsal_tournament_on_player_registrations"
+    t.index ["team_id"], name: "index_futsal_tournament_player_registrations_on_team_id"
+    t.index ["user_id"], name: "index_futsal_tournament_player_registrations_on_user_id"
+  end
+
+  create_table "futsal_tournament_team_registrations", force: :cascade do |t|
+    t.integer  "futsal_tournament_id"
+    t.integer  "team_id"
+    t.integer  "ranking"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["futsal_tournament_id"], name: "futsal_tournament_on_team_registrations"
+    t.index ["team_id"], name: "index_futsal_tournament_team_registrations_on_team_id"
+  end
+
+  create_table "futsal_tournaments", force: :cascade do |t|
+    t.datetime "date"
+    t.integer  "duration"
+    t.integer  "futsal_field_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["futsal_field_id"], name: "index_futsal_tournaments_on_futsal_field_id"
   end
 
   create_table "game_registrations", force: :cascade do |t|
@@ -75,6 +119,8 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "assist_id"
     t.integer  "time"
     t.string   "video_link"
+    t.integer  "views_number"
+    t.float    "average_mark"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["futsal_game_id"], name: "index_goals_on_futsal_game_id"
@@ -144,12 +190,12 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "", null: false
-    t.string   "encrypted_password",      default: "", null: false
+    t.string   "email",                   default: "",   null: false
+    t.string   "encrypted_password",      default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -158,12 +204,14 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",         default: 0,  null: false
+    t.integer  "failed_attempts",         default: 0,    null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "company_id"
+    t.integer  "futsal_position_id"
+    t.string   "picture"
     t.integer  "goal"
     t.integer  "goal_with_assist"
     t.integer  "goal_without_assist"
@@ -182,12 +230,13 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.float    "goal_mark"
     t.float    "assist_mark"
     t.float    "victory_mark"
-    t.float    "mark"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.float    "rating",                  default: 65.0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["futsal_position_id"], name: "index_users_on_futsal_position_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end

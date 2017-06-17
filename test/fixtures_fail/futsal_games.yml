@@ -3,7 +3,7 @@
 one:
   date: 2017-03-28 21:04:32
   duration: 1
-  FutsalField: one
+  futsal_field: one
   team_home_id: 1
   team_outside_id: 1
   score_home: 1
@@ -14,7 +14,7 @@ one:
 two:
   date: 2017-03-28 21:04:32
   duration: 1
-  FutsalField: two
+  futsal_field: two
   team_home_id: 1
   team_outside_id: 1
   score_home: 1

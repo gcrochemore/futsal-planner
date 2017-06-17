@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, 
             :highlight_types, :goal_marks, :user_futsal_game_with_users,
             :futsal_tournament_player_registrations, :futsal_tournament_team_registrations, 
-            :futsal_tournaments
+            :futsal_tournaments, :futsal_positions
 
   devise_for :users
   resources :users
@@ -23,5 +23,8 @@ Rails.application.routes.draw do
       get :mark_goal
     end
   end
+
+  get '/export_db', to: 'admin#export_db'
+  get '/show_db', to: 'admin#show_db_view'
   
 end

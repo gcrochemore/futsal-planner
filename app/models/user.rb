@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
   belongs_to :company
+  belongs_to :futsal_position
 
   has_many :goals, :class_name => :Goal,:foreign_key => "goal_id"
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
@@ -42,7 +43,9 @@ class User < ApplicationRecord
     self.goal_mark = 0
     self.assist_mark = 0
     self.victory_mark = 0
-    self.mark = 0
+    self.rating = 65 + self.goal_average_by_match + (self.assist_average_by_match * 4);
+    self.rating = (self.match_with_stats < 5 ? self.rating * 0.9 : self.rating)
+    self.rating = (self.rating < 65 ? 65 : self.rating)
   end
 
   def update_all_stats
