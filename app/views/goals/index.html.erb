@@ -42,6 +42,8 @@
     
           <th><%= sort_link(@q, :time, default_order: :asc) %></th>
     
+          <th>Note</th>
+    
           <th><%= sort_link(@q, :video_link, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
@@ -57,11 +59,12 @@
             <td><%= goal.team %></td>
     
             <td><%= link_to (icon('futbol-o') + " " + goal.andand.goal).html_safe, goal, target: "_blank" %></td>
-
               
             <td><%= goal.assist %></td>
     
             <td><%= Time.at(goal.time).utc.strftime("%M:%S") %></td>
+
+            <td><%= goal.goal_marks.length %></td>
     
             <td><%= link_to icon('television') + " Voir la video du but", goal.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %></td>
     
