@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
-  belongs_to :company
-  belongs_to :futsal_position
+  belongs_to :company, optional: true
+  belongs_to :futsal_position, optional: true
 
   has_many :goals, :class_name => :Goal,:foreign_key => "goal_id"
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
