@@ -3,8 +3,8 @@ class Goal < ApplicationRecord
   
   belongs_to :futsal_game
   belongs_to :team
-  belongs_to :goal, :class_name => :User,:foreign_key => "goal_id"
-  belongs_to :assist, :class_name => :User,:foreign_key => "assist_id"
+  belongs_to :goal, :class_name => :User,:foreign_key => "goal_id", optional: true
+  belongs_to :assist, :class_name => :User,:foreign_key => "assist_id", optional: true
   has_many :goal_marks
 
   scope :order_by_futsal_game_and_time, -> { includes(:futsal_game).order('futsal_games.date desc, time desc') }
