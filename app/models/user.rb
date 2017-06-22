@@ -44,7 +44,7 @@ class User < ApplicationRecord
     self.assist_mark = 0
     self.victory_mark = 0
     self.rating = 65 + self.goal_average_by_match + (self.assist_average_by_match * 4);
-    self.rating = (self.match_with_stats < 5 ? self.rating * 0.9 : self.rating)
+    self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
     self.rating = (self.rating < 65 ? 65 : self.rating)
   end
 
@@ -109,5 +109,9 @@ class User < ApplicationRecord
   def to_s
   	first_name.to_s + " " + last_name.to_s
   end
+
+  def match_rating
+    (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65)}.sum / game_registrations.length).round
+  end  
    
 end
