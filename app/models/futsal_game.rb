@@ -78,6 +78,6 @@ class FutsalGame < ApplicationRecord
   end
 
   def rating
-    (game_registrations.map{|a| (a.user.rating ? a.user.rating : 0)}.sum / game_registrations.map{|a| (a.user.rating ? 1 : 0)}.sum).round
+    (game_registrations.map{|a| (a.user.rating ? a.user.rating : 0)}.sum / game_registrations.map{|a| (a.user.rating ? 1 : 0)}.sum).to_f.round
   end
 end
