@@ -89,7 +89,7 @@ class User < ApplicationRecord
 
     victoire_percent = victoire.to_f / number_total_of_matchs.to_f
 
-    '<strong>Moyenne par match</strong><br>' + 
+    'Note : ' + rating.to_s + '<br><strong>Moyenne par match</strong><br>' + 
       but_pour.to_s + 'BP ' + but_contre.to_s + 'BC : ' + (but_pour - but_contre).to_s + '<br>' + 
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
       resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + 
