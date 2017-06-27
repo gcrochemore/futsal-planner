@@ -28,6 +28,12 @@
     <%= render 'futsal_games/show_team', team: @futsal_tournament.team_player(4), futsal_game: @futsal_tournament %>
   </div>
   <div class="col-sm-12 col-md-6">
+    <% @futsal_tournament.andand.team_less_players.order_by_users_rating.each do |player| %>
+      <div class="player">
+        <%= show_player(player.user) %> 
+      </div>
+    <% end %>
+
     <% @futsal_tournament.futsal_games.each do |futsal_game| %>
       <div class="tournament_match_header">
         <%= futsal_game %> : <%= futsal_game.score_home %> - <%= futsal_game.score_outside %> <%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>

@@ -15,7 +15,11 @@ class FutsalTournament < ApplicationRecord
 
   def team_player(team)
     futsal_tournament_player_registrations.where(team_id: team).order('goal desc')
-  end 
+  end  
+
+  def team_less_players
+    futsal_tournament_player_registrations.where(team: nil)
+  end
 
   def has_stat
     return true
