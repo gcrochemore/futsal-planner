@@ -24,4 +24,10 @@ class FutsalTournament < ApplicationRecord
   def has_stat
     return true
   end
+
+
+
+  def to_s
+    date
+  end 
 end

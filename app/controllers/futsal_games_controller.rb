@@ -85,7 +85,7 @@ class FutsalGamesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def futsal_game_params
 
-      params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link,
+      params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :futsal_tournament_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link,
                                           game_registrations_attributes: [:id,:user_id, :futsal_game_id, :team_id, :goal, :assist, :_destroy]);
 
     end
