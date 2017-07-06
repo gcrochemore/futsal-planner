@@ -9,6 +9,7 @@ class Goal < ApplicationRecord
 
   scope :order_by_futsal_game_and_time, -> { includes(:futsal_game).order('futsal_games.date desc, time desc') }
   scope :order_by_time, -> { order('time') }
+  scope :top_buts, -> { where(average_mark: 5) }
   
   after_save do
     self.futsal_game.update_stats
@@ -20,6 +21,11 @@ class Goal < ApplicationRecord
       self.assist.update_stats
       self.assist.save
     end
+  end
+
+  def update_average_mark
+    self.average_mark = (goal_marks.map{|a| (a.mark ? a.mark : 0)}.sum / goal_marks.map{|a| (a.mark ? 1 : 0)}.sum).to_f.round
+    self.save
   end
 
 end
