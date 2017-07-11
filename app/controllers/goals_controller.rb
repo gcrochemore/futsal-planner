@@ -10,10 +10,12 @@ class GoalsController < ApplicationController
   # GET /goals/1
   def show
     @my_mark = GoalMark.where(goal: self, mac_address: request.ip, user: current_user)
+    @my_mark = GoalMark.where(goal: @goal, mac_address: request.ip, user: current_user)
   end
 
   def mark_goal
     @mark_goal = GoalMark.where(mac_address: request.ip, user: current_user).first || GoalMark.new
+    @mark_goal = GoalMark.where(goal: @goal, mac_address: request.ip, user: current_user).first || GoalMark.new
     @mark_goal.goal = @goal
     @mark_goal.mac_address = request.ip
     @mark_goal.user = current_user
