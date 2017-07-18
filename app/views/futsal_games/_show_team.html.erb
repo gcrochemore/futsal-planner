@@ -7,7 +7,7 @@
     <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.andand.goal_average_by_match.to_f %>
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.andand.assist_average_by_match.to_f %>
     <% sum_match = sum_match + player.user.andand.match_with_stats.to_f %>
-    <% sum_rating = sum_rating + player.user.rating.to_f %>
+    <% sum_rating = sum_rating + player.user.andand.rating.to_f %>
     <div class="player">
       <% player_goal = futsal_game.goal_by_user(player.user).all.length %>
       <% player_assist = futsal_game.assist_by_user(player.user).all.length %>
