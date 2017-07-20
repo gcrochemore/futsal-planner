@@ -68,15 +68,15 @@
     
             <td><%= user.goal %></td>
 
-            <td><%= user.goal_average_by_match %></td>            
+            <td><%= user.goal_average_by_match.to_f.round(2) %></td>            
     
             <td><%= user.assist %></td>
 
-            <td><%= user.assist_average_by_match %></td>        
+            <td><%= user.assist_average_by_match.to_f.round(2) %></td>        
     
             <td><%= user.match %> (avec stats : <%= user.match_with_stats %>)</td>
 
-            <td><%= user.rating %></td>
+            <td><%= user.rating.to_f.round(2) %></td>
 
             <td><%= user.futsal_position %></td>
     

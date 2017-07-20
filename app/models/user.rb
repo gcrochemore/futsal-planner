@@ -23,9 +23,10 @@ class User < ApplicationRecord
 
     self.assist = self.assists.length
 
+    self.update_match_time
 
     self.match = self.game_registrations.length
-    self.match_with_stats = self.game_registrations_with_stats
+    self.match_with_stats = (self.match_time / 60.0)
 
     self.goal_average_by_match = self.goal.to_f / self.match_with_stats.to_f
 
@@ -35,22 +36,40 @@ class User < ApplicationRecord
 
     self.assist_percent_by_match = 0
     
-    self.victory = 0
-    self.draw = 0
-    self.lose = 0
-    self.victory_percentage = 0
     self.last_result = 0
     self.goal_mark = 0
     self.assist_mark = 0
     self.victory_mark = 0
-    self.rating = 65 + self.goal_average_by_match + (self.assist_average_by_match * 4);
+    self.rating = 65 + (self.goal_average_by_match + self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier);
     self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
     self.rating = (self.rating < 65 ? 65 : self.rating)
   end
 
   def update_all_stats
     self.goal = self.goals.length
-    self.assist = self.assists.length    
+    self.assist = self.assists.length  
+
+    self.match_goal_for = 0
+    self.match_goal_against = 0
+    self.games_results = ''
+
+    self.victory = 0
+    self.lose = 0
+    self.draw = 0
+
+    self.game_registrations.order_by_futsal_game.each do |game_registration|
+      score_pour = (game_registration.futsal_game.team_home == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+      score_contre = (game_registration.futsal_game.team_outside == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
+      self.match_goal_for = self.match_goal_for + (score_pour ? score_pour : 0)
+      self.match_goal_against = self.match_goal_against + (score_contre ? score_contre : 0)
+      match_result = game_registration.futsal_game.match_result(game_registration.team)
+      (match_result == 'V') ? self.victory = self.victory + 1 : (match_result == 'D') ? self.lose = self.lose + 1 : self.draw = self.draw + 1
+      self.games_results = self.games_results + match_result
+    end
+
+    self.match_goal_difference = self.match_goal_for - self.match_goal_against
+
+    self.victory_percentage = self.victory.to_f / self.match.to_f
   end
 
   def goal_average
@@ -66,44 +85,21 @@ class User < ApplicationRecord
   end 
 
   def display_stats
-    number_of_matchs = self.match_with_stats.to_i
-    moyenne_goals = self.goal_average_by_match.to_f
-    moyenne_assists =  self.assist_average_by_match.to_f
-    resultats = ""
-    victoire = 0
-    nul = 0
-    defaite = 0
-    but_pour = 0
-    but_contre = 0
-    number_total_of_matchs = self.match.to_i
-    # TODO : store in db for improve show rapidity
-    #self.game_registrations.order_by_futsal_game.each do |game_registration|
-    #  score_pour = (game_registration.futsal_game.team_home == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
-    #  score_contre = (game_registration.futsal_game.team_outside == game_registration.team) ? game_registration.futsal_game.score_home :  game_registration.futsal_game.score_outside
-    #  but_pour = but_pour + (score_pour ? score_pour : 0)
-    #  but_contre = but_contre + (score_contre ? score_contre : 0)
-    #  match_result = game_registration.futsal_game.match_result(game_registration.team)
-    #  (match_result == 'V') ? victoire = victoire + 1 : (match_result == 'D') ? defaite = defaite + 1 : nul = nul + 1
-    #  resultats = resultats + match_result
-    #end
-
-    victoire_percent = victoire.to_f / number_total_of_matchs.to_f
-
-    'Note : ' + rating.to_s + '<br><strong>Moyenne par match</strong><br>' + 
-      but_pour.to_s + 'BP ' + but_contre.to_s + 'BC : ' + (but_pour - but_contre).to_s + '<br>' + 
+    'Note : ' + self.rating.to_s + '<br><strong>Moyenne par match</strong><br>' + 
+      self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
-      resultats + '<br>' + victoire.to_s + 'V ' + nul.to_s + 'N ' + defaite.to_s + 'D<br>' + 
-      (victoire_percent.round(2) * 100).to_s + '% victoires <br>
+      self.match_time.to_s + ' minutes jouées<br>' +
+      self.games_results.to_s + '<br>' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
+      (self.victory_percentage.to_f.round(2) * 100).to_s + '% victoires <br>
       <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end
 
-  def game_registrations_with_stats
-    compteur = 0
+  def update_match_time
+    self.match_time = 0
     self.game_registrations.each do |game_registration|
-      game_registration.futsal_game.has_stat ? compteur = compteur + game_registration.futsal_game.duration : ""
+      game_registration.futsal_game.has_stat ? self.match_time = self.match_time + game_registration.futsal_game.duration : ""
     end
-    (compteur / 60.0).round 
   end
 
   def to_s
@@ -113,5 +109,10 @@ class User < ApplicationRecord
   def match_rating
     (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65 )}.sum / game_registrations.length).round
   end  
-   
+
+  def update_all_user_stats
+    self.update_stats
+    self.update_all_stats
+    self.save
+  end  
 end
