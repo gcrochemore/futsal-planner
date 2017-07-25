@@ -90,7 +90,7 @@ class User < ApplicationRecord
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
       self.match_time.to_s + ' minutes jouées<br>' +
       self.games_results.to_s + '<br>' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
-      (self.victory_percentage.to_f.round(2) * 100).to_s + '% victoires <br>
+      (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>
       <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end

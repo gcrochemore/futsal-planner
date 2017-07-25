@@ -12,8 +12,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
     create_table :futsal_positions do |t|
       t.string :name
       t.string :abbreviation
-      t.integer :average_goal_multiplier 
-      t.integer :average_assist_multiplier 
+      t.float :average_goal_multiplier 
+      t.float :average_assist_multiplier 
 
       t.timestamps
     end

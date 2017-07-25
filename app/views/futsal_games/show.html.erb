@@ -100,9 +100,6 @@
     <%= render 'show_team', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
   </div>
   <div class="col-sm-12 col-md-6">
-    <% if @futsal_game.has_stat %>
-      <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart, futsal_game: @futsal_game %>
-    <% end %>
     
     <% @futsal_game.andand.team_less_players.order_by_users_stats.each do |player| %>
         <div class="player">
@@ -117,6 +114,9 @@
 
     <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %> 
 
+    <% if @futsal_game.has_stat %>
+      <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart, futsal_game: @futsal_game %>
+    <% end %>
   </div>
   <div class="col-sm-12 col-md-3">
     <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>    

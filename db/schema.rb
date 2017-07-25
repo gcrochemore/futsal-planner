@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   create_table "futsal_positions", force: :cascade do |t|
     t.string   "name"
     t.string   "abbreviation"
-    t.integer  "average_goal_multiplier"
-    t.integer  "average_assist_multiplier"
+    t.float    "average_goal_multiplier"
+    t.float    "average_assist_multiplier"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
