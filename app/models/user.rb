@@ -96,7 +96,8 @@ class User < ApplicationRecord
       self.match_time.to_s + ' minutes jouées<br>' +
       self.games_results.to_s + '<br>' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
       (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
-      'Gardien : ' + self.goalkeeper_goal_against.to_s + 'BC ' + '(' + self.goalkeeper_goal_against_average.to_i.to_s + ') ' + (self.goalkeeper_duration.to_f/60).to_s + 'min <br>' +
+      'Gardien : ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
+      '(' + self.goalkeeper_goal_against_average.to_s + ') ' + (self.goalkeeper_duration.to_f/60).to_s + 'min <br>' +
       'Joueur : ' + (self.player_duration.to_f/60).to_s + 'min <br>' +
       'Remp. : ' + (self.substitute_duration.to_f/60).to_s + 'min <br>' +
       '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
