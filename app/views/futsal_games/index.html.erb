@@ -69,6 +69,7 @@
               <% if nb_buts_stats != nb_buts %>
                 <%= icon('exclamation-triangle') %><%= nb_buts %> Buts (<%= nb_buts_stats %> dans stats)
               <% end %>
+              <%= futsal_game.rating %>
             </td>
             <td>
               <%= link_to icon('eye').html_safe, futsal_game %>

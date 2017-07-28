@@ -65,6 +65,13 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :match_time
       t.float :match_with_stats
       t.integer :match_with_stats_time
+
+      t.integer :goalkeeper_duration
+      t.integer :player_duration
+      t.integer :substitute_duration
+      t.integer :goalkeeper_goal_against
+      t.float :goalkeeper_goal_against_average
+
       t.integer :match_goal_for
       t.integer :match_goal_against
       t.integer :match_goal_difference
@@ -180,6 +187,10 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :goal_with_assist
       t.integer :goal_without_assist
       t.integer :assist
+      t.integer :goalkeeper_duration
+      t.integer :player_duration
+      t.integer :substitute_duration
+      t.integer :goalkeeper_goal_against
 
       t.timestamps
     end
@@ -189,10 +200,21 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.references :team, foreign_key: true
       t.integer :goal_id
       t.integer :assist_id
+      t.integer :goalkeeper_id
       t.integer :time
       t.string :video_link
       t.integer :views_number
       t.float :average_mark
+
+      t.timestamps
+    end
+
+    create_table :futsal_game_player_positions do |t|
+      t.references :game_registration, foreign_key: true
+      t.references :futsal_position, foreign_key: true
+      t.integer :begin_time
+      t.integer :end_time
+      t.integer :duration
 
       t.timestamps
     end

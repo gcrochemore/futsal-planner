@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, 
             :highlight_types, :goal_marks, :user_futsal_game_with_users,
             :futsal_tournament_player_registrations, :futsal_tournament_team_registrations, 
-            :futsal_tournaments, :futsal_positions
+            :futsal_tournaments, :futsal_positions, :futsal_game_player_positions
 
   devise_for :users
   resources :users

@@ -1,0 +1,1 @@
+json.partial! "futsal_game_player_positions/futsal_game_player_position", futsal_game_player_position: @futsal_game_player_position

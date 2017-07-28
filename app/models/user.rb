@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :goals, :class_name => :Goal,:foreign_key => "goal_id"
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
+  has_many :goalkeeper_goals_against, :class_name => :Goal,:foreign_key => "goalkeeper_id"
   has_many :game_registrations
 
   default_scope { order(:first_name, :last_name) }
@@ -23,7 +24,11 @@ class User < ApplicationRecord
 
     self.assist = self.assists.length
 
+    self.goalkeeper_goal_against = self.goalkeeper_goals_against.length
+
     self.update_match_time
+
+    self.goalkeeper_goal_against_average = (self.goalkeeper_duration.to_f / self.goalkeeper_goal_against.to_f).to_f / 60
 
     self.match = self.game_registrations.length
     self.match_with_stats = (self.match_time / 60.0)
@@ -90,15 +95,26 @@ class User < ApplicationRecord
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
       self.match_time.to_s + ' minutes jouées<br>' +
       self.games_results.to_s + '<br>' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
-      (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>
-      <i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
+      (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
+      'Gardien : ' + self.goalkeeper_goal_against.to_s + 'BC ' + '(' + self.goalkeeper_goal_against_average.to_i.to_s + ') ' + (self.goalkeeper_duration.to_f/60).to_s + 'min <br>' +
+      'Joueur : ' + (self.player_duration.to_f/60).to_s + 'min <br>' +
+      'Remp. : ' + (self.substitute_duration.to_f/60).to_s + 'min <br>' +
+      '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end
 
   def update_match_time
     self.match_time = 0
+    self.goalkeeper_duration = 0
+    self.player_duration = 0
+    self.substitute_duration = 0
     self.game_registrations.each do |game_registration|
-      game_registration.futsal_game.has_stat ? self.match_time = self.match_time + game_registration.futsal_game.duration : ""
+      if game_registration.futsal_game.has_stat 
+        self.match_time = self.match_time + game_registration.futsal_game.duration.to_i
+        self.goalkeeper_duration = self.goalkeeper_duration + game_registration.goalkeeper_duration.to_i
+        self.player_duration = self.player_duration + game_registration.player_duration.to_i
+        self.substitute_duration = self.substitute_duration + game_registration.substitute_duration.to_i
+      end
     end
   end
 

@@ -9,8 +9,10 @@ class FutsalGame < ApplicationRecord
   has_many :goals
   has_many :game_registrations
   has_many :highlights
+  has_many :futsal_game_player_positions
 
   accepts_nested_attributes_for :game_registrations
+  accepts_nested_attributes_for :futsal_game_player_positions
 
   default_scope { order('date desc') }
 
@@ -55,6 +57,10 @@ class FutsalGame < ApplicationRecord
 
   def assist_by_user(user)
     goals.where(assist: user)
+  end    
+
+  def goalkeeper_goal_against_by_user(user)
+    goals.where(goalkeeper: user)
   end    
 
   def to_s

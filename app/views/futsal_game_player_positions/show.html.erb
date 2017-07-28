@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game registration:</strong>
+  <%= @futsal_game_player_position.game_registration %>
+</p>
+
+<p>
+  <strong>Futsal position:</strong>
+  <%= @futsal_game_player_position.futsal_position %>
+</p>
+
+<p>
+  <strong>Begin time:</strong>
+  <%= @futsal_game_player_position.begin_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @futsal_game_player_position.end_time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @futsal_game_player_position.duration %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_game_player_position_path(@futsal_game_player_position) %> |
+<%= link_to 'Back', futsal_game_player_positions_path %>

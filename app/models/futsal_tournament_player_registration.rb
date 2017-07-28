@@ -15,4 +15,8 @@ class FutsalTournamentPlayerRegistration < ApplicationRecord
     self.goal = self.futsal_tournament.goal_by_user(self.user).length
     self.assist = self.futsal_tournament.assist_by_user(self.user).length
   end
+
+  def goalkeeper_goal_against
+
+  end
 end

@@ -16,7 +16,7 @@
 
       <%= show_player(player.user) %> 
 
-      <%= futsal_game.has_stat ? icon('futbol-o') + ' ' + player_goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + player_assist.to_s : "" %> 
+      <%= futsal_game.has_stat ? icon('futbol-o') + ' ' + player_goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + player_assist.to_s + ' ' + icon('sign-in') + ' ' + player.goalkeeper_goal_against.to_i.to_s : "" %> 
     </div>
   <% end %>
 </div>
