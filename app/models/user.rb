@@ -123,11 +123,16 @@ class User < ApplicationRecord
   	first_name.to_s + " " + last_name.to_s
   end
 
+  def update_game_registrations_stats
+    game_registrations.map{|a| a.update_stats}
+  end 
+
   def match_rating
     (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65 )}.sum / game_registrations.length).round
   end  
 
   def update_all_user_stats
+    self.update_game_registrations_stats
     self.update_stats
     self.update_all_stats
     self.save
