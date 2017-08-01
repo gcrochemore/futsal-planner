@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "futsal_game_player_positions", force: :cascade do |t|
+    t.integer  "game_registration_id"
+    t.integer  "futsal_position_id"
+    t.integer  "begin_time"
+    t.integer  "end_time"
+    t.integer  "duration"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["futsal_position_id"], name: "index_futsal_game_player_positions_on_futsal_position_id"
+    t.index ["game_registration_id"], name: "index_futsal_game_player_positions_on_game_registration_id"
+  end
+
   create_table "futsal_games", force: :cascade do |t|
     t.datetime "date"
     t.integer  "duration"
@@ -62,8 +74,13 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "goal_with_assist"
     t.integer  "goal_without_assist"
     t.integer  "assist"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "goalkeeper_duration"
+    t.integer  "player_duration"
+    t.integer  "substitute_duration"
+    t.integer  "goalkeeper_goal_against"
+    t.float    "goalkeeper_goal_against_average"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["futsal_tournament_id"], name: "futsal_tournament_on_player_registrations"
     t.index ["team_id"], name: "index_futsal_tournament_player_registrations_on_team_id"
     t.index ["user_id"], name: "index_futsal_tournament_player_registrations_on_user_id"
@@ -73,8 +90,15 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "futsal_tournament_id"
     t.integer  "team_id"
     t.integer  "ranking"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "match_goal_for"
+    t.integer  "match_goal_against"
+    t.integer  "match_goal_difference"
+    t.integer  "points"
+    t.integer  "victory"
+    t.integer  "draw"
+    t.integer  "lose"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.index ["futsal_tournament_id"], name: "futsal_tournament_on_team_registrations"
     t.index ["team_id"], name: "index_futsal_tournament_team_registrations_on_team_id"
   end
@@ -83,8 +107,18 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "date"
     t.integer  "duration"
     t.integer  "futsal_field_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "winner_id"
+    t.integer  "best_goalkeeper_id"
+    t.integer  "best_scorer_id"
+    t.integer  "best_passer_id"
+    t.integer  "best_goal_id"
+    t.integer  "more_substitute_id"
+    t.integer  "more_player_id"
+    t.integer  "bigger_fault_id"
+    t.integer  "best_injury_id"
+    t.integer  "more_fair_play_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["futsal_field_id"], name: "index_futsal_tournaments_on_futsal_field_id"
   end
 
@@ -96,8 +130,12 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "goal_with_assist"
     t.integer  "goal_without_assist"
     t.integer  "assist"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "goalkeeper_duration"
+    t.integer  "player_duration"
+    t.integer  "substitute_duration"
+    t.integer  "goalkeeper_goal_against"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["futsal_game_id"], name: "index_game_registrations_on_futsal_game_id"
     t.index ["team_id"], name: "index_game_registrations_on_team_id"
     t.index ["user_id"], name: "index_game_registrations_on_user_id"
@@ -119,6 +157,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "team_id"
     t.integer  "goal_id"
     t.integer  "assist_id"
+    t.integer  "goalkeeper_id"
     t.integer  "time"
     t.string   "video_link"
     t.integer  "views_number"
@@ -192,12 +231,12 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",   null: false
-    t.string   "encrypted_password",      default: "",   null: false
+    t.string   "email",                           default: "",   null: false
+    t.string   "encrypted_password",              default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,    null: false
+    t.integer  "sign_in_count",                   default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -206,7 +245,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",         default: 0,    null: false
+    t.integer  "failed_attempts",                 default: 0,    null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "first_name"
@@ -222,6 +261,11 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "match_time"
     t.float    "match_with_stats"
     t.integer  "match_with_stats_time"
+    t.integer  "goalkeeper_duration"
+    t.integer  "player_duration"
+    t.integer  "substitute_duration"
+    t.integer  "goalkeeper_goal_against"
+    t.float    "goalkeeper_goal_against_average"
     t.integer  "match_goal_for"
     t.integer  "match_goal_against"
     t.integer  "match_goal_difference"
@@ -238,9 +282,9 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.float    "goal_mark"
     t.float    "assist_mark"
     t.float    "victory_mark"
-    t.float    "rating",                  default: 65.0
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.float    "rating",                          default: 65.0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
