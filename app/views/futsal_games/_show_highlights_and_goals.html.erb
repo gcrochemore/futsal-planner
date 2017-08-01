@@ -22,7 +22,7 @@
         <% else %>
           <span class="label-tooltip drop-menu">
             <%= link_to (icon('futbol-o') + " " + goal.andand.goal.to_s + " " + (goal.andand.assist.nil? ? " " : icon('arrow-circle-right').html_safe + " " + goal.andand.assist.to_s)).html_safe, goal, target: "_blank" %>
-            <span class="label-tooltiptext  label-tooltip-bottom"><strong>Gardien :</strong><%= goal.andand.goalkeeper.to_s %></span>
+            <span class="label-tooltiptext  label-tooltip-bottom"><strong>Gardien :</strong> <%= goal.andand.goalkeeper.to_s %></span>
           </span>          
         <% end %>
       <% end %>

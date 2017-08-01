@@ -135,6 +135,18 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :duration
       t.references :futsal_field, foreign_key: true
 
+      ## Statistiques
+      t.integer :winner_id
+      t.integer :best_goalkeeper_id
+      t.integer :best_scorer_id
+      t.integer :best_passer_id
+      t.integer :best_goal_id
+      t.integer :more_substitute_id
+      t.integer :more_player_id
+      t.integer :bigger_fault_id
+      t.integer :best_injury_id
+      t.integer :more_fair_play_id
+
       t.timestamps
     end
 
@@ -144,6 +156,14 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
 
       ## Statistiques
       t.integer :ranking
+
+      t.integer :match_goal_for
+      t.integer :match_goal_against
+      t.integer :match_goal_difference
+      t.integer :points
+      t.integer :victory
+      t.integer :draw
+      t.integer :lose
 
       t.timestamps
     end
@@ -158,6 +178,11 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :goal_with_assist
       t.integer :goal_without_assist
       t.integer :assist
+      t.integer :goalkeeper_duration
+      t.integer :player_duration
+      t.integer :substitute_duration
+      t.integer :goalkeeper_goal_against
+      t.float :goalkeeper_goal_against_average
 
       t.timestamps
     end

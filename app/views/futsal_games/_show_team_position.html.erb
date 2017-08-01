@@ -1,0 +1,16 @@
+<table class="table table-hover table-sm table-bordered">
+  <tr>
+    <th>Pos.</th>
+    <th>Joueur</th>
+    <th>Deb</th>
+    <th>Fin</th>
+  </tr>
+  <% team_position.each do |futsal_game_player_position| %>
+    <tr>
+      <td><%= futsal_game_player_position.futsal_position.abbreviation %></td>
+      <td><%= futsal_game_player_position.game_registration.user %></td>
+      <td><%= formatted_match_time(futsal_game_player_position.begin_time) %></td>
+      <td><%= formatted_match_time(futsal_game_player_position.end_time) %></td>
+    </tr>
+  <% end %>
+</table>

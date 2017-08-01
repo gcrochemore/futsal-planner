@@ -98,6 +98,7 @@
 <div class="row goal_tab">
   <div class="col-sm-12 col-md-3">
     <%= render 'show_team', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
+    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home) %>
   </div>
   <div class="col-sm-12 col-md-6">
     
@@ -119,7 +120,8 @@
     <% end %>
   </div>
   <div class="col-sm-12 col-md-3">
-    <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>    
+    <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>   
+    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
   </div>
 </div>
 <% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>

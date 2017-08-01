@@ -33,6 +33,58 @@
         <%= show_player(player.user) %> 
       </div>
     <% end %>
+    <br>
+    <h2>Classement</h2>
+    <table class="table table-hover table-sm table-bordered">
+      <tr>
+        <th>Equipe</th>
+        <th>Pts</th>
+        <th>V</th>
+        <th>N</th>
+        <th>D</th>
+        <th>Bp</th>
+        <th>Bc</th>
+        <th>Diff</th>
+      </tr>
+      <% @futsal_tournament.andand.raking.each do |futsal_tournament_team_ranking| %>
+        <tr>
+          <td><%= futsal_tournament_team_ranking.team %> </td>
+          <td><%= futsal_tournament_team_ranking.points %> </td>
+          <td><%= futsal_tournament_team_ranking.victory %> </td>
+          <td><%= futsal_tournament_team_ranking.draw %> </td>
+          <td><%= futsal_tournament_team_ranking.lose %> </td>
+          <td><%= futsal_tournament_team_ranking.match_goal_for %> </td>
+          <td><%= futsal_tournament_team_ranking.match_goal_against %> </td>
+          <td><%= futsal_tournament_team_ranking.match_goal_difference %> </td>
+        </tr>
+      <% end %>
+    </table>
+
+    <br>
+    <h2>Hall of fame</h2>
+    Trophée :<br>
+    <ul>
+      <li><strong>Steve Savidan</strong> <i>(Vainqueur)</i> : <%= @futsal_tournament.andand.raking.first.team %></li>
+      <li><strong>Ali Ahamada</strong> <i>(Meilleur Gardien)</i> : <%= @futsal_tournament.best_goalkeeper ? show_player(@futsal_tournament.best_goalkeeper.user) : '<i>Non défini</i>'.html_safe %></li>
+      <li><strong>Stéphane Guivarch</strong> <i>(Meilleur buteur)</i> : <%= show_player(@futsal_tournament.best_scorer.user) %> (<%= @futsal_tournament.best_scorer.goal %> buts) </li>
+      <li><strong>Benoit Pédretti</strong> <i>(Meilleur passeur)</i> : <%= show_player(@futsal_tournament.best_passer.user) %> (<%= @futsal_tournament.best_passer.assist %> assists) </li>
+      <li><strong>Brandao</strong> <i>(Plus beau but)</i> : <%= @futsal_tournament.best_goal ? (link_to (@futsal_tournament.best_goal.goal.to_s).html_safe, @futsal_tournament.best_goal, target: "_blank") : '<i>Non défini</i>'.html_safe %></li>
+      <li><strong>Hatem Ben Arfa</strong> <i>(Le plus remplacant)</i> : <%= show_player(@futsal_tournament.more_substitute.user) %> (<%= (@futsal_tournament.more_substitute.substitute_duration / 60).round %> min) </li>
+      <li><strong>Blaise Matuidi</strong> <i>(Le plus sur le terrain)</i> : <%= show_player(@futsal_tournament.more_player.user) %> (<%= (@futsal_tournament.more_player.player_duration / 60).round %> min) </li>
+      <li><strong>Yannick Cahuzac</strong> <i>(La plus grosse faute)</i> : <%= @futsal_tournament.bigger_fault ? (link_to (@futsal_tournament.bigger_fault.author.to_s).html_safe, @futsal_tournament.bigger_fault, target: "_blank") : '<i>Non défini</i>'.html_safe %></li>
+      <li><strong>Yoann Gourcuff</strong> <i>(La plus belle blessure)</i> : <%= @futsal_tournament.best_injury ? (link_to (@futsal_tournament.best_injury.victim.to_s).html_safe, @futsal_tournament.best_injury, target: "_blank") : '<i>Non défini</i>'.html_safe %></li>
+      <li><strong>Cyril Rool</strong> <i>(Prix du fair-play)</i> : <%= @futsal_tournament.more_fair_play ? @futsal_tournament.andand.more_fair_play : '<i>Non défini</i>'.html_safe %></li>
+
+    </ul>
+
+    <% @futsal_tournament.andand.team_less_players.order_by_users_rating.each do |player| %>
+      <div class="player">
+        <%= show_player(player.user) %> 
+      </div>
+    <% end %>
+    
+    <br>
+    <h2>Matchs</h2>
 
     <% @futsal_tournament.futsal_games.each do |futsal_game| %>
       <div class="tournament_match_header">
@@ -40,6 +92,7 @@
       </div>
       <%= render 'futsal_games/show_highlights_and_goals', futsal_game: futsal_game %> 
     <% end %>
+
   </div>
   <div class="col-sm-12 col-md-3">
     <div class="tournament_team">Team 3</div>
