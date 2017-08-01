@@ -6,9 +6,6 @@ class GameRegistration < ApplicationRecord
   belongs_to :team
   has_many :futsal_game_player_positions
 
-  before_save :update_stats
-  after_save :update_user_stat
-
   scope :order_by_stats, -> { order('goal desc, assist desc') }
 
   scope :order_by_users_stats, -> { includes(:user).order('users.goal_average_by_match desc') }
@@ -26,15 +23,8 @@ class GameRegistration < ApplicationRecord
         # t.integer :substitute_duration
     self.goalkeeper_goal_against = self.futsal_game.goalkeeper_goal_against_by_user(self.user).length
     self.goalkeeper_duration = futsal_game_player_positions.where(futsal_position_id: 1).sum(:duration)
-    self.substitute_duration = 0
+    self.substitute_duration = futsal_game_player_positions.where(futsal_position_id: 100).sum(:duration)
     self.player_duration = (self.futsal_game.duration * 60) - self.goalkeeper_duration - self.substitute_duration
-  end
-
-  def update_user_stat
-    if self.user
-      self.user.update_stats
-      self.user.save
-    end
   end
 
   def match_result

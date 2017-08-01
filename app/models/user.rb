@@ -14,7 +14,6 @@ class User < ApplicationRecord
   has_many :game_registrations
 
   default_scope { order(:first_name, :last_name) }
-  before_save :update_stats
 
   def update_stats
     self.goal = self.goals.length
@@ -48,12 +47,7 @@ class User < ApplicationRecord
     self.rating = 65 + (self.goal_average_by_match + self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier);
     self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
     self.rating = (self.rating < 65 ? 65 : self.rating)
-  end
-
-  def update_all_stats
-    self.goal = self.goals.length
-    self.assist = self.assists.length  
-
+  
     self.match_goal_for = 0
     self.match_goal_against = 0
     self.games_results = ''
@@ -94,12 +88,13 @@ class User < ApplicationRecord
       self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
       self.match_time.to_s + ' minutes jouées<br>' +
-      self.games_results.to_s + '<br>' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
+      self.games_results[0..10].to_s + (games_results.length > 10 ? '...' : '') + '<br>' + 
+      self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
       (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
-      'Gardien : ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
-      '(' + self.goalkeeper_goal_against_average.to_s + ') ' + (self.goalkeeper_duration.to_f/60).to_s + 'min <br>' +
-      'Joueur : ' + (self.player_duration.to_f/60).to_s + 'min <br>' +
-      'Remp. : ' + (self.substitute_duration.to_f/60).to_s + 'min <br>' +
+      'Gardien : ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min / ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
+      '(1 but / ' + self.goalkeeper_goal_against_average.andand.round(2).to_s + ' min) <br>' +
+      'Joueur : ' + (self.player_duration.to_f/60).round.to_s + ' min <br>' +
+      'Remp. : ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
       '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end

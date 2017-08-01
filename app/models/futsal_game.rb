@@ -16,15 +16,6 @@ class FutsalGame < ApplicationRecord
 
   default_scope { order('date desc') }
 
-  after_save :update_stats
-
-  def update_stats
-    self.game_registrations.each do |game_registration|
-      game_registration.update_stats
-      game_registration.save
-    end
-  end
-
   def match_result(team)
     result = ""
     if !(team_home.nil? || team_outside.nil? || score_home.nil? || score_outside.nil?)
@@ -40,11 +31,11 @@ class FutsalGame < ApplicationRecord
   end
 
   def team_home_players
-    game_registrations.where(team: team_home).order('goal desc')
+    game_registrations.where(team: team_home)
   end 
 
   def team_outside_players
-    game_registrations.where(team: team_outside).order('goal desc')
+    game_registrations.where(team: team_outside)
   end  
 
   def team_less_players
@@ -84,6 +75,10 @@ class FutsalGame < ApplicationRecord
   end
 
   def rating
-    (game_registrations.map{|a| ((a.user.rating && !a.user.rating.nan?) ? a.user.rating : 0 )}.sum / game_registrations.map{|a| ((a.user.rating && !a.user.rating.nan?) ? 1 : 0)}.sum).to_f.round
+    (game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? a.user.rating : 0 )}.sum / game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? 1 : 0)}.sum).to_f.round
+  end
+
+  def futsal_game_player_position_by_team(team)
+    FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)).order(:futsal_position_id, :begin_time)
   end
 end
