@@ -4,16 +4,16 @@ class FutsalTournament < ApplicationRecord
   has_many :futsal_games
   belongs_to :futsal_field
 
-  belongs_to :winner, :class_name => :Team, :foreign_key => "winner_id"
-  belongs_to :best_goalkeeper, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_goalkeeper_id"
-  belongs_to :best_scorer, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_scorer_id"
-  belongs_to :best_passer, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_passer_id"
-  belongs_to :best_goal, :class_name => :Goal,:foreign_key => "best_goal_id"
-  belongs_to :more_substitute, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "more_substitute_id"
-  belongs_to :more_player, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "more_player_id"
-  belongs_to :bigger_fault, :class_name => :Highlight, :foreign_key => "bigger_fault_id"
-  belongs_to :best_injury, :class_name => :Highlight, :foreign_key => "best_injury_id"
-  belongs_to :more_fair_play, :class_name => :Team, :foreign_key => "more_fair_play_id"
+  belongs_to :winner, :class_name => :Team, :foreign_key => "winner_id", optional: true
+  belongs_to :best_goalkeeper, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_goalkeeper_id", optional: true
+  belongs_to :best_scorer, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_scorer_id", optional: true
+  belongs_to :best_passer, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "best_passer_id", optional: true
+  belongs_to :best_goal, :class_name => :Goal,:foreign_key => "best_goal_id", optional: true
+  belongs_to :more_substitute, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "more_substitute_id", optional: true
+  belongs_to :more_player, :class_name => :FutsalTournamentPlayerRegistration, :foreign_key => "more_player_id", optional: true
+  belongs_to :bigger_fault, :class_name => :Highlight, :foreign_key => "bigger_fault_id", optional: true
+  belongs_to :best_injury, :class_name => :Highlight, :foreign_key => "best_injury_id", optional: true
+  belongs_to :more_fair_play, :class_name => :Team, :foreign_key => "more_fair_play_id", optional: true
 
   def update_stats
     self.winner = futsal_tournament_team_registrations.order('futsal_tournament_team_registrations.points desc,
