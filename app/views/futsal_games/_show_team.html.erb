@@ -17,12 +17,12 @@
       <%= show_player(player.user) %> 
 
       <%= futsal_game.has_stat ? icon('futbol-o') + ' ' + player_goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + player_assist.to_s + ' ' + icon('sign-in') + ' ' + player.goalkeeper_goal_against.to_i.to_s : "" %> 
+      <br>GB : <%= (player.goalkeeper_duration / 60).round %> min - JO : <%= (player.player_duration/60).round %> min - RP : <%= (player.substitute_duration/60).round %> min
     </div>
   <% end %>
 </div>
-<%= "<strong>Moyenne de l'équipe : </strong>" + (sum_goal_average_by_match ? sum_goal_average_by_match.round(2) : '-').to_s + ' ' + icon('futbol-o') + ' ' + 
+<%= "<strong>Total : </strong>" + (sum_goal_average_by_match ? sum_goal_average_by_match.round(2) : '-').to_s + ' ' + icon('futbol-o') + ' ' + 
                                                 (sum_assist_average_by_match ? sum_assist_average_by_match.round(2) : '-').to_s).html_safe + ' ' + icon('arrow-circle-right' %> 
                                                 <%= team.length > 0 ? (sum_match / team.length).round(2) : 'NaN' %> matchs <br> 
-                                                <strong>Note :</strong> <%= team.length > 0 ? (sum_rating / team.length).round(2).to_s : 'NaN' %>
-<br>
+<strong>Note :</strong> <%= team.length > 0 ? (sum_rating / team.length).round(2).to_s : 'NaN' %>
 <strong>Score théorique : </strong> <%= calculate_score(sum_goal_average_by_match, sum_assist_average_by_match).round(2).to_s %>
