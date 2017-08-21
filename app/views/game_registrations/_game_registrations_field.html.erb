@@ -3,10 +3,10 @@
     <%= f.association :user, label: false, input_html: { class: "form-control" } %>
   </div>
   <div class="col">
-    <%= f.input :futsal_game, label: false, input_html: { class: "form-control" }, collection: [f.object.futsal_game] %>
+    <%= f.input :futsal_game_id, label: false, input_html: { class: "form-control" }, collection: [f.object.futsal_game], selected: f.object.futsal_game.id %>
   </div>
   <div class="col">
-    <%= f.input :team, label: false, input_html: { class: "form-control" }, collection: [f.object.futsal_game.team_home, f.object.futsal_game.team_outside] %>
+    <%= f.input :team_id, label: false, input_html: { class: "form-control" }, collection: [f.object.futsal_game.team_home, f.object.futsal_game.team_outside], selected: f.object.team.andand.id %>
   </div>
   <div class="col-1">
     <%= link_to_remove_association icon('times').html_safe, f %>

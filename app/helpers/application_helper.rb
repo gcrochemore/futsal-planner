@@ -21,9 +21,9 @@ module ApplicationHelper
     tooltip.html_safe
   end 
 
-  def show_game_level(match_goal, average_goal, match_assist, average_assist, game_duration = 60)
-    match_goal = match_goal / (game_duration.to_f/60)
-    match_assist = match_assist / (game_duration.to_f/60)
+  def show_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
+    match_goal = match_goal.to_f / (game_duration.to_f / 60)
+    match_assist = match_assist.to_f / (game_duration.to_f / 60)
 
     if match_goal + 1 > average_goal && match_goal - 1 < average_goal
       result = 0
