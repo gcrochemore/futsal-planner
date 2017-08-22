@@ -84,6 +84,7 @@ class User < ApplicationRecord
   end 
 
   def display_stats
+    self.games_results = self.games_results.to_s
     'Note : ' + self.rating.to_s + '<br><strong>Moyenne par match</strong><br>' + 
       self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
       self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
