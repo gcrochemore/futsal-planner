@@ -1,6 +1,6 @@
 class FutsalTournamentPlayerRegistration < ApplicationRecord
   belongs_to :futsal_tournament
-  belongs_to :team
+  belongs_to :team, optional: true
   belongs_to :user
 
   scope :order_by_stats, -> { order('goal desc, assist desc') }
