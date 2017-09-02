@@ -1,0 +1,18 @@
+<div class="timeline">
+  <div class="timeline_team">
+    <%= render 'timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_home_id), futsal_game_duration: futsal_game.duration  %>
+  </div>
+  <div class="time">
+    <% i = 0 %> 
+    <% until i > futsal_game.duration do %>
+      <div class="minute" style="margin-left:<%= ((i * 60) / (futsal_game.duration * 60).to_f) * 95 %>%;"><%= i %></div> 
+      <% i += 5 %>
+    <% end %>
+  </div>
+  <div class="timeline_team">
+    <%= render 'timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_outside_id), futsal_game_duration: futsal_game.duration  %>    
+  </div>
+</div>
+
+
+

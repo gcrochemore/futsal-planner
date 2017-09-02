@@ -1,4 +1,32 @@
-<%= link_to "<< Précédent", futsal_game_path(@futsal_game.id - 1) %> | <%= link_to "Suivant >>", futsal_game_path(@futsal_game.id + 1) %>
+<div class="link-previous-next">
+  <%= link_to icon('angle-double-left') + " Précédent", futsal_game_path(@futsal_game.id - 1) %> | <%= link_to ("Suivant " + icon('angle-double-right')).html_safe, futsal_game_path(@futsal_game.id + 1) %>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="goal_modal" tabindex="-1" role="dialog" aria-labelledby="goal_modal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">But</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="iframe_goal" src="https://www.google.com" width="100%" height="500px"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function change_goal(id) {
+    document.getElementById('iframe_goal').src = "../goals/" + id + "/show_embed";
+  }
+</script>
+
 <% if can? :affect_player_to_team, @futsal_game %>
   <%= simple_form_for(@futsal_game) do |f| %>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -39,8 +67,9 @@
   <% end %>
 <% end %>
 
-
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 <div class="match_header">
   <div class="row">
     <div class="col date">
@@ -95,13 +124,26 @@
     <% end %>
   </div>
 
+<%= render 'timeline', futsal_game: @futsal_game %> 
+
 <div class="row goal_tab">
-  <div class="col-sm-12 col-md-3">
-    <%= render 'show_team', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
+  <div class="col-sm-12 col-md-6">
+    <%= render 'show_team_fifa', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
     <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home) %>
   </div>
+  
   <div class="col-sm-12 col-md-6">
-    
+    <%= render 'show_team_fifa', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>   
+    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
+  </div>
+</div>
+<% if @futsal_game.has_stat %>
+  <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart, futsal_game: @futsal_game %>
+<% end %>
+<div class="row">
+  <div class="col-sm-1 col-md-3"> 
+  </div> 
+  <div class="col-sm-10 col-md-6">    
     <% @futsal_game.andand.team_less_players.order_by_users_stats.each do |player| %>
         <div class="player">
           <%= show_player(player.user) %> 
@@ -113,17 +155,14 @@
         </div>
     <% end %>
 
-    <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %> 
+    
 
-    <% if @futsal_game.has_stat %>
-      <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart, futsal_game: @futsal_game %>
-    <% end %>
-  </div>
-  <div class="col-sm-12 col-md-3">
-    <%= render 'show_team', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>   
-    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
+    <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %>
   </div>
 </div>
+
+
+
 <% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
   <%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
 <% end %>

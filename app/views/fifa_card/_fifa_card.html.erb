@@ -1,0 +1,62 @@
+<div class="player-fut <%= (player.rating > 78) ? 'gold-fut' : (player.rating < 70) ? 'bronze-fut' : 'silver-fut' %>">
+  <div class="name">
+    <%= link_to player, player %> <%= stat ? icon('futbol-o') + ' ' + stat.goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + stat.assist.to_s + ' ' + icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s : "" %> 
+  </div>
+  <div class="rating">
+    <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %><%= player.rating.round %>
+  </div>
+  <div class="position">
+    <%= player.futsal_position.abbreviation %>
+  </div>
+  <div class="picture">
+    <img src="/assets/fifa/players/<%= player.andand.picture ? player.andand.picture : 'inconnu.jpg' %>">
+  </div>
+  <div class="company">    
+    <img src="/assets/fifa/companies/<%= player.andand.company.andand.picture %>">
+  </div>
+  <div class="nationality">
+    <img src="/assets/fifa/nationalities/french.png">
+  </div>
+
+  <div class="attr1">
+    <%= player.goal %> BUT
+  </div>
+
+  <div class="attr2">
+    <%= (player.goal_average_by_match || 0).round(1) %> B/M
+  </div>
+
+  <div class="attr3">
+    <%= player.match %> MAT
+  </div>
+
+  <div class="attr4">
+    <%= player.assist %> AST
+  </div>
+
+  <div class="attr5">
+    <%= (player.assist_average_by_match || 0).round(1) %> A/M
+  </div>
+
+  <div class="attr6">
+    <%= player.match_with_stats.round(2) %> M/S
+  </div>
+
+  <div class="highlights_and_goals">
+    <% if highlights_and_goals_by_user %>  
+      <% highlights_and_goals_by_user.each do |goal| %>
+        <span class="label-tooltip drop-menu">
+          <%= link_to_open_goal_in_modal(((goal.andand.goal.andand.id == player.id ) ? icon('futbol-o') : ((goal.andand.assist.andand.id == player.id ) ? icon('arrow-circle-right') : icon('sign-in'))), goal).html_safe %>
+          <span class="label-tooltiptext label-tooltip-bottom">
+            <%= Time.at(goal.time).utc.strftime("%M:%S") %><br>
+            <strong>Buteur :</strong> <%= goal.andand.goal.to_s %><br>
+            <strong>Passeur :</strong> <%= goal.andand.assist.to_s %><br>
+            <strong>Gardien :</strong> <%= goal.andand.goalkeeper.to_s %><br>
+            <%= link_to "Voir le but", goal, target: "_blank" %>
+          </span>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

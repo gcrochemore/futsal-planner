@@ -70,6 +70,14 @@ class FutsalGame < ApplicationRecord
     (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
   end
 
+  def highlights_and_goals_by_team team_id
+    (highlights.where(team_id: team_id).includes(:victim) + goals.where(team_id: team_id).includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
+  end
+
+  def highlights_and_goals_by_user user_id
+    (highlights.where('victim_id = ?', user_id).includes(:victim) + goals.where('goal_id = ? or assist_id= ? or goalkeeper_id= ?', user_id, user_id, user_id).includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
+  end
+
   def has_stat
     !(self.video_link.nil? || self.video_link == "")
   end

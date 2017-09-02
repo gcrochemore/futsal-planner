@@ -65,4 +65,8 @@ module ApplicationHelper
     end
     
   end
+
+  def link_to_open_goal_in_modal(icon, goal)
+    return '<a data-toggle="modal" data-target="#goal_modal" onClick="change_goal(' + goal.id.to_s + ');">' + icon + '</a>'
+  end
 end

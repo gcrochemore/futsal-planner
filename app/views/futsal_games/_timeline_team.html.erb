@@ -1,0 +1,14 @@
+<% futsal_game_team_goals.each do |goal| %>
+  <div class="goal" style="margin-left:<%= ((goal.time - 8) / (futsal_game_duration * 60).to_f) * 95 %>%;">        
+    <span class="label-tooltip drop-menu">
+      <%= link_to_open_goal_in_modal(icon('futbol-o'), goal).html_safe %>
+      <span class="label-tooltiptext label-tooltip-bottom<%= (goal.time > ((futsal_game_duration * 60).to_f / 2))  ? " label-tooltip-left" : "" %>">
+        <%= Time.at(goal.time).utc.strftime("%M:%S") %><br>
+        <strong>Buteur :</strong> <%= goal.andand.goal.to_s %><br>
+        <strong>Passeur :</strong> <%= goal.andand.assist.to_s %><br>
+        <strong>Gardien :</strong> <%= goal.andand.goalkeeper.to_s %><br>
+        <%= link_to "Voir le but", goal, target: "_blank" %>
+      </span>
+    </span>
+  </div>
+<% end %>

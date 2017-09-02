@@ -21,10 +21,12 @@ Rails.application.routes.draw do
   resources :goals do
     member do
       get :mark_goal
+      get :show_embed
     end
   end
 
   get '/export_db', to: 'admin#export_db'
   get '/show_db', to: 'admin#show_db_view'
+  get '/create_seeds', to: 'admin#create_seeds'
   
 end

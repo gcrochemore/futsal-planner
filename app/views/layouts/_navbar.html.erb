@@ -6,56 +6,125 @@
     <%= link_to 'Accueil', '/', class: 'navbar-brand' %>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <% if can? :read, Company %>
-          <li class="nav-item btn">
-           <%= link_to('Entreprises', companies_path)  %> 
-          </li>
-        <% end %>
-        <% if can? :read, Team %>
-          <li class="nav-item btn">
-           <%= link_to('Equipes', teams_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, FutsalField %>
-          <li class="nav-item btn">
-           <%= link_to('Terrains de futsal', futsal_fields_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, FutsalGame %>
-          <li class="nav-item btn">
-         <%= link_to('Matchs de futsal', futsal_games_path)  %> 
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Entités<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if can? :read, Company %>
+              <li class="nav-item btn">
+               <%= link_to('Entreprises', companies_path)  %> 
+              </li>
+            <% end %>
+            <% if can? :read, Team %>
+              <li class="nav-item btn">
+               <%= link_to('Equipes', teams_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalField %>
+              <li class="nav-item btn">
+               <%= link_to('Terrains de futsal', futsal_fields_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalPosition %>
+              <li class="nav-item btn">
+               <%= link_to('Postes', futsal_positions_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, HighlightType %>
+              <li class="nav-item btn">
+               <%= link_to('Types de highlights', highlight_types_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, User %>
+              <li class="nav-item btn">
+               <%= link_to('Users', users_path)  %> 
+              </li> 
+            <% end %>
+          </ul>
+        </li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Matchs<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if can? :read, FutsalGame %>
+              <li class="nav-item btn">
+                <%= link_to('Matchs de futsal', futsal_games_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, GameRegistration %>
+              <li class="nav-item btn">
+               <%= link_to('Inscriptions', game_registrations_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, Goal %>
+              <li class="nav-item btn">
+               <%= link_to('Buts', goals_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, Highlight %>
+              <li class="nav-item btn">
+               <%= link_to('Highlights', highlights_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, GoalMark %>
+              <li class="nav-item btn">
+               <%= link_to('Notes', goal_marks_path)  %> 
+              </li> 
+            <% end %>
+          </ul>
+        </li>
+        
+        
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Tournoi<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if can? :read, FutsalTournament %>
+              <li class="nav-item btn">
+               <%= link_to('Tournament', futsal_tournaments_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalTournamentTeamRegistration %>
+              <li class="nav-item btn">
+               <%= link_to('Team Tournament', futsal_tournament_team_registrations_path)  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, FutsalTournamentPlayerRegistration %>
+              <li class="nav-item btn">
+               <%= link_to('Team Player', futsal_tournament_player_registrations_path)  %> 
+              </li> 
+            <% end %>
+          </ul>
         </li> 
-        <% end %>
-        <% if can? :read, GameRegistration %>
-          <li class="nav-item btn">
-           <%= link_to('Inscriptions', game_registrations_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, User %>
-          <li class="nav-item btn">
-           <%= link_to('Users', users_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, Goal %>
-          <li class="nav-item btn">
-           <%= link_to('Buts', goals_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, HighlightType %>
-          <li class="nav-item btn">
-           <%= link_to('Types de highlights', highlight_types_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, Highlight %>
-          <li class="nav-item btn">
-           <%= link_to('Highlights', highlights_path)  %> 
-          </li> 
-        <% end %>
-        <% if can? :read, GoalMark %>
-          <li class="nav-item btn">
-           <%= link_to('Notes', goal_marks_path)  %> 
-          </li> 
-        <% end %>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Database<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if can? :manage, :all %>
+              <li class="nav-item btn">
+                <%= link_to('Export DB', export_db_path) %>
+              </li> 
+            <% end %>
+            <% if can? :manage, :all %>
+              <li class="nav-item btn">
+                <%= link_to('Voir DB', show_db_path) %>
+              </li> 
+            <% end %>
+            <% if can? :manage, :all %>
+              <li class="nav-item btn">
+                <%= link_to('Export seeds', create_seeds_path) %>
+              </li> 
+            <% end %>
+          </ul>
+        </li>         
       </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="dropdown">

@@ -86,7 +86,8 @@ class FutsalGamesController < ApplicationController
     def futsal_game_params
 
       params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :futsal_tournament_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link,
-                                          game_registrations_attributes: [:id,:user_id, :futsal_game_id, :team_id, :goal, :assist, :_destroy]);
+                                          game_registrations_attributes: [:id, :user_id, :futsal_game_id, :team_id, :goal, :assist, :_destroy],
+                                          futsal_game_player_position_attributes: [:id, :game_registration_id, :futsal_position_id, :begin_time, :end_time, :duration, :_destroy]);
 
     end
 end

@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!, except: [:show, :mark_goal]
-  before_action :set_goal, only: [:show, :edit, :update, :destroy, :mark_goal]
+  before_action :authenticate_user!, except: [:show, :show_embed, :mark_goal]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :mark_goal, :show_embed]
   # GET /goals
   def index
     @q = Goal.accessible_by(current_ability).ransack(params[:q])
@@ -11,6 +11,10 @@ class GoalsController < ApplicationController
   def show
     #self.views_number = self.views_number + 1
     #self.save
+    @my_mark = GoalMark.where(goal: @goal, mac_address: request.ip, user: current_user)
+  end
+
+  def show_embed
     @my_mark = GoalMark.where(goal: @goal, mac_address: request.ip, user: current_user)
   end
 
@@ -31,6 +35,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
+    
   end
 
   # POST /goals

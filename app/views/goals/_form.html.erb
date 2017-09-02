@@ -1,52 +1,47 @@
 <%= simple_form_for(@goal) do |f| %>
   <%= f.error_notification %>
 
-  <div class="row form-inputs">
-    <div class="col">
-      <div class="form-group">
+  <div class="form-inputs">
+    <div class="row">
+      <div class="form-group col">
         <label for="futsal_game"><%= f.label :futsal_game %></label>
         <%= f.association :futsal_game, label: false, input_html: { class: "form-control" } %>
       </div>
-      <div class="form-group">
+      <div class="form-group col">
+        <label for="video_link"><%= f.label :video_link %></label>
+        <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="form-group col">
         <label for="team"><%= f.label :team %></label>
         <%= f.association :team, label: false, input_html: { class: "form-control" } %>
       </div>
-      <div class="form-group">
+      <div class="form-group col">
         <label for="goal"><%= f.label :goal %></label>
         <%= f.association :goal, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
       </div>      
-      <div class="form-group">
+      <div class="form-group col">
         <label for="assist"><%= f.label :assist %></label>
         <%= f.association :assist, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
       </div>     
-      <div class="form-group">
+      <div class="form-group col">
         <label for="goalkeeper"><%= f.label :goalkeeper %></label>
         <%= f.association :goalkeeper, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
       </div>
-      <div class="form-group">
+      <div class="form-group col">
         <label for="time"><%= f.label :time %></label> - M: <input type="text" id="m" value="0" style="width: 20px;" /> S: <input type="text" id="s" value="0" style="width: 20px;" /> <a onclick="setTime()">Set time</a>
         <%= f.input :time, label: false, input_html: { class: "form-control" } %>
       </div>
-      
-    </div>
-    <div class="col-8">
-      <div class="form-group">
-        <label for="video_link"><%= f.label :video_link %></label>
-        <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
+      <div class="form-actions col">
+        <%= f.button :submit %>
       </div>
+    </div>
+    <div class="row">
       <iframe src="<%= @goal.futsal_game.andand.video_link %>?start=<%= @goal.time ? @goal.time - 15 : 0 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>
       <!--<iframe src="<%= @goal.futsal_game.andand.video_link %>?start=<%= @goal.time ? @goal.time - 15 - (25*60) - 10 : 0 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>-->
       <!--<iframe frameborder="0" width="100%" height="380" src="<%= @goal.video_link %>" allowfullscreen></iframe>-->
     </div>
-  </div>
-
-
-  
-
-  
-
-  <div class="form-actions">
-    <%= f.button :submit %>
   </div>
 <% end %>
 

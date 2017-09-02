@@ -25,6 +25,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
-//= require Chart.min
+//= require Chart
 //= require_tree .
 

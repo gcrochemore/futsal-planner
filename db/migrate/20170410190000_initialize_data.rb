@@ -433,6 +433,14 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
+    user = User.new({id: 102, email: "redam@redam", futsal_position_id: 4, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5cXcPD7QBc1w_-xp5Axg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Reda", last_name: "M", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 103, email: "sissimoe@sissimoe", futsal_position_id: 4, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5cXdxq7QBc1w_-xpnDAg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Sssimo", last_name: "E", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user.skip_confirmation!
+    user.save!
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}

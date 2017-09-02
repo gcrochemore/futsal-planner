@@ -1,0 +1,16 @@
+<%
+  models = ActiveRecord::Base.descendants
+
+  models = models.select do |model|
+             (model.to_s != 'ActiveRecord::SchemaMigration') && \
+              model.table_exists? && \
+              model.exists?
+           end
+
+  export = ""
+  models.each do |model| 
+    export = export + SeedDump.dump(model, exclude: [])
+  end
+%>
+
+<%= export %>

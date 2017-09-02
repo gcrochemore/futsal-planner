@@ -124,7 +124,7 @@ class User < ApplicationRecord
   end 
 
   def match_rating
-    (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65 )}.sum / game_registrations.length).round
+    (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65 )}.sum / (game_registrations.length.nonzero? || 1)).round
   end  
 
   def update_all_user_stats

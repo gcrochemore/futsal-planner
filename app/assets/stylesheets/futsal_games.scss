@@ -22,6 +22,8 @@
 .match_header {
 	background: url(en_tete_match.png);
 	color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .match_resume {
@@ -40,9 +42,11 @@
 	font-size: 200%;
 	text-align: center;
 	background: white;
-    vertical-align: middle;
+  vertical-align: middle;
 	font-weight: bold;
 	color: black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .match_link {
@@ -70,6 +74,9 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+.team-fifa{
+	min-height: 700px !important;
+}
 .player{
 	margin: 10px;
 	padding: 5px;
@@ -90,5 +97,36 @@
 	.outside_goal {
 
 	}
+}
+
+.timeline{
+	width: 100%;
+	margin-bottom: 5px;
+	.timeline_team{
+		height: 24px;
+		.goal{
+			position: absolute;
+		}
+	}
+	.time{
+		background-color: black;
+		border-radius: 10px;
+		color: white;
+		font-style: bold;
+		height: 24px;
+		.minute{
+			position: absolute;
+		}
+	}
+
+	.label-tooltip .label-tooltiptext {
+	  width: 200px !important;
+	  z-index: 10 !important;
+	}
+
+	.label-tooltip-left {
+	  left:-192px !important;
+	}
+
 }
 
