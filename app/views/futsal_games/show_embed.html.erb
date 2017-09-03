@@ -12,7 +12,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe id="iframe_goal" src="" width="100%" height="500px"></iframe>
+        <iframe id="iframe_goal" src="https://www.google.com" width="100%" height="500px"></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -22,8 +22,8 @@
 </div>
 
 <script type="text/javascript">
-  function change_goal(url) {
-    document.getElementById('iframe_goal').src = url;
+  function change_goal(id) {
+    document.getElementById('iframe_goal').src = "../goals/" + id;
   }
 </script>
 

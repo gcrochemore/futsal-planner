@@ -21,7 +21,8 @@ module ApplicationHelper
     tooltip.html_safe
   end 
 
-  def show_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
+
+  def calculate_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
     match_goal = match_goal.to_f / (game_duration.to_f / 60)
     match_assist = match_assist.to_f / (game_duration.to_f / 60)
 
@@ -47,6 +48,13 @@ module ApplicationHelper
       result = result + 1
     end
 
+    return result
+  end
+
+
+  def show_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
+    
+    result = calculate_game_level(match_goal, average_goal, match_assist, average_assist, game_duration)
 
     if result == 0
       return icon('arrow-right', class: 'yellow')
@@ -67,6 +75,50 @@ module ApplicationHelper
   end
 
   def link_to_open_goal_in_modal(icon, goal)
-    return '<a data-toggle="modal" data-target="#goal_modal" onClick="change_goal(' + goal.id.to_s + ');">' + icon + '</a>'
+    return '<a class="link_to_highlight" data-toggle="modal" data-target="#goal_modal" onClick="change_goal(\'../goals/' + goal.id.to_s + '/show_embed\');">' + icon + '</a>'
+  end
+
+  def link_to_open_highlight_in_modal(icon, goal)
+    return '<a class="link_to_highlight" data-toggle="modal" data-target="#goal_modal" onClick="change_goal(\'../highlights/' + goal.id.to_s + '\');">' + icon + '</a>'
+  end
+
+  def player_fut_class(rating, game_level)
+    if rating.nil?
+      rating = 0;
+    end
+    if game_level.nil?
+      game_level = 0;
+    end
+    if (rating > 78)
+      if game_level > 1
+        return 'gold-fut-tots'
+      elsif game_level > 0
+        return 'gold-fut-in-form'
+      elsif game_level > -1
+        return 'gold-fut'
+      else
+        return 'gold-fut-non-rare'
+      end
+    elsif (rating < 70) 
+      if game_level > 1
+        return 'bronze-fut-tots'
+      elsif game_level > 0
+        return 'bronze-fut-in-form'
+      elsif game_level > -1
+        return 'bronze-fut'
+      else
+        return 'bronze-fut-non-rare'
+      end
+    else 
+      if game_level > 1
+        return 'silver-fut-tots'
+      elsif game_level > 0
+        return 'silver-fut-in-form'
+      elsif game_level > -1
+        return 'silver-fut'
+      else
+        return 'silver-fut-non-rare'
+      end
+    end
   end
 end
