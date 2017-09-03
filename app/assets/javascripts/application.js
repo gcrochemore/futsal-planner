@@ -11,19 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap/util
-//= require bootstrap/alert
-//= require bootstrap/button
-//= require bootstrap/carousel
-//= require bootstrap/collapse
-//= require bootstrap/dropdown
-//= require bootstrap/modal
-//= require bootstrap/scrollspy
-//= require bootstrap/tab
-//# require bootstrap/tooltip  # not required
-//# require bootstrap/popover  # not required
 //= require jquery_ujs
+//= require popper
 //= require turbolinks
+//= require bootstrap
 //= require cocoon
 //= require Chart.min
 //= require_tree .

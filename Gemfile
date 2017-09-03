@@ -98,3 +98,5 @@ gem 'nokogiri'
 gem 'chart-js-rails'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'popper_js', '~> 1.11', '>= 1.11.1'
