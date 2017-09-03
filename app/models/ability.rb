@@ -23,6 +23,7 @@ class Ability
 
     can :read, Goal
     can :mark_goal, Goal
+    can :show_embed, Goal
 
     can :read, Highlight
 
