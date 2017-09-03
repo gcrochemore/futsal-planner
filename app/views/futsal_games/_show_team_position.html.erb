@@ -5,6 +5,7 @@
       <th>Joueur</th>
       <th>Deb</th>
       <th>Fin</th>
+      <th>Calculé ?</th>
       <% if can? :edit, FutsalGamePlayerPosition %>
         <th></th>
       <% end %>
@@ -16,6 +17,7 @@
       <td><%= futsal_game_player_position.game_registration.user %></td>
       <td><%= formatted_match_time(futsal_game_player_position.begin_time) %></td>
       <td><%= formatted_match_time(futsal_game_player_position.end_time) %></td>
+      <td><%= futsal_game_player_position.calculated %></td>
       <% if can? :edit, FutsalGamePlayerPosition %>
         <td><%= link_to icon('pencil').html_safe, edit_futsal_game_player_position_path(futsal_game_player_position), target: "_blank" %></td>
       <% end %>

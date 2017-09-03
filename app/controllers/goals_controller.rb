@@ -35,7 +35,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
-    
+    @my_mark = GoalMark.where(goal: @goal, mac_address: request.ip, user: current_user)    
   end
 
   # POST /goals

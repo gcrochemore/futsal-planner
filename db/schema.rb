@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "begin_time"
     t.integer  "end_time"
     t.integer  "duration"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "calculated",           default: false
     t.index ["futsal_position_id"], name: "index_futsal_game_player_positions_on_futsal_position_id"
     t.index ["game_registration_id"], name: "index_futsal_game_player_positions_on_game_registration_id"
   end
@@ -162,8 +163,9 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.string   "video_link"
     t.integer  "views_number"
     t.float    "average_mark"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "own_goal",       default: false
     t.index ["futsal_game_id"], name: "index_goals_on_futsal_game_id"
     t.index ["team_id"], name: "index_goals_on_team_id"
   end

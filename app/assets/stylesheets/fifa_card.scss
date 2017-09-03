@@ -6,12 +6,21 @@
   float: left;
   position : relative;
 
+  .match_stat{
+    position : absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+  }
+
   .name{
     position : absolute;
     top: 160px;
     width: 100%;
     text-align: center;
     font-weight: 500;
+    text-transform: uppercase;
   }
 
   .rating{
@@ -128,7 +137,7 @@
 
 .gold-fut-tots{
   background: url('fifa/large-gold-tots.png');
-  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6{
+  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6, .position, .rating, .match_stat{
     color: #d0c075 !important;
     .label-tooltiptext {
       color: black !important;
@@ -156,7 +165,7 @@
 
 .silver-fut-tots{
   background: url('fifa/large-silver-tots.png');
-  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6{
+  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6, .position, .rating, .match_stat{
     color: #dce5eb !important;
     .label-tooltiptext {
       color: black !important;
@@ -184,7 +193,7 @@
 
 .bronze-fut-tots{
   background: url('fifa/large-bronze-tots.png');
-  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6{
+  .attr1, .attr2, .attr3, .attr4, .attr5, .attr6, .position, .rating, .match_stat{
     color: #ca945f !important;
     .label-tooltiptext {
       color: black !important;

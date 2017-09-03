@@ -52,6 +52,8 @@
     
           <th><%= sort_link(@q, :futsal_position, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :goalkeeper_goal_against_average, default_order: :asc) %></th>
+    
           <th class="col-xs-1"></th>
         </tr>
       </thead>
@@ -79,6 +81,8 @@
             <td><%= user.rating.to_f.round(2) %></td>
 
             <td><%= user.futsal_position %></td>
+
+            <td><%= (user.goalkeeper_goal_against_average || 0).round(2) %></td>
     
             <td>
               <%= link_to icon('eye').html_safe, user %>

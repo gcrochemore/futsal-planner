@@ -1,6 +1,6 @@
 class FutsalGamesController < ApplicationController
   authorize_resource
-  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume]
+  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume, :calculate_goalkeeper_position]
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
@@ -43,7 +43,58 @@ class FutsalGamesController < ApplicationController
   end
 
   def parse_match_resume
-  end  
+  end 
+
+  def calculate_goalkeeper_position
+    @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home).delete_all
+    
+    futsal_game_player_position = FutsalGamePlayerPosition.new
+    @futsal_game.andand.goal_by_team(@futsal_game.team_outside).each_with_index do |goal, index|
+      if(index == 1 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
+        if( index > 1 )
+          futsal_game_player_position.end_time = goal.time - 15
+          futsal_game_player_position.save
+        end
+        futsal_game_player_position = FutsalGamePlayerPosition.new
+        futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_home).first
+        futsal_game_player_position.futsal_position_id = 1
+        futsal_game_player_position.calculated = true
+        if( index > 1 )
+          futsal_game_player_position.begin_time = goal.time - 15
+        else
+          futsal_game_player_position.begin_time = 0
+        end
+        futsal_game_player_position.end_time = 0
+      end
+    end
+    futsal_game_player_position.end_time = @futsal_game.duration * 60
+    futsal_game_player_position.save
+
+    @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside).delete_all
+    
+    futsal_game_player_position = FutsalGamePlayerPosition.new
+    @futsal_game.andand.goal_by_team(@futsal_game.team_home).each_with_index do |goal, index|
+      if(index == 1 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
+        if( index > 1 )
+          futsal_game_player_position.end_time = goal.time - 15
+          futsal_game_player_position.save
+        end
+        futsal_game_player_position = FutsalGamePlayerPosition.new
+        futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_outside).first
+        futsal_game_player_position.futsal_position_id = 1
+        futsal_game_player_position.calculated = true
+        if( index > 1 )
+          futsal_game_player_position.begin_time = goal.time - 15
+        else
+          futsal_game_player_position.begin_time = 0
+        end
+        futsal_game_player_position.end_time = 0
+      end
+    end
+    futsal_game_player_position.end_time = @futsal_game.duration * 60
+    futsal_game_player_position.save
+    redirect_to @futsal_game
+  end 
 
   def affect_player_to_team
     @game_registration = GameRegistration.find(params[:game_registration])

@@ -46,6 +46,14 @@
     <a data-toggle="tooltip" title="Nombre de matchs avec stats"><%= player.match_with_stats.round(1) %> M/S</a>
   </div>
 
+  <div class="match_stat">
+    <% if !stat.nil? %>
+      <a data-toggle="tooltip" title="Durée gardien de but"><%= icon('hand-stop-o') %> <%= (stat.goalkeeper_duration.to_f / 60).round %>'</a>
+      <a data-toggle="tooltip" title="Durée joueur"><%= icon('user') %> <%= (stat.player_duration.to_f / 60).round %>'</a>
+      <a data-toggle="tooltip" title="Durée remplacant"><%= icon('refresh') %> <%= (stat.substitute_duration.to_f / 60).round %>'</a>
+    <% end %>
+  </div>
+
   <div class="highlights_and_goals">
     <% if highlights_and_goals_by_user %>  
       <% highlights_and_goals_by_user.each do |goal| %>

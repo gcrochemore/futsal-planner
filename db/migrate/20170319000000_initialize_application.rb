@@ -230,6 +230,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :video_link
       t.integer :views_number
       t.float :average_mark
+      t.boolean :own_goal, default: false
 
       t.timestamps
     end
@@ -240,6 +241,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :begin_time
       t.integer :end_time
       t.integer :duration
+      t.boolean :calculated, default: false
 
       t.timestamps
     end

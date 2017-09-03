@@ -162,7 +162,9 @@
 </div>
 
 
-
+<% if (can? :calculate_goalkeeper_position, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
+  <%= link_to 'Calculate Goalkeeper Position', calculate_goalkeeper_position_futsal_game_path(@futsal_game) %> |
+<% end %>
 <% if (can? :parse_match_resume, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
   <%= link_to 'Parse match resume', parse_match_resume_futsal_game_path(@futsal_game) %> |
 <% end %>

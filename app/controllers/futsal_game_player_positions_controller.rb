@@ -22,6 +22,7 @@ class FutsalGamePlayerPositionsController < ApplicationController
   # POST /futsal_game_player_positions
   def create
     @futsal_game_player_position = FutsalGamePlayerPosition.new(futsal_game_player_position_params)
+    @futsal_game_player_position.calculated = false
 
     if @futsal_game_player_position.save
       redirect_to @futsal_game_player_position, notice: 'Futsal game player position was successfully created.'
@@ -31,6 +32,7 @@ class FutsalGamePlayerPositionsController < ApplicationController
   end
   # PATCH/PUT /futsal_game_player_positions/1
   def update
+    @futsal_game_player_position.calculated = false
     if @futsal_game_player_position.update(futsal_game_player_position_params)
       redirect_to @futsal_game_player_position, notice: 'Futsal game player position was successfully updated.'
     else

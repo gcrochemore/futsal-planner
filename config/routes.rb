@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get :parse_match_resume
       get :affect_player_to_team
+      get :calculate_goalkeeper_position
     end
   end
 

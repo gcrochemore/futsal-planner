@@ -44,6 +44,10 @@ class FutsalGame < ApplicationRecord
 
   def goal_by_user(user)
     goals.where(goal: user)
+  end 
+
+  def goal_by_team(team)
+    goals.where(team: team)
   end    
 
   def assist_by_user(user)
