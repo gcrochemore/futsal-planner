@@ -32,11 +32,11 @@ class User < ApplicationRecord
     self.match = self.game_registrations.length
     self.match_with_stats = (self.match_time / 60.0)
 
-    self.goal_average_by_match = self.goal.to_f / (self.player_duration.to_f / 60.0)
+    self.goal_average_by_match = self.goal.to_f / self.match_with_stats
 
     self.goal_percent_by_match = 0
 
-    self.assist_average_by_match = self.assist.to_f / (self.player_duration.to_f / 60.0)
+    self.assist_average_by_match = self.assist.to_f / self.match_with_stats
 
     self.assist_percent_by_match = 0
     
