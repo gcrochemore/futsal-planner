@@ -19,15 +19,15 @@
       </div>
       <div class="form-group col">
         <label for="goal"><%= f.label :goal %></label>
-        <%= f.association :goal, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
+        <%= f.association :goal, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.player_by_team(f.object.team) || User.all, include_blank: true %>
       </div>      
       <div class="form-group col">
         <label for="assist"><%= f.label :assist %></label>
-        <%= f.association :assist, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
+        <%= f.association :assist, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.player_by_team(f.object.team) || User.all, include_blank: true %>
       </div>     
       <div class="form-group col">
         <label for="goalkeeper"><%= f.label :goalkeeper %></label>
-        <%= f.association :goalkeeper, label: false, input_html: { class: "form-control" }, collection: User.all, include_blank: true %>
+        <%= f.association :goalkeeper, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.player_by_team(f.object.futsal_game.other_team(f.object.team)) || User.all, include_blank: true %>
       </div>
       <div class="form-group col">
         <label for="time"><%= f.label :time %></label> - M: <input type="text" id="m" value="0" style="width: 20px;" /> S: <input type="text" id="s" value="0" style="width: 20px;" /> <a onclick="setTime()">Set time</a>

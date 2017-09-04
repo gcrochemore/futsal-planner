@@ -32,11 +32,11 @@ class User < ApplicationRecord
     self.match = self.game_registrations.length
     self.match_with_stats = (self.match_time / 60.0)
 
-    self.goal_average_by_match = self.goal.to_f / self.match_with_stats.to_f
+    self.goal_average_by_match = self.goal.to_f / (self.player_duration.to_f / 60.0)
 
     self.goal_percent_by_match = 0
 
-    self.assist_average_by_match = self.assist.to_f / self.match_with_stats.to_f
+    self.assist_average_by_match = self.assist.to_f / (self.player_duration.to_f / 60.0)
 
     self.assist_percent_by_match = 0
     
@@ -45,7 +45,7 @@ class User < ApplicationRecord
     self.assist_mark = 0
     self.victory_mark = 0
     self.rating = 65 + (self.goal_average_by_match * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier);
-    self.rating = (self.match_with_stats <= 5 ? self.rating * 0.85 : self.rating)
+    self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
     self.rating = (self.rating < 65 ? 65 : self.rating)
   
     self.match_goal_for = 0

@@ -1,6 +1,6 @@
 <div class="timeline">
   <div class="timeline_team">
-    <%= render 'timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_home_id), futsal_game_duration: futsal_game.duration  %>
+    <%= render 'futsal_games/timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_home_id), futsal_game_duration: futsal_game.duration  %>
   </div>
   <div class="time">
     <% i = 0 %> 
@@ -10,7 +10,7 @@
     <% end %>
   </div>
   <div class="timeline_team">
-    <%= render 'timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_outside_id), futsal_game_duration: futsal_game.duration  %>    
+    <%= render 'futsal_games/timeline_team', futsal_game_team_goals: futsal_game.highlights_and_goals_by_team(futsal_game.team_outside_id), futsal_game_duration: futsal_game.duration  %>    
   </div>
 </div>
 

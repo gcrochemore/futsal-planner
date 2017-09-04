@@ -32,6 +32,10 @@ class FutsalTournament < ApplicationRecord
     self.more_substitute = futsal_tournament_player_registrations.order("substitute_duration DESC, goal ASC, assist ASC, goalkeeper_goal_against ASC").first
   end
 
+  def highlights_and_goals_by_user(user_id)
+    Goal.where('(goal_id = ? or assist_id= ? or goalkeeper_id= ?) AND futsal_game_id IN (?)', user_id, user_id, user_id, self.futsal_games.pluck(:id))    
+  end
+
   def goal_by_user(user)
     Goal.where(goal: user).where('futsal_game_id IN (?)', self.futsal_games.pluck(:id))
   end    

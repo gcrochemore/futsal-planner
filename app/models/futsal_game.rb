@@ -42,6 +42,18 @@ class FutsalGame < ApplicationRecord
     game_registrations.where(team: nil)
   end
 
+  def player_by_team(team)
+    User.where('id IN (?)', self.game_registrations.where(team: team).pluck(:user_id))
+  end
+
+  def other_team(team)
+    if self.team_home == team
+      return self.team_outside
+    else
+      return self.team_home
+    end
+  end
+
   def goal_by_user(user)
     goals.where(goal: user)
   end 

@@ -49,9 +49,9 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
-    @futsal_game.andand.goal_by_team(@futsal_game.team_outside).each_with_index do |goal, index|
-      if(index == 1 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
-        if( index > 1 )
+    @futsal_game.andand.goal_by_team(@futsal_game.team_outside).order(:time).each_with_index do |goal, index|
+      if(index == 0 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
+        if( index > 0 )
           futsal_game_player_position.end_time = goal.time - 15
           futsal_game_player_position.save
         end
@@ -59,7 +59,7 @@ class FutsalGamesController < ApplicationController
         futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_home).first
         futsal_game_player_position.futsal_position_id = 1
         futsal_game_player_position.calculated = true
-        if( index > 1 )
+        if( index > 0 )
           futsal_game_player_position.begin_time = goal.time - 15
         else
           futsal_game_player_position.begin_time = 0
@@ -73,9 +73,9 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
-    @futsal_game.andand.goal_by_team(@futsal_game.team_home).each_with_index do |goal, index|
-      if(index == 1 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
-        if( index > 1 )
+    @futsal_game.andand.goal_by_team(@futsal_game.team_home).order(:time).each_with_index do |goal, index|
+      if(index == 0 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
+        if( index > 0 )
           futsal_game_player_position.end_time = goal.time - 15
           futsal_game_player_position.save
         end
@@ -83,7 +83,7 @@ class FutsalGamesController < ApplicationController
         futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_outside).first
         futsal_game_player_position.futsal_position_id = 1
         futsal_game_player_position.calculated = true
-        if( index > 1 )
+        if( index > 0 )
           futsal_game_player_position.begin_time = goal.time - 15
         else
           futsal_game_player_position.begin_time = 0
