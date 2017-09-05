@@ -43,7 +43,7 @@
   </div>
 
   <div class="attr6">
-    <a data-toggle="tooltip" title="Nombre de matchs avec stats"><%= player.match_with_stats.round(1) %> M/S</a>
+    <a data-toggle="tooltip" title="Nombre de matchs avec stats"><%= (player.match_with_stats || 0).round(1) %> M/S</a>
   </div>
 
   <div class="match_stat">
