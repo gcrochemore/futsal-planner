@@ -1,12 +1,12 @@
-<div class="player-fut <%= player_fut_class(player.rating, calculate_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60))) %>">
+<div class="player-fut <%= player_fut_class(player.andand.rating, calculate_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60))) %>">
   <div class="name">
     <%= link_to player, player %> <%= stat ? icon('futbol-o') + ' ' + stat.goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + stat.assist.to_s + ' ' + icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s : "" %> 
   </div>
   <div class="rating">
-    <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %><%= player.rating.andand.round %>
+    <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %><%= player.andand.rating.andand.round %>
   </div>
   <div class="position">
-    <%= player.futsal_position.abbreviation %>
+    <%= player.andand.futsal_position.andand.abbreviation %>
   </div>
   <div class="picture">
     <img src="/assets/fifa/players/<%= player.andand.picture ? player.andand.picture : 'inconnu.jpg' %>">
@@ -23,27 +23,27 @@
   </div>
 
   <div class="attr1">
-    <a data-toggle="tooltip" title="Nombre de buts"><%= player.goal %> BUT</a>
+    <a data-toggle="tooltip" title="Nombre de buts"><%= player.andand.goal %> BUT</a>
   </div>
 
   <div class="attr2">
-    <a data-toggle="tooltip" title="Nombre de buts par match"><%= (player.goal_average_by_match || 0).round(1) %> B/M</a>
+    <a data-toggle="tooltip" title="Nombre de buts par match"><%= (player.andand.goal_average_by_match || 0).round(1) %> B/M</a>
   </div>
 
   <div class="attr3">
-    <a data-toggle="tooltip" title="Nombre de matchs"><%= player.match %> MAT</a>
+    <a data-toggle="tooltip" title="Nombre de matchs"><%= player.andand.match %> MAT</a>
   </div>
 
   <div class="attr4">
-    <a data-toggle="tooltip" title="Nombre de passes décisives"><%= player.assist %> AST</a>    
+    <a data-toggle="tooltip" title="Nombre de passes décisives"><%= player.andand.assist %> AST</a>    
   </div>
 
   <div class="attr5">
-    <a data-toggle="tooltip" title="Nombre de passes décisives par match"><%= (player.assist_average_by_match || 0).round(1) %> A/M</a>
+    <a data-toggle="tooltip" title="Nombre de passes décisives par match"><%= (player.andand.assist_average_by_match || 0).round(1) %> A/M</a>
   </div>
 
   <div class="attr6">
-    <a data-toggle="tooltip" title="Nombre de matchs avec stats"><%= (player.match_with_stats || 0).round(1) %> M/S</a>
+    <a data-toggle="tooltip" title="Nombre de matchs avec stats"><%= (player.andand.match_with_stats || 0).round(1) %> M/S</a>
   </div>
 
   <div class="match_stat">
