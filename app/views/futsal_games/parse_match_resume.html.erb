@@ -6,19 +6,19 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
 
 @futsal_game.video_link = doc.css('p.video_illustration').first.css('a').first['href']
 
-@score = doc.css('p#score').first.content
+@score = doc.css('div.equipes_score').first
 
-@scores = @score.split('-')
-@score_domicile = @scores[0];
-@score_exterieur = @scores[1];
-
-@futsal_game.score_home = @score_domicile
-
-@futsal_game.score_outside = @score_exterieur
+@score.css('div.score_equipe').each_with_index do |score, index|
+  if index == 0
+    @futsal_game.score_home = score.content;
+  else
+    @futsal_game.score_outside = score.content;
+  end
+end
 
 @futsal_game.save
 
-@tableau_buts = doc.css('div#resume').first.css('div.table').first
+@tableau_buts = doc.css('div.resume').first.css('div.table').first
 
 @goals = Array.new
 
@@ -36,7 +36,7 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
   @min = @m[0];
   @sec = @m[1];
 
-  #@goal.time = (@min.to_f+38) * 60 + (@sec.to_f+55)
+  #@goal.time = (@min.to_f+25) * 60 + (@sec.to_f+10)
   @goal.time = @min.to_f * 60 + @sec.to_f
 
   if @description.at("Equipe 2").nil?
