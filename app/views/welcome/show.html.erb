@@ -16,32 +16,35 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <h3>Top Buts</h3>
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th>Match</th>
-          <th>Buteur</th>
-          <th>Passeur</th>
-          <th>Time</th>
-          <th>Note</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @top_buts.each do |goal| %>
+<% if user_signed_in?  %>
+
+  <div class="row">
+    <div class="col">
+      <h3>Top Buts</h3>
+      <table class="table table-sm">
+        <thead>
           <tr>
-            <td><%= goal.futsal_game %></td>
-            <td><%= goal.goal %></td>
-            <td><%= goal.assist %></td>
-            <td><%= formatted_match_time(goal.time) %></td>
-            <td><%= goal.average_mark %></td>
-            <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            <th>Match</th>
+            <th>Buteur</th>
+            <th>Passeur</th>
+            <th>Time</th>
+            <th>Note</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @top_buts.each do |goal| %>
+            <tr>
+              <td><%= goal.futsal_game %></td>
+              <td><%= goal.goal %></td>
+              <td><%= goal.assist %></td>
+              <td><%= formatted_match_time(goal.time) %></td>
+              <td><%= goal.average_mark %></td>
+              <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>
