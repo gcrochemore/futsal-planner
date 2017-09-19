@@ -4269,7 +4269,22 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 541, game_registration_id: 881, futsal_position_id: 1, begin_time: 2716, end_time: 3024, duration: 308, created_at: "2017-09-18 22:01:44", updated_at: "2017-09-18 22:01:44", calculated: true},
       {id: 542, game_registration_id: 884, futsal_position_id: 1, begin_time: 3024, end_time: 3159, duration: 135, created_at: "2017-09-18 22:01:44", updated_at: "2017-09-18 22:01:44", calculated: true},
       {id: 543, game_registration_id: 882, futsal_position_id: 1, begin_time: 3159, end_time: 3397, duration: 238, created_at: "2017-09-18 22:01:44", updated_at: "2017-09-18 22:01:44", calculated: true},
-      {id: 544, game_registration_id: 883, futsal_position_id: 1, begin_time: 3397, end_time: 3600, duration: 203, created_at: "2017-09-18 22:01:44", updated_at: "2017-09-18 22:01:44", calculated: true}
+      {id: 544, game_registration_id: 883, futsal_position_id: 1, begin_time: 3397, end_time: 3600, duration: 203, created_at: "2017-09-18 22:01:44", updated_at: "2017-09-18 22:01:44", calculated: true},
+      {id: 545, game_registration_id: 888, futsal_position_id: 1, begin_time: 0, end_time: 704, duration: 704, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 546, game_registration_id: 886, futsal_position_id: 1, begin_time: 704, end_time: 930, duration: 226, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 547, game_registration_id: 888, futsal_position_id: 1, begin_time: 930, end_time: 1123, duration: 193, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 548, game_registration_id: 889, futsal_position_id: 1, begin_time: 1123, end_time: 1836, duration: 713, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 549, game_registration_id: 888, futsal_position_id: 1, begin_time: 1836, end_time: 2792, duration: 956, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 550, game_registration_id: 886, futsal_position_id: 1, begin_time: 2792, end_time: 3371, duration: 579, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 551, game_registration_id: 888, futsal_position_id: 1, begin_time: 3371, end_time: 3600, duration: 229, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 552, game_registration_id: 892, futsal_position_id: 1, begin_time: 0, end_time: 813, duration: 813, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 553, game_registration_id: 894, futsal_position_id: 1, begin_time: 813, end_time: 1450, duration: 637, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 554, game_registration_id: 890, futsal_position_id: 1, begin_time: 1450, end_time: 1636, duration: 186, created_at: "2017-09-19 07:46:15", updated_at: "2017-09-19 07:46:15", calculated: true},
+      {id: 555, game_registration_id: 891, futsal_position_id: 1, begin_time: 1636, end_time: 1943, duration: 307, created_at: "2017-09-19 07:46:16", updated_at: "2017-09-19 07:46:16", calculated: true},
+      {id: 556, game_registration_id: 894, futsal_position_id: 1, begin_time: 1943, end_time: 2007, duration: 64, created_at: "2017-09-19 07:46:16", updated_at: "2017-09-19 07:46:16", calculated: true},
+      {id: 557, game_registration_id: 893, futsal_position_id: 1, begin_time: 2007, end_time: 2716, duration: 709, created_at: "2017-09-19 07:46:16", updated_at: "2017-09-19 07:46:16", calculated: true},
+      {id: 558, game_registration_id: 892, futsal_position_id: 1, begin_time: 2716, end_time: 3118, duration: 402, created_at: "2017-09-19 07:46:16", updated_at: "2017-09-19 07:46:16", calculated: true},
+      {id: 559, game_registration_id: 894, futsal_position_id: 1, begin_time: 3118, end_time: 3600, duration: 482, created_at: "2017-09-19 07:46:16", updated_at: "2017-09-19 07:46:16", calculated: true}
     ])
     HighlightType.create!([
       {id: 1, name: "Blessure", icon: "ambulance", created_at: "2017-03-30 21:58:42", updated_at: "2017-03-30 21:58:55"}
