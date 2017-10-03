@@ -99,7 +99,11 @@ class FutsalGame < ApplicationRecord
   end
 
   def rating
-    (game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? a.user.rating : 0 )}.sum / game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? 1 : 0)}.sum).to_f.round
+    if game_registrations.length > 0
+      (game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? a.user.rating : 0 )}.sum / game_registrations.map{|a| ((a.user && a.user.rating && !a.user.rating.nan?) ? 1 : 0)}.sum).to_f.round
+    else
+      0
+    end
   end
 
   def futsal_game_player_position_by_team(team)
