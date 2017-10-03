@@ -4810,8 +4810,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 631, game_registration_id: 1193, futsal_position_id: 1, begin_time: 408, end_time: 875, duration: 467, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true},
       {id: 632, game_registration_id: 1190, futsal_position_id: 1, begin_time: 875, end_time: 914, duration: 39, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true},
       {id: 633, game_registration_id: 1189, futsal_position_id: 1, begin_time: 914, end_time: 1303, duration: 389, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true},
-      {id: 634, game_registration_id: 1192, futsal_position_id: 1, begin_time: 1303, end_time: 1592, duration: 289, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true},
-      {id: 635, game_registration_id: nil, futsal_position_id: 1, begin_time: 1592, end_time: 1680, duration: 88, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true}
+      {id: 634, game_registration_id: 1192, futsal_position_id: 1, begin_time: 1303, end_time: 1680, duration: 289, created_at: "2017-10-02 11:32:01", updated_at: "2017-10-02 11:32:01", calculated: true}
     ])
     HighlightType.create!([
       {id: 1, name: "Blessure", icon: "ambulance", created_at: "2017-03-30 21:58:42", updated_at: "2017-03-30 21:58:55"}
