@@ -531,6 +531,14 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
+    user = User.new({id: 126, email: "thomaspri@thomaspri", futsal_position_id: 4, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5mdBBfT0Bc1w_-xpmNDg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thomas", last_name: "Pri", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user.skip_confirmation!
+    user.save!
+
+    user = User.new({id: 127, email: "aureliende@aureliende", futsal_position_id: 4, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5pvNPfT0Bc1w_-xpmNDg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Aurelien", last_name: "De", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user.skip_confirmation!
+    user.save!
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
@@ -4493,12 +4501,12 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 1266, user_id: 75, futsal_game_id: 99, team_id: 4, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
       {id: 1267, user_id: 43, futsal_game_id: 99, team_id: 4, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
       {id: 1268, user_id: 51, futsal_game_id: 99, team_id: 4, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
-      {id: 1269, user_id: nil, futsal_game_id: 99, team_id: 4, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
+      {id: 1269, user_id: 127, futsal_game_id: 99, team_id: 4, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 20:01:01"},
       {id: 1270, user_id: 49, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
       {id: 1271, user_id: 50, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
       {id: 1272, user_id: 57, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
       {id: 1273, user_id: 115, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"},
-      {id: 1274, user_id: nil, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 19:37:09"}
+      {id: 1274, user_id: 126, futsal_game_id: 99, team_id: 3, goal: nil, goal_with_assist: nil, goal_without_assist: nil, assist: nil, goalkeeper_duration: nil, player_duration: nil, substitute_duration: nil, goalkeeper_goal_against: nil, created_at: "2017-10-15 19:35:59", updated_at: "2017-10-15 20:01:01"}
     ])
     FutsalGamePlayerPosition.create!([
       {id: 1, game_registration_id: 594, futsal_position_id: 1, begin_time: 0, end_time: 3600, duration: 3600, created_at: "2017-07-27 23:11:10", updated_at: "2017-07-27 23:11:10", calculated: false},
