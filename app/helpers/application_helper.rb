@@ -83,13 +83,14 @@ module ApplicationHelper
   end
 
   def player_fut_class(rating, game_level)
+    rating = rating.round
     if rating.nil?
       rating = 0;
     end
     if game_level.nil?
       game_level = 0;
     end
-    if (rating > 78)
+    if (rating >= 78)
       if game_level > 1
         return 'gold-fut-tots'
       elsif game_level > 0
