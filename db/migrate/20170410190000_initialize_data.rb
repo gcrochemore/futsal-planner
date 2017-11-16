@@ -5427,7 +5427,6 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 742, game_registration_id: 1349, futsal_position_id: 1, begin_time: 0, end_time: 1025, duration: 1025, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true},
       {id: 743, game_registration_id: 1347, futsal_position_id: 1, begin_time: 1025, end_time: 1389, duration: 364, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true},
       {id: 744, game_registration_id: 1348, futsal_position_id: 1, begin_time: 1389, end_time: 1757, duration: 368, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true},
-      {id: 745, game_registration_id: nil, futsal_position_id: 1, begin_time: 1757, end_time: 1757, duration: 0, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true},
       {id: 746, game_registration_id: 1348, futsal_position_id: 1, begin_time: 1757, end_time: 1986, duration: 229, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true},
       {id: 747, game_registration_id: 1349, futsal_position_id: 1, begin_time: 1986, end_time: 3600, duration: 1614, created_at: "2017-11-16 12:50:26", updated_at: "2017-11-16 12:50:26", calculated: true}
     ])
