@@ -1,49 +1,58 @@
 <%= simple_form_for(@futsal_game) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="form-group">
+  <div class="row">
+    <div class="col form-group">
       <label for="date"><%= f.label :date %></label>
       <%= f.input :date, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
+    <div class="col form-group">
       <label for="duration"><%= f.label :duration %></label>
       <%= f.input :duration, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
+  </div>
+
+
+  <div class="row">
+    <div class="col form-group">
       <label for="futsal_field"><%= f.label :futsal_field %></label>
       <%= f.association :futsal_field, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
+    <div class="col form-group">
       <label for="futsal_tournament"><%= f.label :futsal_tournament %></label>
       <%= f.association :futsal_tournament, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
+  </div>
+
+  <div class="row">
+    <div class="col form-group">
       <label for="team_home_id"><%= f.label :team_home_id %></label>
       <%= f.association :team_home, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
-      <label for="team_outside_id"><%= f.label :team_outside_id %></label>
-      <%= f.association :team_outside, label: false, input_html: { class: "form-control" } %>
-    </div>
-    <div class="form-group">
+    <div class="col-2 form-group">
       <label for="score_home"><%= f.label :score_home %></label>
       <%= f.input :score_home, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
+    <div class="col-2 form-group">
       <label for="score_outside"><%= f.label :score_outside %></label>
       <%= f.input :score_outside, label: false, input_html: { class: "form-control" } %>
     </div>
-    <div class="form-group">
-      <label for="video_link"><%= f.label :video_link %></label>
-      <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
-    </div>
-    <div class="form-group">
-      <label for="match_resume_link"><%= f.label :match_resume_link %></label>
-      <%= f.input :match_resume_link, label: false, input_html: { class: "form-control" } %>
+    <div class="col form-group">
+      <label for="team_outside_id"><%= f.label :team_outside_id %></label>
+      <%= f.association :team_outside, label: false, input_html: { class: "form-control" } %>
     </div>
   </div>
-
+  <div class="row">
+      <div class="col form-group">
+        <label for="video_link"><%= f.label :video_link %></label>
+        <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
+      </div>
+      <div class="col form-group">
+        <label for="match_resume_link"><%= f.label :match_resume_link %></label>
+        <%= f.input :match_resume_link, label: false, input_html: { class: "form-control" } %>
+      </div>
+    </div>
+  </div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
