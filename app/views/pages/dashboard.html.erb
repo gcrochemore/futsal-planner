@@ -4,6 +4,9 @@
   </div>
   <div class="col">
     <h3>Mes matchs (<%= @user.game_registrations.order_by_futsal_game.count %>)</h3>
+    <% if can? :create, FutsalGame %>
+     <%= link_to (icon('plus') + " Organiser un match").html_safe, new_futsal_game_path, class: "btn btn-sm btn-block btn-outline-primary" %>
+   <% end %>
     <table class="table table-sm">
       <tbody>
         <% @user.game_registrations.order_by_futsal_game.each do |game_registration| %>
