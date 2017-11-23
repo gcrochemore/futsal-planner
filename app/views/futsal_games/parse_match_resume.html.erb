@@ -5,6 +5,7 @@ Je vais parser le match !
 doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
 
 @futsal_game.video_link = doc.css('p.video_illustration').first.css('a').first['href']
+@futsal_game.video_link = @futsal_game.video_link[0..((@futsal_game.video_link.rindex('?'))-1)]
 
 @score = doc.css('div.equipes_score').first
 
