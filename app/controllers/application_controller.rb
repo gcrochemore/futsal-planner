@@ -29,8 +29,6 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
 
-
-
   skip_before_filter :verify_authenticity_token
 
   before_filter :cors_preflight_check

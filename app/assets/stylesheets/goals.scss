@@ -8,29 +8,29 @@
 	}
 }
 
-.rating {
+.goal-rating {
    direction: rtl;
    text-align: center;
 }
 
-.rating a {
+.goal-rating a {
    color: #aaa;
    text-decoration: none;
    font-size: 3em;
    transition: color .4s;
 }
 
-.rating{
+.goal-rating{
    .selected {
       color: orange;
       cursor: pointer;
    }
 }   
 
-.rating a:hover,
-.rating a:focus,
-.rating a:hover ~ a,
-.rating a:focus ~ a {
+.goal-rating a:hover,
+.goal-rating a:focus,
+.goal-rating a:hover ~ a,
+.goal-rating a:focus ~ a {
    color: orange;
    cursor: pointer;
 }

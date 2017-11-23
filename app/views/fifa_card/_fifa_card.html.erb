@@ -1,9 +1,23 @@
 <div class="player-fut <%= player_fut_class(player.andand.rating, calculate_game_level(stat.andand.goal, player.andand.goal_average_by_match.to_f, stat.andand.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60))) %>">
   <div class="name">
-    <%= link_to player, player %> <%= stat ? icon('futbol-o') + ' ' + stat.goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + stat.assist.to_s + ' ' + icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s : "" %> 
+    <%= link_to player, player %> 
+      <% if stat %>
+        <a data-toggle="tooltip" title="Nombre de buts pendant le match">
+          <%= icon('futbol-o') + ' ' + stat.goal.to_s %>
+        </a>
+        <a data-toggle="tooltip" title="Nombre de passes décisives pendant le match">
+          <%= icon('arrow-circle-right') + ' ' + stat.assist.to_s %>
+        </a>
+        <a data-toggle="tooltip" title="Nombre de buts encaissés pendant le match">
+          <%= icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s %> 
+        </a>
+      <% end %>
   </div>
   <div class="rating">
-    <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %><%= player.andand.rating.andand.round %>
+    <a data-toggle="tooltip" title="Note">
+      <%= player.andand.rating.andand.round %>
+    </a>
+    <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %>
   </div>
   <div class="position">
     <%= player.andand.futsal_position.andand.abbreviation %>

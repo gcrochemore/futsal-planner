@@ -23,7 +23,7 @@
     <%= link_to icon('television') + " Voir la video du but", @goal.video_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
   </div>
 </div>-->
-<div class="rating">
+<div class="goal-rating">
   <%= link_to '☆', mark_goal_goal_path(mark: 5), title: "Donner 5 étoiles", class: (@my_mark.first.andand.mark || 0) >= 5 ? "selected" : "" %>
   <%= link_to '☆', mark_goal_goal_path(mark: 4), title: "Donner 4 étoiles", class: (@my_mark.first.andand.mark || 0) >= 4 ? "selected" : "" %>
   <%= link_to '☆', mark_goal_goal_path(mark: 3), title: "Donner 3 étoiles", class: (@my_mark.first.andand.mark || 0) >= 3 ? "selected" : "" %>
@@ -33,7 +33,7 @@
 <div class="row">
   <div class="col">
     <% if !@goal.futsal_game.andand.video_link.nil? %>
-      <iframe src="<%= @goal.futsal_game.video_link %>?start=<%= @goal.time - 15 %>&autoplay=1" width="100%" height="600px" frameborder="0"  volume="0" allowfullscreen></iframe>
+      <iframe src="<%= @goal.futsal_game.video_link %>?start=<%= @goal.time - 15 %>&end=<%= @goal.time + 5 %>&autoplay=1&loop=1" width="100%" height="600px" frameborder="0"  volume="0" allowfullscreen></iframe>
     <% else %>
       Pas de vidéo
     <% end %>
