@@ -1,20 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-5 row">
-    <div class="col-4">
-      <%= image_tag("blank-profile-picture.png", width: '100%') %>
-    </div>
-    <div class="col">
-      <p>
-        <%= @user.first_name %> <%= @user.last_name %> <%= !@user.company.nil? ? "("+ @user.company.name + ")" : "" %>
-      </p>
-      <p>
-        <%= @user.display_stats.html_safe %>
-      </p>
-        Note : <%= @user.rating %><br>
-        Note de match : <%= @user.match_rating %>
-    </div>
+  <div class="col-5">
+    <%= render 'user_profile', user: @user %>    
   </div>
   <div class="col">
     <h3>Matchs</h3>

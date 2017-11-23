@@ -1,4 +1,4 @@
-<div class="player-fut <%= player_fut_class(player.andand.rating, calculate_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60))) %>">
+<div class="player-fut <%= player_fut_class(player.andand.rating, calculate_game_level(stat.andand.goal, player.andand.goal_average_by_match.to_f, stat.andand.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60))) %>">
   <div class="name">
     <%= link_to player, player %> <%= stat ? icon('futbol-o') + ' ' + stat.goal.to_s + ' ' + icon('arrow-circle-right') + ' ' + stat.assist.to_s + ' ' + icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s : "" %> 
   </div>

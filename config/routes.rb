@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'welcome#show'
+  root 'pages#index'
 
   resources :paper_trail_versions, controller: 'versions'
   resources :companies, :futsal_fields, :game_registrations, :teams, :highlights, 

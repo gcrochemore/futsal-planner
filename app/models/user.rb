@@ -85,19 +85,20 @@ class User < ApplicationRecord
 
   def display_stats
     self.games_results = self.games_results.to_s
-    'Note : ' + self.rating.to_s + '<br><strong>Moyenne par match</strong><br>' + 
-      self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
-      self.match.to_s + ' match(s) - ' + self.match_with_stats.to_s + ' avec stats<br>' + 
-      self.match_time.to_s + ' minutes jouées<br>' +
-      self.games_results[0..10].to_s + (games_results.length > 10 ? '...' : '') + '<br>' + 
-      self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
-      (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
-      'Gardien : ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min / ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
-      '(1 but / ' + self.goalkeeper_goal_against_average.andand.round(2).to_s + ' min) <br>' +
-      'Joueur : ' + (self.player_duration.to_f/60).round.to_s + ' min <br>' +
-      'Remp. : ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
-      '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
-      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
+    'Note : ' + self.rating.andand.round(2).to_s + '<br>' + 
+    'Note de match : ' + self.match_rating.andand.round(2).to_s + '<br>' + 
+    self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
+    self.match.to_s + ' match(s) - ' + self.match_with_stats.andand.round(2).to_s + ' avec stats<br>' + 
+    self.match_time.to_s + ' minutes jouées<br>' +
+    self.games_results[0..10].to_s + (games_results.length > 10 ? '...' : '') + '<br>' + 
+    self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
+    (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
+    'Gardien : ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min / ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
+    '(1 but / ' + self.goalkeeper_goal_against_average.andand.round(2).to_s + ' min) <br>' +
+    'Joueur : ' + (self.player_duration.to_f/60).round.to_s + ' min <br>' +
+    'Remp. : ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
+    '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
+    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end
 
   def update_match_time

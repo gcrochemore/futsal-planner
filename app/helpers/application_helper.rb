@@ -10,6 +10,17 @@ module ApplicationHelper
     end
   end
 
+  def css_class_match_result result
+    case result
+    when "V"
+      'win_match'
+    when "D"
+      'lose_match'
+    else
+      'draw_match'
+    end
+  end
+
   def formatted_match_time match_time
     Time.at(match_time).utc.strftime("%H:%M:%S")
   end
