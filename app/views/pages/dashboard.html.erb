@@ -7,80 +7,88 @@
     <% if can? :create, FutsalGame %>
      <%= link_to (icon('plus') + " Organiser un match").html_safe, new_futsal_game_path, class: "btn btn-sm btn-block btn-outline-primary" %>
    <% end %>
-    <table class="table table-sm">
-      <tbody>
-        <% @user.game_registrations.order_by_futsal_game.each do |game_registration| %>
-          <tr>
-            <td colspan="3">
-              <%= game_registration.futsal_game.date.strftime("%d/%m/%Y %H:%M").to_s %>
-              <%= icon('futbol-o') %> <%= game_registration.goal %>
-              <%= icon('arrow-circle-right') %> <%= game_registration.assist %></td>
-          </tr>  
-          <tr class="<%= css_class_match_result(game_registration.match_result).html_safe %>">
-            <td><%= game_registration.futsal_game.has_stat ? show_game_level(game_registration.goal.to_f, @user.goal_average_by_match, game_registration.assist.to_f, @user.assist_average_by_match) : "" %></td>
-            <td class="text-center"><%= game_registration.futsal_game.team_home.andand.name.to_s + " " + game_registration.futsal_game.score_home.to_s + " - " + game_registration.futsal_game.score_outside.to_s + " " + game_registration.futsal_game.team_outside.andand.name.to_s %> <%=  %></td>
-            <td><%= link_to icon('eye').html_safe, game_registration.futsal_game, target: "_blank" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <tbody>
+          <% @user.game_registrations.order_by_futsal_game.each do |game_registration| %>
+            <tr>
+              <td colspan="3">
+                <%= game_registration.futsal_game.date.strftime("%d/%m/%Y %H:%M").to_s %>
+                <%= icon('futbol-o') %> <%= game_registration.goal %>
+                <%= icon('arrow-circle-right') %> <%= game_registration.assist %></td>
+            </tr>  
+            <tr class="<%= css_class_match_result(game_registration.match_result).html_safe %>">
+              <td><%= game_registration.futsal_game.has_stat ? show_game_level(game_registration.goal.to_f, @user.goal_average_by_match, game_registration.assist.to_f, @user.assist_average_by_match) : "" %></td>
+              <td class="text-center"><%= game_registration.futsal_game.team_home.andand.name.to_s + " " + game_registration.futsal_game.score_home.to_s + " - " + game_registration.futsal_game.score_outside.to_s + " " + game_registration.futsal_game.team_outside.andand.name.to_s %> <%=  %></td>
+              <td><%= link_to icon('eye').html_safe, game_registration.futsal_game, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="col">
     <h3>Mes buts (<%= @user.goals.order_by_futsal_game_and_time.count %>)</h3> 
-    <table class="table table-sm">
-      <% @user.goals.order_by_futsal_game_and_time.each do |goal| %>
-        <tr>
-          <td><%= goal.futsal_game.date.strftime("%d/%m/%y").to_s %></td>
-          <td><%= goal.assist ? icon('arrow-circle-right') + ' ' + goal.assist : '' %></td>
-          <td><%= goal.average_mark %></td>
-          <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-  <div class="col">
-    <h3>Mes passes décisives (<%= @user.assists.order_by_futsal_game_and_time.count %>)</h3> 
-    <table class="table table-sm">
-      <tbody>
-        <% @user.assists.order_by_futsal_game_and_time.each do |goal| %>
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <% @user.goals.order_by_futsal_game_and_time.each do |goal| %>
           <tr>
             <td><%= goal.futsal_game.date.strftime("%d/%m/%y").to_s %></td>
-            <td><%= goal.goal ? icon('futbol-o') + ' ' + goal.goal : '' %></td>
+            <td><%= goal.assist ? icon('arrow-circle-right') + ' ' + goal.assist : '' %></td>
             <td><%= goal.average_mark %></td>
             <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
           </tr>
         <% end %>
-      </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
+  <div class="col">
+    <h3>Mes passes décisives (<%= @user.assists.order_by_futsal_game_and_time.count %>)</h3> 
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <tbody>
+          <% @user.assists.order_by_futsal_game_and_time.each do |goal| %>
+            <tr>
+              <td><%= goal.futsal_game.date.strftime("%d/%m/%y").to_s %></td>
+              <td><%= goal.goal ? icon('futbol-o') + ' ' + goal.goal : '' %></td>
+              <td><%= goal.average_mark %></td>
+              <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col">
     <h3>Top Buts</h3>
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th>Match</th>
-          <th>Buteur</th>
-          <th>Passeur</th>
-          <th>Time</th>
-          <th>Note</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @top_buts.each do |goal| %>
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <thead>
           <tr>
-            <td><%= goal.futsal_game %></td>
-            <td><%= goal.goal %></td>
-            <td><%= goal.assist %></td>
-            <td><%= formatted_match_time(goal.time) %></td>
-            <td><%= goal.average_mark %></td>
-            <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            <th>Match</th>
+            <th>Buteur</th>
+            <th>Passeur</th>
+            <th>Time</th>
+            <th>Note</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @top_buts.each do |goal| %>
+            <tr>
+              <td><%= goal.futsal_game %></td>
+              <td><%= goal.goal %></td>
+              <td><%= goal.assist %></td>
+              <td><%= formatted_match_time(goal.time) %></td>
+              <td><%= goal.average_mark %></td>
+              <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
