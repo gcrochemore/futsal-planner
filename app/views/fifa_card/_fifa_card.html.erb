@@ -20,7 +20,9 @@
     <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %>
   </div>
   <div class="position">
-    <%= player.andand.futsal_position.andand.abbreviation %>
+    <a data-toggle="tooltip" title="Position">
+      <%= player.andand.futsal_position.andand.abbreviation %>
+    </a>
   </div>
   <div class="picture">
     <img src="/assets/fifa/players/<%= player.andand.picture ? player.andand.picture : 'inconnu.jpg' %>">
