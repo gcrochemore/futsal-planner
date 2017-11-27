@@ -2,7 +2,7 @@ Le show de l'admin
 
 <div class="row">
   <div class="col">
-    <h3>Buts sans gardien</h3> <%= @goals_without_goalkeeper.count %>
+    <h3>Buts sans gardien (<%= @goals_without_goalkeeper.count %>)</h3>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -33,7 +33,7 @@ Le show de l'admin
 
 <div class="row">
   <div class="col">
-    <h3>Buts sans buteur</h3> <%= @goals_without_goal_with_goalkeeper.count %>
+    <h3>Buts sans buteur (<%= @goals_without_goal_with_goalkeeper.count %>)</h3>
     <table class="table table-sm">
       <thead>
         <tr>
