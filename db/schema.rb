@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.string   "abbreviation"
     t.float    "average_goal_multiplier"
     t.float    "average_assist_multiplier"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.float    "average_goal_against_multiplier"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "futsal_tournament_player_registrations", force: :cascade do |t|
@@ -256,6 +257,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "futsal_position_id"
     t.string   "picture"
     t.integer  "goal"
+    t.integer  "own_goal"
     t.integer  "goal_with_assist"
     t.integer  "goal_without_assist"
     t.integer  "assist"
@@ -272,6 +274,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "match_goal_against"
     t.integer  "match_goal_difference"
     t.float    "goal_average_by_match"
+    t.float    "own_goal_average_by_match"
     t.float    "goal_percent_by_match"
     t.float    "assist_average_by_match"
     t.float    "assist_percent_by_match"

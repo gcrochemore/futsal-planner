@@ -1,6 +1,6 @@
 <% futsal_game.highlights_and_goals.each do |goal| %>
   <div class="row">
-    <div class="col home_goal">
+    <div class="col home_goal<%= goal.own_goal ? ' own_goal' : '' %>">
       <% if goal.team_id == futsal_game.team_home_id %>
         <% if goal.instance_of? Highlight %>
           <%= link_to (goal.andand.victim.to_s + " " + icon(goal.highlight_type.icon)).html_safe, goal, target: "_blank" %>
@@ -15,7 +15,7 @@
     <div class="col-2 time">
       <%= Time.at(goal.time).utc.strftime("%M:%S") %>
     </div>
-    <div class="col outside_goal">
+    <div class="col outside_goal<%= goal.own_goal ? ' own_goal' : '' %>">
       <% if goal.team_id == futsal_game.team_outside_id %>
         <% if goal.instance_of? Highlight %>
           <%= link_to (icon(goal.highlight_type.icon) + " " + goal.andand.victim.to_s).html_safe, goal, target: "_blank" %>

@@ -16,7 +16,8 @@ class User < ApplicationRecord
   default_scope { order(:first_name, :last_name) }
 
   def update_stats
-    self.goal = self.goals.length
+    self.goal = self.not_own_goals.length
+    self.own_goal = self.own_goals.length
 
     self.goal_with_assist = 0
     self.goal_without_assist = 0
@@ -27,16 +28,17 @@ class User < ApplicationRecord
 
     self.update_match_time
 
-    self.goalkeeper_goal_against_average = (self.goalkeeper_duration.to_f / self.goalkeeper_goal_against.to_f).to_f / 60
+    self.goalkeeper_goal_against_average = (self.goalkeeper_goal_against.to_f / self.goalkeeper_duration.to_f).to_f * 60 * 60
 
     self.match = self.game_registrations.length
     self.match_with_stats = (self.match_time / 60.0)
 
-    self.goal_average_by_match = self.goal.to_f / self.match_with_stats
+    self.goal_average_by_match = (self.goal.to_f / (self.player_duration.to_f / 60)) * 60
+    self.own_goal_average_by_match = self.own_goal.to_f / self.match_with_stats
 
     self.goal_percent_by_match = 0
 
-    self.assist_average_by_match = self.assist.to_f / self.match_with_stats
+    self.assist_average_by_match = (self.assist.to_f / (self.player_duration.to_f / 60)) * 60
 
     self.assist_percent_by_match = 0
     
@@ -44,7 +46,7 @@ class User < ApplicationRecord
     self.goal_mark = 0
     self.assist_mark = 0
     self.victory_mark = 0
-    self.rating = 65 + (self.goal_average_by_match * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier);
+    self.rating = self.calculate_rating
     self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
     self.rating = (self.rating < 65 ? 65 : self.rating)
   
@@ -71,6 +73,10 @@ class User < ApplicationRecord
     self.victory_percentage = self.victory.to_f / self.match.to_f
   end
 
+  def calculate_rating
+    (65 + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (15.0 - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
+  end
+
   def goal_average
     number_of_matchs = self.match_with_stats
     moyenne_goals = self.goal.to_f / number_of_matchs.to_f
@@ -94,10 +100,11 @@ class User < ApplicationRecord
     self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
     (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
     'Gardien : ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min / ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
-    '(1 but / ' + self.goalkeeper_goal_against_average.andand.round(2).to_s + ' min) <br>' +
+    '(' + self.goalkeeper_goal_against_average.andand.round(2).to_s + '/match) <br>' +
     'Joueur : ' + (self.player_duration.to_f/60).round.to_s + ' min <br>' +
     'Remp. : ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
-    '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>
+    '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>' +
+    'CSC ' + self.own_goal.to_s + ' (' + self.own_goal_average_by_match.to_f.round(2).to_s + '/match) <br>
     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
   end
 
@@ -133,5 +140,13 @@ class User < ApplicationRecord
     self.update_stats
     self.update_all_stats
     self.save
-  end  
+  end
+
+  def own_goals
+    self.goals.where(own_goal: true)
+  end
+
+  def not_own_goals
+    self.goals.where(own_goal: false)
+  end
 end

@@ -18,12 +18,12 @@
         <%= f.association :team, label: false, input_html: { class: "form-control" } %>
       </div>
       <div class="form-group col">
-        <label for="goal"><%= f.label :goal %></label>
-        <%= f.association :goal, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.andand.player_by_team(f.object.team) || User.all, include_blank: true %>
+        <label for="goal"><%= f.label :goal %></label> <%= f.input :own_goal, inline_label: 'CSC' %>
+        <%= f.association :goal, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.andand.player_by_team(f.object.own_goal ? (f.object.team.id == f.object.futsal_game.andand.team_outside.id ? f.object.futsal_game.andand.team_home : f.object.futsal_game.andand.team_outside) : f.object.team) || User.all, include_blank: true %>
       </div>      
       <div class="form-group col">
         <label for="assist"><%= f.label :assist %></label>
-        <%= f.association :assist, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.andand.player_by_team(f.object.team) || User.all, include_blank: true %>
+        <%= f.association :assist, label: false, input_html: { class: "form-control" }, collection: f.object.futsal_game.andand.player_by_team(f.object.own_goal ? (f.object.team.id == f.object.futsal_game.andand.team_outside.id ? f.object.futsal_game.andand.team_home : f.object.futsal_game.andand.team_outside) : f.object.team) || User.all, include_blank: true %>
       </div>     
       <div class="form-group col">
         <label for="goalkeeper"><%= f.label :goalkeeper %></label>

@@ -13,7 +13,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :abbreviation
       t.float :average_goal_multiplier 
-      t.float :average_assist_multiplier 
+      t.float :average_assist_multiplier
+      t.float :average_goal_against_multiplier
 
       t.timestamps
     end
@@ -58,6 +59,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
 
       ## Statistiques
       t.integer :goal
+      t.integer :own_goal
       t.integer :goal_with_assist
       t.integer :goal_without_assist
       t.integer :assist
@@ -76,6 +78,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :match_goal_against
       t.integer :match_goal_difference
       t.float :goal_average_by_match
+      t.float :own_goal_average_by_match
       t.float :goal_percent_by_match
       t.float :assist_average_by_match
       t.float :assist_percent_by_match
