@@ -124,8 +124,13 @@
               </li> 
             <% end %>
           </ul>
-        </li>         
+        </li>
+
+        <li class="dropdown">
+           <%= link_to('Admin', show_admin_path) %>
+        </li>
       </ul>
+
       <ul class="nav navbar-nav ml-auto">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b></a>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :parse_match_resume
       get :affect_player_to_team
       get :calculate_goalkeeper_position
+      get :send_email_to_prevent_statistics_are_up_to_date
     end
   end
 
@@ -29,5 +30,6 @@ Rails.application.routes.draw do
   get '/export_db', to: 'admin#export_db'
   get '/show_db', to: 'admin#show_db_view'
   get '/create_seeds', to: 'admin#create_seeds'
+  get '/show_admin', to: 'admin#show'
   
 end
