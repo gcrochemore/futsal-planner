@@ -59,7 +59,7 @@ class FutsalGame < ApplicationRecord
   end
 
   def goal_by_user(user)
-    goals.where(goal: user)
+    goals.where(goal: user, own_goal: false)
   end 
 
   def goal_by_team(team)

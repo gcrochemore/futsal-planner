@@ -2,5 +2,5 @@
   <div class="row">
     <%= render 'fifa_card/fifa_card', player: @user, stat: nil, highlights_and_goals_by_user: nil %> 
   </div> 
-  <%= @user.display_stats.html_safe %>
+  <%= @user.andand.display_stats.andand.html_safe %>
 </div>  

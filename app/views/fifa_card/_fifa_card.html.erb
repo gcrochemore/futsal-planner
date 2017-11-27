@@ -73,7 +73,7 @@
   <div class="highlights_and_goals">
     <% if highlights_and_goals_by_user %>  
       <% highlights_and_goals_by_user.each do |goal| %>
-        <span class="label-tooltip drop-menu">
+        <span class="label-tooltip drop-menu<%= (goal.instance_of? Goal) && goal.andand.own_goal ? ' own_goal' : '' %>">
           <% if goal.instance_of? Highlight %>
             <%= link_to_open_highlight_in_modal(icon(goal.highlight_type.icon), goal).html_safe %>
             <span class="label-tooltiptext label-tooltip-bottom">
