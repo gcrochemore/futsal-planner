@@ -16,6 +16,10 @@ class FutsalGame < ApplicationRecord
 
   default_scope { order('date desc') }
 
+  def futsal_game_player_positions
+    FutsalGamePlayerPosition.where('game_registration_id IN (?)', self.game_registrations.pluck(:id))
+  end
+
   def match_result(team)
     result = ""
     if !(team_home.nil? || team_outside.nil? || score_home.nil? || score_outside.nil?)

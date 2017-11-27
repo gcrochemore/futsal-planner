@@ -1,0 +1,55 @@
+<h1>Comment est calculé ma note ?</h1>
+
+<table class="table">
+
+  <tr>
+    <td></td>
+    <td>65</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>+</th>
+    <td>((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier)</td>
+    <td>average_goal_multiplier : 
+      <% @futsal_game_positions.each do |position| %>
+        (<%= position.abbreviation %> : <%= position.average_goal_multiplier %>)
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <th>+</th>
+    <td>(self.assist_average_by_match * self.futsal_position.average_assist_multiplier)</td>
+    <td>average_assist_multiplier : 
+      <% @futsal_game_positions.each do |position| %>
+        (<%= position.abbreviation %> : <%= position.average_assist_multiplier %>)
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <th>+</th>
+    <td>(15.0 - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier</td>
+    <td>average_goal_against_multiplier : 
+      <% @futsal_game_positions.each do |position| %>
+        (<%= position.abbreviation %> : <%= position.average_goal_against_multiplier %>)
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>(self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>self.rating = (self.rating < 65 ? 65 : self.rating)</td>
+    <td></td>
+  </tr>
+
+
+    
+</table>

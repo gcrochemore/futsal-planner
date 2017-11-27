@@ -1,4 +1,4 @@
-<% if user_signed_in?  %>
+
   <nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -103,45 +103,58 @@
           </ul>
         </li> 
 
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Database<span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <% if can? :manage, :all %>
-              <li class="nav-item btn">
-                <%= link_to('Export DB', export_db_path) %>
-              </li> 
-            <% end %>
-            <% if can? :manage, :all %>
-              <li class="nav-item btn">
-                <%= link_to('Voir DB', show_db_path) %>
-              </li> 
-            <% end %>
-            <% if can? :manage, :all %>
-              <li class="nav-item btn">
-                <%= link_to('Export seeds', create_seeds_path) %>
-              </li> 
-            <% end %>
-          </ul>
-        </li>
+        <% if user_signed_in?  %>
 
-        <li class="dropdown">
-           <%= link_to('Admin', show_admin_path) %>
-        </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Database<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if can? :manage, :all %>
+                <li class="nav-item btn">
+                  <%= link_to('Export DB', export_db_path) %>
+                </li> 
+              <% end %>
+              <% if can? :manage, :all %>
+                <li class="nav-item btn">
+                  <%= link_to('Voir DB', show_db_path) %>
+                </li> 
+              <% end %>
+              <% if can? :manage, :all %>
+                <li class="nav-item btn">
+                  <%= link_to('Export seeds', create_seeds_path) %>
+                </li> 
+              <% end %>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+             <%= link_to('Admin', show_admin_path) %>
+          </li>
+
+
+        <% end %>
+
       </ul>
 
+
+      
       <ul class="nav navbar-nav ml-auto">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
-            <li>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        </li>    
+        <%= link_to "Comment ma note est calculée ?", how_the_mark_is_calculated_path, html: { class: "btn btn-primary btn-lg" } %> - 
+        <% if user_signed_in?  %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b>                         </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= render 'users/user_profile', user: current_user %></li>
+              <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>    
+        <% else %>
+          <%= link_to "Se connecter", new_user_session_path, html: { class: "btn btn-primary btn-lg" } %>
+        <% end %>
       </ul>
     </div>
   </nav>
-<% end %>  

@@ -11,4 +11,8 @@ class PagesController < ApplicationController
       render :welcome
     end
   end
+
+  def how_the_mark_is_calculated
+    @futsal_game_positions = FutsalPosition.all
+  end
 end

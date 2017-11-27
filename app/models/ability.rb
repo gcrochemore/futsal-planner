@@ -27,6 +27,8 @@ class Ability
 
     can :read, Highlight
 
+    can :how_the_mark_is_calculated
+
     
     #
     # The first argument to `can` is the action you are giving the user

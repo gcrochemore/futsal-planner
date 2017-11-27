@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   get '/show_db', to: 'admin#show_db_view'
   get '/create_seeds', to: 'admin#create_seeds'
   get '/show_admin', to: 'admin#show'
-  
+
+  get '/how_the_mark_is_calculated', to: 'pages#how_the_mark_is_calculated'
 end

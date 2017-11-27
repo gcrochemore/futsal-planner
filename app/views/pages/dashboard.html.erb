@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col col-sm-6 col-xs-12">
+  <div class="col col-md-3 col-sm-6 col-xs-12">
     <%= render 'users/user_profile', user: @user %> 
   </div>
-  <div class="col col-sm-6 col-xs-12">
+  <div class="col col-md-3 col-sm-6 col-xs-12">
     <h3>Mes matchs (<%= @user.game_registrations.order_by_futsal_game.count %>)</h3>
     <% if can? :create, FutsalGame %>
      <%= link_to (icon('plus') + " Organiser un match").html_safe, new_futsal_game_path, class: "btn btn-sm btn-block btn-outline-primary" %>
@@ -27,11 +27,24 @@
       </table>
     </div>
   </div>
-  <div class="col col-sm-6 col-xs-12">
-    <h3>Mes buts (<%= @user.goals.order_by_futsal_game_and_time.count %>)</h3> 
+  <div class="col col-md-3 col-sm-6 col-xs-12">
+    <h3>Mes buts (<%= @user.not_own_goals.order_by_futsal_game_and_time.count %>)</h3> 
     <div class="dashboard-panel-content">
       <table class="table table-sm">
-        <% @user.goals.order_by_futsal_game_and_time.each do |goal| %>
+        <% @user.not_own_goals.order_by_futsal_game_and_time.each do |goal| %>
+          <tr>
+            <td><%= goal.futsal_game.date.strftime("%d/%m/%y").to_s %></td>
+            <td><%= goal.assist ? icon('arrow-circle-right') + ' ' + goal.assist : '' %></td>
+            <td><%= goal.average_mark %></td>
+            <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <h3>Mes CSC (<%= @user.own_goals.order_by_futsal_game_and_time.count %>)</h3> 
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <% @user.own_goals.order_by_futsal_game_and_time.each do |goal| %>
           <tr>
             <td><%= goal.futsal_game.date.strftime("%d/%m/%y").to_s %></td>
             <td><%= goal.assist ? icon('arrow-circle-right') + ' ' + goal.assist : '' %></td>
@@ -42,7 +55,7 @@
       </table>
     </div>
   </div>
-  <div class="col col-sm-6 col-xs-12">
+  <div class="col col-md-3 col-sm-6 col-xs-12">
     <h3>Mes passes décisives (<%= @user.assists.order_by_futsal_game_and_time.count %>)</h3> 
     <div class="dashboard-panel-content">
       <table class="table table-sm">

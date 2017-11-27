@@ -73,6 +73,9 @@
               <% if nb_goals_without_goalkepper > 0 %>
                 <%= icon('exclamation-triangle') %> <%= nb_goals_without_goalkepper %> buts sans gardien <br>
               <% end %>
+              <% if futsal_game.futsal_game_player_positions.count == 0 %>
+                Pas de player position<br>
+              <% end %>
               Note : <%= futsal_game.rating %>
             </td>
             <td>
