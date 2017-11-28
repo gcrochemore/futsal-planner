@@ -7,9 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Entités<span class="caret"></span>
-          </a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Entités </a>
           <ul class="dropdown-menu">
             <% if can? :read, Company %>
               <li class="nav-item btn">
@@ -46,9 +44,7 @@
 
 
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Matchs<span class="caret"></span>
-          </a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Matchs </a>
           <ul class="dropdown-menu">
             <% if can? :read, FutsalGame %>
               <li class="nav-item btn">
@@ -81,9 +77,7 @@
         
 
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Tournoi<span class="caret"></span>
-          </a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Tournois </a>
           <ul class="dropdown-menu">
             <% if can? :read, FutsalTournament %>
               <li class="nav-item btn">
@@ -106,9 +100,7 @@
         <% if user_signed_in?  %>
 
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Database<span class="caret"></span>
-            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Database </a>
             <ul class="dropdown-menu">
               <% if can? :manage, :all %>
                 <li class="nav-item btn">

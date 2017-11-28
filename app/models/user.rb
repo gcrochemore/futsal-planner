@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def calculate_rating
-    (65 + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (15.0 - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
+    (65 + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (18.0 - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
   end
 
   def goal_average
