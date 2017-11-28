@@ -11,10 +11,18 @@ fr:
       futsal_game:
         date: Date
         duration: Durée
-        team_home: Equipe 1 
-        team_outside: Equipe 2
+        match_resume_link: Lien site du soccer
         score_home: score 1
         score_outside: Score 2
+        team_home: Equipe 1
+        team_home_id: Equipe 1
+        team_outside: Equipe 2
+        team_outside_id: Equipe 2
+        video_link: Lien vidéo
+      futsal_tournament:
+        date: Date
+        duration: Durée
+        futsal_field: Terrain
       game_registration:
         team: Equipe
         user: Joueur
@@ -23,7 +31,13 @@ fr:
         assist: Passeur
       team:
         company: Entreprise
-        name: Nom de l'équipe 
+        name: Nom de l'équipe
+      user:
+        assist: Nombre de passe décisives
+        company: Entreprise
+        first_name: Prénom
+        goal: Nombre de buts
+        last_name: Nom
 
   companies:
     index:
@@ -38,7 +52,12 @@ fr:
   futsal_games:
     index:
       new_button: Nouveau match
-      title: Matchs   
+      title: Matchs
+
+  futsal_tournaments:
+    index:
+      new_button: Nouveau tournoi
+      title: Tournoi
       
   game_registrations:
     index:
@@ -50,4 +69,9 @@ fr:
   teams:
     index:
       new_button: Nouvelle équipe
-      title: Equipes  
+      title: Equipes
+
+  users:
+      index:
+        new_button: Nouveau joueur
+        title: Joueurs
