@@ -13,6 +13,8 @@ class PagesController < ApplicationController
   end
 
   def how_the_mark_is_calculated
+    user_id = params['user_id'] || 1
+    @user = User.find(user_id)
     @futsal_game_positions = FutsalPosition.all
   end
 end

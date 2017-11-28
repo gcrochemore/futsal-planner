@@ -26,3 +26,5 @@
 db/devise_seeds.rb
 db/seeds*.rb
 db/seeds.rb
+
+.idea/*
