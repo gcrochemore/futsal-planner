@@ -21,9 +21,9 @@ class Ability
     can :read, FutsalTournament
 
 
-    can :read, Goal
     can :mark_goal, Goal
     can :show_embed, Goal
+    can :read, Goal
 
     can :read, Highlight
 

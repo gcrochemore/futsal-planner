@@ -38,7 +38,7 @@
             <% end %>
             <% if can? :read, User %>
               <li class="nav-item btn">
-               <%= link_to('Users', users_path)  %> 
+               <%= link_to('Joueurs', users_path)  %>
               </li> 
             <% end %>
           </ul>
@@ -87,17 +87,17 @@
           <ul class="dropdown-menu">
             <% if can? :read, FutsalTournament %>
               <li class="nav-item btn">
-               <%= link_to('Tournament', futsal_tournaments_path)  %> 
+               <%= link_to('Tournoi', futsal_tournaments_path)  %>
               </li> 
             <% end %>
             <% if can? :read, FutsalTournamentTeamRegistration %>
               <li class="nav-item btn">
-               <%= link_to('Team Tournament', futsal_tournament_team_registrations_path)  %> 
+               <%= link_to('Tournoi - Inscription d\'équipe', futsal_tournament_team_registrations_path)  %>
               </li> 
             <% end %>
             <% if can? :read, FutsalTournamentPlayerRegistration %>
               <li class="nav-item btn">
-               <%= link_to('Team Player', futsal_tournament_player_registrations_path)  %> 
+               <%= link_to('Tournoi - Inscription de joueur', futsal_tournament_player_registrations_path)  %>
               </li> 
             <% end %>
           </ul>

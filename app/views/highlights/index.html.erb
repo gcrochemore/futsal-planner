@@ -10,9 +10,9 @@
 
         <%= f.search_field :highlight_type_name_cont, {placeholder: t('activerecord.attributes.highlight.highlight_type')} %>
 
-        <%= f.search_field :author_first_name_cont, {placeholder: t('activerecord.attributes.highlight.author_id')} %>
+        <%= f.search_field :author_first_name_cont, {placeholder: t('activerecord.attributes.highlight.author')} %>
 
-        <%= f.search_field :victim_first_name_cont, {placeholder: t('activerecord.attributes.highlight.victim_id')} %>
+        <%= f.search_field :victim_first_name_cont, {placeholder: t('activerecord.attributes.highlight.victim')} %>
 
         <%= f.search_field :time_cont, {placeholder: t('activerecord.attributes.highlight.time')} %>
 
@@ -40,9 +40,9 @@
     
           <th><%= sort_link(@q, :highlight_type, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :author_id, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :author_first_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :victim_id, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :victim_first_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :time, default_order: :asc) %></th>
     

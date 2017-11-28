@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!, except: [:show, :show_embed, :mark_goal]
+  before_action :authenticate_user!, except: [:show, :show_embed, :mark_goal, :index]
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :mark_goal, :show_embed]
   # GET /goals
   def index

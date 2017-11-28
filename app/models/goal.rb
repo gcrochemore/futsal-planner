@@ -17,4 +17,7 @@ class Goal < ApplicationRecord
     self.save
   end
 
+  def to_s
+    self.goal
+  end
 end

@@ -27,8 +27,25 @@ fr:
         team: Equipe
         user: Joueur
       goal:
-        goal: Buteur
         assist: Passeur
+        goal: Buteur
+        team: Equipe
+        time: Minute
+        video_link: Lien vidéo
+      goal_mark:
+        goal: But
+        mac_address: Adresse mac
+        mark: Note
+        user: Auteur
+      highlight:
+        author: Auteur
+        futsal_game: Match
+        highlight_type: Type de highlight
+        name: Nom
+        team: Equipe
+        time: Temps
+        victim: Victime
+
       team:
         company: Entreprise
         name: Nom de l'équipe
@@ -62,7 +79,22 @@ fr:
   game_registrations:
     index:
       new_button: Nouvelle inscription
-      title: Inscriptions  
+      title: Inscriptions
+
+  goal_marks:
+    index:
+      new_button: Nouvelle note
+      title: Notes
+
+  goals:
+    index:
+      new_button: Nouveau but
+      title: Buts
+
+  highlights:
+    index:
+      new_button: Nouveau highlight
+      title: Highlights
 
   search_title: Rechercher  
       
