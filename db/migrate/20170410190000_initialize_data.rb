@@ -547,7 +547,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 130, email: "mickaelp@mickaelp", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5pNBNfT0Bc1w_-xpmNDg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Mickael", last_name: "P", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user = User.new({id: 130, email: "mickael.poulachon@trsb.net", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5pNBNfT0Bc1w_-xpmNDg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Mickael", last_name: "P", company_id: 1, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
     user.skip_confirmation!
     user.save!
 
