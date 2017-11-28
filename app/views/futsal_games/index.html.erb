@@ -10,7 +10,9 @@
 
         <%= f.search_field :duration_cont, {placeholder: t('activerecord.attributes.futsal_game.duration')} %>
 
-        <%= f.search_field :team_home_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_home_id')} %>
+        <%= t('activerecord.attributes.futsal_game.team_home_id') %>
+
+        <%= f.collection_select :team_home_id_eq, Team.all, :id, :name, include_blank: true %>
 
         <%= f.search_field :team_outside_id_cont, {placeholder: t('activerecord.attributes.futsal_game.team_outside_id')} %>
 

@@ -19,6 +19,8 @@ fr:
         team_outside: Equipe 2
         team_outside_id: Equipe 2
         video_link: Lien vidéo
+      futsal_position:
+        name: Position
       futsal_tournament:
         date: Date
         duration: Durée
@@ -50,11 +52,20 @@ fr:
         company: Entreprise
         name: Nom de l'équipe
       user:
-        assist: Nombre de passe décisives
+        assist: Nombre de passes décisives
+        assist_average_by_match:  Nombre de passes décisives par match
         company: Entreprise
         first_name: Prénom
         goal: Nombre de buts
+        goal_average_by_match: Nombre de buts par match
+        goalkeeper_duration: Durée gardien
+        goalkeeper_goal_against: Buts encaissés
+        goalkeeper_goal_against_average: Buts encaissés par match
         last_name: Nom
+        match: Nombre de matchs
+        own_goal: Buts CSC
+        player_duration: Durée joueur
+        rating: Note
 
   companies:
     index:

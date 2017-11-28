@@ -52,7 +52,8 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.goal_by_team(@futsal_game.team_outside).order(:time).each_with_index do |goal, index|
       if(index == 0 || ((futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) && !goal.goalkeeper.nil?)) 
         if( index > 0 )
-          futsal_game_player_position.end_time = goal.time - 15
+          end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
+          futsal_game_player_position.end_time = end_time
           futsal_game_player_position.save
         end
         futsal_game_player_position = FutsalGamePlayerPosition.new
@@ -60,12 +61,12 @@ class FutsalGamesController < ApplicationController
         futsal_game_player_position.futsal_position_id = 1
         futsal_game_player_position.calculated = true
         if( index > 0 )
-          futsal_game_player_position.begin_time = goal.time - 15
+          futsal_game_player_position.begin_time = end_time
         else
           futsal_game_player_position.begin_time = 0
         end
-        futsal_game_player_position.end_time = 0
       end
+      futsal_game_player_position.end_time = goal.time
     end
     if !futsal_game_player_position.game_registration.nil?
       futsal_game_player_position.end_time = @futsal_game.duration * 60
@@ -78,7 +79,8 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.goal_by_team(@futsal_game.team_home).order(:time).each_with_index do |goal, index|
       if(index == 0 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
         if( index > 0 )
-          futsal_game_player_position.end_time = goal.time - 15
+          end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
+          futsal_game_player_position.end_time = end_time
           futsal_game_player_position.save
         end
         futsal_game_player_position = FutsalGamePlayerPosition.new
@@ -86,12 +88,12 @@ class FutsalGamesController < ApplicationController
         futsal_game_player_position.futsal_position_id = 1
         futsal_game_player_position.calculated = true
         if( index > 0 )
-          futsal_game_player_position.begin_time = goal.time - 15
+          futsal_game_player_position.begin_time = end_time
         else
           futsal_game_player_position.begin_time = 0
         end
-        futsal_game_player_position.end_time = 0
       end
+      futsal_game_player_position.end_time = goal.time
     end
     futsal_game_player_position.end_time = @futsal_game.duration * 60
     futsal_game_player_position.save

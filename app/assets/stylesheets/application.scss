@@ -137,6 +137,8 @@ body{
 }
 
 .dashboard-panel-content{
-  height: 500px;
+  height: 300px;
   overflow-y: scroll;
+  border: 1px solid black;
+  background-color: #F7F8E0;
 }
