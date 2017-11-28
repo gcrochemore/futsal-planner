@@ -1,7 +1,7 @@
 class FutsalField < ApplicationRecord
   resourcify
 
-  to_s
+  def to_s
     self.name
   end
 end
