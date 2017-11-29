@@ -10,7 +10,7 @@
 
   <tr>
     <td></td>
-    <td>65</td>
+    <td><%= User::RATING_MINI %></td>
     <td></td>
     <td></td>
   </tr>
@@ -39,8 +39,8 @@
 
   <tr>
     <th>+</th>
-    <td><%= ((18.0 - @user.goalkeeper_goal_against_average.to_f).to_f * @user.futsal_position.average_goal_against_multiplier).to_f.round(2) %></td>
-    <td>(18.0 - <strong><%= @user.goalkeeper_goal_against_average.to_f.round(2) %></strong> <i>[Moyenne de buts encaissés]</i> * <strong><%= @user.futsal_position.average_goal_against_multiplier %></strong> <i>[Multiplicateur de buts encaissés]</i></td>
+    <td><%= ((User::GOAL_NUMBER - @user.goalkeeper_goal_against_average.to_f).to_f * @user.futsal_position.average_goal_against_multiplier).to_f.round(2) %></td>
+    <td>(<%= User::GOAL_NUMBER %> - <strong><%= @user.goalkeeper_goal_against_average.to_f.round(2) %></strong> <i>[Moyenne de buts encaissés]</i> * <strong><%= @user.futsal_position.average_goal_against_multiplier %></strong> <i>[Multiplicateur de buts encaissés]</i></td>
     <td><strong>Multiplicateur de buts encaissés :</strong><br>
       <% @futsal_game_positions.each do |position| %>
         <strong><%= position.abbreviation %> :</strong> <%= position.average_goal_against_multiplier %>
@@ -57,15 +57,15 @@
 
   <tr>
     <td></td>
-    <td><%= (@user.match_with_stats < 5 ? @user.rating * 0.85 : @user.rating).round(2) %></td>
-    <td>Si <strong><%= @user.match_with_stats.round(2) %></strong> <i>[Nombre de match avec stats]</i> < 5 alors la  note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i> * 0.85 sinon la note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i></td>
+    <td><%= (@user.match_with_stats < User::MATCH_MINI ? @user.rating * User::MULTIPLIER_IF_MATCH_MINI : @user.rating).round(2) %></td>
+    <td>Si <strong><%= @user.match_with_stats.round(2) %></strong> <i>[Nombre de match avec stats]</i> < <%= User::MATCH_MINI %> alors la  note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i> * <%= User::MULTIPLIER_IF_MATCH_MINI %> sinon la note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i></td>
     <td></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><%= (@user.rating < 65 ? 65 : @user.rating).round(2) %></td>
-    <td>Si <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i> < 65 alors la  note vaut 65 sinon la note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i></td>
+    <td><%= (@user.rating < User::RATING_MINI ? User::RATING_MINI : @user.rating).round(2) %></td>
+    <td>Si <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i> < <%= User::RATING_MINI %> alors la  note vaut <%= User::RATING_MINI %> sinon la note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i></td>
     <td></td>
   </tr>
 

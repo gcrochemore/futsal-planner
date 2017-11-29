@@ -15,6 +15,11 @@ class User < ApplicationRecord
 
   default_scope { order(:first_name, :last_name) }
 
+  GOAL_NUMBER = 18.0
+  RATING_MINI = 65.0
+  MATCH_MINI = 5
+  MULTIPLIER_IF_MATCH_MINI = 0.85
+
   def update_stats
     self.goal = self.not_own_goals.length
     self.own_goal = self.own_goals.length
@@ -47,8 +52,8 @@ class User < ApplicationRecord
     self.assist_mark = 0
     self.victory_mark = 0
     self.rating = self.calculate_rating
-    self.rating = (self.match_with_stats < 5 ? self.rating * 0.85 : self.rating)
-    self.rating = (self.rating < 65 ? 65 : self.rating)
+    self.rating = (self.match_with_stats < User::MATCH_MINI ? self.rating * User::MULTIPLIER_IF_MATCH_MINI : self.rating)
+    self.rating = (self.rating < User::RATING_MINI ? User::RATING_MINI : self.rating)
   
     self.match_goal_for = 0
     self.match_goal_against = 0
@@ -74,7 +79,7 @@ class User < ApplicationRecord
   end
 
   def calculate_rating
-    (65 + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (18.0 - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
+    (User::RATING_MINI + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (User::GOAL_NUMBER - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
   end
 
   def goal_average

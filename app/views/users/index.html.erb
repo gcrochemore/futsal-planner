@@ -10,9 +10,13 @@
 
         <%= f.search_field :last_name_cont, {placeholder: t('activerecord.attributes.user.last_name')} %>
 
+        <br>
+
         <%= t('activerecord.attributes.user.company') %>
 
         <%= f.collection_select :company_id_eq, Company.all, :id, :name, include_blank: true %>
+
+        <br>
 
         <%= f.search_field :goal_cont, {placeholder: t('activerecord.attributes.user.goal')} %>
 
@@ -87,7 +91,7 @@
               </a>
             </td>
           </tr>
-          <tr>
+          <tr class="border_bottom">
 
             <td>Buts encaissés : <%= user.goalkeeper_goal_against %> (<%= (user.goalkeeper_goal_against_average || 0).round(2) %> / match)</td>
 
