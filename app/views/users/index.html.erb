@@ -75,7 +75,7 @@
           </tr>
           <tr>
 
-            <td>CSC : <%= user.own_goal %> (<%= user.assist_average_by_match.to_f.round(2) %> / match)</td>
+            <td>CSC : <%= user.own_goal %> (<%= user.own_goal_average_by_match.to_f.round(2) %> / match)</td>
             <td>
               <a data-toggle="tooltip" title="Durée gardien de but">
                 <%= icon('hand-stop-o') %> <%= (user.goalkeeper_duration.to_f / 60).round %> min
