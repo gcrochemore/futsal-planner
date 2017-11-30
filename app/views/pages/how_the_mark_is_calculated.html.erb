@@ -9,6 +9,17 @@
 <table class="table">
 
   <tr>
+      <th>Position :</th>
+      <td><%= @user.futsal_position %></td>
+      <td><strong>Multiplicateurs -></strong>
+            <strong>Buts : </strong><%= @user.futsal_position.average_goal_multiplier %> -
+            <strong>Passes décisives : </strong><%= @user.futsal_position.average_assist_multiplier %> -
+            <strong>Buts encaissés : </strong><%= @user.futsal_position.average_goal_against_multiplier %>
+      </td>
+      <td></td>
+    </tr>
+
+  <tr>
     <td></td>
     <td><%= User::RATING_MINI %></td>
     <td></td>
