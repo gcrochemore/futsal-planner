@@ -1,30 +1,28 @@
 <h1><%= t('.title') %> - <%= @users.count %></h1>
 
 <div class="row">
-  <div class="col-2">
-    <legend class="filter-title"><%= t :search_title %></legend>
+  <div class="col-2 user-index-search">    
     <fieldset class="filter-panel">
+      <legend class="filter-title"><%= t :search_title %></legend>
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :first_name_cont, {placeholder: t('activerecord.attributes.user.first_name')} %>
+        <%= f.search_field :first_name_cont, {placeholder: t('activerecord.attributes.user.first_name'), class: "form-control"} %>
 
-        <%= f.search_field :last_name_cont, {placeholder: t('activerecord.attributes.user.last_name')} %>
-
-        <br>
+        <%= f.search_field :last_name_cont, {placeholder: t('activerecord.attributes.user.last_name'), class: "form-control"} %>
 
         <%= t('activerecord.attributes.user.company') %>
 
-        <%= f.collection_select :company_id_eq, Company.all, :id, :name, include_blank: true %>
+        <%= f.collection_select :company_id_eq, Company.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
+
+        <%= f.search_field :goal_cont, {placeholder: t('activerecord.attributes.user.goal'), class: "form-control"} %>
+
+        <%= f.search_field :assist_cont, {placeholder: t('activerecord.attributes.user.assist'), class: "form-control" } %>
 
         <br>
 
-        <%= f.search_field :goal_cont, {placeholder: t('activerecord.attributes.user.goal')} %>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
 
-        <%= f.search_field :assist_cont, {placeholder: t('activerecord.attributes.user.assist')} %>
-
-        <br>
-        <br>
-        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+        <%= link_to "Effacer", request.path, class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
       <% end %>
     </fieldset>
   </div>
@@ -42,70 +40,87 @@
     <%= sort_link(@q, :assist_average_by_match, default_order: :asc) %> / <%= sort_link(@q, :goalkeeper_duration, default_order: :asc) %> / 
     <%= sort_link(@q, :goalkeeper_goal_against, default_order: :asc) %> / <%= sort_link(@q, :goalkeeper_goal_against_average, default_order: :asc) %> /
     <%= sort_link(@q, :match, default_order: :asc) %> / <%= sort_link(@q, :rating, default_order: :asc) %> / <%= sort_link(@q, :futsal_position, default_order: :asc) %>
+    <br>
 
-    <table class="table table-hover table-sm table-bordered">
+    <% @users.each do |user| %>
 
-      <tbody>
-        <% @users.each do |user| %>
+      <div class="index-users-user-container">
+        <table class="table table-hover table-sm table-bordered">
+          <tbody>
+            <tr>              
+              <td colspan="3" class="user-name"><strong>
+                <%= user.first_name %> <%= user.last_name %></strong> <%= user.company ? '(' + user.company.to_s + ')' : '' %> - 
+                <%= user.futsal_position.abbreviation %> - <%= user.rating.to_f.round(2) %>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan='5'>
+                <img src="/assets/fifa/players/<%= user.andand.picture ? user.andand.picture : 'inconnu.jpg' %>" width="145px">
+              </td>           
+              <td colspan="2">
+                <%= user.match %> match(s) - <%= user.match_with_stats.round(2) %> avec stats
+              </td>
+            <tr>
+              <td>
+                <strong>Buts</strong>
+                <br><%= user.goal %> (<%= user.goal_average_by_match.to_f.round(2) %> / match)
+              </td>  
+              <td>
+                <strong>Assit</strong>
+                <br><%= user.assist %> (<%= user.assist_average_by_match.to_f.round(2) %> / match)
+              </td>              
+            </tr>
+            <tr>
+              <td>
+                <strong>CSC</strong>
+                <br><%= user.own_goal %> (<%= user.own_goal_average_by_match.to_f.round(2) %> / match)
+              </td>
+              <td>
+                <strong>Buts encaissés</strong>
+                <br><%= user.goalkeeper_goal_against %> (<%= (user.goalkeeper_goal_against_average || 0).round(2) %> / match)
+              </td>
+            </tr>
+            <tr>    
+              <td><%= user.match_time.round(0) %> min</td>
+              <td>
+                <a data-toggle="tooltip" title="Durée joueur">
+                  <%= icon('user') %> <%= (user.player_duration.to_f / 60).round %> min
+                </a>
+              </td>
+            </tr>
+            <tr>
+               <td>
+                <a data-toggle="tooltip" title="Durée gardien de but">
+                  <%= icon('hand-stop-o') %> <%= (user.goalkeeper_duration.to_f / 60).round %> min
+                </a>
+              </td>
+              <td>
+                <a data-toggle="tooltip" title="Durée remplacant">
+                  <%= icon('refresh') %> <%= (user.substitute_duration.to_f / 60).round %> min
+                </a>
+              </td>            
+            </tr>
+          </tbody>
+        </table>
+        <table class="table">
           <tr>
-            <td rowspan='5'><img src="/assets/fifa/players/<%= user.andand.picture ? user.andand.picture : 'inconnu.jpg' %>" width="150px"></td>
-          
-            <td><strong><%= user.first_name %> <%= user.last_name %></strong> <%= user.company ? '(' + user.company.to_s + ')' : '' %> - 
-              <%= user.futsal_position %> - <%= user.rating.to_f.round(2) %>
-            </td>
-
-            
-    
-            <td>Match : <%= user.match %> (avec stats : <%= user.match_with_stats.round(2) %>)</td>
-
-            <td rowspan='5'>
-              <%= link_to icon('eye').html_safe, user %>
-              <% if can? :edit, User %>
-                <%= link_to icon('pencil').html_safe, edit_user_path(user) %>
-              <% end %>
-              <% if can? :destroy, User %>
-                <%= link_to icon('times').html_safe, user, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-    
-            <td>Buts : <%= user.goal %> (<%= user.goal_average_by_match.to_f.round(2) %> / match)</td>
-            <td><%= user.match_time.round(0) %> min</td>
-          </tr>
-          <tr>
-
-            <td>CSC : <%= user.own_goal %> (<%= user.own_goal_average_by_match.to_f.round(2) %> / match)</td>
+            <% if can? :edit, User %>
+              <td>
+                <%= link_to icon('pencil').html_safe, edit_user_path(user), class: "btn btn-outline-primary btn-block" %>
+              </td>
+            <% end %>
+            <% if can? :destroy, User %>
+              <td>
+                <%= link_to icon('times').html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-primary btn-block" %>
+              </td>
+            <% end %>
             <td>
-              <a data-toggle="tooltip" title="Durée gardien de but">
-                <%= icon('hand-stop-o') %> <%= (user.goalkeeper_duration.to_f / 60).round %> min
-              </a>
+              <%= link_to icon('eye').html_safe, user, class: "btn btn-outline-primary btn-block" %>
             </td>
           </tr>
-          <tr>
-    
-            <td>Assit : <%= user.assist %> (<%= user.assist_average_by_match.to_f.round(2) %> / match)</td>
-            <td>
-              <a data-toggle="tooltip" title="Durée joueur">
-                <%= icon('user') %> <%= (user.player_duration.to_f / 60).round %> min
-              </a>
-            </td>
-          </tr>
-          <tr class="border_bottom">
-
-            <td>Buts encaissés : <%= user.goalkeeper_goal_against %> (<%= (user.goalkeeper_goal_against_average || 0).round(2) %> / match)</td>
-
-
-            <td>
-              <a data-toggle="tooltip" title="Durée remplacant">
-                <%= icon('refresh') %> <%= (user.substitute_duration.to_f / 60).round %> min
-              </a>
-            </td>    
-            
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </table>
+      </div>
+    <% end %>
     <%= will_paginate @users %>
   </div>
 </div>
