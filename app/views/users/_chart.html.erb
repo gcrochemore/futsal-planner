@@ -1,0 +1,79 @@
+<canvas id="myChart" width="100%" height="30px"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: 
+        ['',
+            <% user.game_registrations.each do |game_registration| %>
+                '<%= game_registration.futsal_game.to_s %>',
+            <% end %>
+        ],
+      datasets: [{
+        label: 'Moyenne de Buts',
+        data: 
+          ['',
+              <% user.game_registrations.each do |game_registration| %>
+                  '<%= user.goal_average_by_match.to_s %>',
+              <% end %>
+          ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      },{
+        label: 'Buts',
+        data: 
+          ['',
+            <% user.game_registrations.each do |game_registration| %>
+                '<%= game_registration.goal.to_s %>',
+            <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 12, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,200,132,1)'
+        ],
+        borderWidth: 1
+      },{
+           label: 'Moyenne de Passes dé',
+           data:
+             ['',
+                 <% user.game_registrations.each do |game_registration| %>
+                     '<%= user.assist_average_by_match.to_s %>',
+                 <% end %>
+             ],
+           borderColor: [
+               'rgba(78,99,132,1)'
+           ],
+           borderWidth: 1
+         },{
+        label: 'Passes',
+        data: 
+          ['',
+            <% user.game_registrations.each do |game_registration| %>
+                '<%= game_registration.assist.to_s %>',
+            <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
