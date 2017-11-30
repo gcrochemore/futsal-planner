@@ -2,18 +2,25 @@
   <% sum_goal_average_by_match = 0 %>
   <% sum_rating = 0 %>
   <% sum_assist_average_by_match = 0 %>
+  <% sum_goal_against_average_by_match = 0 %>
   <% sum_match = 0 %>
   <% team.order_by_stats.each do |player| %>
     <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.andand.goal_average_by_match.to_f %>
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.andand.assist_average_by_match.to_f %>
+    <% sum_goal_against_average_by_match = sum_goal_against_average_by_match + player.user.andand.goalkeeper_goal_against_average.to_f %>
     <% sum_match = sum_match + player.user.andand.match_with_stats.to_f %>
     <% sum_rating = sum_rating + player.user.andand.rating.to_f %>
     <%= render 'fifa_card/fifa_card', player: player.user, stat: player, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %> 
   <% end %>
 </div>
 <br>
-<%= "<strong>Total : </strong>" + (sum_goal_average_by_match ? sum_goal_average_by_match.round(2) : '-').to_s + ' ' + icon('futbol-o') + ' ' + 
-                                                (sum_assist_average_by_match ? sum_assist_average_by_match.round(2) : '-').to_s).html_safe + ' ' + icon('arrow-circle-right' %> 
+<%= ("<strong>Total : </strong>" + (sum_goal_average_by_match ? sum_goal_average_by_match.round(2) : '-').to_s + ' ' + 
+                      icon('futbol-o') + ' ' + (sum_assist_average_by_match ? sum_assist_average_by_match.round(2) : '-').to_s + ' ' + 
+                      icon('arrow-circle-right') + 
+                      (sum_goal_against_average_by_match ? (sum_goal_against_average_by_match / team.length).round(2)  : '-').to_s + ' ' + 
+                      icon('sign-in')
+    ).html_safe 
+%> 
                                                 <%= team.length > 0 ? (sum_match / team.length).round(2) : 'NaN' %> matchs <br> 
 <strong>Note :</strong> <%= team.length > 0 ? (sum_rating / team.length).round(2).to_s : 'NaN' %>
 <strong>Score théorique : </strong> <%= calculate_score(sum_goal_average_by_match, sum_assist_average_by_match).round(2).to_s %>
