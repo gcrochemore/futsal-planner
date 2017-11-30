@@ -1,15 +1,13 @@
 <div class="simple-calendar">
   <div class="calendar-heading row">
     <div class="col">
-      <%= icon('arrow-circle-left') %>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+      <%= link_to (icon('arrow-circle-left') + ' ' + t('simple_calendar.previous', default: 'Previous')).html_safe, calendar.url_for_previous_view %>
     </div>
     <div class="col">
       <span class="calendar-title"><%= t('date.month_names')[start_date.month].titleize %> <%= start_date.year %></span>
     </div>
     <div class="col">
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-      <%= icon('arrow-circle-right') %>
+      <%= link_to (t('simple_calendar.next', default: 'Next') + ' ' + icon('arrow-circle-right')).html_safe, calendar.url_for_next_view %>      
     </div>    
   </div>
 

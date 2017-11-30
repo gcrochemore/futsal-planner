@@ -24,6 +24,22 @@ body{
   background: radial-gradient(white, #E6E6E6);
 }
 
+.navbar-nav.dropdown{
+  padding: 5px;
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none !important;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
+  }
+}
+
 
   /* Tooltip container */
 .label-tooltip {
@@ -74,23 +90,59 @@ body{
   min-width: 200px;
 }
 
-.calendar_event_match{
-  font-size: 70%;
-  padding: 1px;
-  border: 1px solid black;  
-}
+
+
+
 
 .simple-calendar {
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none !important;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
+  }
   .calendar-heading{
+    font-size: 120%;
     width: 100%;
     text-align: center;
+    font-weight: bold;   
   }
+  .calendar-title{
+    font-size: 150%;
+  }
+  .thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+
   .day { 
     width:14%;    
   }
 
   .day-container {
     min-height: 50px;
+    text-align: center;
+    .calendar_event_match{
+      font-size: 80%;
+      padding: 5px;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 3px;
+      color: black;  
+    }
+    .calendar_event_match:hover{
+      background-color: #FAF0C5;
+      color: #FF8C00;
+      border-color: #FF8C00;
+    }
   }
 
   .day_of_date{ }

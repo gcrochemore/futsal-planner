@@ -8,6 +8,9 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
+      can :affect_player_to_team, FutsalGame, FutsalGame.all do |futsalGame|
+        futsalGame.date >= DateTime.now
+      end
     end
 
     can :read, User
@@ -15,11 +18,8 @@ class Ability
     can :read, GoalMark
 
     can :read, FutsalGame
-    can :affect_player_to_team, FutsalGame, FutsalGame.all do |futsalGame|
-      futsalGame.date >= DateTime.now
-    end
-    can :read, FutsalTournament
 
+    can :read, FutsalTournament
 
     can :mark_goal, Goal
     can :show_embed, Goal

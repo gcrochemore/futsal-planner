@@ -1,152 +1,161 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Accueil</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if can? :read, User %>
+        <li class="nav-item">
+         <%= link_to('Joueurs', users_path, { class: "nav-link" })  %>
+        </li> 
+      <% end %>
+      <% if can? :read, FutsalGame %>
+        <li class="nav-item">
+          <%= link_to('Matchs de futsal', futsal_games_path, { class: "nav-link" })  %> 
+        </li> 
+      <% end %>
 
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <%= link_to 'Accueil', '/', class: 'navbar-brand' %>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Entités </a>
+      <% if user_signed_in?  %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Entités </a>
           <ul class="dropdown-menu">
             <% if can? :read, Company %>
-              <li class="nav-item btn">
-               <%= link_to('Entreprises', companies_path)  %> 
+              <li>
+               <%= link_to('Entreprises', companies_path, { class: "dropdown-item" })  %> 
               </li>
             <% end %>
             <% if can? :read, Team %>
-              <li class="nav-item btn">
-               <%= link_to('Equipes', teams_path)  %> 
+              <li>
+               <%= link_to('Equipes', teams_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, FutsalField %>
-              <li class="nav-item btn">
-               <%= link_to('Terrains de futsal', futsal_fields_path)  %> 
+              <li>
+               <%= link_to('Terrains de futsal', futsal_fields_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, FutsalPosition %>
-              <li class="nav-item btn">
-               <%= link_to('Postes', futsal_positions_path)  %> 
+              <li>
+               <%= link_to('Postes', futsal_positions_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, HighlightType %>
-              <li class="nav-item btn">
-               <%= link_to('Types de highlights', highlight_types_path)  %> 
+              <li>
+               <%= link_to('Types de highlights', highlight_types_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, User %>
-              <li class="nav-item btn">
-               <%= link_to('Joueurs', users_path)  %>
+              <li>
+               <%= link_to('Joueurs', users_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
           </ul>
         </li>
 
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Matchs </a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Matchs </a>
           <ul class="dropdown-menu">
             <% if can? :read, FutsalGame %>
-              <li class="nav-item btn">
-                <%= link_to('Matchs de futsal', futsal_games_path)  %> 
+              <li>
+                <%= link_to('Matchs de futsal', futsal_games_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, GameRegistration %>
-              <li class="nav-item btn">
-               <%= link_to('Inscriptions', game_registrations_path)  %> 
+              <li>
+               <%= link_to('Inscriptions', game_registrations_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, Goal %>
-              <li class="nav-item btn">
-               <%= link_to('Buts', goals_path)  %> 
+              <li>
+               <%= link_to('Buts', goals_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, Highlight %>
-              <li class="nav-item btn">
-               <%= link_to('Highlights', highlights_path)  %> 
+              <li>
+               <%= link_to('Highlights', highlights_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
             <% if can? :read, GoalMark %>
-              <li class="nav-item btn">
-               <%= link_to('Notes', goal_marks_path)  %> 
+              <li>
+               <%= link_to('Notes', goal_marks_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
           </ul>
         </li>
-        
-        
 
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Tournois </a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Tournois </a>
           <ul class="dropdown-menu">
             <% if can? :read, FutsalTournament %>
-              <li class="nav-item btn">
-               <%= link_to('Tournoi', futsal_tournaments_path)  %>
+              <li>
+               <%= link_to('Tournoi', futsal_tournaments_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
             <% if can? :read, FutsalTournamentTeamRegistration %>
-              <li class="nav-item btn">
-               <%= link_to('Tournoi - Inscription d\'équipe', futsal_tournament_team_registrations_path)  %>
+              <li>
+               <%= link_to('Tournoi - Inscription d\'équipe', futsal_tournament_team_registrations_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
             <% if can? :read, FutsalTournamentPlayerRegistration %>
-              <li class="nav-item btn">
-               <%= link_to('Tournoi - Inscription de joueur', futsal_tournament_player_registrations_path)  %>
+              <li>
+               <%= link_to('Tournoi - Inscription de joueur', futsal_tournament_player_registrations_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
           </ul>
         </li> 
 
-        <% if user_signed_in?  %>
-
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Database </a>
-            <ul class="dropdown-menu">
-              <% if can? :manage, :all %>
-                <li class="nav-item btn">
-                  <%= link_to('Export DB', export_db_path) %>
-                </li> 
-              <% end %>
-              <% if can? :manage, :all %>
-                <li class="nav-item btn">
-                  <%= link_to('Voir DB', show_db_path) %>
-                </li> 
-              <% end %>
-              <% if can? :manage, :all %>
-                <li class="nav-item btn">
-                  <%= link_to('Export seeds', create_seeds_path) %>
-                </li> 
-              <% end %>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-             <%= link_to('Admin', show_admin_path) %>
-          </li>
-
-
-        <% end %>
-
-      </ul>
-
-
-      
-      <ul class="nav navbar-nav ml-auto">
-        <%= link_to "Comment ma note est calculée ?", how_the_mark_is_calculated_path, html: { class: "btn btn-primary btn-lg" } %> - 
-        <% if user_signed_in?  %>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b>                         </a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= render 'users/user_profile', user: current_user %></li>
-              <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Database </a>
+          <ul class="dropdown-menu">
+            <% if can? :manage, :all %>
               <li>
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </li>    
-        <% else %>
-          <%= link_to "Se connecter", new_user_session_path, html: { class: "btn btn-primary btn-lg" } %>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+                <%= link_to('Export DB', export_db_path, { class: "dropdown-item" }) %>
+              </li> 
+            <% end %>
+            <% if can? :manage, :all %>
+              <li>
+                <%= link_to('Voir DB', show_db_path, { class: "dropdown-item" }) %>
+              </li> 
+            <% end %>
+            <% if can? :manage, :all %>
+              <li>
+                <%= link_to('Export seeds', create_seeds_path, { class: "dropdown-item" }) %>
+              </li> 
+            <% end %>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+           <%= link_to('Admin', show_admin_path, { class: "nav-link" }) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "Comment ma note est calculée ?", how_the_mark_is_calculated_path, { class: "nav-link" } %>
+      </li>
+      <% if user_signed_in?  %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" href="#">
+            <i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i>
+            <%= icon('user-circle-o') %> <%= current_user if user_signed_in? %><b class="caret"></b>                         
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item"><%= render 'users/user_profile', user: current_user %></li>
+            <li class="dropdown-item"><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
+            <li class="dropdown-item">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </li>    
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Se connecter", new_user_session_path, { class: "nav-link" } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

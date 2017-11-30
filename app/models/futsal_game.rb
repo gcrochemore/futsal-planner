@@ -80,7 +80,15 @@ class FutsalGame < ApplicationRecord
 
   def to_s_with_only_hour
     date.strftime("%H:%M") + " : " + team_home.andand.name + " vs " + team_outside.andand.name
-  end      
+  end        
+
+  def to_s_welcome_page
+    "<strong>" + date.strftime("%H:%M") + "</strong><br>" + to_s_team_and_score_welcome
+  end
+
+  def to_s_team_and_score_welcome
+    team_home.andand.name + "<strong> " + score_home.to_s + " - " + score_home.to_s + " </strong>" + team_outside.andand.name
+  end  
 
   def to_s_team_and_score
     team_home.andand.name + " " + score_home.to_s + " - " + score_home.to_s + " " + team_outside.andand.name

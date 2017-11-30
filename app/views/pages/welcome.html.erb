@@ -1,9 +1,9 @@
-<h3>Bienvenue sur Futsal-planner !</h3>
+<!--<h3>Bienvenue sur Futsal-planner !</h3>
 Ce programme à été développé pour permettre l'organisation de match futsal<br>
 <ul>
   <li>Créer des matchs</li>
   <li>S'inscrire à des matchs</li>
-</ul>
+</ul>-->
 
 <div class="row">
   <div class="col">
@@ -11,11 +11,7 @@ Ce programme à été développé pour permettre l'organisation de match futsal<
     
     <%= month_calendar(attribute: :date, events: @futsal_games) do |date, futsal_games| %> 
       <% futsal_games.each do |futsal_game| %>
-        <div class="calendar_event_match">
-          <%= futsal_game.to_s_with_only_hour %>
-          <strong><%= futsal_game.score_home %> - <%= futsal_game.score_outside %></strong>
-          <%= link_to icon('eye').html_safe, futsal_game, target: "_blank" %>            
-        </div>
+        <%= link_to ('<div class="calendar_event_match">' + futsal_game.to_s_welcome_page.to_s + '</div>').html_safe, futsal_game, target: "_blank" %>  
       <% end %>
     <% end %>
   </div>

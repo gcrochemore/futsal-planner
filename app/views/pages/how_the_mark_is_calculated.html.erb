@@ -28,7 +28,10 @@
 
   <tr>
     <th>+</th>
-    <td><%= ((@user.goal_average_by_match - @user.own_goal_average_by_match) * @user.futsal_position.average_goal_multiplier).to_f.round(2) %></td>
+    <td>
+      <% goal_rating = ((@user.goal_average_by_match - @user.own_goal_average_by_match) * @user.futsal_position.average_goal_multiplier).to_f %>
+      <%= goal_rating.round(2) %>
+      </td>
     <td>( <strong><%= @user.goal_average_by_match.to_f.round(2) %></strong> <i>[Moyenne de but par match]</i> - <strong><%= @user.own_goal_average_by_match.to_f.round(2) %></strong> <i>[Moyenne de CSC par match]</i>) * <strong><%= @user.futsal_position.average_goal_multiplier %></strong> <i>[Multiplicateur de buts]</i></td>
     <td><strong>Multiplicateur de buts :</strong><br>
       <% @futsal_game_positions.each do |position| %>
@@ -39,7 +42,10 @@
 
   <tr>
     <th>+</th>
-    <td><%= (@user.assist_average_by_match * @user.futsal_position.average_assist_multiplier).to_f.round(2) %></td>
+    <td>
+      <% assist_rating = (@user.assist_average_by_match * @user.futsal_position.average_assist_multiplier).to_f %>
+      <%= assist_rating.round(2) %>
+    </td>
     <td><strong><%= @user.assist_average_by_match.to_f.round(2) %></strong> <i>[Moyenne de passes décisives par match]</i> * <strong><%= @user.futsal_position.average_assist_multiplier %></strong> <i>[Multiplicateur de passes décisives]</i></td>
     <td><strong>Multiplicateur de passes décisives : </strong><br>
       <% @futsal_game_positions.each do |position| %>
@@ -50,7 +56,10 @@
 
   <tr>
     <th>+</th>
-    <td><%= ((User::GOAL_NUMBER - @user.goalkeeper_goal_against_average.to_f).to_f * @user.futsal_position.average_goal_against_multiplier).to_f.round(2) %></td>
+    <td>
+      <% goal_against_rating = ((User::GOAL_NUMBER - @user.goalkeeper_goal_against_average.to_f).to_f * @user.futsal_position.average_goal_against_multiplier).to_f %>
+      <%= goal_against_rating.round(2) %>  
+    </td>
     <td>(<%= User::GOAL_NUMBER %> - <strong><%= @user.goalkeeper_goal_against_average.to_f.round(2) %></strong> <i>[Moyenne de buts encaissés]</i> * <strong><%= @user.futsal_position.average_goal_against_multiplier %></strong> <i>[Multiplicateur de buts encaissés]</i></td>
     <td><strong>Multiplicateur de buts encaissés :</strong><br>
       <% @futsal_game_positions.each do |position| %>
@@ -61,15 +70,18 @@
 
   <tr>
     <th>=</th>
-    <td><%= @user.rating.round(2) %></td>
+    <td>
+      <% rating = User::RATING_MINI + goal_rating + assist_rating + goal_against_rating %>
+      <%= rating.round(2) %>
+    </td>
     <td></td>
     <td></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><%= (@user.match_with_stats < User::MATCH_MINI ? @user.rating * User::MULTIPLIER_IF_MATCH_MINI : @user.rating).round(2) %></td>
-    <td>Si <strong><%= @user.match_with_stats.round(2) %></strong> <i>[Nombre de match avec stats]</i> < <%= User::MATCH_MINI %> alors la  note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i> * <%= User::MULTIPLIER_IF_MATCH_MINI %> sinon la note vaut <strong><%= @user.rating.round(2) %></strong> <i>[Note]</i></td>
+    <td><%= (@user.match_with_stats < User::MATCH_MINI ? rating * User::MULTIPLIER_IF_MATCH_MINI : rating).round(2) %></td>
+    <td>Si <strong><%= @user.match_with_stats.round(2) %></strong> <i>[Nombre de match avec stats]</i> < <%= User::MATCH_MINI %> alors la  note vaut <strong><%= rating.round(2) %></strong> <i>[Note]</i> * <%= User::MULTIPLIER_IF_MATCH_MINI %> sinon la note vaut <strong><%= rating.round(2) %></strong> <i>[Note]</i></td>
     <td></td>
   </tr>
 
