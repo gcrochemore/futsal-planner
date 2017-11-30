@@ -113,4 +113,30 @@ class FutsalGame < ApplicationRecord
   def futsal_game_player_position_by_team(team)
     FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)).order(:futsal_position_id, :begin_time)
   end
+
+  def change_team_home(team)
+
+    GameRegistration.where(futsal_game: self.id, team: self.team_home.id).update_all(team_id: team.id)
+
+    self.highlights_and_goals_by_team(self.team_home.id).each do |highlight|
+      highlight.team = team
+      highlight.save
+    end
+
+    self.team_home = team
+    self.save
+  end
+
+  def change_team_outside(team)
+
+    GameRegistration.where(futsal_game: self.id, team: self.team_outside.id).update_all(team_id: team.id)
+
+    self.highlights_and_goals_by_team(self.team_outside.id).each do |highlight|
+      highlight.team = team
+      highlight.save
+    end
+
+    self.team_outside = team
+    self.save
+  end
 end
