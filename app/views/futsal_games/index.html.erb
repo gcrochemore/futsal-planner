@@ -6,33 +6,29 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :date_cont, {placeholder: t('activerecord.attributes.futsal_game.date')} %>
+        <%= f.search_field :date_cont, {placeholder: t('activerecord.attributes.futsal_game.date'), class: "form-control"} %>
 
-        <%= f.search_field :duration_cont, {placeholder: t('activerecord.attributes.futsal_game.duration')} %>
-
-        <br>
+        <%= f.search_field :duration_cont, {placeholder: t('activerecord.attributes.futsal_game.duration'), class: "form-control"} %>
 
         <%= t('activerecord.attributes.futsal_game.team_home_id') %>
 
-        <%= f.collection_select :team_home_id_eq, Team.all, :id, :name, include_blank: true %>
-
-        <br>
+        <%= f.collection_select :team_home_id_eq, Team.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
 
         <%= t('activerecord.attributes.futsal_game.team_outside_id') %>
 
-        <%= f.collection_select :team_outside_id_eq, Team.all, :id, :name, include_blank: true %>
+        <%= f.collection_select :team_outside_id_eq, Team.all, :id, :name, {include_blank: true}, {class: "form-control"} %>
 
-        <%= f.search_field :score_home_cont, {placeholder: t('activerecord.attributes.futsal_game.score_home')} %>
+        <%= f.search_field :score_home_cont, {placeholder: t('activerecord.attributes.futsal_game.score_home'), class: "form-control"} %>
 
-        <%= f.search_field :score_outside_cont, {placeholder: t('activerecord.attributes.futsal_game.score_outside')} %>
+        <%= f.search_field :score_outside_cont, {placeholder: t('activerecord.attributes.futsal_game.score_outside'), class: "form-control"} %>
 
-        <%= f.search_field :video_link_cont, {placeholder: t('activerecord.attributes.futsal_game.video_link')} %>
+        <%= f.search_field :video_link_cont, {placeholder: t('activerecord.attributes.futsal_game.video_link'), class: "form-control"} %>
 
-        <%= f.search_field :match_resume_link_cont, {placeholder: t('activerecord.attributes.futsal_game.match_resume_link')} %>
-
+        <%= f.search_field :match_resume_link_cont, {placeholder: t('activerecord.attributes.futsal_game.match_resume_link'), class: "form-control"} %>
         <br>
-        <br>
-        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
+
+        <%= link_to "Effacer", request.path, class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
       <% end %>
     </fieldset>
   </div>

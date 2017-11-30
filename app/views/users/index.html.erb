@@ -48,9 +48,12 @@
         <table class="table table-hover table-sm table-bordered">
           <tbody>
             <tr>              
-              <td colspan="3" class="user-name"><strong>
-                <%= user.first_name %> <%= user.last_name %></strong> <%= user.company ? '(' + user.company.to_s + ')' : '' %> - 
-                <%= user.futsal_position.abbreviation %> - <%= user.rating.to_f.round(2) %>
+              <td colspan="3" class="user-name">
+                <strong>
+                  <%= user.first_name %> <%= user.last_name %>                  
+                </strong> 
+                <%= user.company ? '(' + user.company.to_s + ')' : '' %> - 
+                <%= user.futsal_position.abbreviation %> - <strong><%= user.rating.to_f.round(1) %></strong>
               </td>
             </tr>
             <tr>
