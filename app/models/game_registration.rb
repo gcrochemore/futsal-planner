@@ -8,7 +8,7 @@ class GameRegistration < ApplicationRecord
 
   scope :order_by_stats, -> { order('goal desc, assist desc') }
 
-  scope :order_by_users_stats, -> { includes(:user).order('users.goal_average_by_match desc') }
+  scope :order_by_users_stats, -> { includes(:user).order('users.rating desc') }
 
   scope :order_by_futsal_game, -> { includes(:futsal_game).order('futsal_games.date desc') }
 

@@ -2,11 +2,13 @@
   <% sum_goal_average_by_match = 0 %>
   <% sum_rating = 0 %>
   <% sum_assist_average_by_match = 0 %>
+  <% sum_goal_against_average_by_match = 0 %>
   <% sum_match = 0 %>
   <% nb_rating = 0 %>
   <% team.order_by_stats.each do |player| %>
     <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.andand.goal_average_by_match.to_f %>
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.andand.assist_average_by_match.to_f %>
+    <% sum_goal_against_average_by_match = sum_goal_against_average_by_match + player.user.andand.goalkeeper_goal_against_average.to_f %>
     <% sum_match = sum_match + player.user.andand.match_with_stats.to_f %>
     <% sum_rating = sum_rating + player.user.andand.rating.to_f %>
     <% (player.user.andand.rating.to_f > 0 ) ? nb_rating += 1 : '' %>
@@ -24,4 +26,4 @@
                                                 (sum_assist_average_by_match ? sum_assist_average_by_match.round(2) : '-').to_s).html_safe + ' ' + icon('arrow-circle-right' %> 
                                                 <%= team.length > 0 ? (sum_match / team.length).round(2) : 'NaN' %> matchs <br> 
 <strong>Note :</strong> <%= nb_rating > 0 ? (sum_rating / nb_rating).round(2).to_s : 'NaN' %> (<%= nb_rating %>)
-<strong>Score théorique : </strong> <%= calculate_score(sum_goal_average_by_match, sum_assist_average_by_match).round(2).to_s %>
+<strong>Score théorique : </strong> <%= calculate_score(sum_goal_average_by_match, sum_assist_average_by_match, sum_goal_against_average_by_match).round(2).to_s %>

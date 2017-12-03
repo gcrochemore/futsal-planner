@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css" media="screen">
+      h3 { color: #f00; }
+      ul { list-style: none; }
+    </style>
+</head>
+<body>
+  <h3>Futsal Planner</h3>
+  <br>
+  Salut <%= @game_registration.user.to_s %> !
+  <br>
+  <br>
+  Les stats de ton dernier match ont été mises à jour !
+  <br>
+  <h4>
+    <%= @futsal_game.team_home.andand.name.to_s + " " + @futsal_game.score_home.to_s + " - " + @futsal_game.score_outside.to_s + " " + @futsal_game.team_outside.andand.name.to_s %>
+  </h4>
+  <br>
+
+  <strong>Statistiques :</strong><br>
+  <%= 'Buts : ' + @game_registration.goal.to_s %> -
+  <%= 'Passes dé\' : ' + @game_registration.assist.to_s %> - 
+  <%= 'Buts encaissés : ' + @game_registration.goalkeeper_goal_against.to_i.to_s %> 
+  <br>
+
+  <strong>Temps de jeu :</strong><br> 
+  GB : <%= (@game_registration.goalkeeper_duration.to_f / 60).round %> min - 
+  JO : <%= (@game_registration.player_duration.to_f / 60).round %> min -
+  RP : <%= (@game_registration.substitute_duration.to_f / 60).round %> min
+  <br>
+  <br>
+
+  <%= link_to 'Voir tes exploits', @futsal_game, target: "_blank" %>
+</body>
+</html>

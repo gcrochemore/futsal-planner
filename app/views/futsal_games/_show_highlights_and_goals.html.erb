@@ -1,5 +1,5 @@
 <% futsal_game.highlights_and_goals.each do |goal| %>
-  <div class="row">
+  <div class="row goal_tab">
     <div class="col home_goal<%= (goal.instance_of? Goal) && goal.andand.own_goal ? ' own_goal' : '' %>">
       <% if goal.team_id == futsal_game.team_home_id %>
         <% if goal.instance_of? Highlight %>
@@ -12,7 +12,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-2 time">
+    <div class="col-1 time">
       <%= Time.at(goal.time).utc.strftime("%M:%S") %>
     </div>
     <div class="col outside_goal<%= (goal.instance_of? Goal) && goal.andand.own_goal ? ' own_goal' : '' %>">

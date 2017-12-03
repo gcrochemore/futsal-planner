@@ -122,45 +122,61 @@
         <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", @futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
       </div>
     <% end %>
+    <% if !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
+      <div class="col">
+        <%= link_to icon('futbol-o') + " Prévenir les joueurs que le match est en ligne", send_email_to_prevent_statistics_are_up_to_date_futsal_game_path, class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
   </div>
 
-<%= render 'timeline', futsal_game: @futsal_game %> 
+<% if @futsal_game.has_highlights_or_goals %>
+  <%= render 'timeline', futsal_game: @futsal_game %> 
+<% end %>
 
 <div class="row goal_tab">
   <div class="col-sm-12 col-md-6">
-    <%= render 'show_team_fifa', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
-    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home) %>
+    <% if @futsal_game.team_home_players.length > 0 %>
+      <%= render 'show_team_fifa', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
+      <% if @futsal_game.futsal_game_player_position_by_team(@futsal_game.team_home).length > 0 %>  
+        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home) %>
+      <% end %>
+    <% end %>
   </div>
   
   <div class="col-sm-12 col-md-6">
-    <%= render 'show_team_fifa', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %>   
-    <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
+    <% if @futsal_game.team_outside_players.length > 0 %>
+      <%= render 'show_team_fifa', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %> 
+      <% if @futsal_game.futsal_game_player_position_by_team(@futsal_game.team_outside).length > 0 %>  
+        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <% if @futsal_game.has_stat %>
   <%= render 'chart', minutes_buts: @minutes_buts, ecart: @ecart, futsal_game: @futsal_game %>
 <% end %>
 <div class="row">
-  <div class="col-sm-1 col-md-3"> 
-  </div> 
-  <div class="col-sm-10 col-md-6">    
+  <div class="col">    
     <% @futsal_game.andand.team_less_players.order_by_users_stats.each do |player| %>
-        <div class="player">
-          <%= show_player(player.user) %> 
-          <% if can? :affect_player_to_team, @futsal_game %>
-            Affecter :
+      <div class="player_without_team">         
+        <%= render 'fifa_card/fifa_card', player: player.user, stat: player, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %>
+        <div class="affect_player_to_team">
+           <% if can? :affect_player_to_team, @futsal_game %>
+            <strong>Affecter</strong><br> 
             <%= link_to 'Equipe 1', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_home) %> - 
             <%= link_to 'Equipe 2', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_outside) %>
           <% end %>
         </div>
+      </div>
     <% end %>
-
-    
-
-    <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %>
   </div>
 </div>
 
+<div class="row">
+  <div class="col"> 
+    <%= render 'show_highlights_and_goals', futsal_game: @futsal_game %>
+  </div>
+</div>
 
 <% if (can? :calculate_goalkeeper_position, FutsalGame) && !@futsal_game.match_resume_link.nil? && @futsal_game.match_resume_link != "" %>
   <%= link_to 'Calculate Goalkeeper Position', calculate_goalkeeper_position_futsal_game_path(@futsal_game) %> |

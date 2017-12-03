@@ -87,12 +87,16 @@ class FutsalGame < ApplicationRecord
   end
 
   def to_s_team_and_score_welcome
-    team_home.andand.name + "<strong> " + score_home.to_s + " - " + score_home.to_s + " </strong>" + team_outside.andand.name
+    team_home.andand.name + "<strong> " + score_home.to_s + " - " + score_outside.to_s + " </strong>" + team_outside.andand.name
   end  
 
   def to_s_team_and_score
-    team_home.andand.name + " " + score_home.to_s + " - " + score_home.to_s + " " + team_outside.andand.name
+    team_home.andand.name + " " + score_home.to_s + " - " + score_outside.to_s + " " + team_outside.andand.name
   end  
+
+  def has_highlights_or_goals
+    ((highlights.length > 0) || (goals.length > 0))
+  end
 
   def highlights_and_goals
     (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
