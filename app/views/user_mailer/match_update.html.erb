@@ -1,40 +1,215 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Les statitiques de ton dernier match sont à jour !</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style type="text/css" media="screen">
-      h3 { color: #f00; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      /* Fonts and Content */
+      body, td { font-family: 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif; font-size:14px; }
+      body { background-color: #2A374E; margin: 0; padding: 0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }
+      h2{ padding-top:12px; color:#0E7693; font-size:22px; }
       ul { list-style: none; }
+      .pagetoplogo-content{ text-align:center; font-size: 120%;}
     </style>
+
 </head>
-<body>
-  <h3>Futsal Planner</h3>
-  <br>
-  Salut <%= @game_registration.user.to_s %> !
-  <br>
-  <br>
-  Les stats de ton dernier match ont été mises à jour !
-  <br>
-  <h4>
-    <%= @futsal_game.team_home.andand.name.to_s + " " + @futsal_game.score_home.to_s + " - " + @futsal_game.score_outside.to_s + " " + @futsal_game.team_outside.andand.name.to_s %>
-  </h4>
-  <br>
+<body style="margin:0px; padding:0px; -webkit-text-size-adjust:none;">
 
-  <strong>Statistiques :</strong><br>
-  <%= 'Buts : ' + @game_registration.goal.to_s %> -
-  <%= 'Passes dé\' : ' + @game_registration.assist.to_s %> - 
-  <%= 'Buts encaissés : ' + @game_registration.goalkeeper_goal_against.to_i.to_s %> 
-  <br>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:rgb(42, 55, 78)" >
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="#2A374E">
+                    <table  cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td class="w640"  width="640" height="10"></td>
+                            </tr>
 
-  <strong>Temps de jeu :</strong><br> 
-  GB : <%= (@game_registration.goalkeeper_duration.to_f / 60).round %> min - 
-  JO : <%= (@game_registration.player_duration.to_f / 60).round %> min -
-  RP : <%= (@game_registration.substitute_duration.to_f / 60).round %> min
-  <br>
-  <br>
+                            <tr>
+                                <td align="center" class="w640"  width="640" height="20">
+                                  <!--<a style="color:#ffffff; font-size:12px;" href="#"><span style="color:#ffffff; font-size:12px;">Voir le contenu de ce mail en ligne</span></a>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w640"  width="640" height="10"></td>
+                            </tr>
 
-  <%= link_to 'Voir tes exploits', @futsal_game, target: "_blank" %>
+
+                            <!-- entete -->
+                            <tr class="pagetoplogo">
+                                <td class="w640"  width="640">
+                                    <table  class="w640"  width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F0F0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="w30"  width="30"></td>
+                                                <td  class="w580"  width="580" valign="middle" align="left">
+                                                    <div class="pagetoplogo-content">
+                                                        <!--<img class="w580" style="text-decoration: none; display: block; color:#476688; font-size:30px;" src="logo.png" alt="Mon Logo" width="482" height="108"/>-->
+                                                        <h3>Futsal Planner</h3>
+                                                    </div>
+                                                </td>
+                                                <td class="w30"  width="30"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- separateur horizontal -->
+                            <tr>
+                                <td  class="w640"  width="640" height="1" bgcolor="#d7d6d6"></td>
+                            </tr>
+
+                             <!-- contenu -->
+                            <tr class="content">
+                                <td class="w640" class="w640"  width="640" bgcolor="#ffffff">
+                                    <table class="w640"  width="640" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td  class="w30"  width="30"></td>
+                                                <td  class="w580"  width="580">
+                                                    <!-- une zone de contenu -->
+                                                    <table class="w580"  width="580" cellpadding="0" cellspacing="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="w580"  width="580">
+                                                                    <h2 style="color:#0E7693; font-size:22px; padding-top:12px;">
+                                                                        Salut <%= @game_registration.user.to_s %> !  </h2>
+
+                                                                    <div align="left" class="article-content">
+                                                                        <p> Les stats de ton dernier match ont été mises à jour !</p>
+
+                                                                        <p>
+                                                                          <h4>
+                                                                            <%= @futsal_game.team_home.andand.name.to_s + " " + @futsal_game.score_home.to_s + " - " + @futsal_game.score_outside.to_s + " " + @futsal_game.team_outside.andand.name.to_s %>
+                                                                          </h4>
+                                                                        </p>
+
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="w580"  width="580" height="1" bgcolor="#c7c5c5"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="w580"  width="580" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                   <h2 style="color:#0E7693; font-size:22px; padding-top:12px;">
+                                                                        Statistiques : </h2>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="w580"  width="580">
+                                                                    <div align="left" class="article-content">
+                                                                      <table>
+                                                                        <tr>
+                                                                          <th>Buts : </th>
+                                                                          <td><%= @game_registration.goal.to_s %></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                           <th>Passes dé' : </th>
+                                                                           <td><%= @game_registration.assist.to_s %></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                           <th>Buts encaissés : </th>
+                                                                           <td><%= @game_registration.goalkeeper_goal_against.to_i.to_s %></td>
+                                                                        </tr>
+                                                                      </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="w580" height="1" bgcolor="#c7c5c5"></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+
+                                                    <table class="w580"  width="580" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                   <h2 style="color:#0E7693; font-size:22px; padding-top:12px;">
+                                                                        Temps de jeu : </h2>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="w580"  width="580">
+                                                                    <div align="left" class="article-content">
+                                                                      <table>
+                                                                        <tr>
+                                                                          <th>Gardien :</th>
+                                                                          <td><%= (@game_registration.goalkeeper_duration.to_f / 60).round %> min</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <th>Joueur :</th>
+                                                                          <td><%= (@game_registration.player_duration.to_f / 60).round %> min</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <th>Remplacant : </th>
+                                                                          <td><%= (@game_registration.substitute_duration.to_f / 60).round %> min</td>
+                                                                        </tr>
+                                                                      </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="w580" height="1" bgcolor="#c7c5c5"></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="w30" class="w30"  width="30"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!--  separateur horizontal de 15px de  haut-->
+                            <tr>
+                                <td class="w640"  width="640" height="15" bgcolor="#ffffff"></td>
+                            </tr>
+
+                            <!-- pied de page -->
+                            <tr class="pagebottom">
+                                <td class="w640"  width="640">
+                                    <table class="w640"  width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#c7c7c7">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5" height="10"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w30"  width="30"></td>
+                                                <td class="w580"  width="580" valign="top">
+                                                    <p align="right" class="pagebottom-content-left">
+                                                        <%= link_to 'Voir tes exploits', @futsal_game, target: "_blank" %>
+                                                    </p>
+                                                </td>
+
+                                                <td class="w30"  width="30"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" height="10"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w640"  width="640" height="60"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

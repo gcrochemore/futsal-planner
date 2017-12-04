@@ -162,7 +162,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 33, email: "arthurd@arthurd.fr", futsal_position_id: 2, picture: "mathieu.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$4LWPu7ZXmFkpopkfGHrJ2.TQIsthvRxWAyzPFep422SWRGxbTBrrm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "KYQoGCkuUNYmxe9Sfnn_", confirmed_at: nil, confirmation_sent_at: "2017-04-01 21:35:47", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "D", company_id: 1, created_at: "2017-04-01 21:35:47", updated_at: "2017-04-01 21:35:47"})
+    user = User.new({id: 33, email: "arthur.delamare@trsb.net", futsal_position_id: 2, picture: "mathieu.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$4LWPu7ZXmFkpopkfGHrJ2.TQIsthvRxWAyzPFep422SWRGxbTBrrm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "KYQoGCkuUNYmxe9Sfnn_", confirmed_at: nil, confirmation_sent_at: "2017-04-01 21:35:47", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "D", company_id: 1, created_at: "2017-04-01 21:35:47", updated_at: "2017-04-01 21:35:47"})
     user.skip_confirmation!
     user.save!
 
@@ -182,7 +182,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 38, email: "manue@manue", futsal_position_id: 3, picture: "del-piero.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UDH73mxUA5n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Emmanuel", last_name: "E", company_id: 1, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 38, email: "Emmanuel.ELIES@trsb.net", futsal_position_id: 3, picture: "del-piero.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UDH73mxUA5n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Emmanuel", last_name: "E", company_id: 1, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
 
@@ -366,7 +366,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
 
-    user = User.new({id: 84, email: "emmanueln@emmanueln", futsal_position_id: 3, picture: 'yaya-toure.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOUMFDpmnfREZNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Emmanuel", last_name: "N", company_id: 1, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 84, email: "Emmanuel.NTAHINTA@trsb.net", futsal_position_id: 3, picture: 'yaya-toure.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOUMFDpmnfREZNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Emmanuel", last_name: "N", company_id: 1, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
 
