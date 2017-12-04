@@ -15,7 +15,11 @@
   </div>
   <div class="rating">
     <a data-toggle="tooltip" title="Note">
-      <%= player.andand.rating.andand.round %>
+        <% if rating.nil? || rating.to_f.nan? %>
+          -
+        <% else %>
+          <%= player.andand.rating.andand.round %>
+        <% end %>
     </a>
     <%= stat ? show_game_level(stat.goal, player.andand.goal_average_by_match.to_f, stat.assist, player.andand.assist_average_by_match.to_f, (stat.andand.player_duration.to_f/60)) : "" %>
   </div>
