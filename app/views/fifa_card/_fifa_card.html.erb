@@ -47,7 +47,13 @@
   </div>
 
   <div class="attr2">
-    <a data-toggle="tooltip" title="Nombre de buts par match"><%= (player.andand.goal_average_by_match || 0).round(1) %> B/M</a>
+    <a data-toggle="tooltip" title="Nombre de buts par match">
+      <% if player.andand.goal_average_by_match.nil? || player.andand.goal_average_by_match.to_f.nan? %>
+        -
+      <% else %>
+        <%= (player.andand.goal_average_by_match || 0).round(1) %> B/M
+      <% end %>
+    </a>
   </div>
 
   <div class="attr3">
@@ -59,7 +65,13 @@
   </div>
 
   <div class="attr5">
-    <a data-toggle="tooltip" title="Nombre de passes décisives par match"><%= (player.andand.assist_average_by_match || 0).round(1) %> A/M</a>
+    <a data-toggle="tooltip" title="Nombre de passes décisives par match">
+        <% if player.andand.assist_average_by_match.nil? || player.andand.assist_average_by_match.to_f.nan? %>
+          -
+        <% else %>
+          <%= (player.andand.assist_average_by_match || 0).round(1) %> A/M
+        <% end %>
+    </a>
   </div>
 
   <div class="attr6">
