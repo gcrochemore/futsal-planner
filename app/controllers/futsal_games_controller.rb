@@ -1,6 +1,7 @@
 class FutsalGamesController < ApplicationController
   authorize_resource
-  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume, :calculate_goalkeeper_position, :send_email_to_prevent_statistics_are_up_to_date]
+  before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume, :calculate_goalkeeper_position, 
+    :send_email_to_prevent_statistics_are_up_to_date, :send_email_to_prevent_teams_are_up_to_date]
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
@@ -45,6 +46,13 @@ class FutsalGamesController < ApplicationController
   def send_email_to_prevent_statistics_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
       UserMailer.match_update(game_registration).deliver
+    end
+    redirect_to @futsal_game
+  end
+
+  def send_email_to_prevent_teams_are_up_to_date
+    @futsal_game.game_registrations.each do |game_registration|
+        UserMailer.teams_is_online(game_registration).deliver
     end
     redirect_to @futsal_game
   end

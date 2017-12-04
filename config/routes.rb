@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :affect_player_to_team
       get :calculate_goalkeeper_position
       get :send_email_to_prevent_statistics_are_up_to_date
+      get :send_email_to_prevent_teams_are_up_to_date
     end
   end
 

@@ -134,6 +134,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
     end
 
     create_table :futsal_tournaments do |t|
+      t.string :name
       t.datetime :date
       t.integer :duration
       t.references :futsal_field, foreign_key: true

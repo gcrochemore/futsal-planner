@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
   end
 
   create_table "futsal_tournaments", force: :cascade do |t|
+    t.string   "name"
     t.datetime "date"
     t.integer  "duration"
     t.integer  "futsal_field_id"

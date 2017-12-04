@@ -8,4 +8,10 @@ class UserMailer < ActionMailer::Base
     @game_registration = game_registration
     mail(:to => game_registration.user.email, :subject => "Futsal Planner : " + @futsal_game.to_s_team_and_score + " | Ton dernier match est en ligne !")
   end
+
+  def teams_is_online(game_registration)
+    @futsal_game = game_registration.futsal_game
+    @game_registration = game_registration
+    mail(:to => game_registration.user.email, :subject => "Futsal Planner : " + @futsal_game.to_s_with_only_hour + " | Les équipes sont en ligne !")
+  end
 end
