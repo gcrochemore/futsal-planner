@@ -3,7 +3,7 @@ class GameRegistration < ApplicationRecord
   
   belongs_to :user
   belongs_to :futsal_game
-  belongs_to :team
+  belongs_to :team, optional: true
   has_many :futsal_game_player_positions
 
   scope :order_by_stats, -> { order('goal desc, assist desc') }
