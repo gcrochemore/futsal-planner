@@ -108,15 +108,15 @@
                                                                     <div align="left" class="article-content">
                                                                       <table>
                                                                         <tr>
-                                                                          <th>Buts : </th>
+                                                                          <th>Buts</th>
                                                                           <td><%= @game_registration.goal.to_s %></td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <th>Passes dé' : </th>
+                                                                           <th>Passes décisives</th>
                                                                            <td><%= @game_registration.assist.to_s %></td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <th>Buts encaissés : </th>
+                                                                           <th>Buts encaissés</th>
                                                                            <td><%= @game_registration.goalkeeper_goal_against.to_i.to_s %></td>
                                                                         </tr>
                                                                       </table>
@@ -135,7 +135,8 @@
                                                             <tr>
                                                                 <td colspan="3">
                                                                    <h2 style="color:#0E7693; font-size:22px; padding-top:12px;">
-                                                                        Temps de jeu : </h2>
+                                                                        Temps de jeu
+                                                                   </h2>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -143,15 +144,15 @@
                                                                     <div align="left" class="article-content">
                                                                       <table>
                                                                         <tr>
-                                                                          <th>Gardien :</th>
+                                                                          <th>Gardien</th>
                                                                           <td><%= (@game_registration.goalkeeper_duration.to_f / 60).round %> min</td>
                                                                         </tr>
                                                                         <tr>
-                                                                          <th>Joueur :</th>
+                                                                          <th>Joueur</th>
                                                                           <td><%= (@game_registration.player_duration.to_f / 60).round %> min</td>
                                                                         </tr>
                                                                         <tr>
-                                                                          <th>Remplacant : </th>
+                                                                          <th>Remplacant</th>
                                                                           <td><%= (@game_registration.substitute_duration.to_f / 60).round %> min</td>
                                                                         </tr>
                                                                       </table>

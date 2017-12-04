@@ -15,7 +15,7 @@
   </div>
   <div class="rating">
     <a data-toggle="tooltip" title="Note">
-        <% if rating.nil? || rating.to_f.nan? %>
+        <% if player.rating.nil? || player.rating.to_f.nan? %>
           -
         <% else %>
           <%= player.andand.rating.andand.round %>
