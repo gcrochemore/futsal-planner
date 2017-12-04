@@ -94,7 +94,7 @@ module ApplicationHelper
   end
 
   def player_fut_class(rating, game_level)
-    if rating.nil?
+    if rating.nil? || rating.to_f.nan?
       rating = 0;
     else
       rating = rating.andand.round
