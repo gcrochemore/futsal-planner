@@ -44,15 +44,13 @@ class FutsalGamesController < ApplicationController
 
   def send_email_to_prevent_statistics_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
-      if game_registration.user_id == 1
-        UserMailer.match_update(game_registration).deliver
-      end
+      UserMailer.match_update(game_registration).deliver
     end
     redirect_to @futsal_game
   end
 
   def parse_match_resume
-  end 
+  end
 
   def calculate_goalkeeper_position
     @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home).delete_all
