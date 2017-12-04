@@ -20,6 +20,10 @@ class User < ApplicationRecord
   MATCH_MINI = 5
   MULTIPLIER_IF_MATCH_MINI = 0.85
 
+  def has_stats
+    !(self.rating.nil? || self.rating.to_f.nan?)
+  end
+
   def update_stats
     self.goal = self.not_own_goals.length
     self.own_goal = self.own_goals.length
