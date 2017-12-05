@@ -101,6 +101,6 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
 
-source 'https://rails-assets.org' do
+source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
