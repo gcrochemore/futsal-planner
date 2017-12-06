@@ -1,0 +1,31 @@
+<%= simple_form_for(@futsal_game_player_position_change) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="futsal_position"><%= f.label :futsal_position %></label>
+      <%= f.association :futsal_position, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="time"><%= f.label :time %></label>
+      <%= f.input :time, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="game_registration_player_in"><%= f.label :game_registration_player_in %></label>
+      <%= f.association :game_registration_player_in, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="game_registration_player_out"><%= f.label :game_registration_player_out %></label>
+      <%= f.association :game_registration_player_out, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

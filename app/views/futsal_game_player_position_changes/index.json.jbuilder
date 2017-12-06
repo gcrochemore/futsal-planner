@@ -1,0 +1,1 @@
+json.array! @futsal_game_player_position_changes, partial: 'futsal_game_player_position_changes/futsal_game_player_position_change', as: :futsal_game_player_position_change

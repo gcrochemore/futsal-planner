@@ -143,7 +143,7 @@
     <% if @futsal_game.team_home_players.length > 0 %>
       <%= render 'show_team_fifa', team: @futsal_game.team_home_players, futsal_game: @futsal_game %>
       <% if @futsal_game.futsal_game_player_position_by_team(@futsal_game.team_home).length > 0 %>  
-        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home) %>
+        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_and_change_by_team(@futsal_game.team_home) %>
       <% end %>
     <% end %>
   </div>
@@ -152,7 +152,7 @@
     <% if @futsal_game.team_outside_players.length > 0 %>
       <%= render 'show_team_fifa', team: @futsal_game.team_outside_players, futsal_game: @futsal_game %> 
       <% if @futsal_game.futsal_game_player_position_by_team(@futsal_game.team_outside).length > 0 %>  
-        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside) %>
+        <%= render 'show_team_position', team_position: @futsal_game.andand.futsal_game_player_position_and_change_by_team(@futsal_game.team_outside) %>
       <% end %>
     <% end %>
   </div>

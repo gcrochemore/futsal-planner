@@ -36,7 +36,11 @@ class FutsalGame < ApplicationRecord
 
   def team_home_players
     game_registrations.where(team: team_home)
-  end 
+  end
+
+  def game_registrations_by_team team
+    game_registrations.where(team: team)
+  end
 
   def team_outside_players
     game_registrations.where(team: team_outside)
@@ -102,8 +106,22 @@ class FutsalGame < ApplicationRecord
     (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
   end
 
+  def highlights_and_goals_and_change
+    (
+      highlights.includes(:victim) + goals.includes(:goal).includes(:assist) +
+      FutsalGamePlayerPositionChange.where('game_registration_player_in_id IN (?) OR game_registration_player_out_id IN (?)', self.game_registrations.pluck(:id), self.game_registrations.pluck(:id))
+    ).sort! { |a,b| a.time <=> b.time }
+  end
+
   def highlights_and_goals_by_team team_id
     (highlights.where(team_id: team_id).includes(:victim) + goals.where(team_id: team_id).includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
+  end
+
+  def highlights_and_goals_and_change_by_team team_id
+    (
+      highlights.where(team_id: team_id).includes(:victim) + goals.where(team_id: team_id).includes(:goal).includes(:assist) +
+      FutsalGamePlayerPositionChange.where('game_registration_player_in_id IN (?) OR game_registration_player_out_id IN (?)', self.game_registrations_by_team(team_id).pluck(:id), self.game_registrations_by_team(team_id).pluck(:id))
+    ).sort! { |a,b| a.time <=> b.time }
   end
 
   def highlights_and_goals_by_user user_id
@@ -124,6 +142,13 @@ class FutsalGame < ApplicationRecord
 
   def futsal_game_player_position_by_team(team)
     FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)).order(:futsal_position_id, :begin_time)
+  end
+
+  def futsal_game_player_position_and_change_by_team(team)
+    (
+      FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)) +
+      FutsalGamePlayerPositionChange.where('game_registration_player_in_id IN (?) OR game_registration_player_out_id IN (?)', self.game_registrations_by_team(team).pluck(:id), self.game_registrations_by_team(team).pluck(:id))
+    ).sort! { |a,b| a.begin_time <=> b.begin_time }
   end
 
   def change_team_home(team)

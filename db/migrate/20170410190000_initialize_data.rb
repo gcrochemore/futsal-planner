@@ -5406,6 +5406,13 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 1440, user_id: 37, futsal_game_id: 115, team_id: 1, goal: 3, goal_with_assist: nil, goal_without_assist: nil, assist: 3, goalkeeper_duration: 242, player_duration: 3358, substitute_duration: 0, goalkeeper_goal_against: 1, created_at: "2017-12-05 06:52:15", updated_at: "2017-12-05 07:51:55"},
       {id: 1441, user_id: 36, futsal_game_id: 115, team_id: 1, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 3, goalkeeper_duration: 1638, player_duration: 1962, substitute_duration: 0, goalkeeper_goal_against: 7, created_at: "2017-12-05 06:52:15", updated_at: "2017-12-05 07:51:55"}
     ])
+    FutsalGamePlayerPositionChange.create!([
+      {id: 1, futsal_position_id: 1, time: 680, game_registration_player_in_id: 1427, game_registration_player_out_id: 1429, created_at: "2017-12-06 11:38:31", updated_at: "2017-12-06 11:42:12"},
+      {id: 2, futsal_position_id: 1, time: 1090, game_registration_player_in_id: 1429, game_registration_player_out_id: 1427, created_at: "2017-12-06 11:39:18", updated_at: "2017-12-06 11:42:37"},
+      {id: 3, futsal_position_id: 1, time: 2160, game_registration_player_in_id: 1427, game_registration_player_out_id: 1429, created_at: "2017-12-06 11:43:41", updated_at: "2017-12-06 11:43:41"},
+      {id: 4, futsal_position_id: 1, time: 2604, game_registration_player_in_id: 1429, game_registration_player_out_id: 1427, created_at: "2017-12-06 11:44:37", updated_at: "2017-12-06 11:44:37"},
+      {id: 5, futsal_position_id: 1, time: 3188, game_registration_player_in_id: 1427, game_registration_player_out_id: 1429, created_at: "2017-12-06 11:45:20", updated_at: "2017-12-06 11:45:20"}
+    ])
     FutsalGamePlayerPosition.create!([
       {id: 2, game_registration_id: 612, futsal_position_id: 1, begin_time: 0, end_time: 360, duration: 360, calculated: false, created_at: "2017-07-27 23:29:22", updated_at: "2017-07-27 23:29:22"},
       {id: 3, game_registration_id: 613, futsal_position_id: 1, begin_time: 360, end_time: 720, duration: 360, calculated: false, created_at: "2017-07-27 23:29:44", updated_at: "2017-07-27 23:29:44"},

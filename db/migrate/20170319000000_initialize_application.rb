@@ -239,6 +239,16 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    create_table :futsal_game_player_position_changes do |t|
+      t.references :futsal_position, foreign_key: true, index: {:name => "futsal_position_on_futsal_game_player_position_changes"}
+      t.integer :time
+      t.integer :game_registration_player_in_id
+      t.integer :game_registration_player_out_id
+      t.boolean :calculated, default: false
+
+      t.timestamps
+    end
+
     create_table :futsal_game_player_positions do |t|
       t.references :game_registration, foreign_key: true
       t.references :futsal_position, foreign_key: true

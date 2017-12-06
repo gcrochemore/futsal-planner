@@ -28,8 +28,9 @@ class AdminController < ApplicationController
   end
 
   def create_seeds
-    models = [FutsalField, FutsalTournament, FutsalGame, Goal, GoalMark, GameRegistration, FutsalGamePlayerPosition, 
-              HighlightType, Highlight, FutsalTournamentPlayerRegistration, FutsalTournamentTeamRegistration]
+    models = [FutsalField, FutsalTournament, FutsalGame, Goal, GoalMark, GameRegistration, FutsalGamePlayerPositionChange,
+              FutsalGamePlayerPosition, HighlightType, Highlight, FutsalTournamentPlayerRegistration,
+              FutsalTournamentTeamRegistration]
 
     export = "class InitializeData < ActiveRecord::Migration[5.0]
     def change

@@ -12,15 +12,36 @@
     </thead>
   </tr>
   <% team_position.each do |futsal_game_player_position| %>
-    <tr>
-      <td><%= futsal_game_player_position.futsal_position.abbreviation %></td>
-      <td><%= futsal_game_player_position.game_registration.user %></td>
-      <td><%= formatted_match_time(futsal_game_player_position.begin_time) %></td>
-      <td><%= formatted_match_time(futsal_game_player_position.end_time) %></td>
-      <td><%= futsal_game_player_position.calculated %></td>
-      <% if can? :edit, FutsalGamePlayerPosition %>
-        <td><%= link_to icon('pencil').html_safe, edit_futsal_game_player_position_path(futsal_game_player_position), target: "_blank" %></td>
-      <% end %>
-    </tr>
+    <% if futsal_game_player_position.instance_of? FutsalGamePlayerPosition %>
+      <tr>
+        <td><%= futsal_game_player_position.futsal_position.abbreviation %></td>
+        <td><%= futsal_game_player_position.game_registration.user %></td>
+        <td><%= formatted_match_time(futsal_game_player_position.begin_time) %></td>
+        <td><%= formatted_match_time(futsal_game_player_position.end_time) %></td>
+        <td><%= futsal_game_player_position.calculated %></td>
+        <% if can? :edit, FutsalGamePlayerPosition %>
+          <td><%= link_to icon('pencil').html_safe, edit_futsal_game_player_position_path(futsal_game_player_position), target: "_blank" %></td>
+        <% end %>
+      </tr>
+    <% elsif futsal_game_player_position.instance_of? FutsalGamePlayerPositionChange %>
+      <tr>
+        <td><%= futsal_game_player_position.futsal_position.abbreviation %></td>
+        <th>
+          Changement
+        </th>
+        <td>
+          <%= formatted_match_time(futsal_game_player_position.andand.time) %>
+        </td>
+        <td>
+          <%= icon('sign-in') %> <%= futsal_game_player_position.andand.game_registration_player_in.andand.user.to_s %>
+        </td>
+        <td>
+          <%= icon('sign-out') %> <%= futsal_game_player_position.andand.game_registration_player_out.andand.user.to_s %>
+        </td>
+        <% if can? :edit, FutsalGamePlayerPositionChange %>
+          <td><%= link_to icon('pencil').html_safe, edit_futsal_game_player_position_change_path(futsal_game_player_position), target: "_blank" %></td>
+        <% end %>
+      </tr>
+    <% end %>
   <% end %>
 </table>

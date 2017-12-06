@@ -8,7 +8,7 @@
           <%= icon(goal.highlight_type.icon) %> <%= goal.andand.victim.to_s %><br>
           <i>Cliquez pour voir l'action</i>
         </span>
-      <% else %>
+      <% elsif goal.instance_of? Goal %>
         <%= link_to_open_goal_in_modal(icon('futbol-o'), goal).html_safe %>
         <span class="label-tooltiptext label-tooltip-bottom<%= (goal.time > ((futsal_game_duration * 60).to_f / 2))  ? " label-tooltip-left" : "" %>">
           <%= icon('clock-o') %> <%= Time.at(goal.time).utc.strftime("%M:%S") %><br>
@@ -16,6 +16,14 @@
           <%= icon('arrow-circle-right') %> <%= goal.andand.assist.to_s %><br>
           <%= icon('sign-in') %> <%= goal.andand.goalkeeper.to_s %><br>
           <i>Cliquez pour voir le but</i>
+        </span>
+      <% else %>
+        <%= link_to_open_goal_in_modal(icon('refresh'), goal).html_safe %>
+        <span class="label-tooltiptext label-tooltip-bottom<%= (goal.time > ((futsal_game_duration * 60).to_f / 2))  ? " label-tooltip-left" : "" %>">
+          <%= icon('clock-o') %> <%= Time.at(goal.time).utc.strftime("%M:%S") %><br>
+          <strong><%= goal.andand.futsal_position.to_s %></strong><br>
+          <%= icon('sign-in') %> <%= goal.andand.game_registration_player_in.andand.user.to_s %><br>
+          <%= icon('sign-out') %> <%= goal.andand.game_registration_player_out.andand.user.to_s %>
         </span>
       <% end %>
     </span>

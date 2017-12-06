@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "futsal_game_player_position_changes", force: :cascade do |t|
+    t.integer  "futsal_position_id"
+    t.integer  "time"
+    t.integer  "game_registration_player_in_id"
+    t.integer  "game_registration_player_out_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["futsal_position_id"], name: "futsal_position_on_futsal_game_player_position_changes"
+  end
+
   create_table "futsal_game_player_positions", force: :cascade do |t|
     t.integer  "game_registration_id"
     t.integer  "futsal_position_id"

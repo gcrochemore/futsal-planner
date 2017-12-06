@@ -87,6 +87,13 @@
 
 .goal_tab{
 	font-size: 80%;
+	.change_player_in{
+		color: green;
+	}
+	.change_player_out{
+		color: red;
+	}
+
 	.home_goal {
 		text-align: right;
 	}

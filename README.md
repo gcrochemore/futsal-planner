@@ -52,9 +52,12 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold futsal_game_player_position game_registration:references futsal_position:references begin_time:interger end_time:integer duration:integer
 
-	###### Entity a créer	
+	rails generate scaffold futsal_game_player_position_change futsal_position:references time:integer game_registration_player_in:integer game_registration_player_out:integer
 
-	###### Entity a modifier
+    ###### Entity a créer	
+	
+
+    ###### Entity a modifier
 	
 
 ##### heroku
