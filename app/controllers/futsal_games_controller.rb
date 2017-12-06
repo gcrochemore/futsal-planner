@@ -64,21 +64,36 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
-    @futsal_game.andand.goal_by_team(@futsal_game.team_outside).order(:time).each_with_index do |goal, index|
-      if(index == 0 || ((futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) && !goal.goalkeeper.nil?)) 
-        if( index > 0 )
-          end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
-          futsal_game_player_position.end_time = end_time
+    @futsal_game.andand.goal_and_change_by_team_and_position(@futsal_game.team_outside, @futsal_game.team_home, 1).each_with_index do |goal, index|
+      if(index == 0 || (goal.instance_of? FutsalGamePlayerPositionChange) || ((futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) && !goal.goalkeeper.nil?))
+        if goal.instance_of? FutsalGamePlayerPositionChange
+          if( index == 0 )
+            futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.game_registration_player_out.user.id, @futsal_game, @futsal_game.team_home).first
+            futsal_game_player_position.futsal_position_id = 1
+            futsal_game_player_position.begin_time = 0
+          end
+          futsal_game_player_position.end_time = goal.time
           futsal_game_player_position.save
-        end
-        futsal_game_player_position = FutsalGamePlayerPosition.new
-        futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_home).first
-        futsal_game_player_position.futsal_position_id = 1
-        futsal_game_player_position.calculated = true
-        if( index > 0 )
-          futsal_game_player_position.begin_time = end_time
+
+          futsal_game_player_position = FutsalGamePlayerPosition.new
+          futsal_game_player_position.futsal_position_id = 1
+          futsal_game_player_position.begin_time = goal.time
+          futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.game_registration_player_in.user.id, @futsal_game, @futsal_game.team_home).first
         else
-          futsal_game_player_position.begin_time = 0
+          if( index > 0 )
+            end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
+            futsal_game_player_position.end_time = end_time
+            futsal_game_player_position.save
+          end
+          futsal_game_player_position = FutsalGamePlayerPosition.new
+          futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_home).first
+          futsal_game_player_position.futsal_position_id = 1
+          futsal_game_player_position.calculated = true
+          if( index > 0 )
+            futsal_game_player_position.begin_time = end_time
+          else
+            futsal_game_player_position.begin_time = 0
+          end
         end
       end
       futsal_game_player_position.end_time = goal.time
@@ -91,21 +106,36 @@ class FutsalGamesController < ApplicationController
     @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
-    @futsal_game.andand.goal_by_team(@futsal_game.team_home).order(:time).each_with_index do |goal, index|
-      if(index == 0 || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) 
-        if( index > 0 )
-          end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
-          futsal_game_player_position.end_time = end_time
+    @futsal_game.andand.goal_and_change_by_team_and_position(@futsal_game.team_home, @futsal_game.team_outside, 1).each_with_index do |goal, index|
+      if(index == 0 || (goal.instance_of? FutsalGamePlayerPositionChange) || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper)
+        if goal.instance_of? FutsalGamePlayerPositionChange
+          if( index == 0 )
+            futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.game_registration_player_out.user.id, @futsal_game, @futsal_game.team_outside).first
+            futsal_game_player_position.futsal_position_id = 1
+            futsal_game_player_position.begin_time = 0
+          end
+          futsal_game_player_position.end_time = goal.time
           futsal_game_player_position.save
-        end
-        futsal_game_player_position = FutsalGamePlayerPosition.new
-        futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_outside).first
-        futsal_game_player_position.futsal_position_id = 1
-        futsal_game_player_position.calculated = true
-        if( index > 0 )
-          futsal_game_player_position.begin_time = end_time
+
+          futsal_game_player_position = FutsalGamePlayerPosition.new
+          futsal_game_player_position.futsal_position_id = 1
+          futsal_game_player_position.begin_time = goal.time
+          futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.game_registration_player_in.user.id, @futsal_game, @futsal_game.team_outside).first
         else
-          futsal_game_player_position.begin_time = 0
+          if( index > 0 )
+            end_time = ((futsal_game_player_position.end_time + goal.time) / 2)
+            futsal_game_player_position.end_time = end_time
+            futsal_game_player_position.save
+          end
+          futsal_game_player_position = FutsalGamePlayerPosition.new
+          futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.goalkeeper, @futsal_game, @futsal_game.team_outside).first
+          futsal_game_player_position.futsal_position_id = 1
+          futsal_game_player_position.calculated = true
+          if( index > 0 )
+            futsal_game_player_position.begin_time = end_time
+          else
+            futsal_game_player_position.begin_time = 0
+          end
         end
       end
       futsal_game_player_position.end_time = goal.time

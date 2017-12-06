@@ -13,4 +13,8 @@ class FutsalGamePlayerPositionChange < ApplicationRecord
   def begin_time
     time
   end
+
+  def end_time
+    time + 1
+  end
 end

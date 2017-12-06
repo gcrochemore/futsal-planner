@@ -106,6 +106,13 @@ class FutsalGame < ApplicationRecord
     (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
   end
 
+  def goal_and_change_by_team_and_position(team, team_2, position_id)
+    (
+      goals.where(team_id: team.id).includes(:goal).includes(:assist) +
+      FutsalGamePlayerPositionChange.where('(game_registration_player_in_id IN (?) OR game_registration_player_out_id IN (?)) AND futsal_position_id = ?', self.game_registrations_by_team(team_2.id).pluck(:id), self.game_registrations_by_team(team_2.id).pluck(:id), position_id)
+    ).sort! { |a,b| a.time <=> b.time }
+  end
+
   def highlights_and_goals_and_change
     (
       highlights.includes(:victim) + goals.includes(:goal).includes(:assist) +
@@ -148,7 +155,7 @@ class FutsalGame < ApplicationRecord
     (
       FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)) +
       FutsalGamePlayerPositionChange.where('game_registration_player_in_id IN (?) OR game_registration_player_out_id IN (?)', self.game_registrations_by_team(team).pluck(:id), self.game_registrations_by_team(team).pluck(:id))
-    ).sort! { |a,b| a.begin_time <=> b.begin_time }
+    ).sort! { |a,b| (a.begin_time <=> b.begin_time) && (a.end_time <=> b.end_time) }
   end
 
   def change_team_home(team)

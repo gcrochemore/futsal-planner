@@ -12,3 +12,4 @@ class FutsalGamePlayerPosition < ApplicationRecord
     self.game_registration.user + ' ' + self.game_registration.futsal_game
   end
 end
+
