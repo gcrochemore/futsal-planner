@@ -307,5 +307,15 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    create_table :futsal_game_invitations do |t|
+      t.references :futsal_game, foreign_key: true
+      t.references :user, foreign_key: true
+      t.datetime :send_date
+      t.integer :status
+      t.references :game_registration, foreign_key: true
+
+      t.timestamps
+    end
   end
 end

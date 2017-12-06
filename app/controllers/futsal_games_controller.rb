@@ -150,7 +150,7 @@ class FutsalGamesController < ApplicationController
     @team = Team.find(params[:team])
     @game_registration.team = @team
     @game_registration.save
-    redirect_to @game_registration.futsal_game, notice: 'Futsal game was successfully created.'
+    redirect_to @game_registration.futsal_game, notice: 'Inscriptions mise a jour'
   end
 
   # POST /futsal_games
@@ -187,7 +187,7 @@ class FutsalGamesController < ApplicationController
 
       params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :futsal_tournament_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link,
                                           game_registrations_attributes: [:id, :user_id, :futsal_game_id, :team_id, :goal, :assist, :_destroy],
-                                          futsal_game_player_position_attributes: [:id, :game_registration_id, :futsal_position_id, :begin_time, :end_time, :duration, :_destroy]);
-
+                                          futsal_game_player_position_attributes: [:id, :game_registration_id, :futsal_position_id, :begin_time, :end_time, :duration, :_destroy],
+                                          futsal_game_invitations_attributes: [:id, :futsal_game_id, :user_id, :send_date, :status, :game_registration_id, :_destroy]);
     end
 end

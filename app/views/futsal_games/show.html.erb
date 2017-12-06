@@ -29,7 +29,7 @@
 
 <% if can? :affect_player_to_team, @futsal_game %>
   <%= simple_form_for(@futsal_game) do |f| %>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registration_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -66,6 +66,48 @@
     </div>    
   <% end %>
 <% end %>
+
+<% if can? :affect_player_to_team, @futsal_game %>
+  <%= simple_form_for(@futsal_game) do |f| %>
+    <div class="modal fade" id="invitation_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Invitations</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id='futsal_game_invitations'>
+              <%= f.simple_fields_for :futsal_game_invitations do |futsal_game_invitation| %>
+                <%= render 'futsal_game_invitations/futsal_game_invitation_field', f: futsal_game_invitation %>
+              <% end %> 
+              <div class='links'>
+                <%= link_to_add_association "Inviter", f, :futsal_game_invitations, partial: 'futsal_game_invitations/futsal_game_invitation_field' %>
+              </div>
+            </div>
+
+            Disponibles :
+            <% @dispo.each do |user| %>
+              <%= show_player(user) %>
+            <% end %>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <%= f.button :button, class: "btn btn-primary" do %>
+              Valider
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>    
+  <% end %>
+<% end %>
+
+
 
 <% if !notice.nil? %>
   <p id="notice"><%= notice %></p>
@@ -112,8 +154,15 @@
     <% end %>
     <% if can? :affect_player_to_team, @futsal_game %>
       <div class="col">
-        <button type="button" class="btn btn-sm btn-block btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-sm btn-block btn-outline-primary" data-toggle="modal" data-target="#registration_modal">
             <%= (icon('user-plus') + ' Inscrire un joueur').html_safe %>
+          </button>
+      </div>
+    <% end %>
+    <% if can? :affect_player_to_team, @futsal_game %>
+      <div class="col">
+        <button type="button" class="btn btn-sm btn-block btn-outline-primary" data-toggle="modal" data-target="#invitation_modal">
+            <%= (icon('user-plus') + ' Inviter un joueur').html_safe %>
           </button>
       </div>
     <% end %>
@@ -172,6 +221,15 @@
             <%= link_to 'Equipe 2', affect_player_to_team_futsal_game_path(game_registration: player, team: @futsal_game.team_outside) %>
           <% end %>
         </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">    
+    <% @futsal_game.andand.futsal_game_invitations.each do |player| %>
+      <div class="player_without_team">         
+        <%= render 'fifa_card/fifa_card', player: player.user, stat: player, highlights_and_goals_by_user: [] %>
       </div>
     <% end %>
   </div>

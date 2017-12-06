@@ -1,0 +1,78 @@
+<h1><%= t('.title') %><span class="badge"><%= @futsal_game_invitations.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :futsal_game_team_home_name_cont, {placeholder: t('activerecord.attributes.futsal_game_invitation.futsal_game')} %>
+
+        <%= f.search_field :user_first_name_cont, {placeholder: t('activerecord.attributes.futsal_game_invitation.user')} %>
+
+        <%= f.search_field :send_date_cont, {placeholder: t('activerecord.attributes.futsal_game_invitation.send_date')} %>
+
+        <%= f.search_field :status_cont, {placeholder: t('activerecord.attributes.futsal_game_invitation.status')} %>
+
+        <%= f.search_field :game_registration_user_first_name_cont, {placeholder: t('activerecord.attributes.futsal_game_invitation.game_registration')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, FutsalGameInvitation %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :futsal_game, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :user, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :send_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :status, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :game_registration, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @futsal_game_invitations.each do |futsal_game_invitation| %>
+          <tr>
+    
+            <td><%= futsal_game_invitation.futsal_game %></td>
+    
+            <td><%= futsal_game_invitation.user %></td>
+    
+            <td><%= futsal_game_invitation.send_date %></td>
+    
+            <td><%= futsal_game_invitation.status %></td>
+    
+            <td><%= futsal_game_invitation.game_registration %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, futsal_game_invitation %>
+              <% if can? :edit, FutsalGameInvitation %>
+                <%= link_to icon('pencil').html_safe, edit_futsal_game_invitation_path(futsal_game_invitation) %>
+              <% end %>
+              <% if can? :destroy, FutsalGameInvitation %>
+                <%= link_to icon('times').html_safe, futsal_game_invitation, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @futsal_game_invitations %>
+  </div>
+</div>

@@ -61,6 +61,11 @@
                 <%= link_to('Matchs de futsal', futsal_games_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
+            <% if can? :read, FutsalGameInvitation %>
+              <li>
+                <%= link_to('Invitations', futsal_game_invitations_path, { class: "dropdown-item" })  %> 
+              </li> 
+            <% end %>
             <% if can? :read, GameRegistration %>
               <li>
                <%= link_to('Inscriptions', game_registrations_path, { class: "dropdown-item" })  %> 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Futsal game:</strong>
+  <%= @futsal_game_invitation.futsal_game %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @futsal_game_invitation.user %>
+</p>
+
+<p>
+  <strong>Send date:</strong>
+  <%= @futsal_game_invitation.send_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @futsal_game_invitation.status %>
+</p>
+
+<p>
+  <strong>Game registration:</strong>
+  <%= @futsal_game_invitation.game_registration %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_game_invitation_path(@futsal_game_invitation) %> |
+<%= link_to 'Back', futsal_game_invitations_path %>

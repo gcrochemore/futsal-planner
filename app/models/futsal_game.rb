@@ -10,9 +10,11 @@ class FutsalGame < ApplicationRecord
   has_many :game_registrations
   has_many :highlights
   has_many :futsal_game_player_positions
+  has_many :futsal_game_invitations
 
   accepts_nested_attributes_for :game_registrations
   accepts_nested_attributes_for :futsal_game_player_positions
+  accepts_nested_attributes_for :futsal_game_invitations
 
   default_scope { order('date desc') }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410190000) do
+ActiveRecord::Schema.define(version: 20171206211342) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -28,13 +28,27 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "futsal_game_invitations", force: :cascade do |t|
+    t.integer  "futsal_game_id"
+    t.integer  "user_id"
+    t.datetime "send_date"
+    t.integer  "status"
+    t.integer  "game_registration_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["futsal_game_id"], name: "index_futsal_game_invitations_on_futsal_game_id"
+    t.index ["game_registration_id"], name: "index_futsal_game_invitations_on_game_registration_id"
+    t.index ["user_id"], name: "index_futsal_game_invitations_on_user_id"
+  end
+
   create_table "futsal_game_player_position_changes", force: :cascade do |t|
     t.integer  "futsal_position_id"
     t.integer  "time"
     t.integer  "game_registration_player_in_id"
     t.integer  "game_registration_player_out_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "calculated",                      default: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["futsal_position_id"], name: "futsal_position_on_futsal_game_player_position_changes"
   end
 
