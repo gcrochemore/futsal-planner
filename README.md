@@ -86,3 +86,20 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	docker-compose up -d
 	docker-compose run futsal-planner rake db:create
 	docker-compose run futsal-planner rake db:migrate
+
+##### TODO
+
+	Trophées, système de points avec niveau suivant les trophées obtenus 
+
+	Trophée : 
+	- Dispute un match : 5 pts
+	- Dispute un match sans stats : 10 pts
+	- Gagne un match : 10 pts
+	- Match nul : 5 pts
+
+	- Marque un but : 1 pts
+	- Fais une passe dé : 2 pts
+	- Homme du match : 10 pts
+	- Double double (5 buts/5 passes dé): 20 pts
+
+	- Blessure : -5pts

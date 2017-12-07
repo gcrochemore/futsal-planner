@@ -86,6 +86,11 @@
                <%= link_to('Notes', goal_marks_path, { class: "dropdown-item" })  %> 
               </li> 
             <% end %>
+            <% if can? :read, FutsalGamePlayerPositionChange %>
+              <li>
+               <%= link_to('Changements', futsal_game_player_position_changes_path, { class: "dropdown-item" })  %> 
+              </li> 
+            <% end %>
           </ul>
         </li>
 
