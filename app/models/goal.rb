@@ -7,6 +7,7 @@ class Goal < ApplicationRecord
   belongs_to :assist, :class_name => :User,:foreign_key => "assist_id", optional: true
   belongs_to :goalkeeper, :class_name => :User,:foreign_key => "goalkeeper_id", optional: true
   has_many :goal_marks
+  has_many :user_trophies, as: :linked_entity
 
   scope :order_by_futsal_game_and_time, -> { includes(:futsal_game).order('futsal_games.date desc, time desc') }
   scope :order_by_time, -> { order('time') }

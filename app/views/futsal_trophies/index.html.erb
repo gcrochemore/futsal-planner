@@ -1,0 +1,70 @@
+<h1><%= t('.title') %><span class="badge"><%= @futsal_trophies.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.futsal_trophy.name')} %>
+
+        <%= f.search_field :points_cont, {placeholder: t('activerecord.attributes.futsal_trophy.points')} %>
+
+        <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.futsal_trophy.description')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, FutsalTrophy %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :points, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :description, default_order: :asc) %></th>
+
+          <th>Nombre distribués</th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @futsal_trophies.each do |futsal_trophy| %>
+          <tr>
+    
+            <td><%= futsal_trophy.name %></td>
+    
+            <td><%= futsal_trophy.points %></td>
+    
+            <td><%= futsal_trophy.description %></td>
+
+            <td><%= futsal_trophy.user_futsal_trophies.length.to_s %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, futsal_trophy %>
+              <% if can? :edit, FutsalTrophy %>
+                <%= link_to icon('pencil').html_safe, edit_futsal_trophy_path(futsal_trophy) %>
+              <% end %>
+              <% if can? :destroy, FutsalTrophy %>
+                <%= link_to icon('times').html_safe, futsal_trophy, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @futsal_trophies %>
+  </div>
+</div>

@@ -11,6 +11,9 @@ class Ability
       can :affect_player_to_team, FutsalGame, FutsalGame.all do |futsalGame|
         futsalGame.date >= DateTime.now
       end
+      can :invite_player, FutsalGame, FutsalGame.all do |futsalGame|
+        futsalGame.date >= DateTime.now
+      end
     end
 
     can :read, User

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_futsal_trophy.user %>
+</p>
+
+<p>
+  <strong>Futsal trophy:</strong>
+  <%= @user_futsal_trophy.futsal_trophy %>
+</p>
+
+<p>
+  <strong>Linked entity:</strong>
+  <%= @user_futsal_trophy.linked_entity %>
+</p>
+
+<%= link_to 'Edit', edit_user_futsal_trophy_path(@user_futsal_trophy) %> |
+<%= link_to 'Back', user_futsal_trophies_path %>

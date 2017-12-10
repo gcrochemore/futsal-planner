@@ -7,7 +7,8 @@ Rails.application.routes.draw do
             :highlight_types, :goal_marks, :user_futsal_game_with_users,
             :futsal_tournament_player_registrations, :futsal_tournament_team_registrations, 
             :futsal_tournaments, :futsal_positions, :futsal_game_player_positions,
-            :futsal_game_player_position_changes, :futsal_game_invitations
+            :futsal_game_player_position_changes, :futsal_game_invitations, :user_futsal_trophies,
+            :futsal_trophies
 
   devise_for :users
   resources :users

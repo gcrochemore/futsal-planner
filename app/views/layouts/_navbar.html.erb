@@ -50,6 +50,11 @@
                <%= link_to('Joueurs', users_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
+            <% if can? :read, FutsalTrophy %>
+              <li>
+               <%= link_to('Trophées', futsal_trophies_path, { class: "dropdown-item" })  %>
+              </li> 
+            <% end %>
           </ul>
         </li>
 
@@ -89,6 +94,11 @@
             <% if can? :read, FutsalGamePlayerPositionChange %>
               <li>
                <%= link_to('Changements', futsal_game_player_position_changes_path, { class: "dropdown-item" })  %> 
+              </li> 
+            <% end %>
+            <% if can? :read, UserFutsalTrophy %>
+              <li>
+               <%= link_to('Trophées des joueurs', user_futsal_trophies_path, { class: "dropdown-item" })  %>
               </li> 
             <% end %>
           </ul>

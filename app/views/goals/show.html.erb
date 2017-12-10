@@ -39,6 +39,15 @@
     <% end %>
   </div>
 </div>
+<div class="row">
+  <div class="col">
+    <% if !@goal.picture.nil? %>
+      <img src="<%= @goal.picture %>" width="200px"/>
+    <% else %>
+      Pas de photo
+    <% end %>
+  </div>
+</div>
 
 <% if can? :edit, Goal %>
   <%= link_to 'Edit', edit_goal_path(@goal) %> |

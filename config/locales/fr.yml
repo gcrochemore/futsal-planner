@@ -118,3 +118,7 @@ fr:
       index:
         new_button: Nouveau joueur
         title: Joueurs
+
+  will_paginate:
+    next_label: Suivant
+    previous_label: Précédant

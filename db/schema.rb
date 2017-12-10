@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206211342) do
+ActiveRecord::Schema.define(version: 20170410190000) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -149,6 +149,14 @@ ActiveRecord::Schema.define(version: 20171206211342) do
     t.index ["futsal_field_id"], name: "index_futsal_tournaments_on_futsal_field_id"
   end
 
+  create_table "futsal_trophies", force: :cascade do |t|
+    t.string   "name"
+    t.float    "points"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "game_registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "futsal_game_id"
@@ -190,6 +198,7 @@ ActiveRecord::Schema.define(version: 20171206211342) do
     t.integer  "views_number"
     t.float    "average_mark"
     t.boolean  "own_goal",       default: false
+    t.string   "picture"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["futsal_game_id"], name: "index_goals_on_futsal_game_id"
@@ -211,6 +220,7 @@ ActiveRecord::Schema.define(version: 20171206211342) do
     t.integer  "time"
     t.integer  "futsal_game_id"
     t.integer  "team_id"
+    t.string   "picture"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["futsal_game_id"], name: "index_highlights_on_futsal_game_id"
@@ -256,6 +266,19 @@ ActiveRecord::Schema.define(version: 20171206211342) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["user_id"], name: "index_user_futsal_game_with_users_on_user_id"
+  end
+
+  create_table "user_futsal_trophies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "futsal_trophy_id"
+    t.string   "linked_entity_type"
+    t.integer  "linked_entity_id"
+    t.datetime "validation_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["futsal_trophy_id"], name: "index_user_futsal_trophies_on_futsal_trophy_id"
+    t.index ["linked_entity_type", "linked_entity_id"], name: "index_user_futsal_trophies_on_linked_entity"
+    t.index ["user_id"], name: "index_user_futsal_trophies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row goal_header">
   <div class="col time">
     <%= Time.at(@highlight.time).utc.strftime("%H:%M:%S") %>
@@ -26,6 +24,15 @@
       <iframe src="<%= @highlight.futsal_game.video_link %>?start=<%= @highlight.time - 15 %>&autoplay=1" width="100%" height="400px" frameborder="0"  volume="0" allowfullscreen></iframe>
     <% else %>
       Pas de vidéo
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <% if !@highlight.picture.nil? %>
+      <img src="/assets/<%= @highlight.picture %>" width="200px"/>
+    <% else %>
+      Pas de photo
     <% end %>
   </div>
 </div>

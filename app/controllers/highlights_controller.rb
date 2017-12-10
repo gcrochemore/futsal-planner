@@ -51,7 +51,7 @@ class HighlightsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def highlight_params
 
-      params.require(:highlight).permit(:name, :highlight_type_id, :author_id, :victim_id, :time, :futsal_game_id, :team_id)
+      params.require(:highlight).permit(:name, :highlight_type_id, :author_id, :victim_id, :time, :futsal_game_id, :team_id, :picture)
 
     end
 end

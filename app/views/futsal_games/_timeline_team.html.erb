@@ -1,11 +1,26 @@
+<% 
+  goal_position_mini = 0 
+  goal_position = 0
+%>
 <% futsal_game_team_goals.each do |goal| %>
-  <div class="goal" style="margin-left:<%= ((goal.time - 8) / (futsal_game_duration * 60).to_f) * 95 %>%;">        
+  <% 
+    if goal_position_mini < goal.time 
+      goal_position = goal.time
+    else
+      goal_position = goal_position_mini
+    end
+    goal_position_mini = goal_position + 50
+  %>
+  <div class="goal" style="margin-left:<%= ((goal_position - 8) / (futsal_game_duration * 60).to_f) * 95 %>%;">        
     <span class="label-tooltip drop-menu">
       <% if goal.instance_of? Highlight %>
         <%= link_to_open_highlight_in_modal(icon(goal.highlight_type.icon), goal).html_safe %>
         <span class="label-tooltiptext label-tooltip-bottom<%= (goal.time > ((futsal_game_duration * 60).to_f / 2))  ? " label-tooltip-left" : "" %>">
           <%= icon('clock-o') %> <%= Time.at(goal.time).utc.strftime("%M:%S") %><br>
           <%= icon(goal.highlight_type.icon) %> <%= goal.andand.victim.to_s %><br>
+          <% if !goal.picture.nil? %>
+            <img src="/assets/<%= goal.picture %>" width="100px"/><br>
+          <% end %>
           <i>Cliquez pour voir l'action</i>
         </span>
       <% elsif goal.instance_of? Goal %>
@@ -15,6 +30,9 @@
           <%= icon('futbol-o') %> <%= goal.andand.goal.to_s %><br>
           <%= icon('arrow-circle-right') %> <%= goal.andand.assist.to_s %><br>
           <%= icon('sign-in') %> <%= goal.andand.goalkeeper.to_s %><br>
+          <% if !goal.picture.nil? %>
+            <img src="/assets/<%= goal.picture %>" width="100px"/><br>
+          <% end %>
           <i>Cliquez pour voir le but</i>
         </span>
       <% else %>

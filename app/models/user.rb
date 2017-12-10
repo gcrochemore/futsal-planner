@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
   has_many :goalkeeper_goals_against, :class_name => :Goal,:foreign_key => "goalkeeper_id"
   has_many :game_registrations
+  has_many :user_futsal_trophies
+  has_many :futsal_tournament_player_registrations
 
   default_scope { order(:first_name, :last_name) }
 
@@ -157,5 +159,101 @@ class User < ApplicationRecord
 
   def not_own_goals
     self.goals.where(own_goal: false)
+  end
+
+  def update_trophies
+    UserFutsalTrophy.where('user_id = ?', self.id).delete_all
+
+    # Dispute 5 matchs avec stats  5.0 Dispute 5 matchs avec stats
+    if self.match_with_stats > 5
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 1
+      user_futsal_trophy.linked_entity = self
+      user_futsal_trophy.validation_date = DateTime.now
+      user_futsal_trophy.save
+    end
+
+    # Dispute un tournoi
+    if self.futsal_tournament_player_registrations.length > 0 
+      futsal_tournament = self.futsal_tournament_player_registrations.first.futsal_tournament
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 2
+      user_futsal_trophy.linked_entity = futsal_tournament
+      user_futsal_trophy.validation_date = futsal_tournament.date
+      user_futsal_trophy.save
+    end
+
+    self.game_registrations.each do |game_registration|      
+
+      # Plus de 1/6 du match dans les buts et moins de 1buts/6min
+      if game_registration.futsal_game.has_stat && 
+          ((game_registration.futsal_game.duration / 6.0) < (game_registration.goalkeeper_duration/60.0)) &&
+          ((game_registration.goalkeeper_goal_against.to_f / (game_registration.goalkeeper_duration/60.0).to_f) < 0.125)
+        user_futsal_trophy = UserFutsalTrophy.new
+        user_futsal_trophy.user_id = self.id
+        user_futsal_trophy.futsal_trophy_id = 3
+        user_futsal_trophy.linked_entity = game_registration
+        user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
+        user_futsal_trophy.save
+      end
+    end 
+
+    # Prend un but par un joueur avec < 1 buts/matchs 
+    self.goal_against_to_user_with_lower_goal.each do |goal|
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 4
+      user_futsal_trophy.linked_entity = goal
+      user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
+      user_futsal_trophy.save
+    end 
+
+    # Marque un but sur une passe dé d'un joueur < 1 
+    self.goal_to_user_with_lower_assit.each do |goal|
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 5
+      user_futsal_trophy.linked_entity = goal
+      user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
+      user_futsal_trophy.save
+    end 
+
+    # Fais une passe dé a un joueur avec < 2 buts/matchs 
+    self.assit_to_user_with_lower_goal.each do |goal|
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 6
+      user_futsal_trophy.linked_entity = goal
+      user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
+      user_futsal_trophy.save
+    end  
+
+    # Homme du match  10.0  Homme du match    
+
+    # Double double (5 buts/5 passes dé)  20.0  Double double (5 buts/5 passes dé)
+    self.game_registrations.where("goal > ? AND assist > ?", 4, 4).each do |game_registration|
+      user_futsal_trophy = UserFutsalTrophy.new
+      user_futsal_trophy.user_id = self.id
+      user_futsal_trophy.futsal_trophy_id = 8
+      user_futsal_trophy.linked_entity = game_registration
+      user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
+      user_futsal_trophy.save
+    end
+
+    # Blessure  -5.0  Blessure
+  end
+
+  def goal_against_to_user_with_lower_goal
+    Goal.where('goalkeeper_id = ? AND goal_id in (?) AND own_goal = ?', self.id, User.where("goal_average_by_match < 1").pluck(:id), false)
+  end
+
+  def goal_to_user_with_lower_assit
+    Goal.where('goal_id = ? AND assist_id in (?) AND own_goal = ?', self.id, User.where("assist_average_by_match < 0.8").pluck(:id), false)
+  end
+
+  def assit_to_user_with_lower_goal
+    Goal.where('assist_id = ? AND goal_id in (?) AND own_goal = ?', self.id, User.where("goal_average_by_match < 1").pluck(:id), false)
   end
 end

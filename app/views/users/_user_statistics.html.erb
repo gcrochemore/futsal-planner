@@ -94,6 +94,20 @@
         </tbody>
       </table>
     </div>
+    <h3>Trophées (<%= @user.user_futsal_trophies.count %>)</h3> 
+    <div class="dashboard-panel-content">
+      <table class="table table-sm">
+        <tbody>
+          <% @user.user_futsal_trophies.each do |trophy| %>
+            <tr>
+              <td><%= trophy.validation_date.strftime("%d/%m/%y %H:%M").to_s %></td>
+              <td><%= trophy.futsal_trophy.andand.name %></td>
+              <td><%= link_to icon('eye').html_safe, trophy.linked_entity, target: "_blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <%= render :template => 'users/_chart', :locals => { :user => @user } %>

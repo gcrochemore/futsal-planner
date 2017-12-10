@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @futsal_trophy.name %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @futsal_trophy.points %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @futsal_trophy.description %>
+</p>
+
+<%= link_to 'Edit', edit_futsal_trophy_path(@futsal_trophy) %> |
+<%= link_to 'Back', futsal_trophies_path %>

@@ -235,6 +235,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :views_number
       t.float :average_mark
       t.boolean :own_goal, default: false
+      t.string :picture, default: nil
 
       t.timestamps
     end
@@ -275,6 +276,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :time
       t.references :futsal_game, foreign_key: true
       t.references :team, foreign_key: true
+      t.string :picture, default: nil
 
       t.timestamps
     end
@@ -314,6 +316,23 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.datetime :send_date
       t.integer :status
       t.references :game_registration, foreign_key: true
+
+      t.timestamps
+    end
+
+    create_table :futsal_trophies do |t|
+      t.string :name
+      t.float :points
+      t.string :description
+
+      t.timestamps
+    end
+
+    create_table :user_futsal_trophies do |t|
+      t.references :user, foreign_key: true
+      t.references :futsal_trophy, foreign_key: true
+      t.references :linked_entity, polymorphic: true, index: {:name => "index_user_futsal_trophies_on_linked_entity"}
+      t.datetime :validation_date
 
       t.timestamps
     end

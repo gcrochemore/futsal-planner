@@ -1,0 +1,22 @@
+<%= simple_form_for(@user_futsal_trophy) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="user"><%= f.label :user %></label>
+      <%= f.association :user, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="futsal_trophy"><%= f.label :futsal_trophy %></label>
+      <%= f.association :futsal_trophy, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <label for="linked_entity"><%= f.label :linked_entity %></label>
+      <%= f.input :linked_entity, collection: Goal.all, label: false, input_html: { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

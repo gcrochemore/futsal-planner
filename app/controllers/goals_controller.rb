@@ -70,7 +70,7 @@ class GoalsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def goal_params
 
-      params.require(:goal).permit(:futsal_game_id, :team_id, :goal_id, :own_goal, :assist_id, :goalkeeper_id, :time, :video_link)
+      params.require(:goal).permit(:futsal_game_id, :team_id, :goal_id, :own_goal, :assist_id, :goalkeeper_id, :time, :video_link, :picture)
 
     end
 end
