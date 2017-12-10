@@ -25,6 +25,10 @@ fr:
         date: Date
         duration: Durée
         futsal_field: Terrain
+      futsal_trophy:
+        description: Description
+        name: Nom
+        points: Points
       game_registration:
         team: Equipe
         user: Joueur
@@ -86,6 +90,11 @@ fr:
     index:
       new_button: Nouveau tournoi
       title: Tournois
+
+  futsal_trophies:
+    index:
+      new_button: Nouveau trophée
+      title: Trophées
       
   game_registrations:
     index:

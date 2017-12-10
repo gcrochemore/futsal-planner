@@ -1,4 +1,4 @@
-<h1><%= t('.title') %><span class="badge"><%= @futsal_trophies.count %></span></h1>
+<h1><%= t('.title') %> - <%= @futsal_trophies.count %></h1>
 
 <div class="row">
   <div class="col-2">
@@ -6,15 +6,17 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.futsal_trophy.name')} %>
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.futsal_trophy.name'), class: "form-control"} %>
 
-        <%= f.search_field :points_cont, {placeholder: t('activerecord.attributes.futsal_trophy.points')} %>
+        <%= f.search_field :points_cont, {placeholder: t('activerecord.attributes.futsal_trophy.points'), class: "form-control"} %>
 
-        <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.futsal_trophy.description')} %>
+        <%= f.search_field :description_cont, {placeholder: t('activerecord.attributes.futsal_trophy.description'), class: "form-control"} %>
 
         <br>
-        <br>
-        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
+
+        <%= link_to "Effacer", request.path, class: 'btn btn-search-filter btn-sm btn-outline-primary btn-block' %>
       <% end %>
     </fieldset>
   </div>

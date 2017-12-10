@@ -107,7 +107,7 @@ class FutsalGamesController < ApplicationController
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
     @futsal_game.andand.goal_and_change_by_team_and_position(@futsal_game.team_home, @futsal_game.team_outside, 1).each_with_index do |goal, index|
-      if(index == 0 || (goal.instance_of? FutsalGamePlayerPositionChange) || futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper)
+      if(index == 0 || (goal.instance_of? FutsalGamePlayerPositionChange) || ((futsal_game_player_position.andand.game_registration.andand.user != goal.goalkeeper) && !goal.goalkeeper.nil?))
         if goal.instance_of? FutsalGamePlayerPositionChange
           if( index == 0 )
             futsal_game_player_position.game_registration = GameRegistration.where('user_id = ? AND futsal_game_id = ? AND team_id = ?', goal.game_registration_player_out.user.id, @futsal_game, @futsal_game.team_outside).first

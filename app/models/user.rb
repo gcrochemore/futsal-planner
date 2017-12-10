@@ -165,7 +165,7 @@ class User < ApplicationRecord
     UserFutsalTrophy.where('user_id = ?', self.id).delete_all
 
     # Dispute 5 matchs avec stats  5.0 Dispute 5 matchs avec stats
-    if self.match_with_stats > 5
+    if self.match_with_stats.round(2) >= 5
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
       user_futsal_trophy.futsal_trophy_id = 1
@@ -250,7 +250,7 @@ class User < ApplicationRecord
   end
 
   def goal_to_user_with_lower_assit
-    Goal.where('goal_id = ? AND assist_id in (?) AND own_goal = ?', self.id, User.where("assist_average_by_match < 0.8").pluck(:id), false)
+    Goal.where('goal_id = ? AND assist_id in (?) AND own_goal = ?', self.id, User.where("assist_average_by_match < 1").pluck(:id), false)
   end
 
   def assit_to_user_with_lower_goal

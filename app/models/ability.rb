@@ -30,6 +30,8 @@ class Ability
 
     can :read, Highlight
 
+    can :read, FutsalTrophy
+
     can :how_the_mark_is_calculated
 
     

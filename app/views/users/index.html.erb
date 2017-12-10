@@ -53,7 +53,8 @@
                   <%= user.first_name %> <%= user.last_name %>                  
                 </strong> 
                 <%= user.company ? '(' + user.company.to_s + ')' : '' %> - 
-                <%= user.futsal_position.abbreviation %> - <strong><%= user.rating.to_f.round(1) %></strong>
+                <%= user.futsal_position.abbreviation %> - <strong><%= user.rating.to_f.round(1) %></strong> - 
+                <%= user.user_futsal_trophies.length.to_s %> trophée(s)
               </td>
             </tr>
             <tr>

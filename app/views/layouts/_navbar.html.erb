@@ -15,6 +15,11 @@
           <%= link_to('Matchs de futsal', futsal_games_path, { class: "nav-link" })  %> 
         </li> 
       <% end %>
+      <% if can? :read, FutsalTrophy %>
+        <li class="nav-item">
+          <%= link_to('Trophées', futsal_trophies_path, { class: "nav-link" })  %> 
+        </li> 
+      <% end %>
 
       <% if user_signed_in?  %>
         <li class="nav-item dropdown">
