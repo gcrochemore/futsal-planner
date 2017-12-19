@@ -84,6 +84,11 @@
         <%= link_to icon('futbol-o') + " Voir le match sur le site du soccer", @futsal_game.match_resume_link, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>
       </div>
     <% end %>
+    <% if can? :teams_making, @futsal_game %>
+      <div class="col">
+        <%= link_to (icon('users') + ' Teams Making').html_safe, teams_making_futsal_game_path(@futsal_game) , class: "btn btn-sm btn-block btn-outline-primary" %>
+      </div>
+    <% end %>
     <% if (@futsal_game.game_registrations.length > 0) && (can? :send_email_to_prevent_teams_are_up_to_date, @futsal_game) %>
       <div class="col">
         <%= link_to icon('envelope-o') + " Equipes à jour", send_email_to_prevent_teams_are_up_to_date_futsal_game_path, target: "_blank", class: "btn btn-sm btn-block btn-outline-primary" %>

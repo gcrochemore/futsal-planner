@@ -1,0 +1,41 @@
+<table class="table table-hover table-condensed table-bordered">
+  <tr>
+    <th>Team 1</th>
+    <th>Team 2</th>
+    <th>note Team 1</th>
+    <th>note Team 2</th>
+    <th>Différence</th>
+    <th>Score Team 1</th>
+    <th>Score Team 2</th>
+    <th>Différence</th>
+    <th>Total</th>
+  </tr>
+
+  <% @team_making.players_teams_valids_sort.each do |teams| %>
+
+    <tr>
+      <td>
+        <ul>
+          <% teams.team_1.each do |player| %>
+            <li><%= player %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <% teams.team_2.each do |player| %>
+            <li><%= player %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td><%= teams.team_1_average_mark.round(2) %></td>
+      <td><%= teams.team_2_average_mark.round(2) %></td>
+      <th><%= teams.team_mark_difference.round(2) %></th>
+      <td><%= teams.team_1_score.round(2) %></td>
+      <td><%= teams.team_2_score.round(2) %></td>
+      <th><%= teams.team_score_difference.round(2) %></th>
+      <th><%= teams.team_difference.round(2) %></th>
+    </tr>
+
+  <% end %>
+</table>

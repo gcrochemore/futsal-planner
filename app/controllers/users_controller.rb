@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show_statistics_full
+  end
+
   # POST /users
   def create
     @user = User.new(user_params)

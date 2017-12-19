@@ -22,6 +22,7 @@ class Ability
     can :read, GoalMark
 
     can :read, FutsalGame
+    can :teams_making, FutsalGame
 
     can :read, FutsalTournament
 
