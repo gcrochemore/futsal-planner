@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :confirmable, :lockable
   belongs_to :company, optional: true
   belongs_to :futsal_position, optional: true
+  belongs_to :nationality
 
   has_many :goals, :class_name => :Goal,:foreign_key => "goal_id"
   has_many :assists, :class_name => :Goal,:foreign_key => "assist_id"
@@ -24,6 +25,22 @@ class User < ApplicationRecord
 
   def has_stats
     !(self.rating.nil? || self.rating.to_f.nan?)
+  end
+
+  def goals_by_assist
+    self.goals.group("assist_id").order("count_all desc").count
+  end
+
+  def assists_by_goals
+    self.assists.group("goal_id").order("count_all desc").count
+  end
+
+  def goalkeeper_goals_against_by_goals
+    self.goalkeeper_goals_against.group("goal_id").order("count_all desc").count
+  end
+
+  def game_registrations_common
+    GameRegistration.where("futsal_game_id IN (?) AND user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).group("user_id").order("count_all desc").count
   end
 
   def update_stats

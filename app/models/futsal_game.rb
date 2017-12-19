@@ -37,19 +37,19 @@ class FutsalGame < ApplicationRecord
   end
 
   def team_home_players
-    game_registrations.where(team: team_home)
+    game_registrations.where(team: team_home).includes(:user)
   end
 
   def game_registrations_by_team team
-    game_registrations.where(team: team)
+    game_registrations.where(team: team).includes(:user)
   end
 
   def team_outside_players
-    game_registrations.where(team: team_outside)
+    game_registrations.where(team: team_outside).includes(:user)
   end  
 
   def team_less_players
-    game_registrations.where(team: nil)
+    game_registrations.where(team: nil).includes(:user)
   end
 
   def player_by_team(team)
@@ -105,7 +105,7 @@ class FutsalGame < ApplicationRecord
   end
 
   def highlights_and_goals
-    (highlights.includes(:victim) + goals.includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
+    (highlights.includes(:victim) + goals.includes(:goal).includes(:assist).includes(:goalkeeper)).sort! { |a,b| a.time <=> b.time }
   end
 
   def goal_and_change_by_team_and_position(team, team_2, position_id)
@@ -123,7 +123,7 @@ class FutsalGame < ApplicationRecord
   end
 
   def highlights_and_goals_by_team team_id
-    (highlights.where(team_id: team_id).includes(:victim) + goals.where(team_id: team_id).includes(:goal).includes(:assist)).sort! { |a,b| a.time <=> b.time }
+    (highlights.where(team_id: team_id).includes(:victim) + goals.where(team_id: team_id).includes(:goal).includes(:assist).includes(:goalkeeper)).sort! { |a,b| a.time <=> b.time }
   end
 
   def highlights_and_goals_and_change_by_team team_id

@@ -5,6 +5,7 @@ class GameRegistration < ApplicationRecord
   belongs_to :futsal_game
   belongs_to :team, optional: true
   has_many :futsal_game_player_positions
+  has_many :user_futsal_trophies, as: :linked_entity
 
   scope :order_by_stats, -> { order('goal desc, assist desc') }
 

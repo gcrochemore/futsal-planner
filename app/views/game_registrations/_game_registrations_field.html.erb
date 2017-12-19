@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col">
-    <%= f.association :user, label: false, input_html: { class: "form-control" } %>
+    <%= f.association :user, label: false, input_html: { class: "form-control" }, collection: @users %>
   </div>
   <div class="col">
     <%= f.input :futsal_game_id, label: false, input_html: { class: "form-control" }, collection: [f.object.futsal_game], selected: f.object.futsal_game.id %>
   </div>
   <div class="col">
-    <%= f.input :team_id, label: false, input_html: { class: "form-control" }, collection: [Team.new, f.object.futsal_game.team_home, f.object.futsal_game.team_outside], selected: f.object.team.andand.id %>
+    <%= f.input :team_id, label: false, input_html: { class: "form-control" }, collection: @game_registrations_possibles_teams, selected: f.object.team.andand.id %>
   </div>
   <div class="col-1">
     <%= link_to_remove_association icon('times').html_safe, f %>

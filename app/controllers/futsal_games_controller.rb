@@ -1,7 +1,7 @@
 class FutsalGamesController < ApplicationController
   authorize_resource
   before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume, :calculate_goalkeeper_position, 
-    :send_email_to_prevent_statistics_are_up_to_date, :send_email_to_prevent_teams_are_up_to_date]
+    :send_email_to_prevent_statistics_are_up_to_date, :send_email_to_prevent_teams_are_up_to_date, :affect_or_invite_players]
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
@@ -22,6 +22,14 @@ class FutsalGamesController < ApplicationController
       @score_1.push(goal_1)
       @score_2.push(goal_2)
     end
+  end
+
+  # GET /futsal_games/new
+  def new
+    @futsal_game = FutsalGame.new
+  end
+
+  def affect_or_invite_players
 
     @dispo = User.unscoped.where('id NOT IN (?)', 
               GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL', 
@@ -32,11 +40,9 @@ class FutsalGamesController < ApplicationController
                 FutsalGame.where("futsal_field_id = ? AND (team_home_id = ? OR team_outside_id = ? OR team_home_id = ? OR team_outside_id = ?)", @futsal_game.futsal_field_id, @futsal_game.team_home, @futsal_game.team_home, @futsal_game.team_outside, @futsal_game.team_outside).pluck(:id)
               ).pluck(:user_id)
             ).order("match DESC").order(:first_name, :last_name)
-  end
+    @users = User.all
+    @game_registrations_possibles_teams = [Team.new, @futsal_game.team_home, @futsal_game.team_outside]
 
-  # GET /futsal_games/new
-  def new
-    @futsal_game = FutsalGame.new
   end
 
   # GET /futsal_games/1/edit
@@ -45,14 +51,18 @@ class FutsalGamesController < ApplicationController
 
   def send_email_to_prevent_statistics_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
-      UserMailer.match_update(game_registration).deliver
+      if game_registration.user_id == 1
+        UserMailer.match_update(game_registration).deliver
+      end
     end
     redirect_to @futsal_game
   end
 
   def send_email_to_prevent_teams_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
+      if game_registration.user_id == 1
         UserMailer.teams_is_online(game_registration).deliver
+      end
     end
     redirect_to @futsal_game
   end

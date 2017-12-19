@@ -60,6 +60,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold user_futsal_trophy user:references futsal_trophy:references linked_entity:references{polymorphic}
 
+	rails generate scaffold nationality name:string abbreviation:string picture:string
+
     ###### Entity a créer	
 	
 

@@ -39,7 +39,11 @@
     <% end %>
   </div>
   <div class="nationality">
-    <img src="/assets/fifa/nationalities/french.png">
+    <% if !player.andand.nationality.nil? %>   
+      <a data-toggle="tooltip" title="<%= player.andand.nationality %>">
+        <img src="/assets/fifa/nationalities/<%= player.andand.nationality.andand.picture %>">
+      </a>
+    <% end %>
   </div>
 
   <div class="attr1">
@@ -82,7 +86,21 @@
     <% if !stat.nil? %>
       <a data-toggle="tooltip" title="Durée gardien de but"><%= icon('hand-stop-o') %> <%= (stat.goalkeeper_duration.to_f / 60).round %>'</a>
       <a data-toggle="tooltip" title="Durée joueur"><%= icon('user') %> <%= (stat.player_duration.to_f / 60).round %>'</a>
-      <a data-toggle="tooltip" title="Durée remplacant"><%= icon('refresh') %> <%= (stat.substitute_duration.to_f / 60).round %>'</a>
+      <a data-toggle="tooltip" title="Durée remplacant"><%= icon('refresh') %> <%= (stat.substitute_duration.to_f / 60).round %>'</a>      
+      <%
+        if stat.andand.user_futsal_trophies.count > 0
+          show_trophies = "<ul>"
+          stat.andand.user_futsal_trophies.each do |trophies|
+            show_trophies += "<li>" + trophies.futsal_trophy.to_s + "</li>"
+          end
+          show_trophies += "</ul>"
+        else
+          show_trophies = ""
+        end
+      %>
+      <a data-toggle="tooltip" data-html="true" title="Trophées gagnés pendant le match<br><%= show_trophies %>">
+        <%= icon('trophy') + ' ' + stat.andand.user_futsal_trophies.count.to_i.to_s %> 
+      </a>
     <% end %>
   </div>
 

@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col">
+
+    <h4>Buts par passeurs</h4>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.goals_by_assist.each do |assist, count| %>
+          <tr>
+            <td><%= !assist.nil? ? User.find(assist.to_i) : "<i>Pas de passeur</i>" %></td><td><%= count %> Passes</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <h4>Assists par buteur</h4>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.assists_by_goals.each do |goal, count| %>
+          <tr>
+            <td><%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <h4>Buts encaissés par buteur</h4>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.goalkeeper_goals_against_by_goals.each do |goal, count| %>
+          <tr>
+            <td><%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <h4>Matchs communs</h4>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.game_registrations_common.each do |user, count| %>
+          <tr>
+            <td><%= !user.nil? ? User.find(user.to_i) : "<i>Pas de joueur</i>" %></td><td><%= count %> Matchs</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+

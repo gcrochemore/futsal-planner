@@ -1,0 +1,66 @@
+<h1><%= t('.title') %><span class="badge"><%= @nationalities.count %></span></h1>
+
+<div class="row">
+  <div class="col-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.nationality.name')} %>
+
+        <%= f.search_field :abbreviation_cont, {placeholder: t('activerecord.attributes.nationality.abbreviation')} %>
+
+        <%= f.search_field :picture_cont, {placeholder: t('activerecord.attributes.nationality.picture')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-search-filter btn-sm btn-outline-primary' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Nationality %>
+        <%= link_to (icon('plus') + " " + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-sm btn-outline-primary" %>
+      <% end %>
+    </div>
+    <table class="table table-hover table-sm table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :abbreviation, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :picture, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @nationalities.each do |nationality| %>
+          <tr>
+    
+            <td><%= nationality.name %></td>
+    
+            <td><%= nationality.abbreviation %></td>
+    
+            <td><%= nationality.picture %></td>
+    
+            <td>
+              <%= link_to icon('eye').html_safe, nationality %>
+              <% if can? :edit, Nationality %>
+                <%= link_to icon('pencil').html_safe, edit_nationality_path(nationality) %>
+              <% end %>
+              <% if can? :destroy, Nationality %>
+                <%= link_to icon('times').html_safe, nationality, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @nationalities %>
+  </div>
+</div>

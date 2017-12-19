@@ -2,6 +2,7 @@
 
 <%= render 'users/user_statistics', user: @user %>  
 
+<%= link_to 'Stats détaillées', show_statistics_full_user_path(@user) %> |
 <% if can? :edit, User %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>

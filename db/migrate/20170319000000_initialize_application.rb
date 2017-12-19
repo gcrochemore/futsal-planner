@@ -19,6 +19,14 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    create_table :nationalities do |t|
+      t.string :name
+      t.string :abbreviation
+      t.string :picture
+
+      t.timestamps
+    end
+
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -53,6 +61,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.references :company
       t.references :futsal_position
+      t.references :nationality, default: 1
 
       ##Photo
       t.string :picture

@@ -228,6 +228,14 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.index ["team_id"], name: "index_highlights_on_team_id"
   end
 
+  create_table "nationalities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.string   "picture"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -303,6 +311,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.string   "last_name"
     t.integer  "company_id"
     t.integer  "futsal_position_id"
+    t.integer  "nationality_id",                  default: 1
     t.string   "picture"
     t.integer  "goal"
     t.integer  "own_goal"
@@ -342,6 +351,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["futsal_position_id"], name: "index_users_on_futsal_position_id"
+    t.index ["nationality_id"], name: "index_users_on_nationality_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end

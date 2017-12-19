@@ -25,6 +25,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Entités </a>
           <ul class="dropdown-menu">
+            <% if can? :read, Nationality %>
+              <li>
+               <%= link_to('Nationalités', nationalities_path, { class: "dropdown-item" })  %> 
+              </li>
+            <% end %>
             <% if can? :read, Company %>
               <li>
                <%= link_to('Entreprises', companies_path, { class: "dropdown-item" })  %> 

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root 'pages#index'
 
   resources :paper_trail_versions, controller: 'versions'
@@ -8,13 +7,18 @@ Rails.application.routes.draw do
             :futsal_tournament_player_registrations, :futsal_tournament_team_registrations, 
             :futsal_tournaments, :futsal_positions, :futsal_game_player_positions,
             :futsal_game_player_position_changes, :futsal_game_invitations, :user_futsal_trophies,
-            :futsal_trophies
+            :futsal_trophies, :nationalities
 
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      get :show_statistics_full
+    end
+  end
 
   resources :futsal_games do
     member do
+      get :affect_or_invite_players
       get :parse_match_resume
       get :affect_player_to_team
       get :calculate_goalkeeper_position
