@@ -51,18 +51,14 @@ class FutsalGamesController < ApplicationController
 
   def send_email_to_prevent_statistics_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
-      if game_registration.user_id == 1
-        UserMailer.match_update(game_registration).deliver
-      end
+      UserMailer.match_update(game_registration).deliver
     end
     redirect_to @futsal_game
   end
 
   def send_email_to_prevent_teams_are_up_to_date
     @futsal_game.game_registrations.each do |game_registration|
-      if game_registration.user_id == 1
-        UserMailer.teams_is_online(game_registration).deliver
-      end
+      UserMailer.teams_is_online(game_registration).deliver
     end
     redirect_to @futsal_game
   end
