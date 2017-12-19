@@ -85,8 +85,8 @@ module ApplicationHelper
     
   end
 
-  def link_to_open_goal_in_modal(icon, goal)
-    return '<a class="link_to_highlight" data-toggle="modal" data-target="#goal_modal" onClick="change_goal(\'../goals/' + goal.id.to_s + '/show_embed\');">' + icon + '</a>'
+  def link_to_open_goal_in_modal(icon, goal, css_class: nil)
+    return '<a class="link_to_highlight' + (css_class.nil? ? '' : ' ' + css_class).to_s + '" data-toggle="modal" data-target="#goal_modal" onClick="change_goal(\'../goals/' + goal.id.to_s + '/show_embed\');">' + icon + '</a>'
   end
 
   def link_to_open_highlight_in_modal(icon, goal)

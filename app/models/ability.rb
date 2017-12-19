@@ -17,6 +17,7 @@ class Ability
     end
 
     can :read, User
+    can :show_statistics_full, User
 
     can :read, GoalMark
 

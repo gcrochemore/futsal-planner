@@ -71,7 +71,7 @@ class FutsalGamesController < ApplicationController
   end
 
   def calculate_goalkeeper_position
-    @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_home).delete_all
+    @futsal_game.andand.futsal_game_player_position_by_team_and_position(@futsal_game.team_home, 1).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
     @futsal_game.andand.goal_and_change_by_team_and_position(@futsal_game.team_outside, @futsal_game.team_home, 1).each_with_index do |goal, index|
@@ -113,7 +113,7 @@ class FutsalGamesController < ApplicationController
       futsal_game_player_position.save
     end
 
-    @futsal_game.andand.futsal_game_player_position_by_team(@futsal_game.team_outside).delete_all
+    @futsal_game.andand.futsal_game_player_position_by_team_and_position(@futsal_game.team_outside, 1).delete_all
     
     futsal_game_player_position = FutsalGamePlayerPosition.new
     @futsal_game.andand.goal_and_change_by_team_and_position(@futsal_game.team_home, @futsal_game.team_outside, 1).each_with_index do |goal, index|

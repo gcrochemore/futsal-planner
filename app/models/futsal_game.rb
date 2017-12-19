@@ -153,6 +153,10 @@ class FutsalGame < ApplicationRecord
     FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)).order(:futsal_position_id, :begin_time)
   end
 
+  def futsal_game_player_position_by_team_and_position(team, position_id)
+    FutsalGamePlayerPosition.where('game_registration_id IN (?) AND futsal_position_id = ?', game_registrations.where(team: team).pluck(:id), position_id).order(:futsal_position_id, :begin_time)
+  end
+
   def futsal_game_player_position_and_change_by_team(team)
     (
       FutsalGamePlayerPosition.where('game_registration_id IN (?)', game_registrations.where(team: team).pluck(:id)) +

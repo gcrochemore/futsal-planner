@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   authorize_resource
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :show_statistics_full, :destroy]
   # GET /users
   def index
     @q = User.ransack(params[:q])
