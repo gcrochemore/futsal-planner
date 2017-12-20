@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def game_registrations_common
-    GameRegistration.where("futsal_game_id IN (?) AND user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).group("user_id").order("count_all desc").count 
+    GameRegistration.where("futsal_game_id IN (?) AND user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).group("user_id").order("count_all desc").count
   end
 
   def game_registrations_against
