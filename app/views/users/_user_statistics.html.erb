@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col col-md-3 col-sm-6 col-xs-12">
-    <%= render 'users/user_profile', user: @user %> 
+    <%= render 'users/user_profile', user: @user %>
   </div>
   <div class="col col-md-3 col-sm-6 col-xs-12">
     <h3>Matchs (<%= @user.game_registrations.order_by_futsal_game.count %>)</h3>
@@ -110,4 +110,7 @@
     </div>
   </div>
 </div>
-<%= render :template => 'users/_chart', :locals => { :user => @user } %>
+<%= render :template => 'users/_goals_assists_chart', :locals => { :user => @user } %>
+
+
+

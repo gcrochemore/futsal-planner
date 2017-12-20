@@ -40,7 +40,15 @@ class User < ApplicationRecord
   end
 
   def game_registrations_common
-    GameRegistration.where("futsal_game_id IN (?) AND user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).group("user_id").order("count_all desc").count
+    GameRegistration.where("futsal_game_id IN (?) AND user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).group("user_id").order("count_all desc").count 
+  end
+
+  def game_registrations_against
+    GameRegistration.where("game_registrations.futsal_game_id IN (?) AND game_registrations.user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).joins("INNER JOIN (SELECT * FROM game_registrations) gr ON game_registrations.futsal_game_id = gr.futsal_game_id AND game_registrations.team_id <> gr.team_id AND gr.user_id = " + self.id.to_s).group("user_id").order("count_all desc").count
+  end
+
+  def game_registrations_with
+    GameRegistration.where("game_registrations.futsal_game_id IN (?) AND game_registrations.user_id <> ?", self.game_registrations.pluck(:futsal_game_id), self.id).joins("INNER JOIN (SELECT * FROM game_registrations) gr ON game_registrations.futsal_game_id = gr.futsal_game_id AND game_registrations.team_id = gr.team_id AND gr.user_id = " + self.id.to_s).group("user_id").order("count_all desc").count
   end
 
   def update_stats
@@ -74,7 +82,7 @@ class User < ApplicationRecord
     self.goal_mark = 0
     self.assist_mark = 0
     self.victory_mark = 0
-    self.rating = self.calculate_rating
+    self.rating = self.calculate_rating(self.futsal_position)
     self.rating = (self.match_with_stats < User::MATCH_MINI ? self.rating * User::MULTIPLIER_IF_MATCH_MINI : self.rating)
     self.rating = (self.rating < User::RATING_MINI ? User::RATING_MINI : self.rating)
   
@@ -101,8 +109,8 @@ class User < ApplicationRecord
     self.victory_percentage = self.victory.to_f / self.match.to_f
   end
 
-  def calculate_rating
-    (User::RATING_MINI + ((self.goal_average_by_match - self.own_goal_average_by_match) * self.futsal_position.average_goal_multiplier) + (self.assist_average_by_match * self.futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (User::GOAL_NUMBER - self.goalkeeper_goal_against_average.to_f).to_f * self.futsal_position.average_goal_against_multiplier : 0))
+  def calculate_rating(futsal_position)
+    (User::RATING_MINI + ((self.goal_average_by_match - self.own_goal_average_by_match) * futsal_position.average_goal_multiplier) + (self.assist_average_by_match * futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (User::GOAL_NUMBER - self.goalkeeper_goal_against_average.to_f).to_f * futsal_position.average_goal_against_multiplier : 0))
   end
 
   def goal_average
@@ -119,21 +127,25 @@ class User < ApplicationRecord
 
   def display_stats
     self.games_results = self.games_results.to_s
-    'Note : ' + self.rating.andand.round(2).to_s + '<br>' + 
-    'Note de match : ' + self.match_rating.andand.round(2).to_s + '<br>' + 
-    self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '<br>' + 
-    self.match.to_s + ' match(s) - ' + self.match_with_stats.andand.round(2).to_s + ' avec stats<br>' + 
+    '<table class="table table-hover table-sm table-bordered"><tr><th>Note : </th><td>' + self.rating.andand.round(2).to_s + '</td>' +
+    '<th>Note de match : </th><td>' + self.match_rating.andand.round(2).to_s + '</td></tr>' +
+    '<tr><td colspan="2">' + self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '</td>' +
+    '<td colspan="2">' + self.games_results[0..15].to_s + (games_results.length > 15 ? '...' : '') + '</td></tr>' +
+    '<tr><td colspan="2">' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D</td>' +
+    '<td colspan="2">' + (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires</td></tr></table>'+
+    '<strong>Temps de jeu :</strong><br>' +
+    self.match.to_s + ' match(s) - ' + self.match_with_stats.andand.round(2).to_s + ' avec stats<br>' +
     self.match_time.to_s + ' minutes jouées<br>' +
-    self.games_results[0..10].to_s + (games_results.length > 10 ? '...' : '') + '<br>' + 
-    self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D<br>' + 
-    (self.victory_percentage.to_f * 100).round(2).to_s + '% victoires <br>'+
-    'Gardien : ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min / ' + self.goalkeeper_goal_against.to_s + 'BC ' + 
-    '(' + self.goalkeeper_goal_against_average.andand.round(2).to_s + '/match) <br>' +
-    'Joueur : ' + (self.player_duration.to_f/60).round.to_s + ' min <br>' +
-    'Remp. : ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
-    '<i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) <br>' +
-    'CSC ' + self.own_goal.to_s + ' (' + self.own_goal_average_by_match.to_f.round(2).to_s + '/match) <br>
-    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match)'
+    '<i class="fa fa-hand-stop-o" aria-hidden="true"></i> ' + (self.goalkeeper_duration.to_f/60).round.to_s + 'min ' +
+    '<i class="fa fa-user" aria-hidden="true"></i> ' + (self.player_duration.to_f/60).round.to_s + ' min ' +
+    '<i class="fa fa-refresh" aria-hidden="true"></i> ' + (self.substitute_duration.to_f/60).round.to_s + ' min <br>' +
+    '<strong>Stats :</strong><br>' +
+    '<table class="table table-hover table-sm table-bordered"><tr><td><i class="fa fa-futbol-o" aria-hidden="true"></i> ' + self.goal.to_s + ' (' + self.goal_average_by_match.to_f.round(2).to_s + '/match) </td>' +
+    '<td>CSC ' + self.own_goal.to_s + ' (' + self.own_goal_average_by_match.to_f.round(2).to_s + '/match) </td></tr>' +
+    '<tr><td><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> ' + self.assist.to_s + ' (' + self.assist_average_by_match.to_f.round(2).to_s + '/match) </td>' +
+    '<td><i class="fa fa-sign-in" aria-hidden="true"></i> ' + self.goalkeeper_goal_against.to_s + ' (' + self.goalkeeper_goal_against_average.andand.round(2).to_s + '/match)</td></tr>' +
+    '</table>'
+
   end
 
   def update_match_time
