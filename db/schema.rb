@@ -313,6 +313,12 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "futsal_position_id"
     t.integer  "nationality_id",                  default: 1
     t.string   "picture"
+    t.integer  "endurance",                       default: 5
+    t.integer  "strength",                        default: 5
+    t.integer  "speed",                           default: 5
+    t.integer  "coordination",                    default: 5
+    t.integer  "flexibility",                     default: 5
+    t.integer  "tactic",                          default: 5
     t.integer  "goal"
     t.integer  "own_goal"
     t.integer  "goal_with_assist"
