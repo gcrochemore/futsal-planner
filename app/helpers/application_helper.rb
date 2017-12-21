@@ -33,39 +33,28 @@ module ApplicationHelper
   end 
 
 
-  def calculate_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
-    match_goal = match_goal.to_f / (game_duration.to_f / 60)
-    match_assist = match_assist.to_f / (game_duration.to_f / 60)
+  def calculate_game_level(rating = 1, game_rating = 1)
+    level = (game_rating.nil? ? 1 : game_rating) / (rating.nil? ? 1 : rating)
 
-    if match_goal + 1 > average_goal && match_goal - 1 < average_goal
-      result = 0
-    elsif match_goal < (average_goal * (-1.5))
-      result = -2
-    elsif match_goal < average_goal
-      result = -1
-    elsif match_goal < (average_goal * 1.5)
-      result = 1
-    elsif match_goal < (average_goal * 2.5)
-      result = 2
+    if level < 0.93
+      result = -2 
+    elsif level < 0.98
+      result = -1 
+    elsif level < 0.98
+      result = 0 
+    elsif level < 1.025
+      result = 1 
     else
-      result = 3
-    end
-
-    if match_assist + 1 > average_assist && match_assist - 1 < average_assist
-      result = result
-    elsif match_assist < average_assist
-      result = result - 1
-    else
-      result = result + 1
+      result = 2 
     end
 
     return result
   end
 
 
-  def show_game_level(match_goal = 0, average_goal = 0, match_assist = 0, average_assist = 0, game_duration = 60)
+  def show_game_level(rating = 1, game_rating = 1)
     
-    result = calculate_game_level(match_goal, average_goal, match_assist, average_assist, game_duration)
+    result = calculate_game_level(rating, game_rating)
 
     if result == 0
       return icon('arrow-right', class: 'yellow')

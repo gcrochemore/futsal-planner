@@ -41,7 +41,7 @@ class MatchMakingTeam
   def calculate_average_mark(team)
     sum = 0
     team.each do |player|
-      sum += player.rating
+      sum += player.last_matchs_rating
     end
     return sum.to_f / team.count.to_f
   end

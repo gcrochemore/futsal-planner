@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "player_duration"
     t.integer  "substitute_duration"
     t.integer  "goalkeeper_goal_against"
+    t.integer  "rating"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["futsal_game_id"], name: "index_game_registrations_on_futsal_game_id"
@@ -350,6 +351,7 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.float    "goal_mark"
     t.float    "assist_mark"
     t.float    "victory_mark"
+    t.float    "last_matchs_rating",              default: 65.0
     t.float    "rating",                          default: 65.0
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false

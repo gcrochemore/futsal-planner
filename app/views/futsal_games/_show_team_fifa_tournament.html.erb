@@ -8,7 +8,7 @@
     <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.andand.assist_average_by_match.to_f %>
     <% sum_match = sum_match + player.user.andand.match_with_stats.to_f %>
     <% sum_rating = sum_rating + player.user.andand.rating.to_f %>
-    <%= render 'fifa_card/fifa_card', player: player.user, stat: player, highlights_and_goals_by_user: player.futsal_tournament.highlights_and_goals_by_user(player.user.id) %> 
+    <%= render 'fifa_card/fifa_card', player: player.user, stat: player, game_rating: player.rating, highlights_and_goals_by_user: player.futsal_tournament.highlights_and_goals_by_user(player.user.id) %> 
   <% end %>
 </div>
 <br>

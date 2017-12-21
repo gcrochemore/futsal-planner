@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   GOAL_NUMBER = 18.0
   RATING_MINI = 65.0
+  RATING_MAXI = 97.0
   MATCH_MINI = 5
   MULTIPLIER_IF_MATCH_MINI = 0.85
 
@@ -82,7 +83,7 @@ class User < ApplicationRecord
     self.goal_mark = 0
     self.assist_mark = 0
     self.victory_mark = 0
-    self.rating = self.calculate_rating(self.futsal_position)
+    self.rating = self.calculate_rating
     self.rating = (self.match_with_stats < User::MATCH_MINI ? self.rating * User::MULTIPLIER_IF_MATCH_MINI : self.rating)
     self.rating = (self.rating < User::RATING_MINI ? User::RATING_MINI : self.rating)
   
@@ -104,13 +105,16 @@ class User < ApplicationRecord
       self.games_results = self.games_results + match_result
     end
 
+    self.last_matchs_rating = (self.game_registrations.order_by_futsal_game.first.nil? ? 65 : self.game_registrations.order_by_futsal_game.first.rating)
+
     self.match_goal_difference = self.match_goal_for - self.match_goal_against
 
     self.victory_percentage = self.victory.to_f / self.match.to_f
   end
 
-  def calculate_rating(futsal_position)
-    (User::RATING_MINI + ((self.goal_average_by_match - self.own_goal_average_by_match) * futsal_position.average_goal_multiplier) + (self.assist_average_by_match * futsal_position.average_assist_multiplier) + ((self.goalkeeper_goal_against_average > 0 && self.goalkeeper_goal_against_average < 100) ? (User::GOAL_NUMBER - self.goalkeeper_goal_against_average.to_f).to_f * futsal_position.average_goal_against_multiplier : 0))
+  def calculate_rating(futsal_position: self.futsal_position, goal: self.goal_average_by_match, own_goal: self.own_goal_average_by_match, assist: self.assist_average_by_match, goalkeeper_goal_against: self.goalkeeper_goal_against_average)
+    rating = (User::RATING_MINI + ((goal - own_goal) * futsal_position.average_goal_multiplier) + (assist * futsal_position.average_assist_multiplier) + ((goalkeeper_goal_against > 0 && goalkeeper_goal_against < 100) ? (User::GOAL_NUMBER - goalkeeper_goal_against.to_f).to_f * futsal_position.average_goal_against_multiplier : 0))
+    (rating < User::RATING_MAXI ? rating : User::RATING_MAXI)
   end
 
   def goal_average
@@ -127,6 +131,7 @@ class User < ApplicationRecord
 
   def display_stats
     self.games_results = self.games_results.to_s
+    'Forme : ' + self.last_matchs_rating.to_s +
     '<table class="table table-hover table-sm table-bordered"><tr><th>Note : </th><td>' + self.rating.andand.round(2).to_s + '</td>' +
     '<th>Note de match : </th><td>' + self.match_rating.andand.round(2).to_s + '</td></tr>' +
     '<tr><td colspan="2">' + self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '</td>' +

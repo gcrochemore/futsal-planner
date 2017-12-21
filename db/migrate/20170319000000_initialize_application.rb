@@ -107,6 +107,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.float :goal_mark
       t.float :assist_mark
       t.float :victory_mark
+      t.float :last_matchs_rating, default: 65
       t.float :rating, default: 65
 
       t.timestamps null: false
@@ -236,6 +237,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :player_duration
       t.integer :substitute_duration
       t.integer :goalkeeper_goal_against
+
+      t.integer :rating
 
       t.timestamps
     end

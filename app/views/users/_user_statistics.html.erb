@@ -22,11 +22,14 @@
                 </a>
                 <a data-toggle="tooltip" title="Nombre de buts encaissés pendant le match">
                   <%= icon('sign-in') %> <%= game_registration.goalkeeper_goal_against %> 
-                </a>       
+                </a> 
+                <a data-toggle="tooltip" title="Note sur le match">
+                  <%= icon('star') %> <%= game_registration.rating %> 
+                </a>                       
               </td>
             </tr>  
             <tr class="<%= css_class_match_result(game_registration.match_result).html_safe %>">
-              <td><%= game_registration.futsal_game.has_stat ? show_game_level(game_registration.goal.to_f, @user.goal_average_by_match, game_registration.assist.to_f, @user.assist_average_by_match) : "" %></td>
+              <td><%= game_registration.futsal_game.has_stat ? show_game_level(game_registration.user.rating, game_registration.rating) : "" %></td>
               <td class="text-center"><%= game_registration.futsal_game.team_home.andand.name.to_s + " " + game_registration.futsal_game.score_home.to_s + " - " + game_registration.futsal_game.score_outside.to_s + " " + game_registration.futsal_game.team_outside.andand.name.to_s %> <%=  %></td>
               <td><%= link_to icon('eye').html_safe, game_registration.futsal_game, target: "_blank" %></td>
             </tr>

@@ -15,7 +15,7 @@ var myChart = new Chart(ctx, {
         data:
           [
               <% FutsalPosition.not_substitute.each do |futsal_position| %>
-                  '<%= user.calculate_rating(futsal_position).round(2) %>',
+                  '<%= user.calculate_rating(futsal_position: futsal_position).round(2) %>',
               <% end %>
           ],
         borderColor: [
