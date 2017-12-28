@@ -27,7 +27,8 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 11, name: "Mercredi#1", company_id: nil, created_at: "2017-06-12 06:50:14", updated_at: "2017-06-12 06:50:14"},
       {id: 12, name: "Mercredi#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
       {id: 13, name: "Sca'Friends#1", company_id: nil, created_at: "2017-06-12 06:50:14", updated_at: "2017-06-12 06:50:14"},
-      {id: 14, name: "Sca'Friends#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"}
+      {id: 14, name: "Sca'Friends#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
+      {id: 15, name: "WassimFriends#1", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"}
     ])
     FutsalPosition.create!([
       {id: 1, name: "Gardien de But", average_goal_multiplier: 1, average_assist_multiplier: 2.5, average_goal_against_multiplier: 2, abbreviation: "GB", created_at: "2017-06-17 10:01:19", updated_at: "2017-06-17 10:01:19"},
@@ -468,7 +469,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.save!
     user.add_role "player"
 
-    user = User.new({id: 87, email: "guillaumeber@guillaumeber", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOMNDDpmnfNSPNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Ber", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 87, email: "bertinguillaume.bg@gmail.com", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOMNDDpmnfNSPNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Ber", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -738,6 +739,31 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.save!
     user.add_role "player"
 
+    user = User.new({id: 141, email: "guillaumem@guillaumem", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yvBdBdDFcsRvrqJbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Me", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 142, email: "joachiml@joaquiml", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L6HdpFSCDFcsRvrqJbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Joachim", last_name: "Le", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 143, email: "jordand@jordand", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcsRvdsDKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Jordan", last_name: "De", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 144, email: "etienneeu@etienneeu", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yncJdCDFcsRvrqJbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Etienne", last_name: "Eu", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 145, email: "michaelle@michaelLe", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcsRcHerbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Michael", last_name: "Le", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
     FutsalField.create!([
       {id: 1, name: "Soccer Park - Rouen", latitude: nil, longitude: nil, created_at: "2017-03-30 11:13:14", updated_at: "2017-03-30 11:13:24"},
       {id: 2, name: "Foot 2 rue - Dieppe", latitude: nil, longitude: nil, created_at: "2017-03-30 21:23:22", updated_at: "2017-03-30 21:23:22"}
@@ -750,6 +776,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 6, name: "Steve Savidan Championship #5", date: "2017-09-29 19:30:00", duration: 84, futsal_field_id: 1, winner_id: 3, best_goalkeeper_id: 102, best_scorer_id: 97, best_passer_id: 97, best_goal_id: nil, more_substitute_id: 95, more_player_id: 95, bigger_fault_id: nil, best_injury_id: nil, more_fair_play_id: nil, created_at: "2017-09-27 11:30:50", updated_at: "2017-12-19 10:58:22"}
     ])
     FutsalGame.create!([
+      {id: 121, date: "2017-12-27 19:00:00", duration: 60, futsal_tournament_id: nil, futsal_field_id: 1, team_home_id: 11, team_outside_id: 15, score_home: 25, score_outside: 12, video_link: "https://www.dailymotion.com/embed/video/x6cc18q", match_resume_link: "https://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=2668668&matchs_id=179234", created_at: "2017-12-28 10:47:20", updated_at: "2017-12-28 10:56:41"},
       {id: 120, date: "2017-12-20 19:00:00", duration: 60, futsal_tournament_id: nil, futsal_field_id: 1, team_home_id: 11, team_outside_id: 12, score_home: 20, score_outside: 14, video_link: "https://www.dailymotion.com/embed/video/x6c0nld", match_resume_link: "https://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=2639167&matchs_id=177021", created_at: "2017-12-19 17:24:51", updated_at: "2017-12-21 09:16:30"},
       {id: 119, date: "2017-12-19 12:15:00", duration: 60, futsal_tournament_id: nil, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 19, score_outside: 19, video_link: "https://www.dailymotion.com/embed/video/x6bxcp7", match_resume_link: "https://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=2631332&matchs_id=176515", created_at: "2017-12-19 10:59:35", updated_at: "2017-12-19 16:46:16"},
       {id: 118, date: "2017-12-14 12:15:00", duration: 60, futsal_tournament_id: nil, futsal_field_id: 1, team_home_id: 1, team_outside_id: 2, score_home: 20, score_outside: 23, video_link: "https://www.dailymotion.com/embed/video/x6bpcw8", match_resume_link: "https://rouen.soccerpark.fr/matchs/detail/index.html?videos_id=2603784&matchs_id=174480", created_at: "2017-12-10 16:03:13", updated_at: "2017-12-15 10:36:56"},
@@ -4269,7 +4296,44 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 3452, futsal_game_id: 120, team_id: 11, goal_id: 1, assist_id: nil, goalkeeper_id: 1, time: 3236, video_link: "", views_number: nil, average_mark: nil, own_goal: true, picture: "", created_at: "2017-12-21 09:16:30", updated_at: "2017-12-21 20:09:28"},
       {id: 3453, futsal_game_id: 120, team_id: 11, goal_id: 67, assist_id: 49, goalkeeper_id: 115, time: 3337, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-21 09:16:30", updated_at: "2017-12-21 20:10:43"},
       {id: 3454, futsal_game_id: 120, team_id: 12, goal_id: 1, assist_id: 40, goalkeeper_id: 49, time: 3500, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-21 09:16:30", updated_at: "2017-12-21 20:11:15"},
-      {id: 3455, futsal_game_id: 120, team_id: 11, goal_id: 61, assist_id: 75, goalkeeper_id: 115, time: 3559, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-21 09:16:30", updated_at: "2017-12-21 20:12:09"}
+      {id: 3455, futsal_game_id: 120, team_id: 11, goal_id: 61, assist_id: 75, goalkeeper_id: 115, time: 3559, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-21 09:16:30", updated_at: "2017-12-21 20:12:09"},
+      {id: 3456, futsal_game_id: 121, team_id: 15, goal_id: 143, assist_id: nil, goalkeeper_id: 49, time: 201, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:05:53"},
+      {id: 3457, futsal_game_id: 121, team_id: 11, goal_id: 1, assist_id: 87, goalkeeper_id: 143, time: 368, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:06:35"},
+      {id: 3458, futsal_game_id: 121, team_id: 11, goal_id: 87, assist_id: 1, goalkeeper_id: 143, time: 541, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:07:14"},
+      {id: 3459, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: 1, goalkeeper_id: 141, time: 608, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:07:53"},
+      {id: 3460, futsal_game_id: 121, team_id: 15, goal_id: 144, assist_id: nil, goalkeeper_id: 50, time: 673, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:08:50"},
+      {id: 3461, futsal_game_id: 121, team_id: 11, goal_id: 145, assist_id: nil, goalkeeper_id: 141, time: 875, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:09:32"},
+      {id: 3462, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: 1, goalkeeper_id: 144, time: 1022, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:10:01"},
+      {id: 3463, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 1, goalkeeper_id: 144, time: 1084, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:10:50"},
+      {id: 3464, futsal_game_id: 121, team_id: 11, goal_id: 87, assist_id: nil, goalkeeper_id: 144, time: 1243, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:11:36"},
+      {id: 3465, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: nil, goalkeeper_id: 144, time: 1293, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:12:05"},
+      {id: 3466, futsal_game_id: 121, team_id: 15, goal_id: 103, assist_id: nil, goalkeeper_id: 145, time: 1545, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:14:32"},
+      {id: 3467, futsal_game_id: 121, team_id: 11, goal_id: 1, assist_id: nil, goalkeeper_id: 144, time: 1587, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:15:23"},
+      {id: 3468, futsal_game_id: 121, team_id: 15, goal_id: 142, assist_id: nil, goalkeeper_id: 145, time: 1743, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:41", updated_at: "2017-12-28 11:17:30"},
+      {id: 3469, futsal_game_id: 121, team_id: 11, goal_id: 1, assist_id: nil, goalkeeper_id: 103, time: 1813, video_link: "", views_number: nil, average_mark: 5.0, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:19:52"},
+      {id: 3470, futsal_game_id: 121, team_id: 11, goal_id: 87, assist_id: 145, goalkeeper_id: 103, time: 1982, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:22:20"},
+      {id: 3471, futsal_game_id: 121, team_id: 11, goal_id: 145, assist_id: 87, goalkeeper_id: 143, time: 2076, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:23:56"},
+      {id: 3472, futsal_game_id: 121, team_id: 15, goal_id: 141, assist_id: 142, goalkeeper_id: 50, time: 2199, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:27:12"},
+      {id: 3473, futsal_game_id: 121, team_id: 15, goal_id: 144, assist_id: nil, goalkeeper_id: 50, time: 2241, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:30:07"},
+      {id: 3474, futsal_game_id: 121, team_id: 15, goal_id: 142, assist_id: nil, goalkeeper_id: 50, time: 2451, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:31:55"},
+      {id: 3475, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 1, goalkeeper_id: 143, time: 2569, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:33:13"},
+      {id: 3476, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 1, goalkeeper_id: 143, time: 2637, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:35:58"},
+      {id: 3477, futsal_game_id: 121, team_id: 15, goal_id: 103, assist_id: nil, goalkeeper_id: 1, time: 2607, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:40:29"},
+      {id: 3478, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 87, goalkeeper_id: 143, time: 2666, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:37:41"},
+      {id: 3479, futsal_game_id: 121, team_id: 15, goal_id: 143, assist_id: nil, goalkeeper_id: 1, time: 2709, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:42:04"},
+      {id: 3480, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: nil, goalkeeper_id: 142, time: 2750, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:46:29"},
+      {id: 3481, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: 50, goalkeeper_id: 142, time: 2854, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:47:17"},
+      {id: 3482, futsal_game_id: 121, team_id: 15, goal_id: 143, assist_id: 144, goalkeeper_id: 87, time: 2893, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:48:35"},
+      {id: 3483, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 1, goalkeeper_id: 142, time: 2924, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:49:41"},
+      {id: 3484, futsal_game_id: 121, team_id: 15, goal_id: 144, assist_id: 143, goalkeeper_id: 87, time: 2960, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:50:37"},
+      {id: 3485, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: 145, goalkeeper_id: 143, time: 3057, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:51:30"},
+      {id: 3486, futsal_game_id: 121, team_id: 11, goal_id: 50, assist_id: nil, goalkeeper_id: 143, time: 3093, video_link: "", views_number: nil, average_mark: 5.0, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:52:30"},
+      {id: 3487, futsal_game_id: 121, team_id: 15, goal_id: 144, assist_id: 143, goalkeeper_id: 87, time: 3259, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:55:01"},
+      {id: 3488, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: nil, goalkeeper_id: 142, time: 3336, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:53:56"},
+      {id: 3489, futsal_game_id: 121, team_id: 11, goal_id: 87, assist_id: 145, goalkeeper_id: 141, time: 3368, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:56:17"},
+      {id: 3490, futsal_game_id: 121, team_id: 11, goal_id: 1, assist_id: 50, goalkeeper_id: 143, time: 3422, video_link: "", views_number: nil, average_mark: 5.0, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:57:21"},
+      {id: 3491, futsal_game_id: 121, team_id: 11, goal_id: 87, assist_id: 50, goalkeeper_id: 143, time: 3444, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:59:13"},
+      {id: 3492, futsal_game_id: 121, team_id: 11, goal_id: 49, assist_id: 1, goalkeeper_id: 143, time: 3577, video_link: "", views_number: nil, average_mark: nil, own_goal: false, picture: "", created_at: "2017-12-28 10:56:42", updated_at: "2017-12-28 11:59:52"}
     ])
     GoalMark.create!([
       {id: 1, goal_id: 1, mark: 3, user_id: 1, mac_address: "::1", created_at: "2017-04-04 21:25:46", updated_at: "2017-09-03 12:24:12"},
@@ -4440,7 +4504,10 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 166, goal_id: 3353, mark: 4, user_id: 1, mac_address: "::1", created_at: "2017-12-15 10:51:45", updated_at: "2017-12-15 10:51:45"},
       {id: 167, goal_id: 3380, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-15 11:33:46", updated_at: "2017-12-15 11:33:46"},
       {id: 168, goal_id: 2590, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-15 20:06:32", updated_at: "2017-12-15 20:06:32"},
-      {id: 169, goal_id: 3429, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-21 09:18:04", updated_at: "2017-12-21 09:18:04"}
+      {id: 169, goal_id: 3429, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-21 09:18:04", updated_at: "2017-12-21 09:18:04"},
+      {id: 170, goal_id: 3469, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-28 11:19:43", updated_at: "2017-12-28 11:19:43"},
+      {id: 171, goal_id: 3486, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-28 11:52:27", updated_at: "2017-12-28 11:52:27"},
+      {id: 172, goal_id: 3490, mark: 5, user_id: 1, mac_address: "::1", created_at: "2017-12-28 11:57:10", updated_at: "2017-12-28 11:57:10"}
     ])
     GameRegistration.create!([
       {id: 1, user_id: 1, futsal_game_id: 1, team_id: 2, goal: 10, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 192, player_duration: 3408, substitute_duration: 0, goalkeeper_goal_against: 1, rating: 87, created_at: "2017-03-29 21:52:50", updated_at: "2017-12-21 21:45:52"},
@@ -5686,7 +5753,17 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 1478, user_id: 1, futsal_game_id: 120, team_id: 12, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 828, player_duration: 2772, substitute_duration: 0, goalkeeper_goal_against: 3, rating: 81, created_at: "2017-12-19 17:27:31", updated_at: "2017-12-21 21:47:00"},
       {id: 1479, user_id: 61, futsal_game_id: 120, team_id: 11, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 569, player_duration: 3031, substitute_duration: 0, goalkeeper_goal_against: 1, rating: 84, created_at: "2017-12-19 17:27:31", updated_at: "2017-12-21 21:47:01"},
       {id: 1480, user_id: 50, futsal_game_id: 120, team_id: 11, goal: 1, goal_with_assist: nil, goal_without_assist: nil, assist: 0, goalkeeper_duration: 995, player_duration: 2605, substitute_duration: 0, goalkeeper_goal_against: 6, rating: 66, created_at: "2017-12-19 17:27:31", updated_at: "2017-12-21 21:47:01"},
-      {id: 1481, user_id: 49, futsal_game_id: 120, team_id: 11, goal: 5, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 682, player_duration: 2918, substitute_duration: 0, goalkeeper_goal_against: 2, rating: 83, created_at: "2017-12-19 17:27:31", updated_at: "2017-12-21 21:47:01"}
+      {id: 1481, user_id: 49, futsal_game_id: 120, team_id: 11, goal: 5, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 682, player_duration: 2918, substitute_duration: 0, goalkeeper_goal_against: 2, rating: 83, created_at: "2017-12-19 17:27:31", updated_at: "2017-12-21 21:47:01"},
+      {id: 1482, user_id: 1, futsal_game_id: 121, team_id: 11, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 8, goalkeeper_duration: 498, player_duration: 3102, substitute_duration: 0, goalkeeper_goal_against: 2, rating: 97, created_at: "2017-12-28 10:54:54", updated_at: "2017-12-28 12:14:30"},
+      {id: 1483, user_id: 49, futsal_game_id: 121, team_id: 11, goal: 6, goal_with_assist: nil, goal_without_assist: nil, assist: 0, goalkeeper_duration: 437, player_duration: 3163, substitute_duration: 0, goalkeeper_goal_against: 1, rating: 79, created_at: "2017-12-28 10:54:54", updated_at: "2017-12-28 12:01:33"},
+      {id: 1484, user_id: 50, futsal_game_id: 121, team_id: 11, goal: 8, goal_with_assist: nil, goal_without_assist: nil, assist: 3, goalkeeper_duration: 807, player_duration: 2793, substitute_duration: 0, goalkeeper_goal_against: 4, rating: 88, created_at: "2017-12-28 10:54:54", updated_at: "2017-12-28 12:14:30"},
+      {id: 1485, user_id: 87, futsal_game_id: 121, team_id: 11, goal: 5, goal_with_assist: nil, goal_without_assist: nil, assist: 3, goalkeeper_duration: 1206, player_duration: 2394, substitute_duration: 0, goalkeeper_goal_against: 3, rating: 89, created_at: "2017-12-28 10:54:54", updated_at: "2017-12-28 12:14:30"},
+      {id: 1486, user_id: 145, futsal_game_id: 121, team_id: 11, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 3, goalkeeper_duration: 652, player_duration: 2948, substitute_duration: 0, goalkeeper_goal_against: 2, rating: 82, created_at: "2017-12-28 10:54:54", updated_at: "2017-12-28 12:14:30"},
+      {id: 1487, user_id: 103, futsal_game_id: 121, team_id: 15, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 0, goalkeeper_duration: 329, player_duration: 3271, substitute_duration: 0, goalkeeper_goal_against: 2, rating: 66, created_at: "2017-12-28 10:59:52", updated_at: "2017-12-28 12:01:33"},
+      {id: 1488, user_id: 141, futsal_game_id: 121, team_id: 15, goal: 1, goal_with_assist: nil, goal_without_assist: nil, assist: 0, goalkeeper_duration: 417, player_duration: 3183, substitute_duration: 0, goalkeeper_goal_against: 3, rating: 63, created_at: "2017-12-28 10:59:52", updated_at: "2017-12-28 12:01:33"},
+      {id: 1489, user_id: 142, futsal_game_id: 121, team_id: 15, goal: 2, goal_with_assist: nil, goal_without_assist: nil, assist: 1, goalkeeper_duration: 420, player_duration: 3180, substitute_duration: 0, goalkeeper_goal_against: 4, rating: 64, created_at: "2017-12-28 10:59:52", updated_at: "2017-12-28 12:01:33"},
+      {id: 1490, user_id: 143, futsal_game_id: 121, team_id: 15, goal: 3, goal_with_assist: nil, goal_without_assist: nil, assist: 2, goalkeeper_duration: 1682, player_duration: 1918, substitute_duration: 0, goalkeeper_goal_against: 11, rating: 74, created_at: "2017-12-28 10:59:52", updated_at: "2017-12-28 12:01:33"},
+      {id: 1491, user_id: 144, futsal_game_id: 121, team_id: 15, goal: 4, goal_with_assist: nil, goal_without_assist: nil, assist: 1, goalkeeper_duration: 752, player_duration: 2848, substitute_duration: 0, goalkeeper_goal_against: 5, rating: 73, created_at: "2017-12-28 10:59:52", updated_at: "2017-12-28 12:01:33"}
     ])
     FutsalGamePlayerPositionChange.create!([
       {id: 1, futsal_position_id: 1, time: 680, game_registration_player_in_id: 1427, game_registration_player_out_id: 1429, calculated: false, created_at: "2017-12-06 11:38:31", updated_at: "2017-12-06 11:42:12"},
@@ -5706,7 +5783,9 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 15, futsal_position_id: 1, time: 1495, game_registration_player_in_id: 1448, game_registration_player_out_id: 1447, calculated: false, created_at: "2017-12-14 20:14:36", updated_at: "2017-12-14 20:14:36"},
       {id: 16, futsal_position_id: 1, time: 1110, game_registration_player_in_id: 1478, game_registration_player_out_id: 1476, calculated: false, created_at: "2017-12-21 19:09:03", updated_at: "2017-12-21 19:09:03"},
       {id: 17, futsal_position_id: 1, time: 1443, game_registration_player_in_id: 1474, game_registration_player_out_id: 1478, calculated: false, created_at: "2017-12-21 19:54:44", updated_at: "2017-12-21 19:54:44"},
-      {id: 18, futsal_position_id: 1, time: 741, game_registration_player_in_id: 1479, game_registration_player_out_id: 1480, calculated: false, created_at: "2017-12-21 20:17:00", updated_at: "2017-12-21 20:17:00"}
+      {id: 18, futsal_position_id: 1, time: 741, game_registration_player_in_id: 1479, game_registration_player_out_id: 1480, calculated: false, created_at: "2017-12-21 20:17:00", updated_at: "2017-12-21 20:17:00"},
+      {id: 19, futsal_position_id: 1, time: 1093, game_registration_player_in_id: 1482, game_registration_player_out_id: 1485, calculated: false, created_at: "2017-12-28 12:10:06", updated_at: "2017-12-28 12:10:06"},
+      {id: 20, futsal_position_id: 1, time: 686, game_registration_player_in_id: 1485, game_registration_player_out_id: 1484, calculated: false, created_at: "2017-12-28 12:12:21", updated_at: "2017-12-28 12:12:21"}
     ])
     FutsalGamePlayerPosition.create!([
       {id: 2, game_registration_id: 612, futsal_position_id: 1, begin_time: 0, end_time: 360, duration: 360, calculated: false, created_at: "2017-07-27 23:29:22", updated_at: "2017-07-27 23:29:22"},
@@ -6715,7 +6794,25 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 1710, game_registration_id: 1472, futsal_position_id: 1, begin_time: 2072, end_time: 2553, duration: 481, calculated: true, created_at: "2017-12-21 20:17:15", updated_at: "2017-12-21 20:17:15"},
       {id: 1711, game_registration_id: 1476, futsal_position_id: 1, begin_time: 2553, end_time: 2791, duration: 238, calculated: true, created_at: "2017-12-21 20:17:15", updated_at: "2017-12-21 20:17:15"},
       {id: 1712, game_registration_id: 1478, futsal_position_id: 1, begin_time: 2791, end_time: 3286, duration: 495, calculated: true, created_at: "2017-12-21 20:17:15", updated_at: "2017-12-21 20:17:15"},
-      {id: 1713, game_registration_id: 1474, futsal_position_id: 1, begin_time: 3286, end_time: 3600, duration: 314, calculated: true, created_at: "2017-12-21 20:17:15", updated_at: "2017-12-21 20:17:15"}
+      {id: 1713, game_registration_id: 1474, futsal_position_id: 1, begin_time: 3286, end_time: 3600, duration: 314, calculated: true, created_at: "2017-12-21 20:17:15", updated_at: "2017-12-21 20:17:15"},
+      {id: 1747, game_registration_id: 1483, futsal_position_id: 1, begin_time: 0, end_time: 437, duration: 437, calculated: true, created_at: "2017-12-28 12:12:28", updated_at: "2017-12-28 12:12:28"},
+      {id: 1748, game_registration_id: 1484, futsal_position_id: 1, begin_time: 437, end_time: 686, duration: 249, calculated: true, created_at: "2017-12-28 12:12:28", updated_at: "2017-12-28 12:12:28"},
+      {id: 1749, game_registration_id: 1485, futsal_position_id: 1, begin_time: 686, end_time: 1093, duration: 407, calculated: false, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1750, game_registration_id: 1482, futsal_position_id: 1, begin_time: 1093, end_time: 1319, duration: 226, calculated: false, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1751, game_registration_id: 1486, futsal_position_id: 1, begin_time: 1319, end_time: 1971, duration: 652, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1752, game_registration_id: 1484, futsal_position_id: 1, begin_time: 1971, end_time: 2529, duration: 558, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1753, game_registration_id: 1482, futsal_position_id: 1, begin_time: 2529, end_time: 2801, duration: 272, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1754, game_registration_id: 1485, futsal_position_id: 1, begin_time: 2801, end_time: 3600, duration: 799, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1755, game_registration_id: 1490, futsal_position_id: 1, begin_time: 0, end_time: 574, duration: 574, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1756, game_registration_id: 1488, futsal_position_id: 1, begin_time: 574, end_time: 948, duration: 374, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1757, game_registration_id: 1491, futsal_position_id: 1, begin_time: 948, end_time: 1700, duration: 752, calculated: true, created_at: "2017-12-28 12:12:29", updated_at: "2017-12-28 12:12:29"},
+      {id: 1758, game_registration_id: 1487, futsal_position_id: 1, begin_time: 1700, end_time: 2029, duration: 329, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1759, game_registration_id: 1490, futsal_position_id: 1, begin_time: 2029, end_time: 2708, duration: 679, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1760, game_registration_id: 1489, futsal_position_id: 1, begin_time: 2708, end_time: 2990, duration: 282, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1761, game_registration_id: 1490, futsal_position_id: 1, begin_time: 2990, end_time: 3214, duration: 224, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1762, game_registration_id: 1489, futsal_position_id: 1, begin_time: 3214, end_time: 3352, duration: 138, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1763, game_registration_id: 1488, futsal_position_id: 1, begin_time: 3352, end_time: 3395, duration: 43, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"},
+      {id: 1764, game_registration_id: 1490, futsal_position_id: 1, begin_time: 3395, end_time: 3600, duration: 205, calculated: true, created_at: "2017-12-28 12:12:30", updated_at: "2017-12-28 12:12:30"}
     ])
     HighlightType.create!([
       {id: 1, name: "Blessure", icon: "ambulance", created_at: "2017-03-30 21:58:42", updated_at: "2017-03-30 21:58:55"},
