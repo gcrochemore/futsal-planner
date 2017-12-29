@@ -6,7 +6,7 @@
   <% sum_match = 0 %>
   <% nb_players = 0 %>
   <% team.order_by_stats.each do |player| %>
-    <% if player.user.has_stats %>
+    <% if player.user.andand.has_stats %>
       <% sum_goal_average_by_match = sum_goal_average_by_match + player.user.andand.goal_average_by_match.to_f %>
       <% sum_assist_average_by_match = sum_assist_average_by_match + player.user.andand.assist_average_by_match.to_f %>
       <% sum_goal_against_average_by_match = sum_goal_against_average_by_match + player.user.andand.goalkeeper_goal_against_average.to_f %>

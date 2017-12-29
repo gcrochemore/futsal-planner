@@ -28,7 +28,9 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 12, name: "Mercredi#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
       {id: 13, name: "Sca'Friends#1", company_id: nil, created_at: "2017-06-12 06:50:14", updated_at: "2017-06-12 06:50:14"},
       {id: 14, name: "Sca'Friends#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
-      {id: 15, name: "WassimFriends#1", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"}
+      {id: 15, name: "WassimFriends#1", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
+      {id: 16, name: "Dimanche#1", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"},
+      {id: 17, name: "Dimanche#2", company_id: nil, created_at: "2017-06-12 06:50:32", updated_at: "2017-06-12 06:50:32"}
     ])
     FutsalPosition.create!([
       {id: 1, name: "Gardien de But", average_goal_multiplier: 1, average_assist_multiplier: 2.5, average_goal_against_multiplier: 2, abbreviation: "GB", created_at: "2017-06-17 10:01:19", updated_at: "2017-06-17 10:01:19"},
@@ -89,7 +91,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.save!
     user.add_role "player"
 
-    user = User.new({id: 11, email: "arthurl@larthurl.fr", futsal_position_id: 3, picture: "berbatov.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d20peo0BHeXoEp0H1uz1z.Yp7s28AqODJLacmtiXOziaswX7T40B2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xSRmptycyfwph7iRfNRz", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "L", company_id: 2, created_at: "2017-03-30 11:37:23", updated_at: "2017-03-30 11:37:23"})
+    user = User.new({id: 11, email: "arthur.lefebvre76@gmail.com", futsal_position_id: 3, picture: "berbatov.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d20peo0BHeXoEp0H1uz1z.Yp7s28AqODJLacmtiXOziaswX7T40B2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xSRmptycyfwph7iRfNRz", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "L", company_id: 2, created_at: "2017-03-30 11:37:23", updated_at: "2017-03-30 11:37:23"})
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -760,6 +762,36 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 145, email: "michaelle@michaelLe", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcsRcHerbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Michael", last_name: "Le", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 146, email: "arnaudl@arnaudl", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcsRdbpDKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arnaud", last_name: "Le", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 147, email: "francoisblo@grancoisblo", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L9pmlJdCDFcsRvrqJbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Francois", last_name: "Blo", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 148, email: "guillaumeblo@guillaumeblo", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcsRcGtdbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Blo", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 149, email: "antoineda@antoineda", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcvGeGtdbKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Antoine", last_name: "Da", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 150, email: "gregoired@gregoired", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfSCDFcvGeGbdEKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Gregoire", last_name: "D", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
+
+    user = User.new({id: 151, email: "guillaumelej@guillaumelej", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUvfbHfDcvGeGbdEKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Lej", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
     user.skip_confirmation!
     user.save!
     user.add_role "player"
