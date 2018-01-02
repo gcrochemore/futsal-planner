@@ -131,7 +131,7 @@
   <div class="col">    
     <% @futsal_game.andand.team_less_players.order_by_users_stats.each do |player| %>
       <div class="player_without_team">         
-        <%= render 'fifa_card/fifa_card', player: player.user, stat: player, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %>
+        <%= render 'fifa_card/fifa_card', player: player.user, game_rating: player.user.last_matchs_rating, stat: player, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %>
         <div class="affect_player_to_team">
            <% if can? :affect_player_to_team, @futsal_game %>
             <strong>Affecter</strong><br> 

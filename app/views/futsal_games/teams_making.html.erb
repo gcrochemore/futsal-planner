@@ -3,11 +3,14 @@
     <th></th>
     <th>Team 1</th>
     <th>Team 2</th>
-    <th>note Team 1</th>
-    <th>note Team 2</th>
+    <th>Note Team 1</th>
+    <th>Note Team 2</th>
     <th>Différence</th>
     <th>Score Team 1</th>
     <th>Score Team 2</th>
+    <th>Différence</th>
+    <th>Forme Team 1</th>
+    <th>Forme Team 2</th>
     <th>Différence</th>
     <th>Total</th>
   </tr>
@@ -36,6 +39,9 @@
       <td><%= teams.team_1_score.round(2) %></td>
       <td><%= teams.team_2_score.round(2) %></td>
       <th><%= teams.team_score_difference.round(2) %></th>
+      <td><%= teams.team_1_last_matchs_rating.round(2) %></td>
+      <td><%= teams.team_2_last_matchs_rating.round(2) %></td>
+      <th><%= teams.team_last_matchs_rating_difference.round(2) %></th>
       <th><%= teams.team_difference.round(2) %></th>
     </tr>
 

@@ -14,7 +14,7 @@
       <% sum_rating = sum_rating + player.user.andand.rating.to_f %>
       <% nb_players = nb_players + 1 %>
     <% end %>
-    <%= render 'fifa_card/fifa_card', player: player.user, stat: player, game_rating: player.rating, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %> 
+    <%= render 'fifa_card/fifa_card', player: player.user, stat: player, game_rating: player.andand.rating, highlights_and_goals_by_user: player.futsal_game.highlights_and_goals_by_user(player.user) %> 
   <% end %>
 </div>
 <br>

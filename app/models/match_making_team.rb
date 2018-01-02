@@ -5,11 +5,14 @@ class MatchMakingTeam
   attr_accessor :team_1
   attr_accessor :team_1_average_mark
   attr_accessor :team_1_score
+  attr_accessor :team_1_last_matchs_rating
   attr_accessor :team_2
   attr_accessor :team_2_average_mark
   attr_accessor :team_2_score
+  attr_accessor :team_2_last_matchs_rating
   attr_accessor :team_mark_difference
   attr_accessor :team_score_difference
+  attr_accessor :team_last_matchs_rating_difference
   attr_accessor :team_difference
 
   def initialize(attributes = {})
@@ -31,17 +34,20 @@ class MatchMakingTeam
     end
     self.team_1_average_mark = calculate_average_mark(self.team_1)
     self.team_1_score = calculate_score(self.team_1)
+    self.team_1_last_matchs_rating = calculate_last_matchs_rating(self.team_1)
     self.team_2_average_mark = calculate_average_mark(self.team_2)
     self.team_2_score = calculate_score(self.team_2)
-    self.team_mark_difference = (self.team_1_average_mark - self.team_2_average_mark).abs
-    self.team_score_difference = (self.team_1_score - self.team_2_score).abs
-    self.team_difference = self.team_mark_difference + self.team_score_difference
+    self.team_2_last_matchs_rating = calculate_last_matchs_rating(self.team_2)
+    self.team_mark_difference = (self.team_1_average_mark - self.team_2_average_mark)
+    self.team_score_difference = (self.team_1_score - self.team_2_score)
+    self.team_last_matchs_rating_difference = (self.team_1_last_matchs_rating - self.team_2_last_matchs_rating)
+    self.team_difference = (self.team_mark_difference + self.team_score_difference).abs
   end
 
   def calculate_average_mark(team)
     sum = 0
     team.each do |player|
-      sum += player.last_matchs_rating
+      sum += player.rating
     end
     return sum.to_f / team.count.to_f
   end
@@ -54,6 +60,14 @@ class MatchMakingTeam
       sum_assist += player.assist_average_by_match
     end
     return (sum_goal.to_f < (sum_assist.to_f/0.4991).to_f ? sum_goal.to_f : sum_assist.to_f/0.4991)
+  end
+
+  def calculate_last_matchs_rating(team)
+    sum = 0
+    team.each do |player|
+      sum += player.last_matchs_rating
+    end
+    return sum.to_f / team.count.to_f
   end
 
   def set_valid_team(team_value)
