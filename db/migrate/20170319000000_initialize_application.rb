@@ -238,6 +238,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :substitute_duration
       t.integer :goalkeeper_goal_against
 
+      t.float :match_result, default: 0
+
       t.integer :rating
 
       t.timestamps

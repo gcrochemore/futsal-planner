@@ -27,6 +27,7 @@ class GameRegistration < ApplicationRecord
     self.substitute_duration = futsal_game_player_positions.where(futsal_position_id: 100).sum(:duration)
     self.player_duration = (self.futsal_game.duration * 60) - self.goalkeeper_duration - self.substitute_duration
     self.rating = self.calculate_rating
+    self.match_result = self.futsal_game.match_result(self.team)
   end
 
   def calculate_rating
@@ -38,10 +39,6 @@ class GameRegistration < ApplicationRecord
 
   def own_goal
     0
-  end
-
-  def match_result
-    self.futsal_game.match_result(self.team)
   end
 
   def to_s

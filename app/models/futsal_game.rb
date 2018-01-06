@@ -26,11 +26,11 @@ class FutsalGame < ApplicationRecord
     result = ""
     if !(team_home.nil? || team_outside.nil? || score_home.nil? || score_outside.nil?)
       if score_home == score_outside
-        result = "N"
+        result = 0
       elsif (score_home > score_outside && team_home == team) || (score_outside > score_home && team_outside == team)
-        result = "V"
+        result = 1
       else
-        result = "D"
+        result = -1
       end
     end
     return result

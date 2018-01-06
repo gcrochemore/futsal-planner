@@ -1,9 +1,9 @@
 module ApplicationHelper
   def formatted_match_result result
     case result
-    when "V"
+    when 1
       '<font color="green">' + result + '</font>'
-    when "D"
+    when -1
       '<font color="red">' + result + '</font>'
     else
       result
@@ -12,9 +12,9 @@ module ApplicationHelper
 
   def css_class_match_result result
     case result
-    when "V"
+    when 1
       'win_match'
-    when "D"
+    when -1
       'lose_match'
     else
       'draw_match'
