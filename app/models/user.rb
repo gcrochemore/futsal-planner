@@ -101,8 +101,8 @@ class User < ApplicationRecord
       self.match_goal_for = self.match_goal_for + (score_pour ? score_pour : 0)
       self.match_goal_against = self.match_goal_against + (score_contre ? score_contre : 0)
       match_result = game_registration.futsal_game.match_result(game_registration.team)
-      (match_result == 'V') ? self.victory = self.victory + 1 : (match_result == 'D') ? self.lose = self.lose + 1 : self.draw = self.draw + 1
-      self.games_results = self.games_results + match_result
+      (match_result == 1) ? self.victory = self.victory + 1 : (match_result == -1) ? self.lose = self.lose + 1 : self.draw = self.draw + 1
+      self.games_results = self.games_results + ((match_result == 1) ? 'V' : (match_result == -1) ? 'D' : 'N')
     end
 
     self.last_matchs_rating = (self.game_registrations.order_by_futsal_game.first.nil? ? 65 : self.game_registrations.order_by_futsal_game.first.rating)
