@@ -9,7 +9,7 @@ class MatchMaking
     self.attributes = attributes
     self.players_count = self.game_registrations.andand.count
     self.players_teams = []
-    for i in 0..((2 ** 10) - 1)
+    for i in 0..((2 ** self.players_count) - 1)
       team_value = i.to_s(2)
       if is_valid_team(team_value)
         self.players_teams.push(MatchMakingTeam.new(team: team_value, players: self.game_registrations))
