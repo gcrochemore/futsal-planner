@@ -7,7 +7,7 @@ class FutsalGamePlayerPositionChange < ApplicationRecord
   belongs_to :game_registration_player_out, :class_name => :GameRegistration, :foreign_key => "game_registration_player_out_id", optional: true
 
   def team_id
-    return game_registration_player_in.team_id
+    return game_registration_player_in.andand.team_id
   end
 
   def begin_time
