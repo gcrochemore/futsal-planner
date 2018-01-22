@@ -1,0 +1,40 @@
+<canvas id="futsal_games_marks_chart" width="100%" height="30px"></canvas>
+<script>
+var ctx = document.getElementById("futsal_games_marks_chart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: 
+        ['',
+            <% user.game_registrations.each do |game_registration| %>
+                '<%= game_registration.futsal_game.to_s %>',
+            <% end %>
+        ],
+      datasets: [{
+        label: 'Note',
+        data: 
+          ['',
+              <% user.game_registrations.each do |game_registration| %>
+                  '<%= game_registration.rating.to_s %>',
+              <% end %>
+          ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      },{
+        label: 'Note Moyenne',
+        data:
+          ['',
+              <% user.game_registrations.each do |game_registration| %>
+                  '<%= user.rating.to_s %>',
+              <% end %>
+          ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    }
+});
+</script>
