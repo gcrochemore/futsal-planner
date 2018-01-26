@@ -56,8 +56,8 @@ class MatchMakingTeam
     sum_goal = 0
     sum_assist = 0
     team.each do |player|
-      sum_goal += player.goal_average_by_match
-      sum_assist += player.assist_average_by_match
+      sum_goal += player.goal_average_by_match.to_f
+      sum_assist += player.assist_average_by_match.to_f
     end
     return (sum_goal.to_f < (sum_assist.to_f/0.4991).to_f ? sum_goal.to_f : sum_assist.to_f/0.4991)
   end

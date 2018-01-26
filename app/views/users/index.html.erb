@@ -62,7 +62,7 @@
                 <img src="/assets/fifa/players/<%= user.andand.picture ? user.andand.picture : 'inconnu.jpg' %>" width="145px">
               </td>           
               <td colspan="2">
-                <%= user.match %> match(s) - <%= user.match_with_stats.round(2) %> avec stats
+                <%= user.match %> match(s) - <%= user.match_with_stats.to_f.round(2) %> avec stats
               </td>
             <tr>
               <td>
@@ -85,7 +85,7 @@
               </td>
             </tr>
             <tr>    
-              <td><%= user.match_time.round(0) %> min</td>
+              <td><%= user.match_time.to_f.round(0) %> min</td>
               <td>
                 <a data-toggle="tooltip" title="Durée joueur">
                   <%= icon('user') %> <%= (user.player_duration.to_f / 60).round %> min
