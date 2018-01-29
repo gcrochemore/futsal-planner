@@ -34,7 +34,7 @@ class GameRegistration < ApplicationRecord
     player_multiplier = (player_duration > 0 ? (60*60) / player_duration : 1)
     goalkeeper_multiplier = (goalkeeper_duration > 0 ? (60*60) / goalkeeper_duration : 1)
 
-    self.user.calculate_rating(goal: self.goal * player_multiplier, own_goal: 0, assist: self.assist * player_multiplier, goalkeeper_goal_against: self.goalkeeper_goal_against * goalkeeper_multiplier)
+    self.user ? self.user.calculate_rating(goal: self.goal * player_multiplier, own_goal: 0, assist: self.assist * player_multiplier, goalkeeper_goal_against: self.goalkeeper_goal_against * goalkeeper_multiplier) : 0
  end  
 
   def own_goal
