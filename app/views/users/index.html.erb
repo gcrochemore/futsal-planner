@@ -85,7 +85,7 @@
               </td>
             </tr>
             <tr>    
-              <td><%= user.match_time.to_f.round(0) %> min</td>
+              <td><%= user.match_time.andand.round(0) %> min</td>
               <td>
                 <a data-toggle="tooltip" title="Durée joueur">
                   <%= icon('user') %> <%= (user.player_duration.to_f / 60).round %> min
