@@ -1,7 +1,7 @@
 class GameRegistration < ApplicationRecord
   resourcify
   
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :futsal_game
   belongs_to :team, optional: true
   has_many :futsal_game_player_positions
