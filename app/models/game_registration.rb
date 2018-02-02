@@ -44,4 +44,26 @@ class GameRegistration < ApplicationRecord
   def to_s
     self.user.to_s + ' ' + self.futsal_game.to_s
   end
+
+  def trainer_opinion
+    trainer_opinion = ''
+    if self.rating <= 65
+        trainer_opinion = "Pas terrible, terrible ce match. Qu'est ce qui t'es arrivé ? T'es arrivé en retard ? On t'as volé tes chaussures ?"
+    elsif self.rating > 95
+        trainer_opinion = "Waouh quel match. Un mélange de Zidane, Ronaldo, Messi et Cyril Rool dans la même personne. Awesome !"
+    elsif ((self.rating / self.user.rating) >= 0.95) && ((self.rating / self.user.rating) <= 1.05)
+        trainer_opinion = "Match dans la moyenne. C'est positif, tu es constant. On peut aussi dire que tu t'es pas foulé !"
+    elsif ((self.rating / self.user.rating) < 0.85)
+        trainer_opinion = "Match pas terrible. Tu étais un peu le Bouna Sarr de ton équipe."
+    elsif ((self.rating / self.user.rating) > 1.2)
+        trainer_opinion = "Très bon match ! Si des recruteurs chinois étaient présents, tu peux commencer à apprendre le mandarin."
+    elsif ((self.rating / self.user.rating) < 0.95)
+         trainer_opinion = "Un peu en dessous de ton niveau habituel. Mais ca arrive, souviens toi de Guivarc'h en 1998."
+    elsif ((self.rating / self.user.rating) < 1.2)
+        trainer_opinion = "Bon match ! Rien d'exceptionnel, t'emballe non plus pas mais c'était plutôt plaisant de te voir à ce niveau."
+    else
+        trainer_opinion = "Pas d'avis"
+    end
+    return trainer_opinion
+  end
 end
