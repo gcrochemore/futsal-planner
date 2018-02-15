@@ -66,4 +66,22 @@ class GameRegistration < ApplicationRecord
     end
     return trainer_opinion
   end
+
+  def calculate_game_level(rating = 1, game_rating = 1)
+      level = (game_rating.nil? ? 1 : game_rating) / (rating.nil? ? 1 : rating)
+
+      if level < 0.93
+        result = -2
+      elsif level < 0.98
+        result = -1
+      elsif level < 1.025
+        result = 0
+      elsif level < 1.08
+        result = 1
+      else
+        result = 2
+      end
+
+      return result
+    end
 end
