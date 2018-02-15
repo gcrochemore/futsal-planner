@@ -60,7 +60,7 @@ class GameRegistration < ApplicationRecord
     elsif game_level == 0
        trainer_opinion = "Match dans la moyenne. C'est positif, tu es constant. On peut aussi dire que tu t'es pas foulé !"
     elsif game_level == 1
-       trainer_opinion = "Bon match ! Rien d'exceptionnel, t'emballe non plus pas mais c'était plutôt plaisant de te voir à ce niveau."
+       trainer_opinion = "Bon match ! Rien d'exceptionnel, t'emballe pas non plus mais c'était plutôt plaisant de te voir à ce niveau."
     else
        trainer_opinion = "Très bon match ! Si des recruteurs chinois étaient présents, tu peux commencer à apprendre le mandarin."
     end
