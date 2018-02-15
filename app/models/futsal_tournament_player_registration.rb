@@ -26,4 +26,12 @@ class FutsalTournamentPlayerRegistration < ApplicationRecord
     self.goalkeeper_goal_against_average = 0
 
   end
+
+  def rating
+    75
+  end
+
+  def user_futsal_trophies
+    []
+  end
 end
