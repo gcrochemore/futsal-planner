@@ -8046,7 +8046,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
       {id: 2062, game_registration_id: 1690, futsal_position_id: 1, begin_time: 1229, end_time: 1500, duration: 271, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
       {id: 2063, game_registration_id: 1689, futsal_position_id: 1, begin_time: 1500, end_time: 1742, duration: 242, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
       {id: 2064, game_registration_id: 1691, futsal_position_id: 1, begin_time: 1742, end_time: 2248, duration: 506, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
-      {id: 2065, game_registration_id: nil, futsal_position_id: 1, begin_time: 2248, end_time: 2612, duration: 364, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
+      {id: 2065, game_registration_id: 1685, futsal_position_id: 1, begin_time: 2248, end_time: 2612, duration: 364, calculated: false, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 16:26:30"},
       {id: 2066, game_registration_id: 1692, futsal_position_id: 1, begin_time: 2612, end_time: 2800, duration: 188, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
       {id: 2067, game_registration_id: 1690, futsal_position_id: 1, begin_time: 2800, end_time: 3142, duration: 342, calculated: true, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:07:12"},
       {id: 2068, game_registration_id: 1685, futsal_position_id: 1, begin_time: 3142, end_time: 3284, duration: 142, calculated: false, created_at: "2018-02-22 11:07:12", updated_at: "2018-02-22 11:10:09"},
