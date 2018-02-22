@@ -30,8 +30,7 @@ module ApplicationHelper
                 <span class="label-tooltiptext  label-tooltip-bottom">' + user.andand.display_stats.to_s + '</span>
               </span>'
     tooltip.html_safe
-  end 
-
+  end
 
   def calculate_game_level(rating = 1, game_rating = 1)
     level = (game_rating.nil? ? 1 : game_rating) / (rating.nil? ? 1 : rating)
