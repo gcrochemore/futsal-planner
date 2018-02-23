@@ -50,17 +50,17 @@ class GameRegistration < ApplicationRecord
     trainer_opinion = ''
 
     if self.rating <= 65
-       trainer_opinion = "Pas terrible, terrible ce match. Qu'est ce qui t'es arrivé ? T'es arrivé en retard ? On t'as volé tes chaussures ?"
+       trainer_opinion = "Pas terrible, terrible ce match. Qu'est ce qui t'es arrivé ? T'es arrivé en retard ? On t'a volé tes chaussures ?"
     elsif self.rating >= 95
        trainer_opinion = "Waouh quel match. Un mélange de Zidane, Ronaldo, Messi et Cyril Rool dans la même personne. Awesome !"
     elsif game_level == -2
-       trainer_opinion = "Un peu en dessous de ton niveau habituel. Mais ca arrive, souviens toi de Guivarc'h en 1998."
+       trainer_opinion = "Un peu en dessous de ton niveau habituel. Mais ça arrive, souviens toi de Guivarc'h en 1998."
     elsif game_level == -1
        trainer_opinion = "Match pas terrible. Tu étais un peu le Bouna Sarr de ton équipe."
     elsif game_level == 0
-       trainer_opinion = "Match dans la moyenne. C'est positif, tu es constant. On peut aussi dire que tu t'es pas foulé !"
+       trainer_opinion = "Match dans la moyenne. C'est positif, tu es constant. On peut aussi dire que tu ne t'es pas foulé !"
     elsif game_level == 1
-       trainer_opinion = "Bon match ! Rien d'exceptionnel, t'emballe pas non plus mais c'était plutôt plaisant de te voir à ce niveau."
+       trainer_opinion = "Bon match ! Rien d'exceptionnel, ne t'emballe pas mais c'était plutôt plaisant de te voir à ce niveau."
     else
        trainer_opinion = "Très bon match ! Si des recruteurs chinois étaient présents, tu peux commencer à apprendre le mandarin."
     end
