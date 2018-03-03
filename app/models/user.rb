@@ -110,6 +110,18 @@ class User < ApplicationRecord
     self.match_goal_difference = self.match_goal_for - self.match_goal_against
 
     self.victory_percentage = self.victory.to_f / self.match.to_f
+
+    self.average_match_rating = self.calculate_average_match_rating
+
+    self.average_rating = ((self.average_match_rating ? self.average_match_rating : 65.0) + (self.rating ? self.rating : 65.0)) / 2.0
+  end
+
+  def calculate_average_match_rating
+    if self.game_registrations.length > 0
+      self.game_registrations.sum(:rating) / self.game_registrations.length
+    else
+      return 65.0
+    end
   end
 
   def calculate_rating(futsal_position: self.futsal_position, goal: self.goal_average_by_match, own_goal: self.own_goal_average_by_match, assist: self.assist_average_by_match, goalkeeper_goal_against: self.goalkeeper_goal_against_average)

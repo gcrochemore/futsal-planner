@@ -109,6 +109,8 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.float :victory_mark
       t.float :last_matchs_rating, default: 65
       t.float :rating, default: 65
+      t.float :average_match_rating, default: 65
+      t.float :average_rating, default: 65
 
       t.timestamps null: false
     end

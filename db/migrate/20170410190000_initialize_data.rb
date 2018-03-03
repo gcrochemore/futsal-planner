@@ -11,7 +11,8 @@ class InitializeData < ActiveRecord::Migration[5.0]
     Company.create!([
       {id: 1, name: "TRSB", picture: "trsb.png", email_mask: "[a-z]@trsb.net$", created_at: "2017-03-19 20:23:10", updated_at: "2017-03-19 20:23:10"},
       {id: 2, name: "Sopra", picture: "sopra.png", email_mask: "", created_at: "2017-03-30 11:29:25", updated_at: "2017-03-30 11:29:25"},
-      {id: 3, name: "Veolia", picture: "veolia.png", email_mask: "", created_at: "2017-03-30 11:39:31", updated_at: "2017-03-30 11:39:31"}
+      {id: 3, name: "Veolia", picture: "veolia.png", email_mask: "", created_at: "2017-03-30 11:39:31", updated_at: "2017-03-30 11:39:31"},
+      {id: 4, name: "Enovea", picture: "enovea.png", email_mask: "[a-z]@enovea.net$", created_at: "2017-03-30 11:39:31", updated_at: "2017-03-30 11:39:31"}
     ])
     Team.create!([
       {id: 1, name: "Trsb#1", company_id: 1, created_at: "2017-03-19 20:49:58", updated_at: "2017-03-19 20:49:58"},
@@ -283,7 +284,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.save!
     user.add_role "player"
 
-    user = User.new({id: 49, email: "thibault.neel@gmail.com", futsal_position_id: 3, picture: 'crouch.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreCVSxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thibault", last_name: "N", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user = User.new({id: 49, email: "thibault.neel@gmail.com", futsal_position_id: 3, picture: 'crouch.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreCVSxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thibault", last_name: "N", company_id: 4, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -853,7 +854,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.save!
     user.add_role "player"
 
-    user = User.new({id: 163, email: "Cédric.lemerle@enovea.net", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "LdJcfEPSGDZLPeGbdEKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Cédric", last_name: "Le", company_id: 1, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user = User.new({id: 163, email: "Cédric.lemerle@enovea.net", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "LdJcfEPSGDZLPeGbdEKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Cédric", last_name: "Le", company_id: 4, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
     user.skip_confirmation!
     user.save!
     user.add_role "player"

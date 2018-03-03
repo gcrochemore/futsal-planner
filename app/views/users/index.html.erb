@@ -39,7 +39,8 @@
     <%= sort_link(@q, :own_goal, default_order: :asc) %> / <%= sort_link(@q, :assist, default_order: :asc) %> / 
     <%= sort_link(@q, :assist_average_by_match, default_order: :asc) %> / <%= sort_link(@q, :goalkeeper_duration, default_order: :asc) %> / 
     <%= sort_link(@q, :goalkeeper_goal_against, default_order: :asc) %> / <%= sort_link(@q, :goalkeeper_goal_against_average, default_order: :asc) %> /
-    <%= sort_link(@q, :match, default_order: :asc) %> / <%= sort_link(@q, :rating, default_order: :asc) %> / <%= sort_link(@q, :futsal_position, default_order: :asc) %>
+    <%= sort_link(@q, :match, default_order: :asc) %> / <%= sort_link(@q, :rating, default_order: :asc) %> / <%= sort_link(@q, :average_match_rating, default_order: :asc) %> /
+    <%= sort_link(@q, :average_rating, default_order: :asc) %> / <%= sort_link(@q, :futsal_position, default_order: :asc) %>
     <br>
 
     <% @users.each do |user| %>
@@ -58,12 +59,20 @@
               </td>
             </tr>
             <tr>
-              <td rowspan='5'>
+              <td rowspan='6'>
                 <img src="/assets/fifa/players/<%= user.andand.picture ? user.andand.picture : 'inconnu.jpg' %>" width="145px">
-              </td>           
+              </td>
               <td colspan="2">
                 <%= user.match %> match(s) - <%= user.match_with_stats.to_f.round(2) %> avec stats
               </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                Note :
+                <%= user.average_match_rating.round(2).to_s %> match -
+                <%= user.average_rating.round(2).to_s %> moy
+              </td>
+            </tr>
             <tr>
               <td>
                 <strong>Buts</strong>

@@ -354,6 +354,8 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.float    "victory_mark"
     t.float    "last_matchs_rating",              default: 65.0
     t.float    "rating",                          default: 65.0
+    t.float    "average_match_rating",            default: 65.0
+    t.float    "average_rating",                  default: 65.0
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.index ["company_id"], name: "index_users_on_company_id"

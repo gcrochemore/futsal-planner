@@ -70,6 +70,8 @@ fr:
         own_goal: Buts CSC
         player_duration: Durée joueur
         rating: Note
+        average_match_rating: Note par match
+        average_rating: Moyenne des notes
 
   companies:
     index:
