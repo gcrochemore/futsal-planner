@@ -18,6 +18,22 @@ class Goal < ApplicationRecord
     self.save
   end
 
+  def minutes
+    if self.time.nil?
+      0
+    else
+      self.time / 60
+    end
+  end
+
+  def secondes
+    if self.time.nil?
+      0
+    else
+      self.time - (self.minutes * 60)
+    end
+  end
+
   def to_s
     self.goal
   end
