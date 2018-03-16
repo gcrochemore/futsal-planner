@@ -1,7 +1,10 @@
 <div class="player-fut <%= player_fut_class(player.andand.rating, calculate_game_level(player.andand.rating, game_rating)).to_s %>">
   <div class="name">
-    <%= link_to player, player %> 
-      <% if stat %>
+    <% if stat %><div class="label"><% end %>
+      <%= link_to player, player %>
+    <% if stat %></div><% end %>
+    <% if stat %>
+      <div class="player-match-stats">
         <a data-toggle="tooltip" title="Nombre de buts pendant le match">
           <%= icon('futbol-o') + ' ' + stat.goal.to_s %>
         </a>
@@ -9,9 +12,10 @@
           <%= icon('arrow-circle-right') + ' ' + stat.assist.to_s %>
         </a>
         <a data-toggle="tooltip" title="Nombre de buts encaissés pendant le match">
-          <%= icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s %> 
+          <%= icon('sign-in') + ' ' + stat.goalkeeper_goal_against.to_i.to_s %>
         </a>
-      <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="rating">
     <a data-toggle="tooltip" title="Note">

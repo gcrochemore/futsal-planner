@@ -1,6 +1,6 @@
 <div>
   <div class="row">
-    <%= render 'fifa_card/fifa_card', player: @user, stat: nil, game_rating: @user.andand.last_matchs_rating, highlights_and_goals_by_user: nil %> 
+    <%= render 'fifa_card/fifa_card', player: @user, stat: @user, game_rating: @user.andand.last_matchs_rating, highlights_and_goals_by_user: nil %>
   </div> 
   <%= @user.andand.display_stats.andand.html_safe %>
 </div>  
