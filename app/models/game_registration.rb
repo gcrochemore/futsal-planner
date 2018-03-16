@@ -13,6 +13,8 @@ class GameRegistration < ApplicationRecord
 
   scope :order_by_futsal_game, -> { includes(:futsal_game).order('futsal_games.date desc') }
 
+  scope :futsal_games_with_stats, -> { where("futsal_games.video_link <> ''") }
+
   def update_stats
     self.goal = self.futsal_game.goal_by_user(self.user).length
     self.assist = self.futsal_game.assist_by_user(self.user).length

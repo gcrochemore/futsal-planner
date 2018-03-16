@@ -21,8 +21,9 @@ class User < ApplicationRecord
   GOAL_NUMBER = 18.0
   RATING_MINI = 65.0
   RATING_MAXI = 97.0
-  MATCH_MINI = 5
+  MATCH_MINI = 3
   MULTIPLIER_IF_MATCH_MINI = 0.85
+  MATCHS_FOR_LAST_MATCH_AVERAGE = 3
 
   def has_stats
     !(self.rating.nil? || self.rating.to_f.nan?)
@@ -105,7 +106,7 @@ class User < ApplicationRecord
       self.games_results = self.games_results + ((match_result == 1) ? 'V' : (match_result == -1) ? 'D' : 'N')
     end
 
-    self.last_matchs_rating = (self.game_registrations.order_by_futsal_game.first.nil? ? 65 : self.game_registrations.order_by_futsal_game.first.rating)
+    self.last_matchs_rating = self.calculate_last_matchs_rating
 
     self.match_goal_difference = self.match_goal_for - self.match_goal_against
 
@@ -122,6 +123,14 @@ class User < ApplicationRecord
     else
       return 65.0
     end
+  end
+
+  def calculate_last_matchs_rating
+    (self.last_match_with_stats.empty? ? 12 : self.last_match_with_stats.limit(User::MATCHS_FOR_LAST_MATCH_AVERAGE).to_a.sum(&:rating) / User::MATCHS_FOR_LAST_MATCH_AVERAGE)
+  end
+
+  def last_match_with_stats
+    self.game_registrations.futsal_games_with_stats.order_by_futsal_game
   end
 
   def calculate_rating(futsal_position: self.futsal_position, goal: self.goal_average_by_match, own_goal: self.own_goal_average_by_match, assist: self.assist_average_by_match, goalkeeper_goal_against: self.goalkeeper_goal_against_average)
