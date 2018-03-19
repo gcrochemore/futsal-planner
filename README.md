@@ -109,3 +109,15 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	- Double double (5 buts/5 passes dé): 20 pts
 
 	- Blessure : -5pts
+	
+## Probleme de SSl sur Windows
+
+https://gist.github.com/fnichol/867550
+
+Download the `cacert.pem` file from [http://curl.haxx.se/ca/cacert.pem](http://curl.haxx.se/ca/cacert.pem). Save this file to `C:\RailsInstaller\cacert.pem`.
+
+Now make ruby aware of your certificate authority bundle by setting `SSL_CERT_FILE`. To set this in your current command prompt session, type:
+
+    set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem
+
+To make this a permanent setting, add this in your [control panel](http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/environment_variables.mspx?mfr=true).

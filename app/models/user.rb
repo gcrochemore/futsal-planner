@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook]
   belongs_to :company, optional: true
   belongs_to :futsal_position, optional: true
   belongs_to :nationality
@@ -24,6 +24,26 @@ class User < ApplicationRecord
   MATCH_MINI = 3
   MULTIPLIER_IF_MATCH_MINI = 0.85
   MATCHS_FOR_LAST_MATCH_AVERAGE = 3
+
+  def self.from_omniauth_facebook(auth)
+    where(facebook_provider: auth.provider, facebook_uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.facebook_provider = auth.provider
+      user.facebook_uid = auth.uid
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
+
+  def apply_omniauth_facebook(auth)
+    update_attributes(
+      facebook_provider: auth.provider,
+      facebook_uid: auth.uid
+    )
+  end
+
+  def has_facebook_linked?
+    self.facebook_provider.present? && self.facebook_uid.present?
+  end
 
   def has_stats
     !(self.rating.nil? || self.rating.to_f.nan?)

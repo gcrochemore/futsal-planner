@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410190000) do
+ActiveRecord::Schema.define(version: 20180316214518) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -358,6 +358,8 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.float    "average_rating",                  default: 65.0
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.string   "provider"
+    t.string   "uid"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

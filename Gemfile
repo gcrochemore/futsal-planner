@@ -104,3 +104,8 @@ gem 'popper_js', '~> 1.11', '>= 1.11.1'
 source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+
+# User Authentication with Facebook
+gem 'omniauth-facebook'
+# Development ENV Variables
+gem 'figaro'

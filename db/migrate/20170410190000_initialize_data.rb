@@ -45,6 +45,8 @@ class InitializeData < ActiveRecord::Migration[5.0]
     ])
 
     user = User.new({id: 1, email: "guillaume.crochemore@gmail.com", futsal_position_id: 3, picture: "forlan.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$.RB/xnqEJnS1GE2GAhKDj.HbSzMJ7hJlZNGInyXDvzgtwkGON.Stq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2017-03-28 18:26:46", last_sign_in_at: "2017-03-28 18:18:11", current_sign_in_ip: "::1", last_sign_in_ip: "::1", confirmation_token: "yj6UY5Eax25RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "C", company_id: 1, created_at: "2017-03-19 18:30:13", updated_at: "2017-03-28 18:26:46"})
+    user.facebook_provider = "facebook"
+    user.facebook_uid = "10215672130060674"
     user.skip_confirmation!
     user.save!
     user.add_role "admin"

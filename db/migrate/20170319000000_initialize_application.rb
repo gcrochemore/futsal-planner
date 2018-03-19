@@ -63,6 +63,10 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.references :futsal_position
       t.references :nationality, default: 1
 
+      ## Oauth - Facebook
+      t.string :facebook_provider
+      t.string :facebook_uid
+
       ##Photo
       t.string :picture
 

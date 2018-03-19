@@ -28,3 +28,6 @@ db/seeds*.rb
 db/seeds.rb
 
 .idea/*
+
+# Ignore application configuration
+/config/application.yml

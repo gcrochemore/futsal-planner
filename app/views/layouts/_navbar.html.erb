@@ -178,6 +178,7 @@
             <li class="dropdown-item"><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
             <li class="dropdown-item">
               <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              <%= link_to "Editer votre profil", edit_user_registration_path %>
             </li>
           </ul>
         </li>    
