@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :azure_oauth2, :twitter, :linkedin]
   belongs_to :company, optional: true
   belongs_to :futsal_position, optional: true
   belongs_to :nationality
@@ -26,9 +26,8 @@ class User < ApplicationRecord
   MATCHS_FOR_LAST_MATCH_AVERAGE = 3
 
   def self.from_omniauth_facebook(auth)
-    where(facebook_provider: auth.provider, facebook_uid: auth.uid).first_or_create do |user|
+    where(facebook_uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.facebook_provider = auth.provider
       user.facebook_uid = auth.uid
       user.password = Devise.friendly_token[0,20]
     end
@@ -48,15 +47,25 @@ class User < ApplicationRecord
     user
   end
 
+  def self.from_omniauth_linkedin(access_token)
+    data = access_token.info
+    user = User.where(linkedin_email: data['email']).first
+    user
+  end
+
+  def self.from_omniauth_twitter(data)
+    user = User.where(twitter_uid: data['uid']).first
+    user
+  end
+
   def apply_omniauth_facebook(auth)
     update_attributes(
-      facebook_provider: auth.provider,
       facebook_uid: auth.uid
     )
   end
 
   def has_facebook_linked?
-    self.facebook_provider.present? && self.facebook_uid.present?
+    self.facebook_uid.present?
   end
 
   def has_stats

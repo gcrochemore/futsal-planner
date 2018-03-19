@@ -64,11 +64,16 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.references :nationality, default: 1
 
       ## Oauth - Facebook
-      t.string :facebook_provider
       t.string :facebook_uid
 
       ## Oauth - Google
       t.string :google_email
+
+      ## Oauth - Linkedin
+      t.string :linkedin_email
+
+      ## Oauth - Twitter
+      t.string :twitter_uid
 
       ##Photo
       t.string :picture

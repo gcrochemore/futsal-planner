@@ -114,3 +114,12 @@ gem 'figaro'
 
 # User Authentication with Google
 gem 'omniauth-google-oauth2'
+
+# User Authentication with Azure
+gem 'omniauth-azure-oauth2'
+
+# User Authentication with Twitter
+gem 'omniauth-twitter'
+
+# User Authentication with Linkedin
+gem 'omniauth-linkedin'
