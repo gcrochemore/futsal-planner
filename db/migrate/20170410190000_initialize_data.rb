@@ -47,6 +47,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user = User.new({id: 1, email: "guillaume.crochemore@gmail.com", futsal_position_id: 3, picture: "forlan.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$.RB/xnqEJnS1GE2GAhKDj.HbSzMJ7hJlZNGInyXDvzgtwkGON.Stq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2017-03-28 18:26:46", last_sign_in_at: "2017-03-28 18:18:11", current_sign_in_ip: "::1", last_sign_in_ip: "::1", confirmation_token: "yj6UY5Eax25RzrcWfXDx", confirmed_at: "2017-03-19 18:31:12", confirmation_sent_at: "2017-03-19 18:30:13", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "C", company_id: 1, created_at: "2017-03-19 18:30:13", updated_at: "2017-03-28 18:26:46"})
     user.facebook_provider = "facebook"
     user.facebook_uid = "10215672130060674"
+    user.google_email = "guillaume.crochemore@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "admin"
@@ -57,6 +58,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 3, email: "gwennael.jean@gmail.com", futsal_position_id: 1, picture: "gillet.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$qb/ZpeDN3EaLbncjHbFyzebrJcBZNKydsxt03amDhF.tFTz1fdEHm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xB5rumuzr4me-pUGa1Hs", confirmed_at: nil, confirmation_sent_at: "2017-03-28 18:46:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Gwennael", last_name: "J", company_id: 1, created_at: "2017-03-28 18:46:41", updated_at: "2017-03-28 18:46:41"})
+    user.google_email = "gwennael.jean@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -97,6 +99,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 11, email: "arthur.lefebvre76@gmail.com", futsal_position_id: 3, picture: "berbatov.png", password:"password", password_confirmation: "password", encrypted_password: "$2a$11$d20peo0BHeXoEp0H1uz1z.Yp7s28AqODJLacmtiXOziaswX7T40B2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "xSRmptycyfwph7iRfNRz", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:37:23", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Arthur", last_name: "L", company_id: 2, created_at: "2017-03-30 11:37:23", updated_at: "2017-03-30 11:37:23"})
+    user.google_email = "arthur.lefebvre76@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -242,6 +245,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 40, email: "jauffrey.darlet@gmail.com", futsal_position_id: 4, picture: 'aguero.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UDH73mxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Jauffrey", last_name: "D", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.google_email = "jauffrey.darlet@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -287,6 +291,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 49, email: "thibault.neel@gmail.com", futsal_position_id: 3, picture: 'crouch.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4UreCVSxUA7n4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thibault", last_name: "N", company_id: 4, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.google_email = "thibault.neel@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -347,6 +352,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 61, email: "thm.mallard@gmail.com", picture: 'gignac.png', futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW63EERE3azmxUAUI4Mx", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thomas", last_name: "M", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.google_email = "thm.mallard@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -372,6 +378,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 66, email: "mathieu.bronchain@gmail.com", picture: 'isco.png', futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "sW9jg4REPNRxPMERZPM", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Mathieu", last_name: "B", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.google_email = "mathieu.bronchain@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -477,6 +484,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 87, email: "bertinguillaume.bg@gmail.com", futsal_position_id: 3, picture: 'kane.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$f8Sgs9Ae3XqSnPuEqv4gIOxsE7KwjWwrSAbUILW/ouKEeUnY.ww.K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "PTSDPOMNDDpmnfNSPNFR", confirmed_at: nil, confirmation_sent_at: "2017-04-10 19:03:54", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Guillaume", last_name: "Ber", company_id: nil, created_at: "2017-04-10 19:03:54", updated_at: "2017-04-10 19:03:54"})
+    user.google_email = "bertinguillaume.bg@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"
@@ -617,6 +625,7 @@ class InitializeData < ActiveRecord::Migration[5.0]
     user.add_role "player"
 
     user = User.new({id: 115, email: "thibault.tere@gmail.com", futsal_position_id: 2, picture: 'eriksen.png', password:"password", password_confirmation: "password", encrypted_password: "$2a$11$15sGvDBOWVzC5/qiIIBW.uZ.Kv2nG/axjXPlZL2UQQ.hwwbQWOC5S", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "5cvcGdp0Bc1w_-xpnFrg", confirmed_at: nil, confirmation_sent_at: "2017-03-30 11:53:41", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Thibault", last_name: "Te", company_id: nil, created_at: "2017-03-30 11:53:41", updated_at: "2017-03-30 11:53:41"})
+    user.google_email = "thibault.tere@gmail.com"
     user.skip_confirmation!
     user.save!
     user.add_role "player"

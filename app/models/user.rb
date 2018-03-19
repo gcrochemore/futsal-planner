@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook]
+         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   belongs_to :company, optional: true
   belongs_to :futsal_position, optional: true
   belongs_to :nationality
@@ -32,6 +32,20 @@ class User < ApplicationRecord
       user.facebook_uid = auth.uid
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def self.from_omniauth_google(access_token)
+    data = access_token.info
+    user = User.where(google_email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    # unless user
+    #     user = User.create(name: data['name'],
+    #        email: data['email'],
+    #        password: Devise.friendly_token[0,20]
+    #     )
+    # end
+    user
   end
 
   def apply_omniauth_facebook(auth)

@@ -105,7 +105,12 @@ source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
+gem 'bcrypt', platforms: :ruby
+
 # User Authentication with Facebook
 gem 'omniauth-facebook'
 # Development ENV Variables
 gem 'figaro'
+
+# User Authentication with Google
+gem 'omniauth-google-oauth2'

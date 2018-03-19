@@ -67,6 +67,9 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.string :facebook_provider
       t.string :facebook_uid
 
+      ## Oauth - Google
+      t.string :google_email
+
       ##Photo
       t.string :picture
 
