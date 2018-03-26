@@ -14,4 +14,12 @@ class UserMailer < ActionMailer::Base
     @game_registration = game_registration
     mail(:to => game_registration.user.email, :subject => "Futsal Planner : " + @futsal_game.to_s_with_only_hour + " | Les équipes sont en ligne !")
   end
+
+  def link_third_part(provider, uid, email, name)
+    @provider = provider
+    @uid = uid
+    @email = email
+    @name = name
+    mail(:to => "guillaume.crochemore@gmail.com", :subject => "Un utilisateur veut lié son compte a FutsalPlanner")
+  end
 end

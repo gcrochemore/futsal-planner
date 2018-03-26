@@ -26,11 +26,11 @@ class User < ApplicationRecord
   MATCHS_FOR_LAST_MATCH_AVERAGE = 3
 
   def self.from_omniauth_facebook(auth)
-    where(facebook_uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.facebook_uid = auth.uid
-      user.password = Devise.friendly_token[0,20]
+    user = where(facebook_uid: auth.uid).first
+    if user.nil?
+        UserMailer.link_third_part('facebook', auth.uid, auth.info.email, auth.info.name).deliver
     end
+    user
   end
 
   def self.from_omniauth_google(access_token)

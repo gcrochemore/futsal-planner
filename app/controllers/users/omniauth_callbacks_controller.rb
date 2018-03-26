@@ -5,7 +5,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to edit_user_registration_path, notice: "Facebook Account Linked!"
     else
       @user = User.from_omniauth_facebook(request.env["omniauth.auth"])
-      sign_in_and_redirect @user
+      if @user.nil?
+        flash[:notice] = 'Votre compte facebook n\'est pas lié à un compte FutsalPlanner'
+        redirect_to new_user_session_path
+      else
+        sign_in_and_redirect @user
+      end
     end
   end
 
