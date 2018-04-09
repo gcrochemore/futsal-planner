@@ -195,9 +195,9 @@ class User < ApplicationRecord
 
   def display_stats
     self.games_results = self.games_results.to_s
-    'Forme : ' + self.last_matchs_rating.to_s +
     '<table class="table table-hover table-sm table-bordered"><tr><th>Note : </th><td>' + self.rating.andand.round(2).to_s + '</td>' +
-    '<th>Note de match : </th><td>' + self.match_rating.andand.round(2).to_s + '</td></tr>' +
+    '<th>Niveau des matchs : </th><td>' + self.match_rating.andand.round(2).to_s + '</td></tr>' +
+    '<tr><th>Forme : </th><td>' + self.last_matchs_rating.to_s + '</td><th>Note/match : </th><td>' + self.average_match_rating.andand.round(2).to_s + '</td></tr>' +
     '<tr><td colspan="2">' + self.match_goal_for.to_s + 'BP ' + self.match_goal_against.to_s + 'BC : ' + self.match_goal_difference.to_s + '</td>' +
     '<td colspan="2">' + self.games_results[0..15].to_s + (games_results.length > 15 ? '...' : '') + '</td></tr>' +
     '<tr><td colspan="2">' + self.victory.to_s + 'V ' + self.draw.to_s + 'N ' + self.lose.to_s + 'D</td>' +

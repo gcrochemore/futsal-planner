@@ -314,9 +314,10 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "company_id"
     t.integer  "futsal_position_id"
     t.integer  "nationality_id",                  default: 1
-    t.string   "facebook_provider"
     t.string   "facebook_uid"
     t.string   "google_email"
+    t.string   "linkedin_email"
+    t.string   "twitter_uid"
     t.string   "picture"
     t.integer  "endurance",                       default: 5
     t.integer  "strength",                        default: 5
