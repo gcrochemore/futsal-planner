@@ -67,7 +67,7 @@ gem 'simple_form'
 
 gem 'andand'
 
-gem 'paper_trail'
+gem 'paper_trail', '~> 6.0.2'
 
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
