@@ -20,6 +20,6 @@ class UserMailer < ActionMailer::Base
     @uid = uid
     @email = email
     @name = name
-    mail(:to => "guillaume.crochemore@gmail.com", :subject => "Un utilisateur veut lié son compte a FutsalPlanner")
+    mail(:to => "guillaume.crochemore@gmail.com", :subject => "Un utilisateur veut lier son compte a FutsalPlanner")
   end
 end
