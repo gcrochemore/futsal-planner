@@ -10,5 +10,12 @@
   <%= @team.company.andand.name %>
 </p>
 
+<h3>Buts marqués :</h3>
+<table>
+<% @team_stats.goals_by_five_minutes.each_with_index do |nombre, index| %>
+    <tr><th><%= index * 5 %>'</th><th><%= (index + 1) * 5 %>'</th><td><%= nombre %></td></tr>
+<% end %>
+</table>
+
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
