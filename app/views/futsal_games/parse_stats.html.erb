@@ -1,0 +1,10 @@
+Je vais parser les stats !
+
+<%
+
+doc = Nokogiri::HTML(open(@futsal_game.match_stats_link))
+test = JSON.parse(doc)
+
+%>
+
+<%= test['results'][0]['id'] %>

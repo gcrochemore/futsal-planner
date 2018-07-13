@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do
       get :affect_or_invite_players
       get :parse_match_resume
+      get :parse_stats
       get :affect_player_to_team
       get :calculate_goalkeeper_position
       get :send_email_to_prevent_statistics_are_up_to_date

@@ -41,7 +41,7 @@ class MatchMakingTeam
     self.team_mark_difference = (self.team_1_average_mark - self.team_2_average_mark)
     self.team_score_difference = (self.team_1_score - self.team_2_score)
     self.team_last_matchs_rating_difference = (self.team_1_last_matchs_rating - self.team_2_last_matchs_rating)
-    self.team_difference = self.team_mark_difference.abs + self.team_score_difference.abs
+    self.team_difference = self.team_mark_difference.abs + self.team_score_difference.abs + self.team_last_matchs_rating_difference.abs
   end
 
   def calculate_average_mark(team)

@@ -2,7 +2,7 @@ class FutsalGamesController < ApplicationController
   authorize_resource
   before_action :set_futsal_game, only: [:show, :edit, :update, :destroy, :parse_match_resume, :calculate_goalkeeper_position, 
     :send_email_to_prevent_statistics_are_up_to_date, :send_email_to_prevent_teams_are_up_to_date, :affect_or_invite_players, 
-    :teams_making]
+    :teams_making, :parse_stats]
   # GET /futsal_games
   def index
     @q = FutsalGame.ransack(params[:q])
@@ -65,6 +65,10 @@ class FutsalGamesController < ApplicationController
   end
 
   def parse_match_resume
+  end
+
+  def parse_stats
+
   end
 
   def teams_making
@@ -196,8 +200,9 @@ class FutsalGamesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def futsal_game_params
 
-      params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :futsal_tournament_id, :team_home_id, :team_outside_id, :score_home, :score_outside, :video_link, :match_resume_link,
-                                          game_registrations_attributes: [:id, :user_id, :futsal_game_id, :team_id, :goal, :assist, :_destroy],
+      params.require(:futsal_game).permit(:date, :duration, :futsal_field_id, :futsal_tournament_id, :team_home_id, :team_outside_id,
+                                          :score_home, :score_outside, :video_link, :match_resume_link, :match_stats_link,
+                                          game_registrations_attributes: [:id, :user_id, :futsal_game_id, :team_id, :goal, :assist, :player_footbar_name, :_destroy],
                                           futsal_game_player_position_attributes: [:id, :game_registration_id, :futsal_position_id, :begin_time, :end_time, :duration, :_destroy],
                                           futsal_game_invitations_attributes: [:id, :futsal_game_id, :user_id, :send_date, :status, :game_registration_id, :_destroy]);
     end

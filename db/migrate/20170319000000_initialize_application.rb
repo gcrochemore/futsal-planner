@@ -233,6 +233,7 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :score_outside
       t.string :video_link
       t.string :match_resume_link
+      t.string :match_stats_link
 
       t.timestamps
     end
@@ -255,6 +256,90 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.float :match_result, default: 0
 
       t.integer :rating
+
+      ## Statistiques footbar
+      t.string :player_footbar_name
+
+      t.float :distance_run
+      t.string :running_slices_5min
+      t.float :pace
+      t.float :duration
+      t.float :avg_speed
+      t.float :sprint_speed
+      t.float :time_sprinting
+      t.float :number_of_runs
+      t.float :explosivity
+      t.float :distance_sprinting
+      t.boolean :was_home
+      t.float :activity
+      t.float :energy_spent
+      t.float :average_running_speed
+      t.float :report_id
+      t.float :acceleration_score
+      t.float :variation_score
+      t.float :sprint_score
+      t.float :distance_score
+      t.float :activity_score
+      t.float :rythm_score
+
+      t.string :ranking
+
+      t.float :rush_duration
+      t.float :stop_and_go
+      t.string :sprint_duration_5min
+      t.string :running_slices_5min_avg
+      t.string :sprint_duration_5min_avg
+      t.float :speed_bonus
+      t.float :stamina_bonus
+      t.float :ranking_bonus
+      t.float :rank_in_game
+      t.float :avg_activity
+      t.float :avg_distance_run
+      t.float :avg_pace
+      t.float :avg_rush_duration
+      t.float :avg_sprint_speed
+      t.float :avg_stop_and_go
+      t.float :shot_speed
+      t.float :shot_score
+      t.float :technical_bonus
+      t.string :passes_5min
+      t.float :pass_number
+      t.string :passes_5min_avg
+      t.float :avg_shot_speed
+      t.float :pass_perc
+      t.float :avg_pass_perc
+      t.float :avg_pass_number
+      t.float :fifa_id
+      t.string :fifa_name
+      t.float :fifa_player_compatibility
+      t.string :fifa_picture_url
+      t.string :sprint_duration_5min
+      t.string :running_slices_5min_avg
+      t.string :sprint_duration_5min_avg
+      t.float :speed_bonus
+      t.float :stamina_bonus
+      t.float :ranking_bonus
+      t.float :rank_in_game
+      t.float :avg_activity
+      t.float :avg_distance_run
+      t.float :avg_pace
+      t.float :avg_rush_duration
+      t.float :avg_sprint_speed
+      t.float :avg_stop_and_go
+      t.float :shot_speed
+      t.float :shot_score
+      t.float :technical_bonus
+      t.string :passes_5min
+      t.float :pass_number
+      t.string :passes_5min_avg
+      t.float :avg_shot_speed
+      t.float :pass_perc
+      t.float :avg_pass_perc
+      t.float :avg_pass_number
+      t.float :fifa_id
+      t.string :fifa_name
+      t.float :fifa_player_compatibility
+      t.string :fifa_picture_url
 
       t.timestamps
     end

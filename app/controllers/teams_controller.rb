@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
   end
   # GET /teams/1
   def show
+    @team_stats = @team.team_stats
   end
 
   # GET /teams/new
