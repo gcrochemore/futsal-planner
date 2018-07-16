@@ -189,4 +189,8 @@ class FutsalGame < ApplicationRecord
     self.team_outside = team
     self.save
   end
+
+  def get_game_registration_with_player_footbar_name(footbar_name)
+    self.game_registrations.where(player_footbar_name: footbar_name).first
+  end
 end

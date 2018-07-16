@@ -2,9 +2,210 @@ Je vais parser les stats !
 
 <%
 
-doc = Nokogiri::HTML(open(@futsal_game.match_stats_link))
+doc = Nokogiri::HTML(open(@futsal_game.match_stats_link), nil, Encoding::UTF_8.to_s)
 test = JSON.parse(doc)
 
 %>
 
-<%= test['results'][0]['id'] %>
+<% test['results'].each do |stat|
+
+    game_registration = @futsal_game.get_game_registration_with_player_footbar_name(stat['player']['name'])
+
+    if !game_registration.nil?
+
+       game_registration.distance_run = stat["distance_run"]
+       game_registration.running_slices_5min = stat["running_slices_5min"]
+       game_registration.pace = stat["pace"]
+       game_registration.duration = stat["duration"]
+       game_registration.avg_speed = stat["avg_speed"]
+       game_registration.sprint_speed = stat["sprint_speed"]
+       game_registration.time_sprinting = stat["time_sprinting"]
+       game_registration.number_of_runs = stat["number_of_runs"]
+       game_registration.explosivity = stat["explosivity"]
+       game_registration.distance_sprinting = stat["distance_sprinting"]
+       game_registration.was_home = stat["was_home"]
+       game_registration.activity = stat["activity"]
+       game_registration.energy_spent = stat["energy_spent"]
+       game_registration.average_running_speed = stat["average_running_speed"]
+       game_registration.report_id = stat["report_id"]
+
+       game_registration.acceleration_score = stat["speed_score"]["acceleration_score"]
+       game_registration.variation_score = stat["speed_score"]["variation_score"]
+       game_registration.sprint_score = stat["speed_score"]["sprint_score"]
+
+       game_registration.distance_score = stat["stamina_score"]["distance_score"]
+       game_registration.activity_score = stat["stamina_score"]["activity_score"]
+       game_registration.rythm_score = stat["stamina_score"]["rythm_score"]
+
+       game_registration.ranking = stat["ranking"]
+
+       game_registration.rush_duration = stat["rush_duration"]
+       game_registration.stop_and_go = stat["stop_and_go"]
+       game_registration.sprint_duration_5min = stat["sprint_duration_5min"]
+       game_registration.running_slices_5min_avg = stat["running_slices_5min_avg"]
+       game_registration.sprint_duration_5min_avg = stat["sprint_duration_5min_avg"]
+       game_registration.speed_bonus = stat["speed_bonus"]
+       game_registration.stamina_bonus = stat["stamina_bonus"]
+       game_registration.ranking_bonus = stat["ranking_bonus"]
+       game_registration.rank_in_game = stat["rank_in_game"]
+       game_registration.avg_activity = stat["avg_activity"]
+       game_registration.avg_distance_run = stat["avg_distance_run"]
+       game_registration.avg_pace = stat["avg_pace"]
+       game_registration.avg_rush_duration = stat["avg_rush_duration"]
+       game_registration.avg_sprint_speed = stat["avg_sprint_speed"]
+       game_registration.avg_stop_and_go = stat["avg_stop_and_go"]
+       game_registration.shot_speed = stat["shot_speed"]
+
+       game_registration.shot_score = stat["technical_score"]["shot_score"]
+
+       game_registration.technical_bonus = stat["technical_bonus"]
+       game_registration.passes_5min = stat["passes_5min"]
+       game_registration.pass_number = stat["pass_number"]
+       game_registration.passes_5min_avg = stat["passes_5min_avg"]
+       game_registration.avg_shot_speed = stat["avg_shot_speed"]
+       game_registration.pass_perc = stat["pass_perc"]
+       game_registration.avg_pass_perc = stat["avg_pass_perc"]
+       game_registration.avg_pass_number = stat["avg_pass_number"]
+       game_registration.fifa_id = stat["fifa_id"]
+       game_registration.fifa_name = stat["fifa_name"]
+       game_registration.fifa_player_compatibility = stat["fifa_player_compatibility"]
+       game_registration.fifa_picture_url = stat["fifa_picture_url"]
+       game_registration.sprint_duration_5min = stat["sprint_duration_5min"]
+       game_registration.running_slices_5min_avg = stat["running_slices_5min_avg"]
+       game_registration.sprint_duration_5min_avg = stat["sprint_duration_5min_avg"]
+       game_registration.speed_bonus = stat["speed_bonus"]
+       game_registration.stamina_bonus = stat["stamina_bonus"]
+       game_registration.ranking_bonus = stat["ranking_bonus"]
+       game_registration.rank_in_game = stat["rank_in_game"]
+       game_registration.avg_activity = stat["avg_activity"]
+       game_registration.avg_distance_run = stat["avg_distance_run"]
+       game_registration.avg_pace = stat["avg_pace"]
+       game_registration.avg_rush_duration = stat["avg_rush_duration"]
+       game_registration.avg_sprint_speed = stat["avg_sprint_speed"]
+       game_registration.avg_stop_and_go = stat["avg_stop_and_go"]
+       game_registration.shot_speed = stat["shot_speed"]
+       game_registration.shot_score = stat["shot_score"]
+       game_registration.technical_bonus = stat["technical_bonus"]
+       game_registration.passes_5min = stat["passes_5min"]
+       game_registration.pass_number = stat["pass_number"]
+       game_registration.passes_5min_avg = stat["passes_5min_avg"]
+       game_registration.avg_shot_speed = stat["avg_shot_speed"]
+       game_registration.pass_perc = stat["pass_perc"]
+       game_registration.avg_pass_perc = stat["avg_pass_perc"]
+       game_registration.avg_pass_number = stat["avg_pass_number"]
+       game_registration.fifa_id = stat["fifa_id"]
+       game_registration.fifa_name = stat["fifa_name"]
+       game_registration.fifa_player_compatibility = stat["fifa_player_compatibility"]
+       game_registration.fifa_picture_url = stat["fifa_picture_url"]
+
+       game_registration.save
+    end
+end %>
+
+<table class="table table-sm table-striped table-hover">
+    <tr>
+        <th>Nom</th>
+        <th>Nombre de passes</th>
+        <th>Distance</th>
+        <th>running slices 5min</th>
+        <th>pace</th>
+        <th>duration</th>
+        <th>avg speed</th>
+        <th>sprint speed</th>
+        <th>time sprinting</th>
+        <th>Nombre de courses</th>
+        <th>explosivity</th>
+        <th>Distance de sprint</th>
+        <th>activity</th>
+        <th>energy spent</th>
+    </tr>
+
+<% @futsal_game.game_registrations.each do |game_registration| %>
+    <tr>
+        <th><%= game_registration.user %></th>
+        <td><%= game_registration.pass_number %></td>
+        <td><%= (game_registration.distance_run / 1000).round(2) %> km</td>
+        <td><% game_registration.running_slices_5min %></td>
+        <td><%= game_registration.pace.round(2) %></td>
+        <td><%= (game_registration.duration / 60).round(1) %></td>
+        <td><%= game_registration.avg_speed.round(2) %></td>
+        <td><%= game_registration.sprint_speed.round(2) %></td>
+        <td><%= game_registration.time_sprinting %></td>
+        <td><%= game_registration.number_of_runs.round(0) %></td>
+        <td><%= game_registration.explosivity.round(2) %></td>
+        <td><%= (game_registration.distance_sprinting / 1000).round(2) %> km</td>
+        <td><%= game_registration.activity.round(2) %></td>
+        <td><%= game_registration.energy_spent.round(2) %></td>
+    </tr>
+<% end %>
+
+</table>
+
+<%= @futsal_game.game_registrations.first.to_json %>
+<%= @futsal_game.game_registrations.first.user.to_json %>
+
+
+
+<canvas id="myChart" width="100%" height="30px"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels:
+        ['',
+            <% for i in 0..@futsal_game.duration %>
+                <% iu
+            <% end %>
+        ],
+      datasets: [{
+        label: 'Ecart',
+        data:
+          <%= raw @futsal_game.game_registrations.first.running_slices_5min %>,
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1,
+        hidden: true
+      },{
+        label: '<%= @fustal_game.andand.team_home %> - Equipe 1',
+        data:
+          ['',
+
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 12, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,200,132,1)'
+        ],
+        borderWidth: 1
+      },{
+        label: '<%= @fustal_game.andand.team_outside %> - Equipe 2',
+        data:
+          ['',
+
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
