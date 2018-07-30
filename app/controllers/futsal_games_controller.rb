@@ -32,18 +32,19 @@ class FutsalGamesController < ApplicationController
 
   def affect_or_invite_players
 
-    @dispo = User.unscoped.where('id NOT IN (?)', 
-              GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL', 
-                FutsalGame.where("date > ? AND date < ? ", @futsal_game.date.beginning_of_day(), @futsal_game.date.end_of_day()).pluck(:id)
-              ).pluck(:user_id)
-            ).where('id IN (?)', 
-              GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL', 
-                FutsalGame.where("futsal_field_id = ? AND (team_home_id = ? OR team_outside_id = ? OR team_home_id = ? OR team_outside_id = ?)", @futsal_game.futsal_field_id, @futsal_game.team_home, @futsal_game.team_home, @futsal_game.team_outside, @futsal_game.team_outside).pluck(:id)
-              ).pluck(:user_id)
-            ).order("match DESC").order(:first_name, :last_name)
+    #@dispo = User.unscoped.where('id NOT IN (?)',
+    #          GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL',
+    #            FutsalGame.where("date > ? AND date < ? ", @futsal_game.date.beginning_of_day(), @futsal_game.date.end_of_day()).pluck(:id)
+    #          ).pluck(:user_id)
+    #        ).where('id IN (?)',
+    #          GameRegistration.where('futsal_game_id IN (?) AND user_id IS NOT NULL',
+    #            FutsalGame.where("futsal_field_id = ? AND (team_home_id = ? OR team_outside_id = ? OR team_home_id = ? OR team_outside_id = ?)", @futsal_game.futsal_field_id, @futsal_game.team_home, @futsal_game.team_home, @futsal_game.team_outside, @futsal_game.team_outside).pluck(:id)
+    #          ).pluck(:user_id)
+    #        ).order("match DESC").order(:first_name, :last_name)
+    @dispo = []
     @users = User.all
     @game_registrations_possibles_teams = [Team.new, @futsal_game.team_home, @futsal_game.team_outside]
-
+    @stats_players_name = @futsal_game.get_stats_players_name
   end
 
   # GET /futsal_games/1/edit

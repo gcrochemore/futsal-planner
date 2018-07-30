@@ -193,4 +193,20 @@ class FutsalGame < ApplicationRecord
   def get_game_registration_with_player_footbar_name(footbar_name)
     self.game_registrations.where(player_footbar_name: footbar_name).first
   end
+
+  def get_stats_players_name
+    stats_players_name = []
+    if self.has_players_stats
+      doc = Nokogiri::HTML(open(self.match_stats_link), nil, Encoding::UTF_8.to_s)
+      test = JSON.parse(doc)
+      test['results'].each do |stat|
+        stats_players_name.push(stat['player']['name'])
+      end
+    end
+    stats_players_name
+  end
+
+  def has_players_stats
+    !self.match_stats_link.nil? && self.match_stats_link != ""
+  end
 end

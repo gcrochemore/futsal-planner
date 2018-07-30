@@ -75,7 +75,13 @@
 	padding: 5px;
 }
 .team-fifa{
-	min-height: 700px !important;
+	max-height: 700px !important;
+	min-height: 318px !important;
+}
+.team-stats{
+	background-color: #E6E6E6;
+	padding: 10px;
+	border-radius: 25px;
 }
 .player{
 	margin: 10px;

@@ -1,10 +1,8 @@
 Je vais parser les stats !
 
 <%
-
-doc = Nokogiri::HTML(open(@futsal_game.match_stats_link), nil, Encoding::UTF_8.to_s)
-test = JSON.parse(doc)
-
+    doc = Nokogiri::HTML(open(@futsal_game.match_stats_link), nil, Encoding::UTF_8.to_s)
+    test = JSON.parse(doc)
 %>
 
 <% test['results'].each do |stat|
@@ -155,7 +153,7 @@ var myChart = new Chart(ctx, {
       labels:
         ['',
             <% for i in 0..@futsal_game.duration %>
-                <% iu
+                <%= i %>
             <% end %>
         ],
       datasets: [{

@@ -1,0 +1,57 @@
+<canvas id="myChartPlayers" width="100%" height="30px"></canvas>
+<script>
+var ctx = document.getElementById("myChartPlayers").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels:
+        [
+            <% game_registrations.each do |game_registration| %>
+              '<%= game_registration.user %>',
+            <% end %>
+        ],
+      datasets: [{
+        label: 'Distance (km)',
+        data:
+          [
+            <% game_registrations.each do |game_registration| %>
+              '<%= (game_registration.distance_run / 1000).round(2) %>',
+            <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,99,132,1)'
+        ],
+        borderWidth: 1
+      },{
+        label: 'Nombre de passes',
+        data:
+          [
+            <% game_registrations.each do |game_registration| %>
+              '<%= game_registration.pass_number %>',
+            <% end %>
+          ],
+        backgroundColor: [
+            'rgba(190, 99, 12, 0.2)'
+        ],
+        borderColor: [
+            'rgba(78,200,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<br>

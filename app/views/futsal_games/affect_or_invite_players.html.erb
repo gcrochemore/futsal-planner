@@ -3,7 +3,7 @@
   <%= simple_form_for(@futsal_game) do |f| %>
     
     <%= f.simple_fields_for :game_registrations do |game_registration| %>
-      <%= render 'game_registrations/game_registrations_field', f: game_registration %>
+      <%= render 'game_registrations/game_registrations_field', f: game_registration, stats_players_name: @stats_players_name %>
     <% end %> 
     <div class='links'>
       <%= link_to_add_association "Inscrire", f, :game_registrations, partial: 'game_registrations/game_registrations_field' %>
