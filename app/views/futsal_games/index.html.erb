@@ -74,6 +74,9 @@
               <% if nb_buts_stats != nb_buts %>
                 <%= icon('exclamation-triangle') %> <%= nb_buts %> buts (<%= nb_buts_stats %> dans stats) <br>
               <% end %>
+              <% if futsal_game.team_home_players.count != 5 || futsal_game.team_outside_players.count != 5 %>
+                <%= icon('exclamation-triangle') %> Nb joueurs : <%= futsal_game.team_home_players.count %> domicile - <%= futsal_game.team_outside_players.count %> extérieur <br>
+              <% end %>
               <% if futsal_game.has_stat %>
                   <% if nb_goals_without_goalkepper > 0 %>
                     <%= icon('exclamation-triangle') %> <%= nb_goals_without_goalkepper %> buts sans gardien <br>
