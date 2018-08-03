@@ -85,6 +85,9 @@
                     Pas de player position<br>
                   <% end %>
               <% end %>
+              <% if futsal_game.has_players_stats %>
+                <%= icon('database') %> Stats Footbar - (<%= futsal_game.count_player_with_stats %> joueurs)<br>
+              <% end %>
               Note : <%= futsal_game.rating %>
             </td>
             <td>

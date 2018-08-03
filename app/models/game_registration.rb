@@ -15,6 +15,8 @@ class GameRegistration < ApplicationRecord
 
   scope :futsal_games_with_stats, -> { where("futsal_games.video_link <> ''") }
 
+  scope :with_player_stats, -> { where('pass_number > 0') }
+
   def update_stats
     self.goal = self.futsal_game.goal_by_user(self.user).length
     self.assist = self.futsal_game.assist_by_user(self.user).length

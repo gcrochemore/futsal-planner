@@ -115,6 +115,7 @@
 </div>
 <%= render :template => 'users/_goals_assists_chart', :locals => { :user => @user } %>
 <%= render :template => 'users/_futsal_games_marks_chart', :locals => { :user => @user } %>
+<%= render :template => 'users/_chart_players_stats', :locals => { :game_registrations => @user.game_registrations.with_player_stats.order_by_futsal_game } %>
 
 
 
