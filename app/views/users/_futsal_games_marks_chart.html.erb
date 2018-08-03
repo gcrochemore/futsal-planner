@@ -5,7 +5,7 @@ var myChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: 
-        ['',
+        [
             <% user.game_registrations.each do |game_registration| %>
                 '<%= game_registration.futsal_game.to_s %>',
             <% end %>
@@ -13,7 +13,7 @@ var myChart = new Chart(ctx, {
       datasets: [{
         label: 'Note',
         data: 
-          ['',
+          [
               <% user.game_registrations.each do |game_registration| %>
                   '<%= game_registration.rating.to_s %>',
               <% end %>
@@ -25,7 +25,7 @@ var myChart = new Chart(ctx, {
       },{
         label: 'Note Moyenne',
         data:
-          ['',
+          [
               <% user.game_registrations.each do |game_registration| %>
                   '<%= user.rating.to_s %>',
               <% end %>

@@ -15,7 +15,7 @@ var myChart = new Chart(ctx, {
         data:
           [
             <% game_registrations.each do |game_registration| %>
-              '<%= (game_registration.distance_run / 1000).round(2) %>',
+              '<%= ((game_registration.distance_run || 0) / 1000).round(2) %>',
             <% end %>
           ],
         backgroundColor: [
@@ -30,7 +30,7 @@ var myChart = new Chart(ctx, {
         data:
           [
             <% game_registrations.each do |game_registration| %>
-              '<%= game_registration.pass_number %>',
+              '<%= game_registration.pass_number || 0 %>',
             <% end %>
           ],
         backgroundColor: [

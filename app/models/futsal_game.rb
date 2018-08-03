@@ -209,4 +209,8 @@ class FutsalGame < ApplicationRecord
   def has_players_stats
     !self.match_stats_link.nil? && self.match_stats_link != ""
   end
+
+  def has_match_stats
+    !self.match_resume_link.nil? && self.match_resume_link != ""
+  end
 end

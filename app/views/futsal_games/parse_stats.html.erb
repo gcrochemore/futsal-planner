@@ -122,18 +122,18 @@ end %>
     <tr>
         <th><%= game_registration.user %></th>
         <td><%= game_registration.pass_number %></td>
-        <td><%= (game_registration.distance_run / 1000).round(2) %> km</td>
+        <td><%= ((game_registration.distance_run || 0) / 1000).round(2) %> km</td>
         <td><% game_registration.running_slices_5min %></td>
-        <td><%= game_registration.pace.round(2) %></td>
-        <td><%= (game_registration.duration / 60).round(1) %></td>
-        <td><%= game_registration.avg_speed.round(2) %></td>
-        <td><%= game_registration.sprint_speed.round(2) %></td>
+        <td><%= game_registration.andand.pace.andand.round(2) %></td>
+        <td><%= ((game_registration.duration || 0) / 60).round(1) %></td>
+        <td><%= game_registration.avg_speed.andand.round(2) %></td>
+        <td><%= game_registration.sprint_speed.andand.round(2) %></td>
         <td><%= game_registration.time_sprinting %></td>
-        <td><%= game_registration.number_of_runs.round(0) %></td>
-        <td><%= game_registration.explosivity.round(2) %></td>
-        <td><%= (game_registration.distance_sprinting / 1000).round(2) %> km</td>
-        <td><%= game_registration.activity.round(2) %></td>
-        <td><%= game_registration.energy_spent.round(2) %></td>
+        <td><%= game_registration.number_of_runs.andand.round(0) %></td>
+        <td><%= game_registration.explosivity.andand.round(2) %></td>
+        <td><%= ((game_registration.distance_sprinting || 0) / 1000).round(2) %> km</td>
+        <td><%= game_registration.activity.andand.round(2) %></td>
+        <td><%= game_registration.energy_spent.andand.round(2) %></td>
     </tr>
 <% end %>
 
