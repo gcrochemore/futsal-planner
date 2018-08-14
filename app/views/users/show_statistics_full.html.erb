@@ -18,7 +18,10 @@
         <tbody>
           <% @user.goals_by_assist.each do |assist, count| %>
             <tr>
-              <td><%= !assist.nil? ? User.find(assist.to_i) : "<i>Pas de passeur</i>" %></td><td><%= count %> Passes</td>
+              <td>
+                <%= !assist.nil? ? User.find(assist.to_i) : "<i>Pas de passeur</i>" %></td><td><%= count %> Passes
+                (<%= @user.game_registrations_with.select{|key, hash| key == assist.to_i }.first.andand[1] || '?' %> m.)
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -38,7 +41,10 @@
           <tbody>
             <% @user.assists_by_goals.each do |goal, count| %>
               <tr>
-                <td><%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts</td>
+                <td>
+                    <%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts
+                    (<%= @user.game_registrations_with.select{|key, hash| key == goal.to_i }.first.andand[1] || '?' %> m.)
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -58,7 +64,10 @@
           <tbody>
             <% @user.goalkeeper_goals_against_by_goals.each do |goal, count| %>
               <tr>
-                <td><%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts</td>
+                <td>
+                    <%= !goal.nil? ? User.find(goal.to_i) : "<i>Pas de buteur</i>" %></td><td><%= count %> Buts
+                    (<%= @user.game_registrations_against.select{|key, hash| key == goal.to_i }.first.andand[1] || '?' %> m.)
+                </td>
               </tr>
             <% end %>
           </tbody>
