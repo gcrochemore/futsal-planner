@@ -14,6 +14,7 @@ class MatchMakingTeam
   attr_accessor :team_score_difference
   attr_accessor :team_last_matchs_rating_difference
   attr_accessor :team_difference
+  attr_accessor :team_difference_without_last_matchs_rating
 
   def initialize(attributes = {})
     self.attributes = attributes
@@ -42,6 +43,7 @@ class MatchMakingTeam
     self.team_score_difference = (self.team_1_score - self.team_2_score)
     self.team_last_matchs_rating_difference = (self.team_1_last_matchs_rating - self.team_2_last_matchs_rating)
     self.team_difference = self.team_mark_difference.abs + self.team_score_difference.abs + self.team_last_matchs_rating_difference.abs
+    self.team_difference_without_last_matchs_rating = self.team_mark_difference.abs + self.team_score_difference.abs
   end
 
   def calculate_average_mark(team)
@@ -72,5 +74,32 @@ class MatchMakingTeam
 
   def set_valid_team(team_value)
     (self.team.count("1") == (self.players.count / 2)) && (self.team.length == self.players.count)
+  end
+
+  def is_valid_team
+    is_valid_team = true
+    FutsalPosition.all.each do |futsal_position|
+      is_valid_team = is_valid_team & is_valid_team_with_futsal_position(futsal_position)
+    end
+    is_valid_team
+  end
+
+  def is_valid_team_with_futsal_position(futsal_position)
+    number_of_player_by_position_for_team_1 = number_of_player_by_position_and_team(team_1, futsal_position)
+    number_of_player_by_position_for_team_2 = number_of_player_by_position_and_team(team_2, futsal_position)
+
+    return (number_of_player_by_position_for_team_1 - number_of_player_by_position_for_team_2).abs <= 1
+  end
+
+  def number_of_player_by_position_and_team(team, futsal_position)
+    number_of_player = 0
+
+    team.each do |user|
+      if user.futsal_position.id == futsal_position.id
+        number_of_player += 1
+      end
+    end
+
+    number_of_player
   end
 end

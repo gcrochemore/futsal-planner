@@ -42,7 +42,7 @@
       <td><%= teams.team_1_last_matchs_rating.round(2) %></td>
       <td><%= teams.team_2_last_matchs_rating.round(2) %></td>
       <th><%= teams.team_last_matchs_rating_difference.round(2) %></th>
-      <th><%= teams.team_difference.round(2) %></th>
+      <th><%= teams.team_difference.round(2) %> (<%= teams.team_difference_without_last_matchs_rating.round(2) %>)</th>
     </tr>
 
   <% end %>

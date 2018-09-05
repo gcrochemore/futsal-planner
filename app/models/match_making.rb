@@ -12,7 +12,10 @@ class MatchMaking
     for i in 0..((2 ** self.players_count) - 1)
       team_value = i.to_s(2)
       if is_valid_team(team_value)
-        self.players_teams.push(MatchMakingTeam.new(team: team_value, players: self.game_registrations))
+        match_making_team = MatchMakingTeam.new(team: team_value, players: self.game_registrations)
+        if match_making_team.is_valid_team
+           self.players_teams.push(match_making_team)
+        end
       end      
     end
     self.players_teams_valids = self.players_teams.select { |players_team| players_team.is_valid_team == true }
