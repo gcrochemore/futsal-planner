@@ -217,4 +217,44 @@ class FutsalGame < ApplicationRecord
   def count_player_with_stats
     self.game_registrations.with_player_stats.count
   end
+
+  def parse_goals(goals, time_begin, tableau_buts)
+      tableau_buts.css('div.row').each do |but|
+
+      @time = but.css('div.time').first.content
+      @description = but.css('div.description').first.content
+      @video = but.css('div.video').first.css('a').first ? but.css('div.video').first.css('a').first['href'] : ""
+
+      @goal = Goal.new;
+
+      @goal.futsal_game = self
+
+      @m = @time.split(':')
+      @min = @m[0];
+      @sec = @m[1];
+
+      @goal.time = @min.to_f * 60 + (@sec.to_f + time_begin)
+
+      if @description.at("Equipe 2").nil?
+        @goal.team = self.team_home
+      else
+        @goal.team = self.team_outside
+      end
+
+      @goal.video_link = @video
+
+      @goal.save
+
+      goals.push @goal
+
+    end
+  end
+
+  def get_video_link(time)
+    if !self.video_link_secondary.nil? && !(self.video_link_secondary == '') && time.to_f > self.video_secondary_beginning.to_f
+      self.andand.video_link_secondary
+    else
+      self.andand.video_link
+    end
+  end
 end

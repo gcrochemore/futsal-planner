@@ -3,12 +3,9 @@ Je vais parser le match !
 <%
 
 doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
-
 @futsal_game.video_link = doc.css('div#full_match').first.css('a').first['href']
 @futsal_game.video_link = @futsal_game.video_link[0..((@futsal_game.video_link.rindex('?'))-1)]
-
 @score = doc.css('div.equipes_score').first
-
 @score.css('div.score_equipe').each_with_index do |score, index|
   if index == 0
     @futsal_game.score_home = score.content;
@@ -16,43 +13,35 @@ doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
     @futsal_game.score_outside = score.content;
   end
 end
-
 @futsal_game.save
-
 @tableau_buts = doc.css('div.resume').first.css('div.table').first
-
 @goals = Array.new
 
-@tableau_buts.css('div.row').each do |but|
+@futsal_game.parse_goals(@goals, 0, @tableau_buts)
 
-  @time = but.css('div.time').first.content
-  @description = but.css('div.description').first.content
-  @video = but.css('div.video').first.css('a').first ? but.css('div.video').first.css('a').first['href'] : ""
-
-  @goal = Goal.new;
-
-  @goal.futsal_game = @futsal_game
-
-  @m = @time.split(':')
-  @min = @m[0];
-  @sec = @m[1];
-
-  #@goal.time = (@min.to_f+25) * 60 + (@sec.to_f+10)
-  @goal.time = @min.to_f * 60 + @sec.to_f
-
-  if @description.at("Equipe 2").nil?
-    @goal.team = @futsal_game.team_home
-  else
-    @goal.team = @futsal_game.team_outside
+if !@futsal_game.match_resume_link_secondary.nil? && !(@futsal_game.match_resume_link_secondary == '')
+  doc = Nokogiri::HTML(open(@futsal_game.match_resume_link_secondary))
+  @futsal_game.video_link_secondary = doc.css('div#full_match').first.css('a').first['href']
+  @futsal_game.video_link_secondary = @futsal_game.video_link_secondary[0..((@futsal_game.video_link_secondary.rindex('?'))-1)]
+  @score = doc.css('div.equipes_score').first
+  @score.css('div.score_equipe').each_with_index do |score, index|
+    if index == 0
+      @futsal_game.score_home = score.content;
+    else
+      @futsal_game.score_outside = score.content;
+    end
   end
+  @futsal_game.save
+  @tableau_buts = doc.css('div.resume').first.css('div.table').first
 
-  @goal.video_link = @video
-
-  #@goal.save
-
-  @goals.push @goal
-  
+  @futsal_game.parse_goals(@goals, @futsal_game.video_secondary_beginning.to_f, @tableau_buts)
 end
+
+
+
+
+
+
 
 %>
 

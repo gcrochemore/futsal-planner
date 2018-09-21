@@ -232,7 +232,10 @@ class InitializeApplication < ActiveRecord::Migration[5.0]
       t.integer :score_home
       t.integer :score_outside
       t.string :video_link
+      t.string :video_link_secondary
+      t.integer :video_secondary_beginning
       t.string :match_resume_link
+      t.string :match_resume_link_secondary
       t.string :match_stats_link
 
       t.timestamps

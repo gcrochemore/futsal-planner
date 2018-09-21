@@ -46,10 +46,13 @@
       <div class="col form-group">
         <label for="video_link"><%= f.label :video_link %></label>
         <%= f.input :video_link, label: false, input_html: { class: "form-control" } %>
+        <label for="video_secondary_beginning"><%= f.label :video_secondary_beginning %></label>
+        <%= f.input :video_secondary_beginning, label: false, input_html: { class: "form-control" } %>
       </div>
       <div class="col form-group">
         <label for="match_resume_link"><%= f.label :match_resume_link %></label>
         <%= f.input :match_resume_link, label: false, input_html: { class: "form-control" } %>
+        <%= f.input :match_resume_link_secondary, label: false, input_html: { class: "form-control" } %>
       </div>
       <div class="col form-group">
         <label for="match_stats_link"><%= f.label :match_stats_link %></label>

@@ -34,7 +34,27 @@ class Goal < ApplicationRecord
     end
   end
 
+  def decallage_video
+    if is_video_secondary
+      self.futsal_game.video_secondary_beginning.to_i
+    else
+      0
+    end
+  end
+
   def to_s
     self.goal
+  end
+
+  def time_in_video
+    if is_video_secondary
+      self.time - self.futsal_game.video_secondary_beginning.to_f
+    else
+      self.time
+    end
+  end
+
+  def is_video_secondary
+    !self.futsal_game.video_link_secondary.nil? && !(self.futsal_game.video_link_secondary == '') && self.time.to_f > self.futsal_game.video_secondary_beginning.to_f
   end
 end

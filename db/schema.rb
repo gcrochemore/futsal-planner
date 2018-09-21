@@ -75,10 +75,13 @@ ActiveRecord::Schema.define(version: 20170410190000) do
     t.integer  "score_home"
     t.integer  "score_outside"
     t.string   "video_link"
+    t.string   "video_link_secondary"
+    t.string   "video_secondary_beginning"
     t.string   "match_resume_link"
+    t.string   "match_resume_link_secondary"
     t.string   "match_stats_link"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["futsal_field_id"], name: "index_futsal_games_on_futsal_field_id"
     t.index ["futsal_tournament_id"], name: "index_futsal_games_on_futsal_tournament_id"
   end
