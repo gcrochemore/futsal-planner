@@ -33,7 +33,7 @@ Le show de l'admin
 
 <div class="row">
   <div class="col">
-    <h3>Buts sans buteur (<%= @goals_without_goal_with_goalkeeper.count %>)</h3>
+    <h3>Buts sans buteur avec gardien (<%= @goals_without_goal_with_goalkeeper.count %>)</h3>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -47,6 +47,36 @@ Le show de l'admin
       </thead>
       <tbody>
         <% @goals_without_goal_with_goalkeeper.order_by_futsal_game_and_time.each do |goal| %>
+          <tr>
+            <td><%= goal.futsal_game %></td>
+            <td><%= goal.goal %></td>
+            <td><%= goal.assist %></td>
+            <td><%= formatted_match_time(goal.time) %></td>
+            <td><%= goal.average_mark %></td>
+            <td><%= link_to icon('eye').html_safe, goal, target: "_blank" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h3>Buts sans buteur (<%= @goals_without_goal.count %>)</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Buteur</th>
+          <th>Passeur</th>
+          <th>Time</th>
+          <th>Note</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goals_without_goal.order_by_futsal_game_and_time.each do |goal| %>
           <tr>
             <td><%= goal.futsal_game %></td>
             <td><%= goal.goal %></td>

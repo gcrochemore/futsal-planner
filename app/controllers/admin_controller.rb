@@ -4,6 +4,7 @@ class AdminController < ApplicationController
   def show
     @goals_without_goalkeeper = Goal.where(goalkeeper_id: nil)
     @goals_without_goal_with_goalkeeper = Goal.where(goal_id: nil).where("goalkeeper_id IS NOT NULL")
+    @goals_without_goal = Goal.where(goal_id: nil)
   end
 
   def show_db_view
