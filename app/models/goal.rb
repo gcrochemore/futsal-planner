@@ -55,6 +55,6 @@ class Goal < ApplicationRecord
   end
 
   def is_video_secondary
-    !self.futsal_game.video_link_secondary.nil? && !(self.futsal_game.video_link_secondary == '') && self.time.to_f > self.futsal_game.video_secondary_beginning.to_f
+    self.futsal_game && !self.futsal_game.video_link_secondary.nil? && !(self.futsal_game.video_link_secondary == '') && self.time.to_f > self.futsal_game?.video_secondary_beginning.to_f
   end
 end
