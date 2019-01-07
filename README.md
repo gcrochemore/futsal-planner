@@ -121,3 +121,5 @@ Now make ruby aware of your certificate authority bundle by setting `SSL_CERT_FI
     set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem
 
 To make this a permanent setting, add this in your [control panel](http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/environment_variables.mspx?mfr=true).
+
+`rails server -b 0.0.0.0`
