@@ -219,8 +219,7 @@ class FutsalGame < ApplicationRecord
   end
 
   def parse_goals(goals, time_begin, tableau_buts)
-      tableau_buts.css('div.row').each do |but|
-
+    tableau_buts.css('div.row').each do |but|
       @time = but.css('div.time').first.content
       @description = but.css('div.description').first.content
       @video = but.css('div.video').first.css('a').first ? but.css('div.video').first.css('a').first['href'] : ""

@@ -2,7 +2,9 @@ Je vais parser le match !
 
 <%
 
-doc = Nokogiri::HTML(open(@futsal_game.match_resume_link))
+h1 = open("https://www.lefive.fr/rouen/")
+doc = Nokogiri::HTML(open(@futsal_game.match_resume_link,"Cookie" => h1.meta['set-cookie'].split('; ',2)[0]))
+
 @futsal_game.video_link = doc.css('div#full_match').first.css('a').first['href']
 @futsal_game.video_link = @futsal_game.video_link[0..((@futsal_game.video_link.rindex('?'))-1)]
 @score = doc.css('div.equipes_score').first
