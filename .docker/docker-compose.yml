@@ -1,9 +1,23 @@
-futsal-planner:
-  build: .
-  command: /bin/sh -c "rm -f /var/app/tmp/pids/server.pid && rails server -p 3000 -b '0.0.0.0'"
-  volumes:
-    - ../.:/var/app
-  ports:
-    - "3000:3000"
-  environment:
-    RAILS_ENV: development
+version: '3.3'
+services:
+  futsal-planner:
+    build: .
+    command: /bin/sh -c "rm -f /var/app/tmp/pids/server.pid && rails server -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ../.:/var/app
+    ports:
+      - "3000:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=front-${COMPOSE_PROJECT_NAME}"
+      - "traefik.frontend.rule=Host:${FRONT_HOST}"
+      - "traefik.port=3000"
+      - "traefik.docker.network=reverse_proxy"
+    environment:
+      RAILS_ENV: development
+    networks:
+      - default
+      - reverse_proxy
+networks:
+  reverse_proxy:
+    external: true
