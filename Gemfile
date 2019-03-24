@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -37,10 +37,11 @@ group :production do
   gem 'pg', '~> 0.21.0'
 end
 
+gem 'sqlite3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
   gem 'simplecov'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
@@ -54,7 +55,7 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'devise'
@@ -105,7 +106,7 @@ source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
-gem 'bcrypt', platforms: :ruby
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # User Authentication with Facebook
 gem 'omniauth-facebook'

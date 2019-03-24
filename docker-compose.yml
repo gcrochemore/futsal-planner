@@ -1,12 +1,18 @@
 version: '3.3'
 services:
-  futsal-planner:
+  futsal-planner-db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  futsal-planner-front:
     build: .
-    command: /bin/sh -c "rm -f /var/app/tmp/pids/server.pid && rails server -p 3000 -b '0.0.0.0'"
+    command: /bin/sh -c "rm -f /var/app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ../.:/var/app
     ports:
       - "3000:3000"
+    depends_on:
+      - futsal-planner-db
     labels:
       - "traefik.enable=true"
       - "traefik.backend=front-${COMPOSE_PROJECT_NAME}"

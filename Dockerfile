@@ -1,5 +1,8 @@
-FROM ruby:2.3
+FROM ruby:2.5
 MAINTAINER Guillaume Crochemore <guillaume.crochemore@gmail.com>
+
+ENV RAILS_ENV=development
+ENV RACK_ENV=development
 
 # Install apt based dependencies required to run Rails as
 # well as RubyGems. As the Ruby image itself is based on a
