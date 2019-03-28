@@ -17,6 +17,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require cocoon
-//= require Chart.min
+//= require Chart
 //= require_tree .
 
