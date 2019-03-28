@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
