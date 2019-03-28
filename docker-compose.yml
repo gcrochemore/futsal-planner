@@ -2,28 +2,38 @@ version: '3.3'
 services:
   futsal-planner-db:
     image: postgres
+    restart: always
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: futsal-planner
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
   futsal-planner-front:
     build: .
-    command: /bin/sh -c "rm -f /var/app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - ../.:/var/app
+    command: /bin/sh -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - "3000:3000"
+      - "${FRONT_PORT}:3000"
+    links:
+      - futsal-planner-db
     depends_on:
       - futsal-planner-db
     labels:
       - "traefik.enable=true"
       - "traefik.backend=front-${COMPOSE_PROJECT_NAME}"
       - "traefik.frontend.rule=Host:${FRONT_HOST}"
-      - "traefik.port=3000"
-      - "traefik.docker.network=reverse_proxy"
+      - "traefik.port=${FRONT_PORT}"
+      - "traefik.docker.network=${FRONT_PROXY}"
     environment:
       RAILS_ENV: development
     networks:
       - default
-      - reverse_proxy
+      - traefik_proxy
 networks:
-  reverse_proxy:
+  traefik_proxy:
     external: true

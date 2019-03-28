@@ -1,37 +1,25 @@
 FROM ruby:2.5
 MAINTAINER Guillaume Crochemore <guillaume.crochemore@gmail.com>
 
-ENV RAILS_ENV=development
-ENV RACK_ENV=development
+RUN apt-get update -qq && apt-get install -y build-essential
 
-# Install apt based dependencies required to run Rails as
-# well as RubyGems. As the Ruby image itself is based on a
-# Debian image, we use apt-get to install those.
-RUN apt-get update && apt-get install -y \
-  build-essential \
-  nodejs
+# for postgres
+RUN apt-get install -y libpq-dev
 
-# Configure the main working directory. This is the base
-# directory used in any further RUN, COPY, and ENTRYPOINT
-# commands.
-RUN mkdir -p /app
-WORKDIR /app
+# for nokogiri
+#RUN apt-get install -y libxml2-dev libxslt1-dev
 
-# Copy the Gemfile as well as the Gemfile.lock and install
-# the RubyGems. This is a separate step so the dependencies
-# will be cached unless changes to one of those two files
-# are made.
-COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+# for capybara-webkit
+#RUN apt-get install -y libqt4-webkit libqt4-dev xvfb
 
-# Copy the main application.
+# for a JS runtime
+RUN apt-get install -y nodejs
+
+ENV APP_HOME /myapp
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+ADD Gemfile* $APP_HOME/
+RUN bundle install
+
 COPY . ./
-
-# Expose port 3000 to the Docker host, so we can access it
-# from the outside.
-EXPOSE 3000
-
-# The main command to run when the container starts. Also
-# tell the Rails dev server to bind to all interfaces by
-# default.
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

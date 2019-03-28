@@ -7,9 +7,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: futsal-planner-db
+  #host: 192.168.99.100
+  port: 5432
   username: postgres
-  password:
+  password: futsal-planner
   pool: 5
   timeout: 5000
 
