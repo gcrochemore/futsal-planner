@@ -56,6 +56,10 @@ class FutsalGame < ApplicationRecord
     User.where('id IN (?)', self.game_registrations.where(team: team).pluck(:user_id))
   end
 
+  def has_player_registration(user_id)
+    game_registrations.where(user_id: user_id).first
+  end
+
   def other_team(team)
     if self.team_home == team
       return self.team_outside
@@ -256,4 +260,13 @@ class FutsalGame < ApplicationRecord
       self.andand.video_link
     end
   end
+
+  def change_player(player_out_id, player_in_id)
+    puts game_registrations.where(user_id: player_out_id).update_all(user_id: player_in_id)
+    puts goals.where(goal_id: player_out_id).update_all(goal_id: player_in_id)
+    puts goals.where(assist_id: player_out_id).update_all(assist_id: player_in_id)
+    puts goals.where(goalkeeper_id: player_out_id).update_all(goalkeeper_id: player_in_id)
+    puts highlights.where(author_id: player_out_id).update_all(author_id: player_in_id)
+    puts highlights.where(victim_id: player_out_id).update_all(victim_id: player_in_id)
+  end  
 end

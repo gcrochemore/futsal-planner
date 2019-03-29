@@ -45,6 +45,6 @@ class AdminController < ApplicationController
   end
 end"
 
-    send_data export, type: 'text', filename: '29999999999998_initialize_matchs_datas.rb'
+    send_data export, type: 'text', filename: '29999999999998_initialize_matchs_data.rb'
   end
 end

@@ -35,7 +35,6 @@ services:
     environment:
       RAILS_ENV: "${RAILS_ENV}"
     networks:
-      - default
       - traefik_proxy
 networks:
   traefik_proxy:

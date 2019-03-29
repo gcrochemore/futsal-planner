@@ -66,7 +66,18 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	
 
     ###### Entity a modifier
-	
+
+
+
+###### Tasks
+
+
+	docker-compose run futsal-planner-front rails g task futsal_planner backup_db	
+
+	docker-compose run futsal-planner-front rake futsal_planner:backup_db	
+	docker-compose run futsal-planner-front rake futsal_planner:change_player	
+	docker-compose run futsal-planner-front rake futsal_planner:calculate_data
+	docker-compose run futsal-planner-front rake futsal_planner:change_player[254,158,184]
 
 ##### heroku
 
