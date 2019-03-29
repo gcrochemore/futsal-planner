@@ -33,7 +33,7 @@ class AdminController < ApplicationController
               FutsalGamePlayerPosition, HighlightType, Highlight, FutsalTournamentPlayerRegistration,
               FutsalTournamentTeamRegistration, FutsalGameInvitation, FutsalTrophy, UserFutsalTrophy]
 
-    export = "class InitializeData < ActiveRecord::Migration[5.0]
+    export = "class InitializeMatchsData < ActiveRecord::Migration[5.0]
   def change
 "
 
