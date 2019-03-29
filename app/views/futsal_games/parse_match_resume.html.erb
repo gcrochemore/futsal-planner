@@ -1,6 +1,7 @@
 Je vais parser le match !
 
 <%
+require 'open-uri'
 
 h1 = open("https://www.lefive.fr/rouen/")
 doc = Nokogiri::HTML(open(@futsal_game.match_resume_link,"Cookie" => h1.meta['set-cookie'].split('; ',2)[0]))

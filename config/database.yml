@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   host: futsal-planner-db
-  #host: 192.168.99.100
+  #host: 10.1.13.162
   port: 5432
   username: postgres
   password: futsal-planner

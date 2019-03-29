@@ -34,8 +34,7 @@ class AdminController < ApplicationController
               FutsalTournamentTeamRegistration, FutsalGameInvitation, FutsalTrophy, UserFutsalTrophy]
 
     export = "class InitializeData < ActiveRecord::Migration[5.0]
-    def change
-
+  def change
 "
 
     models.each do |model| 
@@ -43,33 +42,9 @@ class AdminController < ApplicationController
     end
 
     export += "
-    GameRegistration.all.each do |game_registration|
-      game_registration.update_stats
-      game_registration.save
-    end
-
-    FutsalTournamentPlayerRegistration.all.each do |futsal_tournament_player_registration|
-      futsal_tournament_player_registration.update_stats
-      futsal_tournament_player_registration.save
-    end
-
-    FutsalTournamentTeamRegistration.all.each do |futsal_tournament_team_registration|
-      futsal_tournament_team_registration.update_stats
-      futsal_tournament_team_registration.save
-    end
-
-    FutsalTournament.all.each do |futsal_tournament|
-      futsal_tournament.update_stats
-      futsal_tournament.save
-    end
-
-    User.all.each do |user|
-      user.update_stats
-      user.save
-    end
   end
 end"
 
-    send_data export, type: 'text', filename: DateTime.now.strftime("%Y%m%d%H%M%S") + '_initialize_matchs_datas.rb'
+    send_data export, type: 'text', filename: '29999999999998_initialize_matchs_datas.rb'
   end
 end
