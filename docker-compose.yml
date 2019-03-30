@@ -29,7 +29,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.backend=front-${COMPOSE_PROJECT_NAME}"
-      - "traefik.frontend.rule=Host:${FRONT_HOST}.{domain}"
+      - "traefik.frontend.rule=Host:${FRONT_HOST}.${DOMAINNAME}"
       - "traefik.port=${FRONT_PORT}"
       - "traefik.docker.network=${FRONT_PROXY}"
     environment:
