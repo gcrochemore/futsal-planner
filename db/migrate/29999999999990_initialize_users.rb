@@ -1056,5 +1056,10 @@ class InitializeUsers < ActiveRecord::Migration[5.0]
     user.skip_confirmation!
     user.save!
     user.add_role "player"
+
+    user = User.new({id: 200, email: "julien.elbaz@julien.elbaz", futsal_position_id: 3, password:"password", password_confirmation: "password", encrypted_password: "$2a$11$lt.AfYGAwMPTdt0RR/QXA.LjKobiwo8Ob/F8AqJm9MbYg3L3wvhqu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "L5yUswcwWcxLPqGadEKG", confirmed_at: nil, confirmation_sent_at: "2017-03-30 21:26:33", unconfirmed_email: nil, failed_attempts: 0, unlock_token: nil, locked_at: nil, first_name: "Julien", last_name: "El", company_id: nil, created_at: "2017-03-30 21:26:33", updated_at: "2017-03-30 21:26:33"})
+    user.skip_confirmation!
+    user.save!
+    user.add_role "player"
   end
 end
