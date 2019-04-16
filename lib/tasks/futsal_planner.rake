@@ -93,4 +93,13 @@ end"
     end
   end
 
+
+
+  desc "TODO"
+  task generate_trophies: :environment do
+    User.all.each do |user|
+      user.update_trophies
+    end
+  end
+
 end

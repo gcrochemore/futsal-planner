@@ -264,11 +264,12 @@ class User < ApplicationRecord
 
     # Dispute 5 matchs avec stats  5.0 Dispute 5 matchs avec stats
     if self.match_with_stats.round(2) >= 5
+      m = FutsalGame.where("ID IN (?) AND video_link<>''", self.game_registrations.pluck(:futsal_game_id)).last(5)[0]
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
       user_futsal_trophy.futsal_trophy_id = 1
       user_futsal_trophy.linked_entity = self
-      user_futsal_trophy.validation_date = DateTime.now
+      user_futsal_trophy.validation_date = m.date
       user_futsal_trophy.save
     end
 
@@ -335,7 +336,7 @@ class User < ApplicationRecord
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
       user_futsal_trophy.futsal_trophy_id = 8
-      user_futsal_trophy.linked_entity = game_registration
+      user_futsal_trophy.linked_entity = game_registration.futsal_game
       user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
       user_futsal_trophy.save
     end

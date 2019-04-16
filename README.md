@@ -76,6 +76,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	docker-compose run futsal-planner-front rake futsal_planner:backup_db	
 	docker-compose run futsal-planner-front rake futsal_planner:change_player	
+	docker-compose run futsal-planner-front rake futsal_planner:generate_trophies	
 	docker-compose run futsal-planner-front rake futsal_planner:calculate_data
 	docker-compose run futsal-planner-front rake futsal_planner:change_player[254,158,184]
 
