@@ -122,7 +122,7 @@ class User < ApplicationRecord
     self.assist_average_by_match = (self.assist.to_f / (self.player_duration.to_f / 60)) * 60
 
     self.assist_percent_by_match = 0
-    
+
     self.last_result = 0
     self.goal_mark = 0
     self.assist_mark = 0
@@ -130,7 +130,7 @@ class User < ApplicationRecord
     self.rating = self.calculate_rating
     self.rating = (self.match_with_stats < User::MATCH_MINI ? self.rating * User::MULTIPLIER_IF_MATCH_MINI : self.rating)
     self.rating = (self.rating < User::RATING_MINI ? User::RATING_MINI : self.rating)
-  
+
     self.match_goal_for = 0
     self.match_goal_against = 0
     self.games_results = ''
@@ -185,13 +185,13 @@ class User < ApplicationRecord
     number_of_matchs = self.match_with_stats
     moyenne_goals = self.goal.to_f / number_of_matchs.to_f
     moyenne_goals.round(2).to_s
-  end 
+  end
 
   def assist_average
     number_of_matchs = self.match_with_stats
     moyenne_assists =  self.assist.to_f / number_of_matchs.to_f
     moyenne_assists.round(2).to_s
-  end 
+  end
 
   def display_stats
     self.games_results = self.games_results.to_s
@@ -223,7 +223,7 @@ class User < ApplicationRecord
     self.player_duration = 0
     self.substitute_duration = 0
     self.game_registrations.each do |game_registration|
-      if game_registration.futsal_game.has_stat 
+      if game_registration.futsal_game.has_stat
         self.match_time = self.match_time + game_registration.futsal_game.duration.to_i
         self.goalkeeper_duration = self.goalkeeper_duration + game_registration.goalkeeper_duration.to_i
         self.player_duration = self.player_duration + game_registration.player_duration.to_i
@@ -238,11 +238,11 @@ class User < ApplicationRecord
 
   def update_game_registrations_stats
     game_registrations.map{|a| a.update_stats}
-  end 
+  end
 
   def match_rating
     (game_registrations.map{|a| (a.futsal_game.rating ? a.futsal_game.rating : 65 )}.sum / (game_registrations.length.nonzero? || 1)).round
-  end  
+  end
 
   def update_all_user_stats
     self.update_game_registrations_stats
@@ -274,7 +274,7 @@ class User < ApplicationRecord
     end
 
     # Dispute un tournoi
-    if self.futsal_tournament_player_registrations.length > 0 
+    if self.futsal_tournament_player_registrations.length > 0
       futsal_tournament = self.futsal_tournament_player_registrations.first.futsal_tournament
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
@@ -284,12 +284,10 @@ class User < ApplicationRecord
       user_futsal_trophy.save
     end
 
-    self.game_registrations.each do |game_registration|      
+    self.game_registrations.each do |game_registration|
 
       # Plus de 1/6 du match dans les buts et moins de 1buts/6min
-      if game_registration.futsal_game.has_stat && 
-          ((game_registration.futsal_game.duration / 6.0) < (game_registration.goalkeeper_duration/60.0)) &&
-          ((game_registration.goalkeeper_goal_against.to_f / (game_registration.goalkeeper_duration/60.0).to_f) < 0.125)
+      if game_registration.futsal_game.has_stat && ((game_registration.futsal_game.duration / 6.0) < (game_registration.goalkeeper_duration/60.0)) && ((game_registration.goalkeeper_goal_against.to_f / (game_registration.goalkeeper_duration/60.0).to_f) < 0.125)
         user_futsal_trophy = UserFutsalTrophy.new
         user_futsal_trophy.user_id = self.id
         user_futsal_trophy.futsal_trophy_id = 3
@@ -297,9 +295,9 @@ class User < ApplicationRecord
         user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
         user_futsal_trophy.save
       end
-    end 
+    end
 
-    # Prend un but par un joueur avec < 1 buts/matchs 
+    # Prend un but par un joueur avec < 1 buts/matchs
     self.goal_against_to_user_with_lower_goal.each do |goal|
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
@@ -307,9 +305,9 @@ class User < ApplicationRecord
       user_futsal_trophy.linked_entity = goal
       user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
       user_futsal_trophy.save
-    end 
+    end
 
-    # Marque un but sur une passe dé d'un joueur < 1 
+    # Marque un but sur une passe dé d'un joueur < 1
     self.goal_to_user_with_lower_assit.each do |goal|
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
@@ -317,9 +315,9 @@ class User < ApplicationRecord
       user_futsal_trophy.linked_entity = goal
       user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
       user_futsal_trophy.save
-    end 
+    end
 
-    # Fais une passe dé a un joueur avec < 2 buts/matchs 
+    # Fais une passe dé a un joueur avec < 2 buts/matchs
     self.assit_to_user_with_lower_goal.each do |goal|
       user_futsal_trophy = UserFutsalTrophy.new
       user_futsal_trophy.user_id = self.id
@@ -327,9 +325,9 @@ class User < ApplicationRecord
       user_futsal_trophy.linked_entity = goal
       user_futsal_trophy.validation_date = goal.futsal_game.date + goal.time
       user_futsal_trophy.save
-    end  
+    end
 
-    # Homme du match  10.0  Homme du match    
+    # Homme du match  10.0  Homme du match
 
     # Double double (5 buts/5 passes dé)  20.0  Double double (5 buts/5 passes dé)
     self.game_registrations.where("goal > ? AND assist > ?", 4, 4).each do |game_registration|
@@ -341,7 +339,54 @@ class User < ApplicationRecord
       user_futsal_trophy.save
     end
 
-    # Blessure  -5.0  Blessure
+    # Boucher -5.0  Provoque une blessure 0
+
+
+    # Chat noir -5.0  Enchainement de 5 matchs successifs sans victoire (nul ou défaite)
+
+    nb_match_sans_victoire = 0
+    self.game_registrations.order_by_futsal_game_asc.each do |game_registration|
+      if game_registration.match_result <= 0
+        nb_match_sans_victoire += 1
+      else
+        nb_match_sans_victoire = 0
+      end
+
+      if nb_match_sans_victoire == 5
+        user_futsal_trophy = UserFutsalTrophy.new
+        user_futsal_trophy.user_id = self.id
+        user_futsal_trophy.futsal_trophy_id = 10
+        user_futsal_trophy.linked_entity = game_registration.futsal_game
+        user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
+        user_futsal_trophy.save
+        nb_match_sans_victoire = 0
+      end
+    end
+
+    # Lucky Strike  5.0 Enchainement de 3 victoires consécutives
+
+    nb_victoire_consecutive = 0
+    self.game_registrations.order_by_futsal_game_asc.each do |game_registration|
+      if game_registration.match_result > 0
+        nb_victoire_consecutive += 1
+      else
+        nb_victoire_consecutive = 0
+      end
+
+      if nb_victoire_consecutive == 3
+        user_futsal_trophy = UserFutsalTrophy.new
+        user_futsal_trophy.user_id = self.id
+        user_futsal_trophy.futsal_trophy_id = 11
+        user_futsal_trophy.linked_entity = game_registration.futsal_game
+        user_futsal_trophy.validation_date = game_registration.futsal_game.date + (game_registration.futsal_game.duration * 60)
+        user_futsal_trophy.save
+        nb_victoire_consecutive = 0
+      end
+    end
+
+
+    # Remontada  3.0 Perdre de 5 buts et gagner le match
+
   end
 
   def goal_against_to_user_with_lower_goal

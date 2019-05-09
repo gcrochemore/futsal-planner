@@ -1,6 +1,6 @@
 class GameRegistration < ApplicationRecord
   resourcify
-  
+
   belongs_to :user, optional: true
   belongs_to :futsal_game
   belongs_to :team, optional: true
@@ -13,6 +13,8 @@ class GameRegistration < ApplicationRecord
 
   scope :order_by_futsal_game, -> { includes(:futsal_game).order('futsal_games.date desc') }
 
+  scope :order_by_futsal_game_asc, -> { includes(:futsal_game).order('futsal_games.date') }
+
   scope :futsal_games_with_stats, -> { where("futsal_games.video_link <> ''") }
 
   scope :with_player_stats, -> { where('pass_number > 0') }
@@ -20,7 +22,7 @@ class GameRegistration < ApplicationRecord
   def update_stats
     self.goal = self.futsal_game.goal_by_user(self.user).length
     self.assist = self.futsal_game.assist_by_user(self.user).length
-    #if self.futsal_game.futsal_tournament 
+    #if self.futsal_game.futsal_tournament
     #  self.futsal_game.futsal_tournament.update_stats
     #end
         # t.integer :goalkeeper_duration
@@ -39,7 +41,7 @@ class GameRegistration < ApplicationRecord
     goalkeeper_multiplier = (goalkeeper_duration > 0 ? (60*60) / goalkeeper_duration : 1)
 
     self.user ? self.user.calculate_rating(goal: self.goal * player_multiplier, own_goal: 0, assist: self.assist * player_multiplier, goalkeeper_goal_against: self.goalkeeper_goal_against * goalkeeper_multiplier) : 0
- end  
+ end
 
   def own_goal
     0
