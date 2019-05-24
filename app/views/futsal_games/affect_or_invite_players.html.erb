@@ -1,20 +1,19 @@
 <% if can? :affect_player_to_team, @futsal_game %>
   <h3>Inscriptions</h3>
   <%= simple_form_for(@futsal_game) do |f| %>
-    
+
     <%= f.simple_fields_for :game_registrations do |game_registration| %>
       <%= render 'game_registrations/game_registrations_field', f: game_registration, stats_players_name: @stats_players_name %>
-    <% end %> 
+    <% end %>
     <div class='links'>
       <%= link_to_add_association "Inscrire", f, :game_registrations, partial: 'game_registrations/game_registrations_field' %>
     </div>
-  </div>
 
   Disponibles :
   <% @dispo.each do |user| %>
     <%= show_player(user) %>
   <% end %>
-  
+
   <%= f.button :button, class: "btn btn-primary" do %>
     Valider
   <% end %>
@@ -26,11 +25,10 @@
   <%= simple_form_for(@futsal_game) do |f| %>
     <%= f.simple_fields_for :futsal_game_invitations do |futsal_game_invitation| %>
       <%= render 'futsal_game_invitations/futsal_game_invitation_field', f: futsal_game_invitation %>
-    <% end %> 
+    <% end %>
     <div class='links'>
       <%= link_to_add_association "Inviter", f, :futsal_game_invitations, partial: 'futsal_game_invitations/futsal_game_invitation_field' %>
     </div>
-  </div>
 
   Disponibles :
   <% @dispo.each do |user| %>
