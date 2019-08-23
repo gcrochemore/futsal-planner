@@ -80,6 +80,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	docker-compose run futsal-planner-front rake futsal_planner:calculate_data
 	docker-compose run futsal-planner-front rake futsal_planner:change_player[254,158,184]
 
+	docker-compose exec futsal-planner-front rails c
+
 ##### heroku
 
 	heroku login
