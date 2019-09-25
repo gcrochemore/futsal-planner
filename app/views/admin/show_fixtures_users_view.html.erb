@@ -1,0 +1,12 @@
+  <% @users.each do |user| %>
+
+<%= user.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;firstname: <%= user.first_name %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lastname: <%= user.last_name %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;email: <%= user.email %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;password: <%= user.password %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;roles: ['ROLE_USER']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;identifier: '5c2ba3c1-9681-4565-ad4c-411da04e3146'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;civility: <br>
+
+  <% end %>

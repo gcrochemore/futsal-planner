@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   get '/show_db', to: 'admin#show_db_view'
   get '/create_seeds', to: 'admin#create_seeds'
   get '/show_admin', to: 'admin#show'
+  get '/show_fixtures_users', to: 'admin#show_fixtures_users_view'
+  get '/show_fixtures_futsal_games', to: 'admin#show_fixtures_futsal_games_view'
+  get '/show_fixtures_teams', to: 'admin#show_fixtures_teams_view'
 
   get '/how_the_mark_is_calculated', to: 'pages#how_the_mark_is_calculated'
 end

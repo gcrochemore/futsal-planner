@@ -1,0 +1,27 @@
+  <% @futsal_games.each do |futsal_game| %>
+
+<%= futsal_game.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;date: <%= futsal_game.date %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;duration: <%= futsal_game.duration %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;futsal_tournament_id: <%= futsal_game.futsal_tournament_id %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;futsal_field_id: <%= futsal_game.futsal_field_id %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;team_home_id: <%= futsal_game.team_home_id %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;team_outside_id: <%= futsal_game.team_outside_id %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;score_home: <%= futsal_game.score_home %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;score_outside: <%= futsal_game.score_outside %><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;video_link: <%= futsal_game.video_link %><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;goals:<br>
+  <% futsal_game.goals.each do |goal| %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= goal.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;team_id: "<%= goal.team_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goal_id: "<%= goal.goal_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assist_id: "<%= goal.assist_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goalkeeper_id: "<%= goal.goalkeeper_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: "<%= goal.time %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;video_link: "<%= goal.video_link %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;views_number: "<%= goal.views_number %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;average_mark: "<%= goal.average_mark %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;own_goal: "<%= goal.own_goal %>"<br>
+  <% end %>
+  <% end %>

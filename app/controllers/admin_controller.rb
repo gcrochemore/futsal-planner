@@ -11,6 +11,18 @@ class AdminController < ApplicationController
 
   end
 
+  def show_fixtures_users_view
+    @users = User.all
+  end
+
+  def show_fixtures_futsal_games_view
+    @futsal_games = FutsalGame.all
+  end
+
+  def show_fixtures_teams_view
+    @teams = Team.all
+  end
+
   def export_db 
     models = ActiveRecord::Base.descendants
 

@@ -1,0 +1,7 @@
+  <% @teams.each do |team| %>
+
+<%= team.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name: <%= team.name %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;company: <%= team.company.andand.name %><br>
+  
+  <% end %>

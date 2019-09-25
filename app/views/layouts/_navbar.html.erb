@@ -153,6 +153,21 @@
                 <%= link_to 'Export seeds', create_seeds_path, {target: "_blank", class: "dropdown-item" } %>
               </li> 
             <% end %>
+            <% if current_user.has_role? :admin %>
+              <li>
+                <%= link_to('Voir Fixtures users', show_fixtures_users_path) %>
+              </li> 
+            <% end %>
+            <% if current_user.has_role? :admin %>
+              <li>
+                <%= link_to('Voir Fixtures teams', show_fixtures_teams_path) %>
+              </li> 
+            <% end %>
+            <% if current_user.has_role? :admin %>
+              <li>
+                <%= link_to('Voir Fixtures futsal games', show_fixtures_futsal_games_path) %>
+              </li> 
+            <% end %>
           </ul>
         </li>
 
