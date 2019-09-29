@@ -24,4 +24,20 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;average_mark: "<%= goal.average_mark %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;own_goal: "<%= goal.own_goal %>"<br>
   <% end %>
+
+&nbsp;&nbsp;&nbsp;&nbsp;game_registrations:<br>
+  <% futsal_game.game_registrations.each do |game_registration| %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= game_registration.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_id: "<%= game_registration.user_id %>"<br>
+  <% end %>
+
+&nbsp;&nbsp;&nbsp;&nbsp;futsal_game_player_positions:<br>
+  <% futsal_game.futsal_game_player_positions.each do |futsal_game_player_position| %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= futsal_game_player_position.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;game_registration_id: "<%= futsal_game_player_position.game_registration_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;futsal_position_id: "<%= futsal_game_player_position.futsal_position_id %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin_time: "<%= futsal_game_player_position.begin_time %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end_time: "<%= futsal_game_player_position.end_time %>"<br>
+  <% end %>
+
   <% end %>
