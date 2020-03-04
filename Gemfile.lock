@@ -1,6 +1,6 @@
 GEM
   remote: http://rubygems.org/
-  remote: https://rails-assets.org/
+  remote: http://insecure.rails-assets.org/
   specs:
     actioncable (5.0.2)
       actionpack (= 5.0.2)
@@ -115,10 +115,11 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nio4r (2.0.0)
-    nokogiri (1.7.0.1)
+    nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    nokogiri (1.7.0.1-x86-mingw32)
+    nokogiri (1.6.8.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
+    oauth (0.5.4)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
@@ -128,11 +129,27 @@ GEM
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
+    omniauth-azure-oauth2 (0.0.10)
+      jwt (>= 1.0, < 3.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.4)
     omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (0.5.4)
+      jwt (>= 1.5)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.5)
+    omniauth-linkedin (0.2.0)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     orm_adapter (0.5.0)
     paper_trail (6.0.2)
       activerecord (>= 4.0, < 5.2)
@@ -142,7 +159,7 @@ GEM
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     popper_js (1.12.3)
-    puma (3.8.2)
+    puma (3.12.4)
     rack (2.0.1)
     rack-cors (0.4.1)
     rack-test (0.6.3)
@@ -274,6 +291,7 @@ PLATFORMS
 DEPENDENCIES
   andand
   autoprefixer-rails
+  bcrypt
   bootstrap (~> 4.0.0.alpha6)
   bootstrap-datepicker-rails
   byebug
@@ -281,19 +299,23 @@ DEPENDENCIES
   chart-js-rails
   cocoon
   coffee-rails (~> 4.2)
-  database_cleaner
+  database_cleaner (~> 1.6.1)
   devise
   factory_girl_rails
   figaro
   font-awesome-sass (~> 4.7.0)
   jbuilder (~> 2.5)
   jquery-rails
-  nokogiri
+  nokogiri (~> 1.6.8)
+  omniauth-azure-oauth2
   omniauth-facebook
-  paper_trail
+  omniauth-google-oauth2
+  omniauth-linkedin
+  omniauth-twitter
+  paper_trail (~> 6.0.2)
   pg (~> 0.21.0)
   popper_js (~> 1.11, >= 1.11.1)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rack-cors
   rails (~> 5.0.1)
   rails-assets-tether (>= 1.1.0)!
