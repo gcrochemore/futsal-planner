@@ -93,7 +93,7 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'font-awesome-sass', '~> 4.7.0'
 
-gem 'nokogiri', '~> 1.6.8'
+gem 'nokogiri', '~> 1.13.2'
 
 gem 'chart-js-rails'
 
